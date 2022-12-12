@@ -13,7 +13,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "v19.2.0"
+          node-version: "v18.12.1"
       - name: Cache NPM dependencies
         uses: actions/cache@v2
         with:

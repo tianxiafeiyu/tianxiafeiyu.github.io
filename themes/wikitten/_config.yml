@@ -14,7 +14,7 @@ customize:
         enabled: false
         width: 40
         height: 40
-        url: /static/logo.png
+        url: /logo.png
     profile:
         enabled: false # Whether to show profile bar
         avatar: # css/images/avatar.png
@@ -27,7 +27,7 @@ customize:
     sidebar: left # sidebar position, options: left, right
     category_perExpand: false # enable article categories list per expanding
     thumbnail: true # enable posts thumbnail, options: true, false
-    favicon: /static/favicon.ico # path to favicon
+    favicon: /static/lin.png # path to favicon
     default_index_file: index.md # if this, it will display at site index instead of default index page
     social_links:
         #github: https://github.com/zthxxx/zthxxx.github.io

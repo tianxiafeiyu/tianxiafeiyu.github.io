@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Dalin blog</title>
+    
+    
+        <meta name="keywords" content="Dalin blog" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="业务场景：查询数据分页，每条数据需要添加上概览信息，获取概览信息需要调用一些http接口，有一定的等待时间，单线程查询效率较慢。现在需要在查出了数据库持久化数据的基础上，使用多线程给数据添加概览信息，而且在所有异步线程都完成后，再返回分页信息给前端。 1.应用主程序添加注解 @EnableAsync 来开启 Springboot 对于异步任务的支持 1234567@SpringBootApplic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dalin blog">
+<meta property="og:url" content="http://example.com/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Dalin blog">
+<meta property="og:description" content="业务场景：查询数据分页，每条数据需要添加上概览信息，获取概览信息需要调用一些http接口，有一定的等待时间，单线程查询效率较慢。现在需要在查出了数据库持久化数据的基础上，使用多线程给数据添加概览信息，而且在所有异步线程都完成后，再返回分页信息给前端。 1.应用主程序添加注解 @EnableAsync 来开启 Springboot 对于异步任务的支持 1234567@SpringBootApplic">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-12T17:36:23.241Z">
+<meta property="article:modified_time" content="2022-12-12T17:36:23.241Z">
+<meta property="article:author" content="Dalin">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Dalin blog" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Dalin blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            开发笔记
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            golang
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/golang/%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            java
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/2020%20%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%EF%BC%88%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF%EF%BC%89/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/JTW%E8%AF%A6%E8%A7%A3/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/JVM%E4%B8%8EJava%E7%A8%8B%E5%BA%8F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%20%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java8%E6%96%B0%E7%89%B9%E6%80%A7/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%8E%9F%E5%88%99/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%BB%86%E8%8A%82/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7%E7%B1%BB/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Jenkins%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Skywalking%E4%BD%BF%E7%94%A8graphql%E6%9F%A5%E8%AF%A2/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Skywalking%E5%AD%A6%E4%B9%A0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Spring%20boot%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Spring%20boot%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Spring%20security%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/acmp%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/idea+maven+git%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/idea%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/lombok/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/null==obj%20or%20obj==null%20%EF%BC%9F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%20+%20jasypt%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF%E5%8A%A0%E5%AF%86/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%B8%AD%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%97%9B/"></a></li>  <li class="file active"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20security%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/%E3%80%8AOn%20Java%208%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工具
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E5%B7%A5%E5%85%B7/git%20%E7%AC%94%E8%AE%B0/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            数据库
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            es
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/es/Elasticsearch%20Java%20Rest%20Client/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/es/Elasticsearch%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql%E3%80%81redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/Apdex%20%E5%BA%94%E7%94%A8%E6%80%A7%E8%83%BD%E6%8C%87%E6%95%B0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/Elasticsearch%20Java%20Rest%20Client/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/GraphQL%20%E5%85%A5%E9%97%A8/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/dalin%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/session%EF%BC%8Ccookie%EF%BC%8Ctoken%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84HTTP%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E5%90%84%E7%A7%8D%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC%E7%9A%84%20Helloworld/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/"></a></li>  </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-开发笔记/java/spring boot使用多线程" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <p>业务场景：查询数据分页，每条数据需要添加上概览信息，获取概览信息需要调用一些http接口，有一定的等待时间，单线程查询效率较慢。现在需要在查出了数据库持久化数据的基础上，使用多线程给数据添加概览信息，而且在所有异步线程都完成后，再返回分页信息给前端。</p>
+<h4 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h4><p>应用主程序添加注解 @EnableAsync 来开启 Springboot 对于异步任务的支持</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@EnableAsync</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SpringBootApplication</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        SpringApplication.run(SpringBootApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h4><p>配置类实现接口 AsyncConfigurator，返回一个 ThreadPoolTaskExecutor 线程池对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableAsync</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AsyncTaskConfig</span> <span class="keyword">implements</span> <span class="title class_">AsyncConfigurer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ThredPoolTaskExcutor的处理流程</span></span><br><span class="line">    <span class="comment">// 当池子大小小于corePoolSize，就新建线程，并处理请求</span></span><br><span class="line">    <span class="comment">// 当池子大小等于corePoolSize，把请求放入workQueue中，池子里的空闲线程就去workQueue中取任务并处理</span></span><br><span class="line">    <span class="comment">// 当workQueue放不下任务时，就新建线程入池，并处理请求，如果池子大小撑到了maximumPoolSize，就用RejectedExecutionHandler来做拒绝处理</span></span><br><span class="line">    <span class="comment">// 当池子的线程数大于corePoolSize时，多余的线程会等待keepAliveTime长时间，如果无请求可处理就自行销毁</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> Executor <span class="title function_">getAsyncExecutor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">ThreadPoolTaskExecutor</span> <span class="variable">threadPool</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadPoolTaskExecutor</span>();</span><br><span class="line">        <span class="comment">//设置核心线程数</span></span><br><span class="line">        threadPool.setCorePoolSize(<span class="number">10</span>);</span><br><span class="line">        <span class="comment">//设置最大线程数</span></span><br><span class="line">        threadPool.setMaxPoolSize(<span class="number">20</span>);</span><br><span class="line">        <span class="comment">//线程池所使用的缓冲队列</span></span><br><span class="line">        threadPool.setQueueCapacity(<span class="number">10</span>);</span><br><span class="line">        <span class="comment">// 等待时间 （默认为0，此时立即停止），并没等待xx秒后强制停止</span></span><br><span class="line">        threadPool.setAwaitTerminationSeconds(<span class="number">60</span>);</span><br><span class="line">        <span class="comment">//  线程名称前缀</span></span><br><span class="line">        threadPool.setThreadNamePrefix(<span class="string">&quot;my-Async-&quot;</span>);</span><br><span class="line">        <span class="comment">// 初始化线程</span></span><br><span class="line">        threadPool.initialize();</span><br><span class="line">        <span class="keyword">return</span> threadPool;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> AsyncUncaughtExceptionHandler <span class="title function_">getAsyncUncaughtExceptionHandler</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h4><p>异步调用的方法上添加注解@Async，表明该方法是异步方法，如果注解在类上，那表明这个类里面的所有方法都是异步的。异步方法必须是public修饰的，而且需要在另一个类中调用才会生效，否则无法实现异步。  </p>
+<p>Service层：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Async</span></span><br><span class="line"><span class="keyword">public</span> CompletableFuture&lt;Long&gt; <span class="title function_">addOverViewInfo</span><span class="params">(K8sClusterDTO k8sClusterDTO)</span> <span class="keyword">throws</span> ApiException &#123;</span><br><span class="line">    <span class="comment">// 添加概览信息</span></span><br><span class="line">    <span class="comment">// return CompletableFuture.completedFuture(k8sClusterId);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Controller层：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// result = 查询数据库得到的分页数据</span></span><br><span class="line">List&lt;CompletableFuture&lt;Long&gt;&gt; completableFutureList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"><span class="comment">// 多线程添加集群概览数据</span></span><br><span class="line"><span class="keyword">for</span> (K8sClusterDTO k8sClusterDTO : result.getObjectList())&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        CompletableFuture&lt;Long&gt; completableFuture = k8sClusterService.addOverViewInfo(k8sClusterDTO);</span><br><span class="line">        completableFutureList.add(completableFuture);</span><br><span class="line">    &#125;<span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">CompletableFuture&lt;Long&gt;[] completableFutureArray = <span class="keyword">new</span> <span class="title class_">CompletableFuture</span>[completableFutureList.size()];</span><br><span class="line"><span class="comment">// 合并线程，确保子线程全部执行完</span></span><br><span class="line">CompletableFuture.allOf(completableFutureList.toArray(completableFutureArray)).join();</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
+<h4 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h4><p>至此，功能完成。查询效率确实有所提高。<br>这算是第一次成功在实际项目中使用多线程，网上查询了很多博客，spring boot中使用多线程是很方便的，但是关键是如何等待所有子线程执行完，像这种直接使用注解来声明一个异步方法，很多网上的方案都行不通，最后看到简书上的一篇文章才有了思路。  </p>
+<p>使用了异步编程后，接口调用顺序大概是这样的：  </p>
+<p>查询数据库分页数据<br>返回分页数据给前端<br>第一次调用异步方法<br>第二次调用异步方法<br>……</p>
+<p>所以还没等到数据添加上概览信息，就已经返回了结果，这肯定是行不通的。</p>
+<p>使用了CompletableFuture.allOf(…).jion() 方法后，顺序大概就是：</p>
+<p>查询数据库分页数据<br>第一次调用异步方法<br>第二次调用异步方法<br>……<br>最后一个异步方法执行完毕<br>返回分页数据给前端</p>
+<p>这样才能返回正确的结果</p>
+<h4 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h4><p>CompletableFuture allOf().jion():<br>法实现多实例的同时返回，如果allOf里面的所有线程未执行完毕，主线程会阻塞，直到allOf里面的所有线程都执行，主线程就会被唤醒，继续向下运行。总的来说就是保证了子线程之间的异步，又保证了主线程和子线程的同步。</p>
+<h4 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h4><p>参考资料：  </p>
+<ol>
+<li>Spring Boot 创建及使用多线程。<a target="_blank" rel="noopener" href="https://blog.csdn.net/asd136912/article/details/87716215">https://blog.csdn.net/asd136912/article/details/87716215</a></li>
+<li>SpringBoot 多线程异步调用-提高程序执行效率。<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d919f4372351">https://www.jianshu.com/p/d919f4372351</a></li>
+</ol>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%97%9B/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    (no title)
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20security%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title"></div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Dalin &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

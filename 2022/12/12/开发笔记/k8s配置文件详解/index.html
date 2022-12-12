@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Dalin blog</title>
+    
+    
+        <meta name="keywords" content="Dalin blog" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="k8s yaml文件yaml基础YAML是专门用来写配置文件的语言，非常简洁和强大，使用比json更方便。它实质上是一种通用的数据串行化格式。 YAML语法规则： 12345大小写敏感使用缩进表示层级关系缩进时不允许使用Tal键，只允许使用空格缩进的空格数目不重要，只要相同层级的元素左侧对齐即可”#” 表示注释，从这个字符一直到行尾，都会被解析器忽略　  在Kubernetes中，只需要知道两种结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dalin blog">
+<meta property="og:url" content="http://example.com/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Dalin blog">
+<meta property="og:description" content="k8s yaml文件yaml基础YAML是专门用来写配置文件的语言，非常简洁和强大，使用比json更方便。它实质上是一种通用的数据串行化格式。 YAML语法规则： 12345大小写敏感使用缩进表示层级关系缩进时不允许使用Tal键，只允许使用空格缩进的空格数目不重要，只要相同层级的元素左侧对齐即可”#” 表示注释，从这个字符一直到行尾，都会被解析器忽略　  在Kubernetes中，只需要知道两种结">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-12T17:36:23.241Z">
+<meta property="article:modified_time" content="2022-12-12T17:36:23.241Z">
+<meta property="article:author" content="Dalin">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Dalin blog" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Dalin blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            开发笔记
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            golang
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/golang/%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            java
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/2020%20%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%EF%BC%88%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF%EF%BC%89/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/JTW%E8%AF%A6%E8%A7%A3/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/JVM%E4%B8%8EJava%E7%A8%8B%E5%BA%8F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%20%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java8%E6%96%B0%E7%89%B9%E6%80%A7/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%8E%9F%E5%88%99/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%BB%86%E8%8A%82/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7%E7%B1%BB/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Jenkins%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Skywalking%E4%BD%BF%E7%94%A8graphql%E6%9F%A5%E8%AF%A2/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Skywalking%E5%AD%A6%E4%B9%A0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Spring%20boot%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Spring%20boot%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Spring%20security%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/acmp%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/idea+maven+git%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/idea%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/lombok/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/null==obj%20or%20obj==null%20%EF%BC%9F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%20+%20jasypt%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF%E5%8A%A0%E5%AF%86/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%B8%AD%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%97%9B/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20security%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/%E3%80%8AOn%20Java%208%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工具
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E5%B7%A5%E5%85%B7/git%20%E7%AC%94%E8%AE%B0/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            数据库
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            es
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/es/Elasticsearch%20Java%20Rest%20Client/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/es/Elasticsearch%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql%E3%80%81redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/Apdex%20%E5%BA%94%E7%94%A8%E6%80%A7%E8%83%BD%E6%8C%87%E6%95%B0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/Elasticsearch%20Java%20Rest%20Client/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/GraphQL%20%E5%85%A5%E9%97%A8/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/dalin%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/"></a></li>  <li class="file active"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/session%EF%BC%8Ccookie%EF%BC%8Ctoken%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84HTTP%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E5%90%84%E7%A7%8D%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC%E7%9A%84%20Helloworld/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/"></a></li>  </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-开发笔记/k8s配置文件详解" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h2 id="k8s-yaml文件"><a href="#k8s-yaml文件" class="headerlink" title="k8s yaml文件"></a>k8s yaml文件</h2><h3 id="yaml基础"><a href="#yaml基础" class="headerlink" title="yaml基础"></a>yaml基础</h3><p>YAML是专门用来写配置文件的语言，非常简洁和强大，使用比json更方便。它实质上是一种通用的数据串行化格式。</p>
+<p>YAML语法规则：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">大小写敏感</span><br><span class="line">使用缩进表示层级关系</span><br><span class="line">缩进时不允许使用Tal键，只允许使用空格</span><br><span class="line">缩进的空格数目不重要，只要相同层级的元素左侧对齐即可</span><br><span class="line">”#” 表示注释，从这个字符一直到行尾，都会被解析器忽略　</span><br></pre></td></tr></table></figure>
+
+<p>在Kubernetes中，只需要知道两种结构类型即可：Lists和Maps</p>
+<p>YAML Maps：</p>
+<p>Map顾名思义指的是字典，即一个Key:Value 的键值对信息。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">　　注：---为可选的分隔符 ，当需要在一个文件中定义多个结构的时候需要使用。上述内容表示有两个键apiVersion和kind，分别对应的值为v1和Pod。</span><br></pre></td></tr></table></figure>
+
+<p>Maps的value既能够对应字符串也能够对应一个Maps。例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: kube100-site</span><br><span class="line">  labels:</span><br><span class="line">    app: web</span><br></pre></td></tr></table></figure>
+
+<p>List即列表，说白了就是数组，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">args</span><br><span class="line"> -beijing</span><br><span class="line"> -shanghai</span><br><span class="line"> -shenzhen</span><br><span class="line"> -guangzhou</span><br></pre></td></tr></table></figure>
+
+<p>当然Lists的子项也可以是Maps，Maps的子项也可以是List，例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1</span><br><span class="line">kind: Pod</span><br><span class="line">metadata:</span><br><span class="line">  name: kube100-site</span><br><span class="line">  labels:</span><br><span class="line">    app: web</span><br><span class="line">spec:</span><br><span class="line">  containers:</span><br><span class="line">    - name: front-end</span><br><span class="line">      image: nginx</span><br><span class="line">      ports:</span><br><span class="line">        - containerPort: 80</span><br><span class="line">    - name: flaskapp-demo</span><br><span class="line">      image: jcdemo/flaskapp</span><br><span class="line">      ports: 8080</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="k8s-yaml"><a href="#k8s-yaml" class="headerlink" title="k8s yaml"></a>k8s yaml</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">apiVersion: v1             #指定api版本，此值必须在kubectl apiversion中  </span><br><span class="line">kind: Pod                  #指定创建资源的角色/类型  </span><br><span class="line">metadata:                  #资源的元数据/属性  </span><br><span class="line">  name: web04-pod          #资源的名字，在同一个namespace中必须唯一  </span><br><span class="line">  labels:                  #设定资源的标签，详情请见http://blog.csdn.net/liyingke112/article/details/77482384</span><br><span class="line">    k8s-app: apache  </span><br><span class="line">    version: v1  </span><br><span class="line">    kubernetes.io/cluster-service: &quot;true&quot;  </span><br><span class="line">  annotations:             #自定义注解列表  </span><br><span class="line">    - name: String         #自定义注解名字  </span><br><span class="line">spec:#specification of the resource content 指定该资源的内容  </span><br><span class="line">  restartPolicy: Always    #表明该容器一直运行，默认k8s的策略，在此容器退出后，会立即创建一个相同的容器  </span><br><span class="line">  nodeSelector:            #节点选择，先给主机打标签kubectl label nodes kube-node1 zone=node1  </span><br><span class="line">    zone: node1  </span><br><span class="line">  containers:  </span><br><span class="line">  - name: web04-pod        #容器的名字  </span><br><span class="line">    image: web:apache      #容器使用的镜像地址  </span><br><span class="line">    imagePullPolicy: Never #三个选择Always、Never、IfNotPresent，每次启动时检查和更新（从registery）images的策略，</span><br><span class="line">                           # Always，每次都检查</span><br><span class="line">                           # Never，每次都不检查（不管本地是否有）</span><br><span class="line">                           # IfNotPresent，如果本地有就不检查，如果没有就拉取</span><br><span class="line">    command: [&#x27;sh&#x27;]        #启动容器的运行命令，将覆盖容器中的Entrypoint,对应Dockefile中的ENTRYPOINT  </span><br><span class="line">    args: [&quot;$(str)&quot;]       #启动容器的命令参数，对应Dockerfile中CMD参数  </span><br><span class="line">    env:                   #指定容器中的环境变量  </span><br><span class="line">    - name: str            #变量的名字  </span><br><span class="line">      value: &quot;/etc/run.sh&quot; #变量的值  </span><br><span class="line">    resources:             #资源管理，请求请见http://blog.csdn.net/liyingke112/article/details/77452630</span><br><span class="line">      requests:            #容器运行时，最低资源需求，也就是说最少需要多少资源容器才能正常运行  </span><br><span class="line">        cpu: 0.1           #CPU资源（核数），两种方式，浮点数或者是整数+m，0.1=100m，最少值为0.001核（1m）</span><br><span class="line">        memory: 32Mi       #内存使用量  </span><br><span class="line">      limits:              #资源限制  </span><br><span class="line">        cpu: 0.5  </span><br><span class="line">        memory: 32Mi  </span><br><span class="line">    ports:  </span><br><span class="line">    - containerPort: 80    #容器开放对外的端口</span><br><span class="line">      name: httpd          #名称</span><br><span class="line">      protocol: TCP  </span><br><span class="line">    livenessProbe:         #pod内容器健康检查的设置，详情请见http://blog.csdn.net/liyingke112/article/details/77531584</span><br><span class="line">      httpGet:             #通过httpget检查健康，返回200-399之间，则认为容器正常  </span><br><span class="line">        path: /            #URI地址  </span><br><span class="line">        port: 80  </span><br><span class="line">        #host: 127.0.0.1   #主机地址  </span><br><span class="line">        scheme: HTTP  </span><br><span class="line">      initialDelaySeconds: 180 #表明第一次检测在容器启动后多长时间后开始  </span><br><span class="line">      timeoutSeconds: 5    #检测的超时时间  </span><br><span class="line">      periodSeconds: 15    #检查间隔时间  </span><br><span class="line">      #也可以用这种方法  </span><br><span class="line">      #exec: 执行命令的方法进行监测，如果其退出码不为0，则认为容器正常  </span><br><span class="line">      #  command:  </span><br><span class="line">      #    - cat  </span><br><span class="line">      #    - /tmp/health  </span><br><span class="line">      #也可以用这种方法  </span><br><span class="line">      #tcpSocket: //通过tcpSocket检查健康   </span><br><span class="line">      #  port: number   </span><br><span class="line">    lifecycle:             #生命周期管理  </span><br><span class="line">      postStart:           #容器运行之前运行的任务  </span><br><span class="line">        exec:  </span><br><span class="line">          command:  </span><br><span class="line">            - &#x27;sh&#x27;  </span><br><span class="line">            - &#x27;yum upgrade -y&#x27;  </span><br><span class="line">      preStop:             #容器关闭之前运行的任务  </span><br><span class="line">        exec:  </span><br><span class="line">          command: [&#x27;service httpd stop&#x27;]  </span><br><span class="line">    volumeMounts:          #详情请见http://blog.csdn.net/liyingke112/article/details/76577520</span><br><span class="line">    - name: volume         #挂载设备的名字，与volumes[*].name 需要对应    </span><br><span class="line">      mountPath: /data     #挂载到容器的某个路径下  </span><br><span class="line">      readOnly: True  </span><br><span class="line">  volumes:                 #定义一组挂载设备  </span><br><span class="line">  - name: volume           #定义一个挂载设备的名字  </span><br><span class="line">    #meptyDir: &#123;&#125;  </span><br><span class="line">    hostPath:  </span><br><span class="line">      path: /opt           #挂载设备类型为hostPath，路径为宿主机下的/opt,这里设备类型支持很多种  </span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="k8s-使用过程笔记"><a href="#k8s-使用过程笔记" class="headerlink" title="k8s 使用过程笔记"></a>k8s 使用过程笔记</h3><h5 id="如何进入kubernetes的一个pod"><a href="#如何进入kubernetes的一个pod" class="headerlink" title="如何进入kubernetes的一个pod"></a>如何进入kubernetes的一个pod</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">类似于docker</span><br><span class="line">进入docker容器 ：</span><br><span class="line">docker exec -ti  &lt;your-container-name&gt;   /bin/sh</span><br><span class="line"></span><br><span class="line">进入pod：</span><br><span class="line">kubectl exec -ti &lt;your-pod-name&gt;  -n &lt;your-namespace&gt;  -- /bin/sh</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="关于k8s使用镜像创建pod的坑"><a href="#关于k8s使用镜像创建pod的坑" class="headerlink" title="关于k8s使用镜像创建pod的坑"></a>关于k8s使用镜像创建pod的坑</h5><p>k8s默认从远程仓库中获取镜像，可以使用镜像获取策略从本地获取：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">containers:</span><br><span class="line">   - name: test</span><br><span class="line">     image: nginx:1.7.9     #必须带上tag</span><br><span class="line">     imagePullPolicy: Never</span><br></pre></td></tr></table></figure>
+
+<p>Always 总是拉取镜像</p>
+<p>IfNotPresent 本地有则使用本地镜像,不拉取</p>
+<p>Never 只使用本地镜像，从不拉取，即使本地没有</p>
+<p>如果省略imagePullPolicy 镜像tag为 :latest 策略为always ，否则 策略为 IfNotPresent</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql%E3%80%81redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    (no title)
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/session%EF%BC%8Ccookie%EF%BC%8Ctoken%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title"></div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Dalin &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

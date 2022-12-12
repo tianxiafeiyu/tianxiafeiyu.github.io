@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Dalin blog</title>
+    
+    
+        <meta name="keywords" content="Dalin blog" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="阿里云上重新买了台穷鬼t5，菜是菜了点，但是该折腾还是要折腾的。。。 设置虚拟内存安装free -m 查看内存状态, Swap 的值都是0，说明还没有安装虚拟内存 在 &#x2F;opt 下创建虚拟内存文件 1dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;opt&#x2F;swap bs&#x3D;2048 count&#x3D;2048000  将swap文件设置为swap分区文件 12chmod 600 &#x2F;opt&#x2F;swap">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dalin blog">
+<meta property="og:url" content="http://example.com/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/dalin%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="Dalin blog">
+<meta property="og:description" content="阿里云上重新买了台穷鬼t5，菜是菜了点，但是该折腾还是要折腾的。。。 设置虚拟内存安装free -m 查看内存状态, Swap 的值都是0，说明还没有安装虚拟内存 在 &#x2F;opt 下创建虚拟内存文件 1dd if&#x3D;&#x2F;dev&#x2F;zero of&#x3D;&#x2F;opt&#x2F;swap bs&#x3D;2048 count&#x3D;2048000  将swap文件设置为swap分区文件 12chmod 600 &#x2F;opt&#x2F;swap">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-12T17:36:23.237Z">
+<meta property="article:modified_time" content="2022-12-12T17:36:23.241Z">
+<meta property="article:author" content="Dalin">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Dalin blog" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Dalin blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            开发笔记
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            golang
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/golang/%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            java
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/2020%20%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%EF%BC%88%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF%EF%BC%89/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/JTW%E8%AF%A6%E8%A7%A3/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/JVM%E4%B8%8EJava%E7%A8%8B%E5%BA%8F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%20%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java8%E6%96%B0%E7%89%B9%E6%80%A7/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%8E%9F%E5%88%99/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%BB%86%E8%8A%82/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7%E7%B1%BB/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Jenkins%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Skywalking%E4%BD%BF%E7%94%A8graphql%E6%9F%A5%E8%AF%A2/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Skywalking%E5%AD%A6%E4%B9%A0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Spring%20boot%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Spring%20boot%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Spring%20security%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/acmp%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/idea+maven+git%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/idea%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/lombok/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/null==obj%20or%20obj==null%20%EF%BC%9F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%20+%20jasypt%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF%E5%8A%A0%E5%AF%86/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%B8%AD%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%97%9B/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20security%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/%E3%80%8AOn%20Java%208%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工具
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E5%B7%A5%E5%85%B7/git%20%E7%AC%94%E8%AE%B0/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            数据库
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            es
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/es/Elasticsearch%20Java%20Rest%20Client/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/es/Elasticsearch%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql%E3%80%81redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/Apdex%20%E5%BA%94%E7%94%A8%E6%80%A7%E8%83%BD%E6%8C%87%E6%95%B0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/Elasticsearch%20Java%20Rest%20Client/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/GraphQL%20%E5%85%A5%E9%97%A8/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/"></a></li>  <li class="file active"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/dalin%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/session%EF%BC%8Ccookie%EF%BC%8Ctoken%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84HTTP%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E5%90%84%E7%A7%8D%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC%E7%9A%84%20Helloworld/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/"></a></li>  </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-开发笔记/dalin的服务器配置记录" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <p>阿里云上重新买了台穷鬼t5，菜是菜了点，但是该折腾还是要折腾的。。。</p>
+<h2 id="设置虚拟内存"><a href="#设置虚拟内存" class="headerlink" title="设置虚拟内存"></a>设置虚拟内存</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>free -m</code> 查看内存状态, <code>Swap</code> 的值都是0，说明还没有安装虚拟内存</p>
+<p>在 &#x2F;opt 下创建虚拟内存文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/zero of=/opt/swap bs=2048 count=2048000</span><br></pre></td></tr></table></figure>
+
+<p>将swap文件设置为swap分区文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 /opt/swap    //注意更改swap文件的权限</span><br><span class="line">mkswap /opt/swap</span><br></pre></td></tr></table></figure>
+
+<p>激活swap,启用分区交换文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapon /opt/swap</span><br></pre></td></tr></table></figure>
+
+<p>查看结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 opt]# free -m</span><br><span class="line">              total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:           1829        1329         169           0         330         357</span><br><span class="line">Swap:          3999         429        3570</span><br></pre></td></tr></table></figure>
+
+<p>重启自动启用设置，否则机器重启后分区就失效了</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/rc.local</span><br></pre></td></tr></table></figure>
+<p>底部添加</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapon /home/swap</span><br></pre></td></tr></table></figure>
+
+<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><p>停止swap分区</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">swapoff /opt/swap</span><br></pre></td></tr></table></figure>
+<p>删除掉swap文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /opt/swap</span><br></pre></td></tr></table></figure>
+
+<p>查看磁盘情况：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 opt]# df -h</span><br><span class="line">Filesystem      Size  Used Avail Use% Mounted on</span><br><span class="line">devtmpfs        900M     0  900M   0% /dev</span><br><span class="line">tmpfs           915M     0  915M   0% /dev/shm</span><br><span class="line">tmpfs           915M  612K  915M   1% /run</span><br><span class="line">tmpfs           915M     0  915M   0% /sys/fs/cgroup</span><br><span class="line">/dev/vda1        40G  9.5G   31G  24% /</span><br><span class="line">tmpfs           183M     0  183M   0% /run/user/1000</span><br><span class="line">overlay          40G  9.5G   31G  24% /var/lib/docker/overlay2/cb6202d7408b52de4ca486b57263e33e6dbb34d3adf35e86bfdffe62b9d33339/merged</span><br><span class="line">overlay          40G  9.5G   31G  24% /var/lib/docker/overlay2/25f9d8b78fa8906f7b379efce90fdd90f8e5771399f537988cf15ca450641596/merged</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="mysql-安装"><a href="#mysql-安装" class="headerlink" title="mysql 安装"></a>mysql 安装</h2><p>上一次鄙人的mysql开启了远程访问，并且没有注意安全防范，被比特币勒索了。。。但是使用远程msql服务的需求还是需要的，毕竟真的是方便，这次注意一下安全方面的配置，应该不至于再没了吧。。。</p>
+<h4 id="1-centos8-安装mysql8"><a href="#1-centos8-安装mysql8" class="headerlink" title="1. centos8 安装mysql8"></a>1. centos8 安装mysql8</h4><p>使用最新的包管理器安装MySQL</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dnf install @mysql</span><br></pre></td></tr></table></figure>
+
+<p>设置开机自启并启动</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable --now mysqld</span><br></pre></td></tr></table></figure>
+
+<p>运行mysql_secure_installation脚本，该脚本执行一些与安全性相关的操作并设置MySQL根密码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p>按提示往下走即可，注意在 <code>Disallow root login remotely?</code>选项中选择 <code>n</code></p>
+<h4 id="2-更换-mysql-默认端口"><a href="#2-更换-mysql-默认端口" class="headerlink" title="2. 更换 mysql 默认端口"></a>2. 更换 mysql 默认端口</h4><p><code>vim /etc/my.cnf</code>，添加字段 <code>port=6612</code></p>
+<p><code>systemctl restart mysqld</code> 重启 mysql</p>
+<p>防火墙添加6612端口白名单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-port=6612/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p>centos默认使用的是firewall作为防火墙，一些常用命令：</p>
+<ol>
+<li>firewall-cmd –list-ports       ##查看已开放的端口</li>
+<li>firewall-cmd –add-port&#x3D;6612&#x2F;tcp –permanent ##永久开放6612端口</li>
+<li>firewall-cmd –remove-port&#x3D;6612&#x2F;tcp –permanent ##永久关闭6612端口</li>
+<li>firewall-cmd –reload ##刷新</li>
+</ol>
+<p>阿里云控制台安全组开放 6612 端口</p>
+<h4 id="3-mysql-允许远程主机访问"><a href="#3-mysql-允许远程主机访问" class="headerlink" title="3. mysql 允许远程主机访问"></a>3. mysql 允许远程主机访问</h4><p>登录mysql</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p&lt;密码&gt;</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>mysql.user</code> 中的 <code>root</code> 的 <code>host</code> 字段设为<code>&#39;%&#39;</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use mysql;</span><br><span class="line">update user set host=&#x27;%&#x27; where user=&#x27;root&#x27;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-使用脚本自动备份数据"><a href="#4-使用脚本自动备份数据" class="headerlink" title="4. 使用脚本自动备份数据"></a>4. 使用脚本自动备份数据</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#数据库服务器</span><br><span class="line">dbserver=&#x27;localhost&#x27;</span><br><span class="line">#数据库用户名</span><br><span class="line">dbuser=&#x27;root&#x27;</span><br><span class="line">#数据库用密码</span><br><span class="line">dbpasswd=&#x27;********&#x27;</span><br><span class="line">#需要备份的数据库，多个数据库用空格分开</span><br><span class="line">dbname=&#x27;backdata01 backdata02&#x27;</span><br><span class="line">#备份时间</span><br><span class="line">backtime=`date +%Y%m%d`</span><br><span class="line">#日志备份路径</span><br><span class="line">logpath=&#x27;/opt/data/mysqlbak/&#x27;</span><br><span class="line">#数据备份路径</span><br><span class="line">datapath=&#x27;/opt/data/mysqlbak/&#x27;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">echo &#x27;##################$backtime##########################&#x27;</span><br><span class="line"> </span><br><span class="line">#日志记录头部</span><br><span class="line">echo ‘&quot;备份时间为$&#123;backtime&#125;,备份数据库表 $&#123;dbname&#125; 开始&quot; &gt;&gt; $&#123;logpath&#125;/mysqlback.log</span><br><span class="line">#正式备份数据库</span><br><span class="line">for table in $dbname; do</span><br><span class="line">source=`mysqldump -h $&#123;dbserver&#125; -u $&#123;dbuser&#125; -p$&#123;dbpasswd&#125; $&#123;table&#125; &gt; $&#123;logpath&#125;/$&#123;backtime&#125;.sql` 2&gt;&gt; $&#123;logpath&#125;/mysqlback.log;</span><br><span class="line">#备份成功以下操作</span><br><span class="line">if [ &quot;$?&quot; == 0 ];then</span><br><span class="line">cd $datapath</span><br><span class="line">#为节约硬盘空间，将数据库压缩</span><br><span class="line">tar zcf $&#123;table&#125;$&#123;backtime&#125;.tar.gz $&#123;backtime&#125;.sql &gt; /dev/null</span><br><span class="line">#删除原始文件，只留压缩后文件</span><br><span class="line">rm -f $&#123;datapath&#125;/$&#123;backtime&#125;.sql</span><br><span class="line">#删除七天前备份，也就是只保存7天内的备份</span><br><span class="line">find $datapath -name &quot;*.tar.gz&quot; -type f -mtime +7 -exec rm -rf &#123;&#125; \; &gt; /dev/null 2&gt;&amp;1</span><br><span class="line">echo &quot;数据库表 $&#123;dbname&#125; 备份成功!!&quot; &gt;&gt; $&#123;logpath&#125;/mysqlback.log</span><br><span class="line">else</span><br><span class="line">#备份失败则进行以下操作</span><br><span class="line">echo &quot;数据库表 $&#123;dbname&#125; 备份失败!!&quot; &gt;&gt; $&#123;logpath&#125;/mysqlback.log</span><br><span class="line">fi</span><br><span class="line">done</span><br><span class="line"> </span><br><span class="line">echo &#x27;##################完成############################&#x27;</span><br></pre></td></tr></table></figure>
+<p>创建定时任务</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">59 23 * * * ./opt/mysqldata/mysqlbak.sh  ## 每天23:59执行命令</span><br></pre></td></tr></table></figure>
+
+<h2 id="redis-安装"><a href="#redis-安装" class="headerlink" title="redis 安装"></a>redis 安装</h2><h4 id="5-安装redis并且设置远程访问和密码配置"><a href="#5-安装redis并且设置远程访问和密码配置" class="headerlink" title="5. 安装redis并且设置远程访问和密码配置"></a>5. 安装redis并且设置远程访问和密码配置</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# yum -y install redis</span><br><span class="line">[root@dalin1 ~]# systemctl enable --now redis</span><br></pre></td></tr></table></figure>
+<p>修改redis端口、设置密码、允许远程访问</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# vim /etc/redis.conf</span><br></pre></td></tr></table></figure>
+<p>修改 <code>port 6369</code></p>
+<p>注释掉 <code>bind 127.0.0.1</code>，以便让外网访问</p>
+<p>去掉 <code>#requirepass foobared</code> 注释，foobared改为自己的密码</p>
+<p>防火墙添加6369端口白名单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-port=6369/tcp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p>阿里云控制台安全组开放 6369 端口</p>
+<h4 id="6-创建普通用户，以后尽量使用普通用户操作"><a href="#6-创建普通用户，以后尽量使用普通用户操作" class="headerlink" title="6. 创建普通用户，以后尽量使用普通用户操作"></a>6. 创建普通用户，以后尽量使用普通用户操作</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# adduser dalin  #创建普通用户 dalin</span><br><span class="line">[root@dalin1 ~]# passwd dalin   #修改密码</span><br><span class="line">[root@dalin1 ~]# su dalin   #切换用户</span><br></pre></td></tr></table></figure>
+<p>普通用户只在 <code>/home/&lt;username&gt;</code> 目录下有完整权限</p>
+<h2 id="docker-安装"><a href="#docker-安装" class="headerlink" title="docker 安装"></a>docker 安装</h2><p>docker这么方便的东西怎么能不用呢，但是因为服务器实在太菜了，可能会卡顿，而且要时刻注意内存使用情况</p>
+<h4 id="1-安装依赖包"><a href="#1-安装依赖包" class="headerlink" title="1. 安装依赖包"></a>1. 安装依赖包</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# yum install -y yum-utils   device-mapper-persistent-data   lvm2</span><br></pre></td></tr></table></figure>
+<h4 id="2-设置Docker源"><a href="#2-设置Docker源" class="headerlink" title="2. 设置Docker源"></a>2. 设置Docker源</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# yum-config-manager     --add-repo     https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+<h4 id="3-安装Docker-CE"><a href="#3-安装Docker-CE" class="headerlink" title="3. 安装Docker CE"></a>3. 安装Docker CE</h4><h5 id="3-1-docker安装版本查看"><a href="#3-1-docker安装版本查看" class="headerlink" title="3.1 docker安装版本查看"></a>3.1 docker安装版本查看</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# yum list docker-ce --showduplicates | sort -r</span><br></pre></td></tr></table></figure>
+<h4 id="3-2-安装docker"><a href="#3-2-安装docker" class="headerlink" title="3.2 安装docker"></a>3.2 安装docker</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# yum install docker-ce-18.09.6 docker-ce-cli-18.09.6 containerd.io</span><br></pre></td></tr></table></figure>
+<p>指定安装的docker版本为18.09.6，由于该版本目前为最新版，故可以直接安装，不用指定版本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# yum install -y docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+<h4 id="4-启动Docker并设置开机自启"><a href="#4-启动Docker并设置开机自启" class="headerlink" title="4. 启动Docker并设置开机自启"></a>4. 启动Docker并设置开机自启</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# systemctl enable --now docker</span><br></pre></td></tr></table></figure>
+<h4 id="5-镜像加速"><a href="#5-镜像加速" class="headerlink" title="5. 镜像加速"></a>5. 镜像加速</h4><p>使用阿里云镜像加速地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# mkdir -p /etc/docker</span><br><span class="line">[root@dalin1 ~]# tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://khv87vsk.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<h2 id="docker-下安装Elasticsearch和Kibana"><a href="#docker-下安装Elasticsearch和Kibana" class="headerlink" title="docker 下安装Elasticsearch和Kibana"></a>docker 下安装Elasticsearch和Kibana</h2><p>服务器太菜，基本跑不动</p>
+<h3 id="安装Elasticsearch"><a href="#安装Elasticsearch" class="headerlink" title="安装Elasticsearch"></a>安装Elasticsearch</h3><p>下载镜像：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# docker pull elasticsearch:7.2.0</span><br></pre></td></tr></table></figure>
+
+<p>启动容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# docker run --name elasticsearch -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; -d elasticsearch:7.2.0</span><br></pre></td></tr></table></figure>
+
+<p>大概率启动失败，查看日志：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 temp]# docker logs elasticsearch</span><br><span class="line">Exception in thread &quot;main&quot; java.lang.RuntimeException: starting java failed with [1]</span><br><span class="line">output:</span><br><span class="line">#</span><br><span class="line"># There is insufficient memory for the Java Runtime Environment to continue.</span><br><span class="line"># Native memory allocation (mmap) failed to map 1073741824 bytes for committing reserved memory.</span><br><span class="line"># An error report file with more information is saved as:</span><br><span class="line"># logs/hs_err_pid132.log</span><br><span class="line">error:</span><br><span class="line">OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x00000000c0000000, 1073741824, 0) failed; error=&#x27;Not enough space&#x27; (errno=12)</span><br><span class="line">	at org.elasticsearch.tools.launchers.JvmErgonomics.flagsFinal(JvmErgonomics.java:126)</span><br><span class="line">	at org.elasticsearch.tools.launchers.JvmErgonomics.finalJvmOptions(JvmErgonomics.java:88)</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<p>jvm内存不足。。。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1]# find / -name jvm.options</span><br><span class="line">/var/lib/docker/overlay2/aa7a9ac9f293452ddf8947e9fdf3af24d602566d54b6278284751239b43e37e5/diff/usr/share/elasticsearch/config/jvm.options</span><br><span class="line">[root@dalin1]# vim /var/lib/docker/overlay2/aa7a9ac9f293452ddf8947e9fdf3af24d602566d54b6278284751239b43e37e5/diff/usr/share/elasticsearch/config/jvm.options</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">## JVM configuration</span><br><span class="line"></span><br><span class="line">################################################################</span><br><span class="line">## IMPORTANT: JVM heap size</span><br><span class="line">################################################################</span><br><span class="line">##</span><br><span class="line">## You should always set the min and max JVM heap</span><br><span class="line">## size to the same value. For example, to set</span><br><span class="line">## the heap to 4 GB, set:</span><br><span class="line">##</span><br><span class="line">## -Xms4g</span><br><span class="line">## -Xmx4g</span><br><span class="line">##</span><br><span class="line">## See https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html</span><br><span class="line">## for more information</span><br><span class="line">##</span><br><span class="line">################################################################</span><br><span class="line"></span><br><span class="line"># Xms represents the initial size of total heap space</span><br><span class="line"># Xmx represents the maximum size of total heap space</span><br><span class="line"></span><br><span class="line">-Xms1g      #服务器实在太菜了，我改成256m</span><br><span class="line">-Xmx1g      #服务器实在太菜了，我改成256m</span><br><span class="line"></span><br><span class="line">################################################################</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>重新启动容器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# docker start elasticsearch</span><br></pre></td></tr></table></figure>
+
+<p>检测是否启动成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# curl http://localhost:9200</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot; : &quot;c19d1882a695&quot;,</span><br><span class="line">  &quot;cluster_name&quot; : &quot;docker-cluster&quot;,</span><br><span class="line">  &quot;cluster_uuid&quot; : &quot;-zKpqN7TQMqmPULGgdMz3w&quot;,</span><br><span class="line">  &quot;version&quot; : &#123;</span><br><span class="line">    &quot;number&quot; : &quot;7.2.0&quot;,</span><br><span class="line">    &quot;build_flavor&quot; : &quot;default&quot;,</span><br><span class="line">    &quot;build_type&quot; : &quot;docker&quot;,</span><br><span class="line">    &quot;build_hash&quot; : &quot;508c38a&quot;,</span><br><span class="line">    &quot;build_date&quot; : &quot;2019-06-20T15:54:18.811730Z&quot;,</span><br><span class="line">    &quot;build_snapshot&quot; : false,</span><br><span class="line">    &quot;lucene_version&quot; : &quot;8.0.0&quot;,</span><br><span class="line">    &quot;minimum_wire_compatibility_version&quot; : &quot;6.8.0&quot;,</span><br><span class="line">    &quot;minimum_index_compatibility_version&quot; : &quot;6.0.0-beta1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;tagline&quot; : &quot;You Know, for Search&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>解决跨域访问问题</p>
+<p>进入容器，修改elasticsearch.yml文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@dalin1 ~]# docker exec -it elasticsearch /bin/bash</span><br><span class="line">vim /usr/share/elasticsearch/config/elasticsearch.yml</span><br></pre></td></tr></table></figure>
+<p>在elasticsearch.yml的文件末尾加上:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http.cors.enabled: true</span><br><span class="line">http.cors.allow-origin: &quot;*&quot;</span><br></pre></td></tr></table></figure>
+
+<p>es自带的分词器对中文分词不是很友好，所以我们下载开源的IK分词器来解决这个问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">`exit` 退出容器后 `docker restart elasticsearch` 重启容器</span><br><span class="line"></span><br><span class="line">#### kibana安装</span><br><span class="line">下载镜像</span><br></pre></td></tr></table></figure>
+<p>[root@dalin1 ~]# docker pull kibana:7.2.0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">启动kibana</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>[root@dalin1 ~]# docker run –name kibana –link&#x3D;elasticsearch:es -e ELASTICSEARCH_URL&#x3D;<a target="_blank" rel="noopener" href="http://172.17.0.2:9200/">http://172.17.0.2:9200</a>  -p 5601:5601 -d kibana:7.7.0</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">使用--link连接到elasticsearch容器，并添加环境变量，指定安装es的容器地址</span><br><span class="line"></span><br><span class="line">当然也可以进入容器内部修改配置文件来设置es访问地址</span><br></pre></td></tr></table></figure>
+<p>[root@dalin1 ~]# docker exec -it kibana &#x2F;bin&#x2F;bash<br>vi config&#x2F;kibana.yml</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kibana默认是优先使用环境变量的地址，然后才是配置文件kibana.yml</span><br><span class="line"></span><br><span class="line">&lt;br&gt;</span><br><span class="line"></span><br><span class="line">如何查询容器地址？</span><br></pre></td></tr></table></figure>
+<h1 id="获取到容器的元数据信息"><a href="#获取到容器的元数据信息" class="headerlink" title="获取到容器的元数据信息"></a>获取到容器的元数据信息</h1><p>[root@dalin1 ~]# docker inspect [id&#x2F;name]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">最后，配置安全组和防火墙，开放9200、5601端口</span><br></pre></td></tr></table></figure>
+<p>[root@dalin1 ~]# firewall-cmd –add-port&#x3D;5601&#x2F;tcp –permanent<br>[root@dalin1 ~]# firewall-cmd –add-port&#x3D;9200&#x2F;tcp –permanent</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">这就结束了吗？是的，网上几乎所有的关于docker下安装kibana教程都是到了这一步就说完事收工、开始体验。。。但是！！！我遇到的情况是访问 `http//:ip:5601`，只会给我冰冷的大字：</span><br></pre></td></tr></table></figure>
+<p>Kibana server is not ready yet</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`docker logs kibana`打印日志，报错：</span><br></pre></td></tr></table></figure>
+<p>{“type”:”log”,”@timestamp”:”2020-06-04T08:25:57Z”,”tags”:[“warning”,”elasticsearch”,”admin”],”pid”:6,”message”:”Unable to revive connection: <a target="_blank" rel="noopener" href="http://172.17.0.2:9200/%22%7D">http://172.17.0.2:9200/&quot;}</a><br>{“type”:”log”,”@timestamp”:”2020-06-04T08:25:57Z”,”tags”:[“warning”,”elasticsearch”,”admin”],”pid”:6,”message”:”No living connections”}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ip地址是没问题的，es服务也确实起了，为什么呢？？这个问题花了我大半天的时间，找遍了网上的教程都没有相关的介绍，官网上关于docker安装kibana的教程更是少。 </span><br><span class="line"></span><br><span class="line">进入kibana容器中</span><br></pre></td></tr></table></figure>
+<p>[root@dalin1 ~]# docker exec -it kibana &#x2F;bin&#x2F;bash<br>bash-4.2$ ping 172.17.0.2    #没有问题，能ping通<br>bash-4.2$ curl <a target="_blank" rel="noopener" href="http://120.79.43.44:9200/">http://120.79.43.44:9200</a><br>curl: (7) Failed connect to 120.79.43.44:9200; No route to host</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">问题就出在这里！应该是防火墙的原因导致容器之间无法进行通信</span><br><span class="line"></span><br><span class="line">解决方法，依次执行以下命令</span><br></pre></td></tr></table></figure>
+<p>[root@dalin1 ~]# nmcli connection modify docker0 connection.zone trusted</p>
+<p>[root@dalin1 ~]# systemctl stop NetworkManager.service</p>
+<p>[root@dalin1 ~]# firewall-cmd –permanent –zone&#x3D;trusted –change-interface&#x3D;docker0</p>
+<p>[root@dalin1 ~]# systemctl start NetworkManager.service</p>
+<p>[root@dalin1 ~]# nmcli connection modify docker0 connection.zone trusted</p>
+<p>[root@dalin1 ~]# systemctl restart docker.service</p>
+<p>&#96;&#96;&#96;<br>把 <code>docker0</code> 加入防火墙白名单</p>
+<p>重新启动容器，访问地址 <a target="_blank" rel="noopener" href="http://ip:5601/">http://ip:5601</a> ，总算没有了 <code>Kibana server is not ready yet</code>,显示正在加载的图像，稍作等候即可，部署完成！</p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    (no title)
+                
+            </div>
+        </a>
+    
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Dalin &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

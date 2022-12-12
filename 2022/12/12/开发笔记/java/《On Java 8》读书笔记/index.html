@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Dalin blog</title>
+    
+    
+        <meta name="keywords" content="Dalin blog" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="《On Java 8》读书笔记1. java 8 接口可以有默认方法和静态方法增加默认方法的极具说服力的理由是它允许在不破坏已使用接口的代码的情况下，在接口中增加新的方法。默认方法有时也被称为守卫方法或虚拟扩展方法。 默认方法的最佳实践是 java 8 的 stream api。 接口使用了默认方法，继承了这个接口的类可以不用实现接口中的默认方法。如： 12345&#x2F;&#x2F; interfaces&#x2F;AnI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dalin blog">
+<meta property="og:url" content="http://example.com/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/%E3%80%8AOn%20Java%208%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Dalin blog">
+<meta property="og:description" content="《On Java 8》读书笔记1. java 8 接口可以有默认方法和静态方法增加默认方法的极具说服力的理由是它允许在不破坏已使用接口的代码的情况下，在接口中增加新的方法。默认方法有时也被称为守卫方法或虚拟扩展方法。 默认方法的最佳实践是 java 8 的 stream api。 接口使用了默认方法，继承了这个接口的类可以不用实现接口中的默认方法。如： 12345&#x2F;&#x2F; interfaces&#x2F;AnI">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-12T17:36:23.241Z">
+<meta property="article:modified_time" content="2022-12-12T17:36:23.241Z">
+<meta property="article:author" content="Dalin">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Dalin blog" type="application/atom+xml" />
+    
+
+    
+        <link rel="icon" href="/favicon.ico" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Dalin blog</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id='categories'>
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id='allExpand' href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree" > 
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            开发笔记
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            golang
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/golang/%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            java
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/2020%20%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%EF%BC%88%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF%EF%BC%89/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/JTW%E8%AF%A6%E8%A7%A3/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/JVM%E4%B8%8EJava%E7%A8%8B%E5%BA%8F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%20%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java8%E6%96%B0%E7%89%B9%E6%80%A7/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%8E%9F%E5%88%99/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%BB%86%E8%8A%82/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Java%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7%E7%B1%BB/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Jenkins%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Skywalking%E4%BD%BF%E7%94%A8graphql%E6%9F%A5%E8%AF%A2/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Skywalking%E5%AD%A6%E4%B9%A0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Spring%20boot%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Spring%20boot%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/Spring%20security%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/acmp%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/idea+maven+git%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/idea%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/lombok/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/null==obj%20or%20obj==null%20%EF%BC%9F/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%20+%20jasypt%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF%E5%8A%A0%E5%AF%86/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%B8%AD%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%97%9B/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20security%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file active"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/%E3%80%8AOn%20Java%208%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            工具
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E5%B7%A5%E5%85%B7/git%20%E7%AC%94%E8%AE%B0/"></a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            数据库
+                        </a>
+                         <ul class="unstyled" id="tree" > 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            es
+                        </a>
+                         <ul class="unstyled" id="tree" >  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/es/Elasticsearch%20Java%20Rest%20Client/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/es/Elasticsearch%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql%E3%80%81redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/"></a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/Apdex%20%E5%BA%94%E7%94%A8%E6%80%A7%E8%83%BD%E6%8C%87%E6%95%B0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/Elasticsearch%20Java%20Rest%20Client/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/GraphQL%20%E5%85%A5%E9%97%A8/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/dalin%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/session%EF%BC%8Ccookie%EF%BC%8Ctoken%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84HTTP%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B%E3%80%90%E8%BD%AC%E3%80%91/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E5%90%84%E7%A7%8D%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC%E7%9A%84%20Helloworld/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E6%9C%8D%E5%8A%A1%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0/"></a></li>  <li class="file"><a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/"></a></li>  </ul> 
+                    </li> 
+                     </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-开发笔记/java/《On Java 8》读书笔记" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+        
+        
+            <h1 id="《On-Java-8》读书笔记"><a href="#《On-Java-8》读书笔记" class="headerlink" title="《On Java 8》读书笔记"></a>《On Java 8》读书笔记</h1><h3 id="1-java-8-接口可以有默认方法和静态方法"><a href="#1-java-8-接口可以有默认方法和静态方法" class="headerlink" title="1. java 8 接口可以有默认方法和静态方法"></a>1. java 8 接口可以有默认方法和静态方法</h3><p>增加默认方法的极具说服力的理由是它允许在不破坏已使用接口的代码的情况下，在接口中增加新的方法。默认方法有时也被称为守卫方法或虚拟扩展方法。</p>
+<p>默认方法的最佳实践是 java 8 的 stream api。</p>
+<p>接口使用了默认方法，继承了这个接口的类可以不用实现接口中的默认方法。如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// interfaces/AnInterface.java</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">AnInterface</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">firstMethod</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">secondMethod</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类实现接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// interfaces/AnImplementation.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AnImplementation</span> <span class="keyword">implements</span> <span class="title class_">AnInterface</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">firstMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;firstMethod&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">secondMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;secondMethod&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">AnInterface</span> <span class="variable">i</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AnImplementation</span>();</span><br><span class="line">        i.firstMethod();</span><br><span class="line">        i.secondMethod();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果我们在 AnInterface 中增加一个新方法 newMethod()，而在 AnImplementation 中没有实现它，编译器就会报错。如果我们使用关键字 default 为 newMethod() 方法提供默认的实现，那么所有与接口有关的代码能正常工作，不受影响，而且这些代码还可以调用新的方法 newMethod()：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// interfaces/InterfaceWithDefault.java</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">InterfaceWithDefault</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">firstMethod</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">secondMethod</span><span class="params">()</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">default</span> <span class="keyword">void</span> <span class="title function_">newMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;newMethod&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只要修改接口，不用修改实现类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// interfaces/Implementation2.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Implementation2</span> <span class="keyword">implements</span> <span class="title class_">InterfaceWithDefault</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">firstMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;firstMethod&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">secondMethod</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;secondMethod&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">InterfaceWithDefault</span> <span class="variable">i</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Implementation2</span>();</span><br><span class="line">        i.firstMethod();</span><br><span class="line">        i.secondMethod();</span><br><span class="line">        i.newMethod();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-java-8-多继承"><a href="#2-java-8-多继承" class="headerlink" title="2. java 8 多继承"></a>2. java 8 多继承</h3><p>类可以实现多个接口，由于默认方法的加入，java class 有了多继承的特性，如果一个类实现的接口中有重复的方法签名相同（方法签名包括方法名和参数类型）的默认方法，类就需要覆写冲突的方法，或者重新实现方法。</p>
+<h3 id="3-数组是保存一组对象最有效的方式"><a href="#3-数组是保存一组对象最有效的方式" class="headerlink" title="3. 数组是保存一组对象最有效的方式"></a>3. 数组是保存一组对象最有效的方式</h3><h3 id="4-关于集合类（Collection-）的写法"><a href="#4-关于集合类（Collection-）的写法" class="headerlink" title="4. 关于集合类（Collection ）的写法"></a>4. 关于集合类（Collection ）的写法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Apple&gt; apples = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">LinkedList&lt;Apple&gt; apples = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>请注意， ArrayList 已经被向上转型为了 List接口，这是大多数情况下的写法。但是如果需要用到具体的集合类的功能特性时，就不能将它们向上转型为更通用的接口。</p>
+<h3 id="5-优化是一个很棘手的问题，最好的策略就是置之不顾，直到发现必须要去担心它了（尽管去理解这些问题总是一个很好的主意）"><a href="#5-优化是一个很棘手的问题，最好的策略就是置之不顾，直到发现必须要去担心它了（尽管去理解这些问题总是一个很好的主意）" class="headerlink" title="5. 优化是一个很棘手的问题，最好的策略就是置之不顾，直到发现必须要去担心它了（尽管去理解这些问题总是一个很好的主意）"></a>5. 优化是一个很棘手的问题，最好的策略就是置之不顾，直到发现必须要去担心它了（尽管去理解这些问题总是一个很好的主意）</h3><h3 id="6-集合类中迭代器（Iterators）的理解"><a href="#6-集合类中迭代器（Iterators）的理解" class="headerlink" title="6 . 集合类中迭代器（Iterators）的理解"></a>6 . 集合类中迭代器（Iterators）的理解</h3><p>迭代器是一个对象，它在一个序列中移动并选择该序列中的每个对象，而客户端程序员不知道或不关心该序列的底层结构。另外，迭代器通常被称为轻量级对象（lightweight object）：创建它的代价小。ava 的 Iterator 只能单向移动。这个 Iterator 只能用来：</p>
+<ol>
+<li>使用 iterator() 方法要求集合返回一个 Iterator。 Iterator 将准备好返回序列中的第一个元素。</li>
+<li>使用 next() 方法获得序列中的下一个元素。</li>
+<li>使用 hasNext() 方法检查序列中是否还有元素。</li>
+<li>使用 remove() 方法将迭代器最近返回的那个元素删除。</li>
+</ol>
+<p>有了 Iterator ，就不必再为集合中元素的数量操心了。这是由 hasNext() 和 next() 关心的事情。也可以不用考虑到集合的确切类型。迭代器能够将遍历序列的操作与该序列的底层结构分离，统一了对集合的访问方式。</p>
+<p>用法示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// collections/CrossCollectionIteration.java</span></span><br><span class="line"><span class="keyword">import</span> typeinfo.pets.*;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CrossCollectionIteration</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">display</span><span class="params">(Iterator&lt;Pet&gt; it)</span> &#123;</span><br><span class="line">    <span class="keyword">while</span>(it.hasNext()) &#123;</span><br><span class="line">      <span class="type">Pet</span> <span class="variable">p</span> <span class="operator">=</span> it.next();</span><br><span class="line">      System.out.print(p.id() + <span class="string">&quot;:&quot;</span> + p + <span class="string">&quot; &quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    List&lt;Pet&gt; pets = Pets.list(<span class="number">8</span>);</span><br><span class="line">    LinkedList&lt;Pet&gt; petsLL = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;(pets);</span><br><span class="line">    HashSet&lt;Pet&gt; petsHS = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;(pets);</span><br><span class="line">    TreeSet&lt;Pet&gt; petsTS = <span class="keyword">new</span> <span class="title class_">TreeSet</span>&lt;&gt;(pets);</span><br><span class="line">    display(pets.iterator());</span><br><span class="line">    display(petsLL.iterator());</span><br><span class="line">    display(petsHS.iterator());</span><br><span class="line">    display(petsTS.iterator());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">0:Rat 1:Manx 2:Cymric 3:Mutt 4:Pug 5:Cymric 6:Pug</span></span><br><span class="line"><span class="comment">7:Manx</span></span><br><span class="line"><span class="comment">0:Rat 1:Manx 2:Cymric 3:Mutt 4:Pug 5:Cymric 6:Pug</span></span><br><span class="line"><span class="comment">7:Manx</span></span><br><span class="line"><span class="comment">0:Rat 1:Manx 2:Cymric 3:Mutt 4:Pug 5:Cymric 6:Pug</span></span><br><span class="line"><span class="comment">7:Manx</span></span><br><span class="line"><span class="comment">5:Cymric 2:Cymric 7:Manx 1:Manx 3:Mutt 6:Pug 4:Pug</span></span><br><span class="line"><span class="comment">0:Rat</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>ListIterator 是一个更强大的 Iterator 子类型，它只能由各种 List 类生成。 Iterator 只能向前移动，而 ListIterator 可以双向移动。它还可以生成相对于迭代器在列表中指向的当前位置的后一个和前一个元素的索引，并且可以使用 set() 方法替换它访问过的最近一个元素。</p>
+<h3 id="7-Java8-中的堆栈声明为"><a href="#7-Java8-中的堆栈声明为" class="headerlink" title="7. Java8 中的堆栈声明为"></a>7. Java8 中的堆栈声明为</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Deque&lt;String&gt; stack = <span class="keyword">new</span> <span class="title class_">ArrayDeque</span>&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<p>之所以是 Deque 而不是Stack，这是因为 Java 1.0 中附带了一个 Stack 类，结果设计得很糟糕（为了向后兼容，后续保留了这个类）。Java 6 添加了 ArrayDeque。</p>
+<h3 id="8-队列"><a href="#8-队列" class="headerlink" title="8. 队列"></a>8. 队列</h3><p>LinkedList 实现了 Queue 接口，并且提供了一些方法以支持队列行为，因此 LinkedList 可以用作 Queue 的一种实现。 通过将 LinkedList 向上转换为 Queue 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;Integer&gt; queue = new LinkedList&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="9-for-in-语法糖"><a href="#9-for-in-语法糖" class="headerlink" title="9. for-in 语法糖"></a>9. for-in 语法糖</h3><p>Java 5 引入了一个名为 Iterable 的接口，该接口包含一个能够生成 Iterator 的 iterator() 方法。for-in 使用此 Iterable 接口来遍历序列。因此，如果创建了任何实现了 Iterable 的类，都可以将它用于 for-in 语句中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// collections/IterableClass.java</span></span><br><span class="line"><span class="comment">// Anything Iterable works with for-in</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">IterableClass</span> <span class="keyword">implements</span> <span class="title class_">Iterable</span>&lt;String&gt; &#123;</span><br><span class="line">  <span class="keyword">protected</span> String[] words = (<span class="string">&quot;And that is how &quot;</span> +</span><br><span class="line">    <span class="string">&quot;we know the Earth to be banana-shaped.&quot;</span></span><br><span class="line">    ).split(<span class="string">&quot; &quot;</span>);</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> Iterator&lt;String&gt; <span class="title function_">iterator</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Iterator</span>&lt;String&gt;() &#123;</span><br><span class="line">      <span class="keyword">private</span> <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">hasNext</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> index &lt; words.length;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="keyword">public</span> String <span class="title function_">next</span><span class="params">()</span> &#123; <span class="keyword">return</span> words[index++]; &#125;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">()</span> &#123; <span class="comment">// Not implemented</span></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">UnsupportedOperationException</span>();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span>(String s : <span class="keyword">new</span> <span class="title class_">IterableClass</span>())</span><br><span class="line">      System.out.print(s + <span class="string">&quot; &quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* Output:</span></span><br><span class="line"><span class="comment">And that is how we know the Earth to be banana-shaped.</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="10-不要在新代码中使用遗留类-Vector-，Hashtable-和-Stack-。"><a href="#10-不要在新代码中使用遗留类-Vector-，Hashtable-和-Stack-。" class="headerlink" title="10. 不要在新代码中使用遗留类 Vector ，Hashtable 和 Stack 。"></a>10. 不要在新代码中使用遗留类 Vector ，Hashtable 和 Stack 。</h3><h3 id="11-Lambda-表达式"><a href="#11-Lambda-表达式" class="headerlink" title="11. Lambda 表达式"></a>11. Lambda 表达式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="type">Body</span> <span class="variable">bod</span> <span class="operator">=</span> h -&gt; h + <span class="string">&quot; No Parens!&quot;</span>; <span class="comment">// [1]</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="type">Body</span> <span class="variable">bod2</span> <span class="operator">=</span> (h) -&gt; h + <span class="string">&quot; More details&quot;</span>; <span class="comment">// [2]</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="type">Description</span> <span class="variable">desc</span> <span class="operator">=</span> () -&gt; <span class="string">&quot;Short info&quot;</span>; <span class="comment">// [3]</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="type">Multi</span> <span class="variable">mult</span> <span class="operator">=</span> (h, n) -&gt; h + n; <span class="comment">// [4]</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="type">Description</span> <span class="variable">moreLines</span> <span class="operator">=</span> () -&gt; &#123; <span class="comment">// [5]</span></span><br><span class="line">    System.out.println(<span class="string">&quot;moreLines()&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;from moreLines()&quot;</span>;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Lambda 表达式基本语法：</p>
+<ul>
+<li><ol>
+<li>参数。</li>
+<li>接着 -&gt;，可视为“产出”。</li>
+<li>-&gt; 之后的内容都是方法体。</li>
+</ol>
+</li>
+<li><p>当只用一个参数，可以不需要括号 ()。 然而，这是一个特例。</p>
+</li>
+<li><p>正常情况使用括号 () 包裹参数。 为了保持一致性，也可以使用括号 () 包裹单个参数，虽然这种情况并不常见。</p>
+</li>
+<li><p>如果没有参数，则必须使用括号 () 表示空参数列表。</p>
+</li>
+<li><p>对于多个参数，将参数列表放在括号 () 中。</p>
+</li>
+<li><p>到目前为止，所有 Lambda 表达式方法体都是单行。 该表达式的结果自动成为 Lambda 表达式的返回值，在此处使用 return 关键字是非法的。 这是 Lambda 表达式缩写用于描述功能的语法的另一种方式。</p>
+</li>
+<li><p>如果在 Lambda 表达式中确实需要多行，则必须将这些行放在花括号中。 在这种情况下，就 需要使用 return。Lambda 表达式通常比匿名内部类产生更易读的代码，尽可能使用它们。</p>
+</li>
+</ul>
+<p>Fibonacci 序列改为使用递归 Lambda 表达式来实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">IntCall</span> &#123;</span><br><span class="line">  <span class="type">int</span> <span class="title function_">call</span><span class="params">(<span class="type">int</span> arg)</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RecursiveFibonacci</span> &#123;</span><br><span class="line">  IntCall fib;</span><br><span class="line"></span><br><span class="line">  RecursiveFibonacci() &#123;</span><br><span class="line">    fib = n -&gt; n == <span class="number">0</span> ? <span class="number">0</span> :</span><br><span class="line">               n == <span class="number">1</span> ? <span class="number">1</span> :</span><br><span class="line">               fib.call(n - <span class="number">1</span>) + fib.call(n - <span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="type">int</span> <span class="title function_">fibonacci</span><span class="params">(<span class="type">int</span> n)</span> &#123; <span class="keyword">return</span> fib.call(n); &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">    <span class="type">RecursiveFibonacci</span> <span class="variable">rf</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RecursiveFibonacci</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= <span class="number">10</span>; i++)</span><br><span class="line">      System.out.println(rf.fibonacci(i));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="12-流操作"><a href="#12-流操作" class="headerlink" title="12. 流操作"></a>12. 流操作</h3><p>流操作的类型有三种：创建流，修改流元素（中间操作， Intermediate Operations），消费流元素（终端操作， Terminal Operations），收集流元素（通常是到集合中）。</p>
+<h3 id="13-异常处理"><a href="#13-异常处理" class="headerlink" title="13. 异常处理"></a>13. 异常处理</h3><p>finally 子句永远会执行，即使前面有 return 语句。由于 Java 有垃圾回收机制，所以 finally 语句主要是用来恢复内存之外的资源回到初始状态，需要清理的资源包括：已经打开的文件或网络连接，在屏幕上画的图形，甚至可以是外部世界的某个开关。</p>
+<h3 id="14-永恒真理"><a href="#14-永恒真理" class="headerlink" title="14. 永恒真理"></a>14. 永恒真理</h3><p><a target="_blank" rel="noopener" href="https://lingcoder.github.io/OnJava8/#/book/16-Validating-Your-Code?id=%E4%BD%A0%E6%B0%B8%E8%BF%9C%E4%B8%8D%E8%83%BD%E4%BF%9D%E8%AF%81%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E6%98%AF%E6%AD%A3%E7%A1%AE%E7%9A%84%EF%BC%8C%E4%BD%A0%E5%8F%AA%E8%83%BD%E8%AF%81%E6%98%8E%E5%AE%83%E6%98%AF%E9%94%99%E7%9A%84%E3%80%82">你永远不能保证你的代码是正确的，你只能证明它是错的。</a></p>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+        <a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/spring%20security%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    (no title)
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2022/12/12/%E5%BC%80%E5%8F%91%E7%AC%94%E8%AE%B0/java/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title"></div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Dalin &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+                <br>
+                <span id="busuanzi_container_site_pv"><i class="fa fa-eye"></i> <span id="busuanzi_value_site_pv"></span></span>
+                &nbsp;|&nbsp;
+                <span id="busuanzi_container_site_pv"><i class="fa fa-user"></i> <span id="busuanzi_value_site_uv"></span></span>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

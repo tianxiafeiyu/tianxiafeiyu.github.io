@@ -10,11 +10,15 @@
         <meta name="keywords" content="Dalin blog" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
+    <meta name="description" content="项目地址 https:&#x2F;&#x2F;github.com&#x2F;Tencent&#x2F;bk-cmdb 为什么不用官方推荐的 go mod 管理依赖呢？ bk-cmdb vendor下的一些依赖库都是有修改过的：  vendor&#x2F;go.mongodb.org&#x2F;mongo-driver&#x2F;mongo&#x2F;session_exposer.go12345678910111213141516&#x2F;&#x2F;">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Dalin blog">
-<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:url" content="http://example.com/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Golang/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/index.html">
 <meta property="og:site_name" content="Dalin blog">
+<meta property="og:description" content="项目地址 https:&#x2F;&#x2F;github.com&#x2F;Tencent&#x2F;bk-cmdb 为什么不用官方推荐的 go mod 管理依赖呢？ bk-cmdb vendor下的一些依赖库都是有修改过的：  vendor&#x2F;go.mongodb.org&#x2F;mongo-driver&#x2F;mongo&#x2F;session_exposer.go12345678910111213141516&#x2F;&#x2F;">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-13T16:09:41.944Z">
+<meta property="article:modified_time" content="2022-12-13T16:09:41.944Z">
 <meta property="article:author" content="Dalin">
 <meta name="twitter:card" content="summary">
     
@@ -170,19 +174,19 @@
   
   
   <ul class="unstyled" id="tree" > 
-    <li class="directory">
+    <li class="directory open">
       <a href="#" data-role="directory">
         技术开发
         &nbsp;
-        <i class="fa fa-caret-right"></i>
+        <i class="fa fa-caret-down"></i>
       </a>
       
   <ul class="unstyled" id="tree" > 
-    <li class="directory">
+    <li class="directory open">
       <a href="#" data-role="directory">
         Golang
         &nbsp;
-        <i class="fa fa-caret-right"></i>
+        <i class="fa fa-caret-down"></i>
       </a>
       
   <ul class="unstyled" id="tree" > 
@@ -193,7 +197,7 @@
         
       </a>
     </li> 
-    <li class="file">
+    <li class="file active">
       <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Golang/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/">
         
         为什么bk-cmdb不用go mod管理
@@ -364,19 +368,19 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main">
-<article id="post-index" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-技术开发/Golang/为什么bk-cmdb不用go mod管理" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
       
       
       
-    
-        <h1 class="article-title" itemprop="name">
-            life is strange
-        </h1>
-    
+    <h1 itemprop="name">
+        <a class="article-title" href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Golang/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/">
+            
+            为什么bk-cmdb不用go mod管理
+        </a>
+    </h1>
 
     </header>
     
@@ -385,15 +389,26 @@
       
         
         
-        
+        <p>项目地址 <a target="_blank" rel="noopener" href="https://github.com/Tencent/bk-cmdb">https://github.com/Tencent/bk-cmdb</a></p>
+<p>为什么不用官方推荐的 go mod 管理依赖呢？</p>
+<p>bk-cmdb vendor下的一些依赖库都是有修改过的：</p>
+<ul>
+<li>vendor&#x2F;go.mongodb.org&#x2F;mongo-driver&#x2F;mongo&#x2F;session_exposer.go<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CmdbPrepareCommitOrAbort set state to InProgress, so that we can commit with other</span></span><br><span class="line"><span class="comment">// operation directly. otherwise mongodriver will do a false commit</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CmdbPrepareCommitOrAbort</span><span class="params">(sess Session)</span></span> &#123;</span><br><span class="line">	i, ok := sess.(*sessionImpl)</span><br><span class="line">	<span class="keyword">if</span> !ok &#123;</span><br><span class="line">		<span class="built_in">panic</span>(<span class="string">&quot;the session is not type *sessionImpl&quot;</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	i.clientSession.SetState(<span class="number">2</span>)</span><br><span class="line">	i.didCommitAfterStart=<span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CmdbContextWithSession set the session into context if context includes session info</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CmdbContextWithSession</span><span class="params">(ctx context.Context, sess Session)</span></span> SessionContext &#123;</span><br><span class="line">	<span class="keyword">return</span> contextWithSession(ctx, sess)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+在mongo driver中添加了CmdbPrepareCommitOrAbort、 CmdbReloadSessio等方法</li>
+</ul>
+<p>这些在官方库是没有的，如果切换 go mod,从官方源获取依赖，肯定是不行的</p>
+<p>issue：<a target="_blank" rel="noopener" href="https://github.com/Tencent/bk-cmdb/issues/4748">https://github.com/Tencent/bk-cmdb/issues/4748</a></p>
+<p>如果将修改后的官方库上传到github，应该可以解决go mod难切换的问题</p>
+<p>会不会有版权问题？</p>
+<p>所以，尽量不要修改官方库</p>
+
     </div>
     
   </div>
 </article>
 <div id="toc" class="toc-article">
   
-</div>
-</section>
+</div></section>
         </div>
         <!-- <footer id="footer">
     <div class="outer">

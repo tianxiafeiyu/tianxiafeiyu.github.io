@@ -221,7 +221,7 @@ code {
   width: 40px;
   height: 40px;
   background-repeat: no-repeat;
-  background-image: url("/static/logo.png");
+  background-image: url("/logo.png");
   background-size: 40px 40px;
 }
 #container {
@@ -2497,7 +2497,7 @@ div .article-more-link {
   text-decoration: none;
 }
 #categories li.directory > a > i {
-  font-size: 10px;
+  font-size: 15px;
   color: #717484;
 }
 @media (prefers-color-scheme: dark) {

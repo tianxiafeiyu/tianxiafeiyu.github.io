@@ -10,15 +10,15 @@
         <meta name="keywords" content="Dalin blog" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="转载自 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;6e8381c9b01d 一、什么是REST一句话来概括RESTful API(具有REST风格的API): 用URL定位资源，用HTTP动词（GET,HEAD,POST,PUT,PATCH,DELETE）描述操作，用响应状态码表示操作结果。 REST是一种软件架构风格，或者说是一种规范，其强调HTTP应当以资源为中心，并且规范了URI的">
+    <meta name="description" content="Java8新特性 （转载自https:&#x2F;&#x2F;www.runoob.com&#x2F;java&#x2F;java8-new-features.html，具体内容见链接，非常详细实用） Java 8 (又称为 jdk 1.8) 是 Java 语言开发的一个主要版本。 Oracle 公司于 2014 年 3 月 18 日发布 Java 8 ，它支持函数式编程，新的 JavaScript 引擎，新的日期 API，新的Stre">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dalin blog">
-<meta property="og:url" content="http://example.com/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Python/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:url" content="https://tianxiafeiyu.github.io/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Java/Java8%E6%96%B0%E7%89%B9%E6%80%A7/index.html">
 <meta property="og:site_name" content="Dalin blog">
-<meta property="og:description" content="转载自 https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;6e8381c9b01d 一、什么是REST一句话来概括RESTful API(具有REST风格的API): 用URL定位资源，用HTTP动词（GET,HEAD,POST,PUT,PATCH,DELETE）描述操作，用响应状态码表示操作结果。 REST是一种软件架构风格，或者说是一种规范，其强调HTTP应当以资源为中心，并且规范了URI的">
+<meta property="og:description" content="Java8新特性 （转载自https:&#x2F;&#x2F;www.runoob.com&#x2F;java&#x2F;java8-new-features.html，具体内容见链接，非常详细实用） Java 8 (又称为 jdk 1.8) 是 Java 语言开发的一个主要版本。 Oracle 公司于 2014 年 3 月 18 日发布 Java 8 ，它支持函数式编程，新的 JavaScript 引擎，新的日期 API，新的Stre">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-12-13T16:30:48.769Z">
-<meta property="article:modified_time" content="2022-12-13T16:30:48.769Z">
+<meta property="article:published_time" content="2022-12-15T15:07:43.225Z">
+<meta property="article:modified_time" content="2022-12-15T15:07:43.225Z">
 <meta property="article:author" content="Dalin">
 <meta name="twitter:card" content="summary">
     
@@ -26,7 +26,7 @@
     
 
     
-        <link rel="icon" href="/static/favicon.ico" />
+        <link rel="icon" href="/static/lin.png" />
     
 
     
@@ -65,7 +65,8 @@
 
 
     
-<meta name="generator" content="Hexo 5.4.2"></head>
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Dalin blog" type="application/atom+xml">
+</head>
 
 <body>
     <div id="container">
@@ -77,8 +78,6 @@
         <span class="site-title">Dalin blog</span>
       </a>
       <nav id="main-nav">
-        
-        <a class="main-nav-link " href="/">首页</a>
         
         <a class="main-nav-link " href="/archives">归档</a>
         
@@ -135,8 +134,6 @@
     <table class="menu outer">
       <tr>
         
-        <td><a class="main-nav-link" href="/">首页</a></td>
-        
         <td><a class="main-nav-link" href="/archives">归档</a></td>
         
         <td><a class="main-nav-link" href="/categories">分类</a></td>
@@ -178,7 +175,7 @@
       <a href="#" data-role="directory">
         技术开发
         &nbsp;
-        <i class="fa fa-caret-down"></i>
+        <i class="fa fa-pull-right fa-angle-down" style="margin-top:6px;margin-right:12px"></i>
       </a>
       
   <ul class="unstyled" id="tree" > 
@@ -186,19 +183,19 @@
       <a href="#" data-role="directory">
         Golang
         &nbsp;
-        <i class="fa fa-caret-right"></i>
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:6px;margin-right:12px"></i>
       </a>
       
   <ul class="unstyled" id="tree" > 
     <li class="file">
-      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Golang/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Golang/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">
         
         k8s配置文件详解
         
       </a>
     </li> 
     <li class="file">
-      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Golang/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Golang/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/">
         
         为什么bk-cmdb不用go mod管理
         
@@ -207,16 +204,16 @@
   </ul> 
     </li>
     
-    <li class="directory">
+    <li class="directory open">
       <a href="#" data-role="directory">
         Java
         &nbsp;
-        <i class="fa fa-caret-right"></i>
+        <i class="fa fa-pull-right fa-angle-down" style="margin-top:6px;margin-right:12px"></i>
       </a>
       
   <ul class="unstyled" id="tree" > 
-    <li class="file">
-      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Java/Java8%E6%96%B0%E7%89%B9%E6%80%A7/">
+    <li class="file active">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Java/Java8%E6%96%B0%E7%89%B9%E6%80%A7/">
         
         Java8新特性
         
@@ -225,16 +222,16 @@
   </ul> 
     </li>
     
-    <li class="directory open">
+    <li class="directory">
       <a href="#" data-role="directory">
         Python
         &nbsp;
-        <i class="fa fa-caret-down"></i>
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:6px;margin-right:12px"></i>
       </a>
       
   <ul class="unstyled" id="tree" > 
-    <li class="file active">
-      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Python/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/">
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Python/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/">
         
         REST风格理解
         
@@ -244,14 +241,14 @@
     </li>
     
     <li class="file">
-      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/README/">
+      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/%E4%BD%BF%E7%94%A8github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
         
-        README
+        使用github搭建个人博客
         
       </a>
     </li> 
     <li class="file">
-      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/">
         
         进程间通信技术
         
@@ -264,12 +261,12 @@
       <a href="#" data-role="directory">
         生活点滴
         &nbsp;
-        <i class="fa fa-caret-right"></i>
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:6px;margin-right:12px"></i>
       </a>
       
   <ul class="unstyled" id="tree" > 
     <li class="file">
-      <a href="/2022/12/13/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/git%20%E7%AC%94%E8%AE%B0/">
+      <a href="/2022/12/15/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/git%20%E7%AC%94%E8%AE%B0/">
         
         git 笔记
         
@@ -278,19 +275,12 @@
   </ul> 
     </li>
     
-    <li class="file">
-      <a href="/2022/12/13/index/">
-        
-        life is strange
-        
-      </a>
-    </li> 
   </ul> 
 </div>
 <script>
   $(document).ready(function() {
-    var iconFolderOpenClass = 'fa-caret-down';
-    var iconFolderCloseClass = 'fa-caret-right';
+    var iconFolderOpenClass = 'fa-angle-down';
+    var iconFolderCloseClass = 'fa-angle-right';
     var iconAllExpandClass = 'fa-angle-double-down';
     var iconAllPackClass = 'fa-angle-double-up';
     // Handle directory-tree expansion:
@@ -348,13 +338,13 @@
       var expanded = icon.hasClass(iconAllExpandClass);
       icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
       if (expanded) {
-        $('#sidebar .fa.fa-caret-right').removeClass('fa-caret-right').addClass('fa-caret-down')
+        $('#sidebar .fa.fa-angle-right').removeClass('fa-angle-right').addClass('fa-angle-down')
         $('#categories li ul').slideDown({
           duration: 100
         });
         icon.addClass(iconAllPackClass);
       } else {
-        $('#sidebar .fa.fa-caret-down').removeClass('fa-caret-down').addClass('fa-caret-right')
+        $('#sidebar .fa.fa-angle-down').removeClass('fa-angle-down').addClass('fa-angle-right')
         $('#categories li ul').slideUp({
           duration: 100
         });
@@ -368,7 +358,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-技术开发/Python/REST风格理解" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-技术开发/Java/Java8新特性" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
@@ -376,9 +366,9 @@
       
       
     <h1 itemprop="name">
-        <a class="article-title" href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Python/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/">
+        <a class="article-title" href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/Java/Java8%E6%96%B0%E7%89%B9%E6%80%A7/">
             
-            REST风格理解
+            Java8新特性
         </a>
     </h1>
 
@@ -389,18 +379,27 @@
       
         
         
-        <p>转载自 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6e8381c9b01d">https://www.jianshu.com/p/6e8381c9b01d</a></p>
-<h4 id="一、什么是REST"><a href="#一、什么是REST" class="headerlink" title="一、什么是REST"></a>一、什么是REST</h4><p>一句话来概括RESTful API(具有REST风格的API): 用URL定位资源，用HTTP动词（GET,HEAD,POST,PUT,PATCH,DELETE）描述操作，用响应状态码表示操作结果。</p>
-<p>REST是一种软件架构风格，或者说是一种规范，其强调HTTP应当以资源为中心，并且规范了URI的风格；规范了HTTP请求动作（GET&#x2F;PUT&#x2F;POST&#x2F;DELETE&#x2F;HEAD&#x2F;OPTIONS）的使用，具有对应的语义。 核心概念包括：</p>
-<h4 id="资源（Resource）："><a href="#资源（Resource）：" class="headerlink" title="资源（Resource）："></a>资源（Resource）：</h4><p>在REST中，资源可以简单的理解为URI，表示一个网络实体。比如，&#x2F;users&#x2F;1&#x2F;name，对应id&#x3D;1的用户的属性name。既然资源是URI，就会具有以下特征：名词，代表一个资源；它对应唯一的一个资源，是资源的地址。</p>
-<h4 id="表现（Representation）："><a href="#表现（Representation）：" class="headerlink" title="表现（Representation）："></a>表现（Representation）：</h4><p>资源呈现出来的形式，比如上述URI返回的HTML或JSON，包括HTTP Header等；  REST是一个无状态的架构模式，因为在任何时候都可以由客户端发出请求到服务端，最终返回自己想要的数据，当前请求不会受到上次请求的影响。也就是说，服务端将内部资源发布REST服务，客户端通过URL来定位这些资源并通过HTTP协议来访问它们。</p>
+        <p><strong>Java8新特性</strong></p>
+<p>（转载自<a target="_blank" rel="noopener" href="https://www.runoob.com/java/java8-new-features.html%EF%BC%8C%E5%85%B7%E4%BD%93%E5%86%85%E5%AE%B9%E8%A7%81%E9%93%BE%E6%8E%A5%EF%BC%8C%E9%9D%9E%E5%B8%B8%E8%AF%A6%E7%BB%86%E5%AE%9E%E7%94%A8%EF%BC%89">https://www.runoob.com/java/java8-new-features.html，具体内容见链接，非常详细实用）</a></p>
+<p>Java 8 (又称为 jdk 1.8) 是 Java 语言开发的一个主要版本。 Oracle 公司于 2014 年 3 月 18 日发布 Java 8 ，它支持函数式编程，新的 JavaScript 引擎，新的日期 API，新的Stream API 等。</p>
+<p>Java8 新增了非常多的特性，我们主要讨论以下几个：</p>
+<ul>
+<li><strong>Lambda 表达式</strong> − Lambda 允许把函数作为一个方法的参数（函数作为参数传递到方法中）。</li>
+<li><strong>方法引用</strong> − 方法引用提供了非常有用的语法，可以直接引用已有Java类或对象（实例）的方法或构造器。与lambda联合使用，方法引用可以使语言的构造更紧凑简洁，减少冗余代码。</li>
+<li><strong>默认方法</strong> − 默认方法就是一个在接口里面有了一个实现的方法。</li>
+<li><strong>新工具</strong> − 新的编译工具，如：Nashorn引擎 jjs、 类依赖分析器jdeps。</li>
+<li><strong>Stream API</strong> −新添加的Stream API（java.util.stream） 把真正的函数式编程风格引入到Java中。</li>
+<li><strong>Date Time API</strong> − 加强对日期与时间的处理。</li>
+<li><strong>Optional 类</strong> − Optional 类已经成为 Java 8 类库的一部分，用来解决空指针异常。</li>
+<li><strong>Nashorn, JavaScript 引擎</strong> − Java 8提供了一个新的Nashorn javascript引擎，它允许我们在JVM上运行特定的javascript应用。</li>
+</ul>
 
     </div>
     
   </div>
 </article>
 <div id="toc" class="toc-article">
-  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AFREST"><span class="toc-text">一、什么是REST</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%EF%BC%88Resource%EF%BC%89%EF%BC%9A"><span class="toc-text">资源（Resource）：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E7%8E%B0%EF%BC%88Representation%EF%BC%89%EF%BC%9A"><span class="toc-text">表现（Representation）：</span></a></li></ol>
+  
 </div></section>
         </div>
         <!-- <footer id="footer">

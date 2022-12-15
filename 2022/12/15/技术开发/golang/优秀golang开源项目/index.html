@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta name="referrer" content="never">
+    <meta charset="utf-8">
+    
+    <title>Dalin blog</title>
+    
+    
+        <meta name="keywords" content="Dalin blog" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="作者：茹姐链接：https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;20801814&#x2F;answer&#x2F;685254356来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 根据go语言中文社区提供的资料，还有互联网企业架构设计中的常见组件分类， 共精心挑选了153个开源项目（项目不限于在github开源的项目）， 分成以下17个大类。项目初衷是帮助到那些想学习和">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dalin blog">
+<meta property="og:url" content="https://tianxiafeiyu.github.io/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/%E4%BC%98%E7%A7%80golang%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/index.html">
+<meta property="og:site_name" content="Dalin blog">
+<meta property="og:description" content="作者：茹姐链接：https:&#x2F;&#x2F;www.zhihu.com&#x2F;question&#x2F;20801814&#x2F;answer&#x2F;685254356来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 根据go语言中文社区提供的资料，还有互联网企业架构设计中的常见组件分类， 共精心挑选了153个开源项目（项目不限于在github开源的项目）， 分成以下17个大类。项目初衷是帮助到那些想学习和">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-15T15:19:25.608Z">
+<meta property="article:modified_time" content="2022-12-15T15:19:01.976Z">
+<meta property="article:author" content="Dalin">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/static/lin.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Dalin blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+  <div id="header-main" class="header-inner">
+    <div class="header-outer">
+      <a href="/" id="logo">
+        
+        <span class="site-title">Dalin blog</span>
+      </a>
+      <nav id="main-nav">
+        
+        <a class="main-nav-link " href="/archives">归档</a>
+        
+        <a class="main-nav-link " href="/categories">分类</a>
+        
+        <a class="main-nav-link " href="/tags">标签</a>
+        
+        <a class="main-nav-link " href="/about">关于</a>
+        
+      </nav>
+      
+      <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+      <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+<script>
+  (function(window) {
+    var INSIGHT_CONFIG = {
+      TRANSLATION: {
+        POSTS: '文章',
+        PAGES: '页面',
+        CATEGORIES: '分类',
+        TAGS: '标签',
+        UNTITLED: '(未命名)',
+      },
+      ROOT_URL: '/',
+      CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+  })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+        <td><a class="main-nav-link" href="/archives">归档</a></td>
+        
+        <td><a class="main-nav-link" href="/categories">分类</a></td>
+        
+        <td><a class="main-nav-link" href="/tags">标签</a></td>
+        
+        <td><a class="main-nav-link" href="/about">关于</a></td>
+        
+        <td>
+          
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+<div class="widget-wrap" id='categories'>
+  <h3 class="widget-title">
+    <span></span>
+    <a id='allExpand' href="#">
+      <i class="fa fa-angle-double-down fa-2x"></i>
+    </a>
+  </h3>
+
+  
+  
+  
+  <ul class="unstyled" id="tree" > 
+    <li class="directory open">
+      <a href="#" data-role="directory">
+        技术开发
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-down" style="margin-top:6px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        database
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:6px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        es
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:6px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%20Java%20Rest%20Client/">
+        
+        Elasticsearch Java Rest Client
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7/">
+        
+        Elasticsearch版本特性
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95/">
+        
+        mysql联合索引
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/">
+        
+        mysql常用函数汇总
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E3%80%81redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/">
+        
+        mysql、redis开启远程访问
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E8%84%8F%E8%AF%BB%E3%80%81%E5%B9%BB%E8%AF%BB%E3%80%81%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB/">
+        
+        数据库之脏读、幻读、不可重复读
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory open">
+      <a href="#" data-role="directory">
+        golang
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-down" style="margin-top:6px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20gc/">
+        
+        go gc
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20ast/">
+        
+        go ast
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20csp%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B/">
+        
+        go csp并发模型
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/golang%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/">
+        
+        golang学习大纲
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/Golang%E4%B8%8EJava/">
+        
+        Golang与Java
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/http%20client%E6%9C%80%E4%BC%98%E9%85%8D%E7%BD%AE/">
+        
+        http client最优配置
+        
+      </a>
+    </li> 
+    <li class="file active">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/%E4%BC%98%E7%A7%80golang%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">
+        
+        优秀golang开源项目
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20checklist/">
+        
+        go checklist
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%E9%A1%B9%E7%9B%AE%E6%A0%87%E5%87%86%E5%B8%83%E5%B1%80/">
+        
+        go项目标准布局
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/xorm%E4%BD%BF%E7%94%A8/">
+        
+        xorm使用
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/">
+        
+        为什么bk-cmdb不用go mod管理
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        grocery
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:6px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%BB%B6%E6%97%B6%E3%80%81%E4%B8%A2%E5%8C%85%E3%80%81%E6%8A%96%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%AF%E8%AF%AD%E8%A7%A3%E9%87%8A/">
+        
+        延时、丢包、抖动——术语解释
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1apisix%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/">
+        
+        一次apisix问题排查过程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E7%A7%8D%E5%B0%86%E6%96%87%E6%9C%AC%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%9B%BE%E8%A1%A8%E7%9A%84%E7%8E%B0%E4%BB%A3%E5%9B%BE%E8%A1%A8%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/">
+        
+        一种将文本转换为图表的现代图表脚本语言
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/idea+maven+git%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">
+        
+        idea+maven+git 开发环境安装
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/AI%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/">
+        
+        AI视频处理软件
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/FTP%E3%80%81FTPS%E5%92%8CSFTP%E9%83%BD%E6%98%AF%E5%95%A5/">
+        
+        FTP、FTPS和SFTP都是啥
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%E2%80%94%E5%90%88%E5%B9%B6%E4%B8%8D%E5%90%8C%E4%BB%93%E5%BA%93%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/">
+        
+        git—合并不同仓库的项目代码
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%E4%BB%93%E5%BA%93%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%90%E4%BA%A4%E6%97%B6%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
+        
+        git仓库第一次提交时失败问题记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/RESTful%20API%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/">
+        
+        RESTful API格式规范
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/NaN%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D/">
+        
+        NaN代表什么意思
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AB%AF%E5%8F%A3%E6%A0%87%E8%AF%86%E5%90%AB%E4%B9%89/">
+        
+        交换机端口标识含义
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%9F%BA%E4%BA%8Eetcd%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">
+        
+        基于etcd实现的分布式锁
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Apdex%20%E5%BA%94%E7%94%A8%E6%80%A7%E8%83%BD%E6%8C%87%E6%95%B0/">
+        
+        Apdex 应用性能指数
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Elasticsearch%20Java%20Rest%20Client/">
+        
+        Elasticsearch Java Rest Client
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/GraphQL%20%E5%85%A5%E9%97%A8/">
+        
+        GraphQL 入门
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/">
+        
+        REST风格理解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%20%E7%AC%94%E8%AE%B0/">
+        
+        git 笔记
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/dalin%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/">
+        
+        dalin的服务器配置记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/github%E6%B7%BB%E5%8A%A0ssh%E6%96%B9%E6%B3%95/">
+        
+        github添加ssh方法
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/k8s%E5%9B%BD%E9%99%85%E5%8C%96%E5%AE%9E%E7%8E%B0/">
+        
+        k8s国际化实现
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">
+        
+        k8s配置文件详解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/websocket%E5%AD%A6%E4%B9%A0/">
+        
+        websocket学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1python%E4%BB%A3%E7%A0%81%E6%B7%B7%E6%B7%86%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/">
+        
+        一次python代码混淆问题排查
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/session%EF%BC%8Ccookie%EF%BC%8Ctoken%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        session，cookie，token学习【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84HTTP%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        一次完整的HTTP请求过程【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/">
+        
+        为什么bk-cmdb不用go mod管理
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A5%BD%E7%9A%84%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%A4%9A%E6%98%AF%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84%E5%B1%82/">
+        
+        为什么好的开源软件多是基础架构层
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%BD%BF%E7%94%A8github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+        
+        使用github搭建个人博客
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%90%84%E7%A7%8D%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC%E7%9A%84%20Helloworld/">
+        
+        各种语言版本的 Helloworld
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E6%9C%8D%E5%8A%A1%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0/">
+        
+        服务缓存数据更新
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E7%81%AB%E7%84%B0%E5%9B%BE%E6%80%8E%E4%B9%88%E7%9C%8B/">
+        
+        火焰图怎么看
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/">
+        
+        进程间通信技术
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        html
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:6px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/html/css%E8%B0%83%E6%95%B4%E5%85%83%E7%B4%A0%E4%BD%8D%E7%BD%AE/">
+        
+        css调整元素位置
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        java
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:6px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Jpa%E8%BF%98%E6%98%AFMybatis%EF%BC%9F/">
+        
+        Jpa还是Mybatis？
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E5%87%A0%E4%BD%8D/">
+        
+        Java保留小数点后几位
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%AF%B9%E8%B1%A1%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E8%A7%A3%E6%B3%95/">
+        
+        Java对象循环引用解法
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%BC%98%E9%9B%85%E7%9A%84%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%E8%B5%84%E6%BA%90/">
+        
+        Java优雅的关闭连接资源
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%B8%AD%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E5%9D%91/">
+        
+        Java中无处不在的坑
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+        
+        Spring的单例模式与线程安全
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/SkyWalking%E2%80%94Java%E6%8E%A2%E9%92%88%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/">
+        
+        SkyWalking—Java探针插件开发
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E4%BB%B6%E5%88%86%E6%9E%90%EF%BC%88%E5%BA%9F%E7%A8%BF%EF%BC%89/">
+        
+        Skywalking数据库插件分析（废稿）
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20%E6%B3%A8%E8%A7%A3/">
+        
+        Spring 注解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/maven%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E4%BE%9D%E8%B5%96/">
+        
+        maven使用本地依赖
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E5%AE%9E%E4%BD%93%E7%B1%BB%E4%B8%AD%E7%94%A8%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E8%BF%98%E6%98%AF%E5%8C%85%E8%A3%85%E7%B1%BB/">
+        
+        实体类中用基本类型还是包装类
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/PriorityQueue-%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97/">
+        
+        PriorityQueue-优先级队列
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E8%A7%A3%E8%AF%BB%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%20Java%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">
+        
+        解读阿里巴巴 Java 代码规范
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/2020%20%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%EF%BC%88%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF%EF%BC%89/">
+        
+        2020 学习计划（成长之路）
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/JTW%E8%AF%A6%E8%A7%A3/">
+        
+        JTW详解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/JVM%E4%B8%8EJava%E7%A8%8B%E5%BA%8F/">
+        
+        JVM与Java程序
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%20%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        Java 归并排序【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java8%E6%96%B0%E7%89%B9%E6%80%A7/">
+        
+        Java8新特性
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F/">
+        
+        Java创建线程的4种方式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+        
+        Java序列化与反序列化
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        
+        Java正则表达式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%8E%9F%E5%88%99/">
+        
+        Java异常处理原则
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%BB%86%E8%8A%82/">
+        
+        Java构造函数细节
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7%E7%B1%BB/">
+        
+        Java获取时间工具类
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Jenkins%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+        
+        Jenkins遇到的坑
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E4%BD%BF%E7%94%A8graphql%E6%9F%A5%E8%AF%A2/">
+        
+        Skywalking使用graphql查询
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E5%AD%A6%E4%B9%A0/">
+        
+        Skywalking学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20boot%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+        
+        Spring boot单元测试
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20boot%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/">
+        
+        Spring boot读取配置文件问题
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20security%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/">
+        
+        Spring security实现权限认证
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/acmp%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">
+        
+        acmp开发记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/idea+maven+git%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">
+        
+        idea+maven+git 开发环境安装
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/idea%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">
+        
+        idea使用心得
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/lombok/">
+        
+        lombok
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/null==obj%20or%20obj==null%20%EF%BC%9F/">
+        
+        null==obj or obj==null ？
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/skywalking%20Jdbc%E6%8F%92%E4%BB%B6%E5%88%86%E6%9E%90/">
+        
+        skywalking Jdbc插件分析
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%20+%20jasypt%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF%E5%8A%A0%E5%AF%86/">
+        
+        spring boot + jasypt实现配置文件信息加密
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%97%9B/">
+        
+        spring boot使用单例模式的痛
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%B8%AD%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+        
+        spring boot中代码修改配置文件
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+        
+        spring boot使用多线程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E3%80%8AOn%20Java%208%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+        
+        《On Java 8》读书笔记
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+        
+        关于线程安全
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20security%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        spring security学习【转】
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        os
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:6px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+        
+        Linux常用命令
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/TCP%20%E5%8D%8F%E8%AE%AE%E7%81%B5%E9%AD%82%2012%20%E9%97%AE%20%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        TCP 协议灵魂 12 问 【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/Linux%20shell%20%E5%90%84%E7%A7%8D%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%84%8F%E4%B9%89/">
+        
+        Linux shell 各种符号的意义
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        python
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:6px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        Script
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:6px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/cmdb_mock/">
+        
+        cmdb_mock
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/push_cmdb_data/">
+        
+        push_cmdb_data
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%20list()%E5%92%8C%5B%5D,dict()%E5%92%8C%7B%7D/">
+        
+        python list()和[],dict()和{}
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">
+        
+        python编程技巧
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+        
+        python多进程与多线程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Python%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7%EF%BC%88%E8%BD%AC%EF%BC%89/">
+        
+        Python高级编程技巧（转）
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E8%84%9A%E6%9C%AC%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/">
+        
+        python脚本接收参数的几种实现方式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%85%A5%E9%97%A8/">
+        
+        python入门
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E7%9F%A5%E8%AF%86%E7%82%B9/">
+        
+        python知识点
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/%E5%8F%98%E9%87%8F%E5%8F%8A%E6%96%B9%E6%B3%95%E5%89%8D%E5%90%8E%E4%B8%8B%E5%88%92%E7%BA%BF%E7%9A%84%E5%90%AB%E4%B9%89/">
+        
+        变量及方法前后下划线的含义
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/tops/">
+        
+        tops
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        生活点滴
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:6px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/13/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/keep/">
+        
+        keep
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Prometheus%E7%9B%91%E6%8E%A7kubernetes%E6%96%B9%E6%A1%88%E5%8F%8A%E5%AE%9E%E7%8E%B0/">
+        
+        Prometheus监控kubernetes方案及实现
+        
+      </a>
+    </li> 
+  </ul> 
+</div>
+<script>
+  $(document).ready(function() {
+    var iconFolderOpenClass = 'fa-angle-down';
+    var iconFolderCloseClass = 'fa-angle-right';
+    var iconAllExpandClass = 'fa-angle-double-down';
+    var iconAllPackClass = 'fa-angle-double-up';
+    // Handle directory-tree expansion:
+    // 左键单独展开目录
+    $(document).on('click', '#categories a[data-role="directory"]', function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconFolderOpenClass);
+      var subtree = $(this).siblings('ul');
+      icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+      if (expanded) {
+        if (typeof subtree != 'undefined') {
+          subtree.slideUp({
+            duration: 100
+          });
+        }
+        icon.addClass(iconFolderCloseClass);
+      } else {
+        if (typeof subtree != 'undefined') {
+          subtree.slideDown({
+            duration: 100
+          });
+        }
+        icon.addClass(iconFolderOpenClass);
+      }
+    });
+    // 右键展开下属所有目录
+    $('#categories a[data-role="directory"]').bind("contextmenu", function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconFolderOpenClass);
+      var listNode = $(this).siblings('ul');
+      var subtrees = $.merge(listNode.find('li ul'), listNode);
+      var icons = $.merge(listNode.find('.fa'), icon);
+      icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+      if (expanded) {
+        subtrees.slideUp({
+          duration: 100
+        });
+        icons.addClass(iconFolderCloseClass);
+      } else {
+        subtrees.slideDown({
+          duration: 100
+        });
+        icons.addClass(iconFolderOpenClass);
+      }
+    })
+    // 展开关闭所有目录按钮
+    $(document).on('click', '#allExpand', function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconAllExpandClass);
+      icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+      if (expanded) {
+        $('#sidebar .fa.fa-angle-right').removeClass('fa-angle-right').addClass('fa-angle-down')
+        $('#categories li ul').slideDown({
+          duration: 100
+        });
+        icon.addClass(iconAllPackClass);
+      } else {
+        $('#sidebar .fa.fa-angle-down').removeClass('fa-angle-down').addClass('fa-angle-right')
+        $('#categories li ul').slideUp({
+          duration: 100
+        });
+        icon.addClass(iconAllExpandClass);
+      }
+    });
+  });
+</script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-技术开发/golang/优秀golang开源项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+      
+      
+    <h1 itemprop="name">
+        <a class="article-title" href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/%E4%BC%98%E7%A7%80golang%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">
+            
+            优秀golang开源项目
+        </a>
+    </h1>
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+        
+        <p>作者：茹姐<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20801814/answer/685254356">https://www.zhihu.com/question/20801814/answer/685254356</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>根据go语言中文社区提供的资料，还有互联网企业架构设计中的常见组件分类， 共精心挑选了153个开源项目（项目不限于在github开源的项目）， 分成以下17个大类。项目初衷是帮助到那些想学习和借鉴优秀golang开源项目，和在互联网架构设计时期望快速寻找合适轮子的人。</p>
+<h1 id="监控系统"><a href="#监控系统" class="headerlink" title="监控系统"></a>监控系统</h1><h2 id="grafana-x2F-grafana"><a href="#grafana-x2F-grafana" class="headerlink" title="grafana&#x2F;grafana"></a>grafana&#x2F;grafana</h2><p>Grafana是用于监控指标分析和图表展示的工具， 后端支持 Graphite, InfluxDB &amp; Prometheus &amp; Open-falcon等， 它是一个流行的监控组件， 目前在各大中小型公司中广泛应用。</p>
+<h2 id="prometheus-x2F-prometheus"><a href="#prometheus-x2F-prometheus" class="headerlink" title="prometheus&#x2F;prometheus"></a>prometheus&#x2F;prometheus</h2><p>Prometheus 是开源的服务监控系统和时间序列数据库， 提供监控数据存储，展示，告警等功能。</p>
+<h2 id="bosun-monitor-x2F-bosun"><a href="#bosun-monitor-x2F-bosun" class="headerlink" title="bosun-monitor&#x2F;bosun"></a>bosun-monitor&#x2F;bosun</h2><p>专业的跨平台开源系统监控项目，go语言编写，灵活的模板和表达式配合上各种collector可以监控任何应用或系统级的运行数据，比 zabbix更轻量级、更易入手和更适合定制。</p>
+<h2 id="sourcegraph-x2F-checkup"><a href="#sourcegraph-x2F-checkup" class="headerlink" title="sourcegraph&#x2F;checkup"></a>sourcegraph&#x2F;checkup</h2><p>一个分布式的无锁的站点健康状态检查工具。 支持检查http，tcp，dns等的状态 并可将结果保存在s3。 自带了一个美观的界面。</p>
+<h2 id="rapidloop-x2F-rtoprtop"><a href="#rapidloop-x2F-rtoprtop" class="headerlink" title="rapidloop&#x2F;rtoprtop"></a>rapidloop&#x2F;rtoprtop</h2><p>是一个简单的无代理的远程服务器监控工具，基于 SSH 连接进行工作。无需在被监控的服务器上安装任何软件。rtop 直接通过 SSH 连接到待监控服务器，然后执行命令来收集监控数据。rtop 每几秒钟就自动更新监控数据，类似其他 *top 命令。</p>
+<h2 id="influxdata-x2F-kapacitor"><a href="#influxdata-x2F-kapacitor" class="headerlink" title="influxdata&#x2F;kapacitor"></a>influxdata&#x2F;kapacitor</h2><p>Kapacitor 是一个开源框架，用来处理、监控和警告时间序列数据。</p>
+<h2 id="open-falcon-x2F-of-release"><a href="#open-falcon-x2F-of-release" class="headerlink" title="open-falcon&#x2F;of-release"></a>open-falcon&#x2F;of-release</h2><p>OpenFalcon是一款小米开源的监控系统。功能：数据采集免配置：agent自发现、支持Plugin、主动推送模式; 容量水平扩展：生产环境每秒50万次数据收集、告警、存储、绘图，可持续水平扩展。告警策略自发现：Web界面、支持策略模板、模板继承和覆盖、多种告警方式、支持回调动作。告警设置人性化：支持最大告警次数、告警级别设置、告警恢复通知、告警暂停、不同时段不同阈值、支持维护周期，支持告警合并。历史数据高效查询：秒级返回上百个指标一年的历史数据。Dashboard人性化：多维度的数据展示，用户自定义Dashboard等功能。架构设计高可用：整个系统无核心单点，易运维，易部署。</p>
+<h2 id="rach-x2F-pome"><a href="#rach-x2F-pome" class="headerlink" title="rach&#x2F;pome"></a>rach&#x2F;pome</h2><p>Pome 是 Postgres Metrics 的意思。Pome 是一个 PostgreSQL 的指标仪表器，用来跟踪你的数据库的健康状况。</p>
+<h2 id="TalkingData-x2F-owl"><a href="#TalkingData-x2F-owl" class="headerlink" title="TalkingData&#x2F;owl"></a>TalkingData&#x2F;owl</h2><p>OWL是TalkingData公司推出的一款开源分布式监控系统, 演示环境<a target="_blank" rel="noopener" href="http://54.223.127.87/%EF%BC%8C%E7%99%BB%E5%BD%95%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81demo/demo">http://54.223.127.87/，登录账号密码demo/demo</a></p>
+<h2 id="gy-games-x2F-smartping"><a href="#gy-games-x2F-smartping" class="headerlink" title="gy-games&#x2F;smartping"></a>gy-games&#x2F;smartping</h2><p>SmartPing为一个各机器(点)间间互PING检测工具，支持互PING，单向PING，绘制拓扑及报警功能。 系统设计为无中心化原则，所有的数据均存储自身点中，默认数据循环保留1个月时间，由自身点的数据绘制 出PING包 的状态，由各其他点的数据绘制 进PING包 的状态，并API接口获取其他点数据绘制整体PING拓扑图，拓扑图中存在报警功能。</p>
+<h2 id="pinggg-x2F-pingd"><a href="#pinggg-x2F-pingd" class="headerlink" title="pinggg&#x2F;pingd"></a>pinggg&#x2F;pingd</h2><p>pingd 是世界上最简单的监控服务，使用 golang 编写。软件支持 IPv6，但是服务器不支持. pingd 允许同时 ping 上千个 IPs，在此期间还可以管理监控的主机。用户提供主机名或者 IP，还有用户邮箱地址，就可以使用 3 个生成 URLs 来开启，停止或者删除你的追踪。每当你的服务器停机或者后台在线都会发送通知，还包含控制 URLs。</p>
+<h2 id="cloudinsight-x2F-cloudinsight-agent"><a href="#cloudinsight-x2F-cloudinsight-agent" class="headerlink" title="cloudinsight&#x2F;cloudinsight-agent"></a>cloudinsight&#x2F;cloudinsight-agent</h2><p>提供可视化监控的saas平台cloudinsight开源的一个监控客户端。 Cloudinsight 探针可以收集它所在操作系统的各种指标，然后发送到 Cloudinsight 后端服务</p>
+<h2 id="gravitational-x2F-satellite"><a href="#gravitational-x2F-satellite" class="headerlink" title="gravitational&#x2F;satellite"></a>gravitational&#x2F;satellite</h2><p>用于监测kubernetes健康状态的一个工具／库。 其特点是：轻量级定期测试， 高可用性和弹性网络分区， 无单点故障， 以时间序列的格式存储监控数据。</p>
+<h2 id="kovetskiy-x2F-zabbixctlZabbixctl"><a href="#kovetskiy-x2F-zabbixctlZabbixctl" class="headerlink" title="kovetskiy&#x2F;zabbixctlZabbixctl"></a>kovetskiy&#x2F;zabbixctlZabbixctl</h2><p>是采用Zabbix服务API的命令行工具，它提供了有效的方式去查询和处理trigger 状态、主机最新数据和用户组。</p>
+<h1 id="容器技术"><a href="#容器技术" class="headerlink" title="容器技术"></a>容器技术</h1><h2 id="docker-x2F-docker"><a href="#docker-x2F-docker" class="headerlink" title="docker&#x2F;docker"></a>docker&#x2F;docker</h2><p>Docker是一个开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器上，也可以实现虚拟化。容器是完全使用沙箱机制，相互之间不会有任何接口（类似 iPhone 的 app）。几乎没有性能开销,可以很容易地在机器和数据中心中运行。最重要的是,他们不依赖于任何语言、框架或包装系统。</p>
+<h2 id="coreos-x2F-rkt"><a href="#coreos-x2F-rkt" class="headerlink" title="coreos&#x2F;rkt"></a>coreos&#x2F;rkt</h2><p>Rocket （也叫 rkt）是 CoreOS 推出的一款容器引擎，和 Docker 类似，帮助开发者打包应用和依赖包到可移植容器中，简化搭环境等部署工作。Rocket 和 Docker 不同的地方在于，Rocket 没有 Docker 那些为企业用户提供的“友好功能”，比如云服务加速工具、集群系统等。反过来说，Rocket 想做的，是一个更纯粹的业界标准。</p>
+<h2 id="vmware-x2F-harbor"><a href="#vmware-x2F-harbor" class="headerlink" title="vmware&#x2F;harbor"></a>vmware&#x2F;harbor</h2><p>容器应用的开发和运行离不开可靠的镜像管理。从安全和效率等方面考虑，部署在私有环境内的Registry是非常必要的。Project Harbor是由VMware公司中国团队为企业用户设计的Registry server开源项目，包括了权限管理(RBAC)、LDAP、审计、管理界面、自我注册、HA等企业必需的功能，同时针对中国用户的特点，设计镜像复制和中文支持等功能。</p>
+<h2 id="shipyard-x2F-shipyard"><a href="#shipyard-x2F-shipyard" class="headerlink" title="shipyard&#x2F;shipyard"></a>shipyard&#x2F;shipyard</h2><p>Shipyard 是一个基于 Web 的 Docker 管理工具，支持多 host，可以把多个 Docker host 上的 containers 统一管理；可以查看 images，甚至 build images；并提供 RESTful API 等等。 Shipyard 要管理和控制 Docker host 的话需要先修改 Docker host 上的默认配置使其支持远程管理。</p>
+<h2 id="zettio-x2F-weave"><a href="#zettio-x2F-weave" class="headerlink" title="zettio&#x2F;weave"></a>zettio&#x2F;weave</h2><p>Weave 创建一个虚拟网络并连接到部署在多个主机上的 Docker 容器。</p>
+<h2 id="coreos-x2F-clair"><a href="#coreos-x2F-clair" class="headerlink" title="coreos&#x2F;clair"></a>coreos&#x2F;clair</h2><p>Clair 是一个容器漏洞分析服务。它提供一个能威胁容器漏洞的列表，并且在有新的容器漏洞发布出来后会发送通知给用户。</p>
+<h2 id="alibaba-x2F-pouch"><a href="#alibaba-x2F-pouch" class="headerlink" title="alibaba&#x2F;pouch"></a>alibaba&#x2F;pouch</h2><p>Pouch 是 Alibaba 公司开源的容器引擎技术，其主要功能包括基本的容器管理能力，安全稳定的强容器隔离能力，以及对应用无侵入性的富容器技术。</p>
+<h2 id="weaveworks-x2F-scope"><a href="#weaveworks-x2F-scope" class="headerlink" title="weaveworks&#x2F;scope"></a>weaveworks&#x2F;scope</h2><p>一个docker&amp;kubernetes的管理，监控可视化工具， 可以看到容器间的拓扑关系和tcp通信。</p>
+<h2 id="docker-x2F-swarmkit"><a href="#docker-x2F-swarmkit" class="headerlink" title="docker&#x2F;swarmkit"></a>docker&#x2F;swarmkit</h2><p>SwarmKit 是Docker公司开源的Docker集群管理和容器编排工具，其主要功能包括节点发现、基于raft算法的一致性和任务调度等。</p>
+<h2 id="emccode-x2F-rexray"><a href="#emccode-x2F-rexray" class="headerlink" title="emccode&#x2F;rexray"></a>emccode&#x2F;rexray</h2><p>REX-Ray 是一个 EMC {code} 团队领导的开源项目，为 Docker、Mesos 及其他容器运行环境提供持续的存储访问。其设计旨在囊括通用存储、虚拟化和云平台，提供高级的存储功能。</p>
+<h2 id="docker-x2F-libnetwork"><a href="#docker-x2F-libnetwork" class="headerlink" title="docker&#x2F;libnetwork"></a>docker&#x2F;libnetwork</h2><p>Libnetwork 提供一个原生 Go 实现的容器连接，是容器的网络。libnetwork 的目标是定义一个健壮的容器网络模型（Container Network Model），提供一个一致的编程接口和应用程序的网络抽象。</p>
+<h2 id="cloud66-x2F-habitus"><a href="#cloud66-x2F-habitus" class="headerlink" title="cloud66&#x2F;habitus"></a>cloud66&#x2F;habitus</h2><p>一个快速实现docker build 流程的工具， 支持复杂的docker build流程，实现多个dockerfile的build流程，典型应用如将需要静态编译的程序，如go， java这类程序在一个docker build编译好之后，得到的二进制包用到后续的build流程。</p>
+<h2 id="vishvananda-x2F-wormhole"><a href="#vishvananda-x2F-wormhole" class="headerlink" title="vishvananda&#x2F;wormhole"></a>vishvananda&#x2F;wormhole</h2><p>Wormhole 是一个能识别命名空间的由 Socket 激活的隧道代理。可以让你安全的连接在不同物理机器上的 Docker 容器。可以用来完成一些有趣的功能，例如连接运行在容器本机的服务或者在连接后创建按需的服务。</p>
+<h1 id="PaaS工具"><a href="#PaaS工具" class="headerlink" title="PaaS工具"></a>PaaS工具</h1><h2 id="kubernetes-x2F-kubernetes"><a href="#kubernetes-x2F-kubernetes" class="headerlink" title="kubernetes&#x2F;kubernetes"></a>kubernetes&#x2F;kubernetes</h2><p>Kubernetes 是来自 Google 云平台的开源容器集群管理系统。基于 Docker 构建一个容器的调度服务。该系统可以自动在一个容器集群中选择一个工作容器供使用。其核心概念是 Container Pod。tsuru&#x2F;tsuru在 Tsuru 的 PaaS 服务下，你可以选择自己的编程语言，选择使用 SQL 或者 NoSQL 数据库，memcache、redis、等等许多服务，甚至与你可以使用 Git 版本控制工具来上传你应用。</p>
+<h2 id="laincloud-x2F-lain"><a href="#laincloud-x2F-lain" class="headerlink" title="laincloud&#x2F;lain"></a>laincloud&#x2F;lain</h2><p>Lain 是一个基于 docker 的 PaaS 系统。其面向技术栈多样寻求高效运维方案的高速发展中的组织，devops 人力缺乏的 startup ，个人开发者。统一高效的开发工作流，降低应用运维复杂度；在 IaaS &#x2F; 私有 IDC 裸机的基础上直接提供应用开发，集成，部署，运维的一揽子解决方案。</p>
+<h2 id="ooyala-x2F-atlantis"><a href="#ooyala-x2F-atlantis" class="headerlink" title="ooyala&#x2F;atlantis"></a>ooyala&#x2F;atlantis</h2><p>Atlantis 是一款基于 Docker，使用 Go 编写，为 HTTP 应用准备的开源 PaaS。Atlantis 可以在路由请求中轻松的构建和部署应用到容器。Atlantis 在 Ooyala 的新应用中得到了很广泛的应用。</p>
+<h2 id="weibocom-x2F-opendcp"><a href="#weibocom-x2F-opendcp" class="headerlink" title="weibocom&#x2F;opendcp"></a>weibocom&#x2F;opendcp</h2><p>OpenDCP是一个基于Docker的云资源管理与调度平台，集镜像仓库、多云支持、服务编排、服务发现等功能与一身，支持服务池的扩缩容，其技术体系源于微博用于支持节假日及热点峰值流量的弹性调度DCP系统。OpenDCP允许利用公有云服务器搭建起适应互联网应用的IT基础设施，并且将运维的工作量降到最低。</p>
+<h2 id="mesos-x2F-cloudfoundry-mesos"><a href="#mesos-x2F-cloudfoundry-mesos" class="headerlink" title="mesos&#x2F;cloudfoundry-mesos"></a>mesos&#x2F;cloudfoundry-mesos</h2><p>Cloud Foundry-Mesos框架由华为与Mesosphere的工程师合作完成，能够为应用提供安全可靠的、可伸缩、可扩展的云端运行环境，并且应用能够 享用Cloud Foundry生态圈内各类丰富的服务资源。企业能够通过Cloud Foundry开发云应用，并通过Cloud Foundry-Mesos将应用部署到DCOS上，使应用能够与DCOS上安装的其他服务及应用框架共享资源，实现资源利用率最大化，能够大幅降低企业 数据中心运营成本。DCOS能够运行在虚拟和物理环境上，能够支持Linux（以及很快支持Windows），并可适用于私有云、公有云及混合云环境。</p>
+<h1 id="微服务"><a href="#微服务" class="headerlink" title="微服务"></a>微服务</h1><h2 id="istio-x2F-istio"><a href="#istio-x2F-istio" class="headerlink" title="istio&#x2F;istio"></a>istio&#x2F;istio</h2><p>Istio是由Google、IBM和Lyft开源的微服务管理、保护和监控框架。使用istio可以很简单的创建具有负载均衡、服务间认证、监控等功能的服务网络，而不需要对服务的代码进行任何修改。</p>
+<h2 id="go-kit-x2F-kit"><a href="#go-kit-x2F-kit" class="headerlink" title="go-kit&#x2F;kit"></a>go-kit&#x2F;kit</h2><p>Go-kit 是一个 Go 语言的分布式开发包，用于开发微服务。</p>
+<h2 id="uber-x2F-jaeger"><a href="#uber-x2F-jaeger" class="headerlink" title="uber&#x2F;jaeger"></a>uber&#x2F;jaeger</h2><p>Jaeger是Uber的分布式跟踪系统 ，基于google dapper的原理构建， 以Cassandra作为存储层</p>
+<h2 id="micro-x2F-micro"><a href="#micro-x2F-micro" class="headerlink" title="micro&#x2F;micro"></a>micro&#x2F;micro</h2><p>Micro是一个专注于简化分布式系统开发的微服务生态系统。可插拔的插件化设计，提供强大的可插拔的架构来保证基础组件可以被灵活替换。</p>
+<h2 id="eBay-x2F-fabio"><a href="#eBay-x2F-fabio" class="headerlink" title="eBay&#x2F;fabio"></a>eBay&#x2F;fabio</h2><p>fabio 是 ebay 团队用 golang 开发的一个快速、简单零配置能够让 consul 部署的应用快速支持 http(s) 的负载均衡路由器。这里有一篇中文文章<a target="_blank" rel="noopener" href="http://dockone.io/article/1567%E4%BB%8B%E7%BB%8D%E4%BA%86%E5%A6%82%E4%BD%95%E7%94%A8fabio%EF%BC%8Bconsul%E5%AE%9E%E7%8E%B0%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0%EF%BC%8C%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%8C%E5%B9%B6%E9%98%90%E8%BF%B0%E4%BA%86%E5%8E%9F%E7%90%86%EF%BC%8C">http://dockone.io/article/1567介绍了如何用fabio＋consul实现服务发现，负载均衡，并阐述了原理，</a> 最后还有demo程序</p>
+<h2 id="goadesign-x2F-goa"><a href="#goadesign-x2F-goa" class="headerlink" title="goadesign&#x2F;goa"></a>goadesign&#x2F;goa</h2><p>Goa 是一款用 Go 用于构建微服务的框架，采用独特的设计优先的方法。</p>
+<h2 id="NYTimes-x2F-gizmo"><a href="#NYTimes-x2F-gizmo" class="headerlink" title="NYTimes&#x2F;gizmo"></a>NYTimes&#x2F;gizmo</h2><p>纽约时报开源的go微服务工具.提供如下特性:标准化配置和日志;可配置策略的状态监测端点;用于管理 pprof 端点和日志级别的配置;结构化日志，提供基本请求信息;端点的有用度量;优雅的停止服务; 定义期待和词汇的基本接口</p>
+<h2 id="koding-x2F-kite"><a href="#koding-x2F-kite" class="headerlink" title="koding&#x2F;kite"></a>koding&#x2F;kite</h2><p>一个基于go语言的微服务框架, Kite是Koding公司内部的一个框架, 该框架提供服务发现，多种认证功能，服务端通过RPC进行通信，同时还提供了websocket的js库，方便浏览器于服务器间进行通信。afex&#x2F;hystrix-go用来隔离远程系统调用， 第三方库调用 ，服务调用， 提供熔断机制，避免雪崩效应的库， Hystrix的go 版本。 注Hystrixs是Netflix开源的一个java库fagongzi&#x2F;gatewayGateway是一个使用go实现的基于HTTP的API 网关。特性 ：API 聚合 ; 流控; 熔断; 负载均衡; 健康检查; 监控; 消息路由; 后端管理WebUI . 能做什么：规划更友好的URL给调用者。聚合多个API的结果返回给API调用者，利于移动端，后端可以实现原子接口。保护后端API服务不会被突发异常流量压垮。提供熔断机制，使得后端API Server具备自我恢复能力。借助消息路由能力，实现灰度发布，AB测试。goodrain&#x2F;rainbond云帮是一款以应用为中心的开源PaaS，深度整合Kubernetes的容器管理和Service Mesh微服务架构最佳实践，满足支撑业务高速发展所需的敏捷开发、高效运维和精益管理需求sourcegraph&#x2F;appdashgo版本的分布式应用跟踪系统， 基于google dapper的原理构建andot&#x2F;hproseHprose 是高性能远程对象服务引擎（High Performance Remote Object Service Engine）的缩写 —— 微服务首选引擎。它是一个先进的轻量级的跨语言跨平台面向对象的高性能远程动态通讯中间件。它不仅简单易用，而且功能强大。你只需要稍许的时间去学习，就能用它轻松构建跨语言跨平台的分布式应用系统了。CI&#x2F;CDdrone&#x2F;droneDrone 是一个基于 Docker 的持续发布平台，使用 Go 语言开发caicloud&#x2F;cycloneCyclone 是一个打造容器工作流的云原生持续集成持续发布平台，简单易用，使用 Go 语言开发，有详尽的中文文档数据库技术pingcap&#x2F;tidbTiDB 是国内 PingCAP 团队开发的一个分布式 SQL 数据库。其灵感来自于 Google 的 F1, TiDB 支持包括传统 RDBMS 和 NoSQL 的特性。influxdata&#x2F;influxdb一个可以水平扩展的时间序列数据库， 内建http api， 支持对数据打tag，灵活的查询策略和数据的实时查询，支持类sql语句进行查询cockroachdb&#x2F;cockroachCockroachDB (蟑螂数据库）是一个可伸缩的、支持地理位置处理、支持事务处理的数据存储系统。CockroachDB 提供两种不同的的事务特性，包括快照隔离（snapshot isolation，简称SI）和顺序的快照隔离（SSI）语义，后者是默认的隔离级别。google&#x2F;cayleyCayley 是 Google 的一个开源图(Graph)数据库，其灵感来自于 Freebase 和 Google 的 Knowledge Graph 背后的图数据库。dgraph-io&#x2F;dgraphdgraph 是可扩展的，分布式的，低延迟图形数据库。DGraph 的目标是提供 Google 生产水平的规模和吞吐量，在超过TB的结构数据里，未用户提供足够低延迟的实时查询。DGraph 支持 GraphQL 作为查询语言，响应 JSON。wandoulabs&#x2F;codisCodis 是一个分布式 Redis 解决方案, 对于上层的应用来说, 连接到 Codis Proxy 和连接原生的 Redis Server 没有明显的区别 (不支持的命令列表), 上层应用可以像使用单机的 Redis 一样使用, Codis 底层会处理请求的转发, 不停机的数据迁移等工作, 所有后边的一切事情, 对于前面的客户端来说是透明的, 可以简单的认为后边连接的是一个内存无限大的 Redis 服务.youtube&#x2F;vitessoutube出品的开源分布式MySQL工具集Vitess，自动分片存储MySQL数据表，将单个SQL查询改写为分布式发送到多个MySQL Server上，支持行缓存（比MySQL本身缓存效率高），支持复制容错，已用于Youtube生产环境sosedoff&#x2F;pgwebgweb 是一个采用 Go 语言开发的基于 Web 的 PostgreSQL 管理系统。flike&#x2F;kingshard一个高性能的mysql中间件， 支持读写分离， 数据分片， 安全审计等功能olivere&#x2F;elasticelastic是开源搜索引擎elasticsearch的golang客户端，API友好，支持绝大部分es的接口,支持的es版本全面，从1.x到最新的6.x全覆盖siddontang&#x2F;ledisdbledisdb是一个参考ssdb，采用go实现，底层基于leveldb，类似redis的高性能nosql数据库，提供了kv，list，hash以及zset数据结构的支持。outbrain&#x2F;orchestratorMySQL 复制拓扑可视化工具slicebit&#x2F;qbqb是用来让使更容易使用数据库的go语言的数据库工具包。它受Python最喜欢的ORM SQLAlchemy的启发，既是一个ORM，也是一个查询生成器。它在表达api和查询构建东西的情形下是相当模块化的。mediocregopher&#x2F;radix.v2radix.v2是redis官方推荐的客户端之一，相比于redigo,radix.v2特点是轻量、接口实现优雅、API友好chasex&#x2F;redis-go-clusterredis-go-cluster 是基于 Redigo 实现的 Golang Redis 客户端。redis-go-cluster 可以在本地缓存 slot 信息，并且当集群修改的时候会自动更新。此客户端管理每个节点连接池，使用 goroutine 来尽可能的并发执行，达到了高效，低延迟。hidu&#x2F;mysql-schema-syncmysql-schema-sync 是一款使用go开发的、跨平台的、绿色无依赖的 MySQL 表结构自动同步工具。用于将线上(其他环境)数据库结构变化同步到测试（本地）环境!goshawkdb&#x2F;serverGoshawkDB 是一个采用 Go 语言开发支持多平台的分布式的对象存储服务，支持事务以及容错。GoshawkDB 的事务控制是在客户端完成的。GoshawkDB 服务器端使用 AGPL 许可，而 Go 语言客户端使用 Apache 许可证degdb&#x2F;degdbDegDB 是分布式的经济图数据库。存储技术ipfs&#x2F;go-ipfsIPFS 是分布式文件系统，寻求连接所有计算机设备的相同文件系统。在某些方面，这很类似于原始的 Web 目标，但是 IPFS 最终会更像单个比特流群交换的 git 对象。IPFS ＝ InterPlanetary File Systemchrislusf&#x2F;seaweedfsSeaweedFS 是简单，高伸缩性的分布式文件系统，包含两部分：存储数十亿的文件；快速为文件服务。SeaweedFS 作为支持全 POSIX 文件系统语义替代，Seaweed-FS 选择仅实现 key-file 的映射，类似 “NoSQL”，也可以说是 “NoFS”。spf13&#x2F;aferoAfero 是一个文件系统框架，提供一个简单、统一和通用的 API 和任何文件系统进行交互，作为抽象层还提供了界面、类型和方法。Afero 的界面十分简洁，设计简单，舍弃了不必要的构造函数和初始化方法。Afero 作为一个库还提供了一组可交互操作的后台文件系统，这样在与 Afero 协作时，还可以保留 os 和 ioutil 软件包的功能和好处。coreos&#x2F;torusTorus是一种针对容器集群量身打造的存储系统，可以为通过Kubernetes编排和管理的容器集群提供可靠可扩展的存储。这是继etcd、rkt、flannel，以及CoreOS Linux之后CoreOS发布的另一个开源产品。emccode&#x2F;rexrayREX-Ray 是一个 EMC {code} 团队领导的开源项目，为 Docker、Mesos 及其他容器运行环境提供持续的存储访问。其设计旨在囊括通用存储、虚拟化和云平台，提供高级的存储功能。Terry-Mao&#x2F;bfsbfs 是使用 Go 编写的分布式文件系统（小文件存储）。gostor&#x2F;gotgtGotgt 是使用 Go 编写的高性能、可扩展的 iSCSI target 服务。</p>
+
+    </div>
+    
+  </div>
+</article>
+<div id="toc" class="toc-article">
+  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F"><span class="toc-text">监控系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#grafana-x2F-grafana"><span class="toc-text">grafana&#x2F;grafana</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#prometheus-x2F-prometheus"><span class="toc-text">prometheus&#x2F;prometheus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bosun-monitor-x2F-bosun"><span class="toc-text">bosun-monitor&#x2F;bosun</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sourcegraph-x2F-checkup"><span class="toc-text">sourcegraph&#x2F;checkup</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rapidloop-x2F-rtoprtop"><span class="toc-text">rapidloop&#x2F;rtoprtop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#influxdata-x2F-kapacitor"><span class="toc-text">influxdata&#x2F;kapacitor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#open-falcon-x2F-of-release"><span class="toc-text">open-falcon&#x2F;of-release</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rach-x2F-pome"><span class="toc-text">rach&#x2F;pome</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TalkingData-x2F-owl"><span class="toc-text">TalkingData&#x2F;owl</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gy-games-x2F-smartping"><span class="toc-text">gy-games&#x2F;smartping</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#pinggg-x2F-pingd"><span class="toc-text">pinggg&#x2F;pingd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cloudinsight-x2F-cloudinsight-agent"><span class="toc-text">cloudinsight&#x2F;cloudinsight-agent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gravitational-x2F-satellite"><span class="toc-text">gravitational&#x2F;satellite</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kovetskiy-x2F-zabbixctlZabbixctl"><span class="toc-text">kovetskiy&#x2F;zabbixctlZabbixctl</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF"><span class="toc-text">容器技术</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-x2F-docker"><span class="toc-text">docker&#x2F;docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#coreos-x2F-rkt"><span class="toc-text">coreos&#x2F;rkt</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vmware-x2F-harbor"><span class="toc-text">vmware&#x2F;harbor</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shipyard-x2F-shipyard"><span class="toc-text">shipyard&#x2F;shipyard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zettio-x2F-weave"><span class="toc-text">zettio&#x2F;weave</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#coreos-x2F-clair"><span class="toc-text">coreos&#x2F;clair</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#alibaba-x2F-pouch"><span class="toc-text">alibaba&#x2F;pouch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#weaveworks-x2F-scope"><span class="toc-text">weaveworks&#x2F;scope</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-x2F-swarmkit"><span class="toc-text">docker&#x2F;swarmkit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#emccode-x2F-rexray"><span class="toc-text">emccode&#x2F;rexray</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#docker-x2F-libnetwork"><span class="toc-text">docker&#x2F;libnetwork</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cloud66-x2F-habitus"><span class="toc-text">cloud66&#x2F;habitus</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vishvananda-x2F-wormhole"><span class="toc-text">vishvananda&#x2F;wormhole</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PaaS%E5%B7%A5%E5%85%B7"><span class="toc-text">PaaS工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#kubernetes-x2F-kubernetes"><span class="toc-text">kubernetes&#x2F;kubernetes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#laincloud-x2F-lain"><span class="toc-text">laincloud&#x2F;lain</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ooyala-x2F-atlantis"><span class="toc-text">ooyala&#x2F;atlantis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#weibocom-x2F-opendcp"><span class="toc-text">weibocom&#x2F;opendcp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mesos-x2F-cloudfoundry-mesos"><span class="toc-text">mesos&#x2F;cloudfoundry-mesos</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E6%9C%8D%E5%8A%A1"><span class="toc-text">微服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#istio-x2F-istio"><span class="toc-text">istio&#x2F;istio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go-kit-x2F-kit"><span class="toc-text">go-kit&#x2F;kit</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#uber-x2F-jaeger"><span class="toc-text">uber&#x2F;jaeger</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#micro-x2F-micro"><span class="toc-text">micro&#x2F;micro</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#eBay-x2F-fabio"><span class="toc-text">eBay&#x2F;fabio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#goadesign-x2F-goa"><span class="toc-text">goadesign&#x2F;goa</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NYTimes-x2F-gizmo"><span class="toc-text">NYTimes&#x2F;gizmo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#koding-x2F-kite"><span class="toc-text">koding&#x2F;kite</span></a></li></ol></li></ol>
+</div></section>
+        </div>
+        <!-- <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Dalin &copy; 2022 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+        </div>
+    </div>
+</footer> -->
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

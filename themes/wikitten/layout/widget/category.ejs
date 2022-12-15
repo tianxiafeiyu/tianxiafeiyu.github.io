@@ -129,7 +129,7 @@
       <a href="#" data-role="directory">
         <%- category.name %>
         &nbsp;
-        <i class="fa fa-caret<%- (perExpand || category.selected) ? '-down' : '-right' %>"></i>
+        <i class="fa fa-pull-right fa-angle<%- (perExpand || category.selected) ? '-down' : '-right' %>" style="margin-top:6px;margin-right:12px"></i>
       </a>
       <% visitTreePosts(category, perExpand, depth+1) %>
     </li>
@@ -138,8 +138,8 @@
           }
           if(branch.articles && branch.articles.length) {
               branch.articles.forEach(function(post){
-                // 分类目录下的 index 文件不展示
-                if (depth == 1 && post.path.split('/').includes('index')) {
+                // _post根目录下的 index 文件不展示（作为首页）
+                if (depth == 0 && post.path.split('/').includes('index')) {
                   return
                 }
                   %>
@@ -171,8 +171,8 @@
 </div>
 <script>
   $(document).ready(function() {
-    var iconFolderOpenClass = 'fa-caret-down';
-    var iconFolderCloseClass = 'fa-caret-right';
+    var iconFolderOpenClass = 'fa-angle-down';
+    var iconFolderCloseClass = 'fa-angle-right';
     var iconAllExpandClass = 'fa-angle-double-down';
     var iconAllPackClass = 'fa-angle-double-up';
     // Handle directory-tree expansion:
@@ -230,13 +230,13 @@
       var expanded = icon.hasClass(iconAllExpandClass);
       icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
       if (expanded) {
-        $('#sidebar .fa.fa-caret-right').removeClass('fa-caret-right').addClass('fa-caret-down')
+        $('#sidebar .fa.fa-angle-right').removeClass('fa-angle-right').addClass('fa-angle-down')
         $('#categories li ul').slideDown({
           duration: 100
         });
         icon.addClass(iconAllPackClass);
       } else {
-        $('#sidebar .fa.fa-caret-down').removeClass('fa-caret-down').addClass('fa-caret-right')
+        $('#sidebar .fa.fa-angle-down').removeClass('fa-angle-down').addClass('fa-angle-right')
         $('#categories li ul').slideUp({
           duration: 100
         });

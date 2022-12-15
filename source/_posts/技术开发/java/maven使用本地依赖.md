@@ -1,0 +1,9 @@
+```xml
+<dependency>
+   <groupId>com.test</groupId>
+   <artifactId>core</artifactId>
+   <version>1.0</version>
+   <scope>provided</scope>
+   <systemPath>${project.basedir}/lib/jasperreports-html-component-6.5.0.jar</systemPath>
+</dependency>
+```

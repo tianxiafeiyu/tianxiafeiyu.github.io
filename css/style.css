@@ -221,7 +221,7 @@ code {
   width: 40px;
   height: 40px;
   background-repeat: no-repeat;
-  background-image: url("/logo.png");
+  background-image: url("/static/lin.png");
   background-size: 40px 40px;
 }
 #container {
@@ -806,8 +806,8 @@ code {
 }
 .main-nav-select {
   color: #4569d4 !important;
-  -webkit-box-shadow: 0 2px 0px 0px #4569d4;
-  box-shadow: 0 2px 0px 0px #4569d4;
+  -webkit-box-shadow: inset 0px -2px 0px 0px #4569d4;
+  box-shadow: inset 0px -2px 0px 0px #4569d4;
 }
 .bio {
   text-align: center;

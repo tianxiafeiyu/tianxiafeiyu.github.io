@@ -1,3 +1,11 @@
+---
+title: xorm使用
+date: 2022-12-15 23:16:40
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - xorm使用
+---
 # xorm
 
 xorm是一个简单而强大的Go语言ORM库. 通过它可以使数据库操作非常简便。

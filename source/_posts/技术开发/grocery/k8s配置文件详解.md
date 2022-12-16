@@ -1,3 +1,11 @@
+---
+title: k8s配置文件详解
+date: 2022-12-15 23:10:53
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - k8s配置文件详解
+---
 ## k8s yaml文件
 
 ### yaml基础

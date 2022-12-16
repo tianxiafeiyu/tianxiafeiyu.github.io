@@ -1,3 +1,11 @@
+---
+title: Elasticsearch版本特性
+date: 2022-12-15 23:11:35
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Elasticsearch版本特性
+---
 # elasticsearch 各版本特性
 
 ## 5.0

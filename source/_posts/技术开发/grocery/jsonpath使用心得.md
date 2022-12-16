@@ -1,5 +1,10 @@
 ---
 title: jsonpath使用心得
+date: 2022-12-15 23:40:42
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - jsonpath使用心得
 ---
 
 JsonPath表达式通常是用来路径检索或设置Json的。其表达式可以接受“dot–notation”和“bracket–notation”格式，例如$.store.book[0].title、$[‘store’][‘book’][0][‘title’]

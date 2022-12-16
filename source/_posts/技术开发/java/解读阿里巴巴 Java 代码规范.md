@@ -1,3 +1,11 @@
+---
+title: 解读阿里巴巴 Java 代码规范
+date: 2022-12-15 23:41:31
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - 解读阿里巴巴 Java 代码规范
+---
 转载自 https://developer.ibm.com/zh/articles/deconding-code-specification-part-1/
 
 ## 前言

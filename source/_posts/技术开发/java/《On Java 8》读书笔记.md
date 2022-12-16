@@ -1,3 +1,11 @@
+---
+title: 《On Java 8》读书笔记
+date: 2022-12-15 23:12:09
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - 《On Java 8》读书笔记
+---
 # 《On Java 8》读书笔记
 
 ### 1. java 8 接口可以有默认方法和静态方法

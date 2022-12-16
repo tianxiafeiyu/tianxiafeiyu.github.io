@@ -1,3 +1,11 @@
+---
+title: python list()和[],dict()和{}
+date: 2022-12-15 23:22:29
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - python list()和[],dict()和{}
+---
 参考资料： https://www.cnblogs.com/wlfya/p/13856482.html
 
 Python疑难问题：[] 与 list() 哪个快？为什么快？快多少呢？

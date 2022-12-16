@@ -1,3 +1,11 @@
+---
+title: Elasticsearch Java Rest Client
+date: 2022-12-15 23:11:35
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Elasticsearch Java Rest Client
+---
 基于 Elasticsearch 6.x
 
 ## 概述

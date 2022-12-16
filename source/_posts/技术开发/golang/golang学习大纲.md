@@ -1,3 +1,11 @@
+---
+title: golang学习大纲
+date: 2022-12-15 23:19:25
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - golang学习大纲
+---
 Golang核心知识总结
 - [Go语言简介及特性](https://blog.csdn.net/pbrlovejava/article/details/83896466)
 - [变量与常量的定义](https://blog.csdn.net/pbrlovejava/article/details/83927760)

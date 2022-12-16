@@ -1,3 +1,11 @@
+---
+title: spring security学习【转】
+date: 2022-12-15 23:12:12
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - spring security学习【转】
+---
 转载自 [spring-security-4介绍](https://www.cnblogs.com/wutianqi/p/9174227.html)
 
 虽然现在已经到了5.x版本了，但是大同小异，知识还是不会过时的。。。

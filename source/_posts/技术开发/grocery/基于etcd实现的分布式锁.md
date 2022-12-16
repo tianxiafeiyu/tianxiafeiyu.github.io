@@ -1,3 +1,11 @@
+---
+title: 基于etcd实现的分布式锁
+date: 2022-12-15 23:41:44
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - 基于etcd实现的分布式锁
+---
 - lock.sh
 ```bash
 \#!/bin/bash

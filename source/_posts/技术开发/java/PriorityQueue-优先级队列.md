@@ -1,3 +1,11 @@
+---
+title: PriorityQueue-优先级队列
+date: 2022-12-15 23:41:31
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - PriorityQueue-优先级队列
+---
 #### 一、什么是优先级队列
 PriorityQueue类在Java1.5中引入。PriorityQueue是基于优先堆的一个无界队列，这个优先队列中的元素可以默认自然排序或者通过提供的Comparator（比较器）在队列实例化的时排序。要求使用Java Comparable和Comparator接口给对象排序，并且在排序时会按照优先级处理其中的元素。
 

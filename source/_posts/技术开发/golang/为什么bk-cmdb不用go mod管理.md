@@ -1,3 +1,11 @@
+---
+title: 为什么bk-cmdb不用go mod管理
+date: 2022-12-13 23:43:08
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - 为什么bk-cmdb不用go mod管理
+---
 项目地址 https://github.com/Tencent/bk-cmdb
 
 为什么不用官方推荐的 go mod 管理依赖呢？

@@ -1,3 +1,11 @@
+---
+title: python多进程与多线程
+date: 2022-12-15 23:22:29
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - python多进程与多线程
+---
 <https://blog.csdn.net/Victor2code/article/details/109005171>
 
 ## &#x20;关于进程与线程

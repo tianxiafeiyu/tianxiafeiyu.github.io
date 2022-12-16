@@ -1,5 +1,10 @@
 ---
-abbrlink: '0'
+title: 使用github搭建个人博客
+date: 2022-12-15 23:06:36
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - 使用github搭建个人博客
 ---
 看到一篇文章 GitHub Pages + Hexo 搭建个人博客，感觉效果不错
 

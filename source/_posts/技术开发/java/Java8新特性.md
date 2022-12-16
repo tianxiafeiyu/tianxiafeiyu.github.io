@@ -1,3 +1,11 @@
+---
+title: Java8新特性
+date: 2022-12-13 23:42:27
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Java8新特性
+---
 **Java8新特性**
 
 （转载自https://www.runoob.com/java/java8-new-features.html，具体内容见链接，非常详细实用）

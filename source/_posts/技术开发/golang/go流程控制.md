@@ -1,5 +1,10 @@
 ---
 title: go流程控制
+date: 2022-12-15 23:19:25
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - go流程控制
 ---
 
 # switch

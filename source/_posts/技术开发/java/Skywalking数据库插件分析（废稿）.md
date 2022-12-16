@@ -1,3 +1,11 @@
+---
+title: Skywalking数据库插件分析（废稿）
+date: 2022-12-15 23:39:56
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Skywalking数据库插件分析（废稿）
+---
 # apm-mysql-8.x-plugin
 ## 主要增强的功能有：
 ```

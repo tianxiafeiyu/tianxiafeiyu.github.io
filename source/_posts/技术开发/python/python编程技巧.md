@@ -1,3 +1,11 @@
+---
+title: python编程技巧
+date: 2022-12-15 23:22:29
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - python编程技巧
+---
 ## 避免过多的if else
 表驱动方法编程（Table-Driven Methods）是一种编程模式,适用场景:消除代码中频繁的if else或switch case的逻辑结构代码,使代码更加直白.
 ```

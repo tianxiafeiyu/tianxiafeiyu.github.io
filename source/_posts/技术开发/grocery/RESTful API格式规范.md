@@ -1,3 +1,11 @@
+---
+title: RESTful API格式规范
+date: 2022-12-15 23:39:41
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - RESTful API格式规范
+---
 ## 1 RESTful风格
 
 RESTful是一种API的设计风格，他和GraphQL ，JSON-RPC，WebService类似，用于定义在CS、BS架构下暴露服务端接口。此次设计对接规范，将使用RESTful作为标准。

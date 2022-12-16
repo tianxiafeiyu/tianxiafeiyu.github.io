@@ -1,3 +1,11 @@
+---
+title: github添加ssh方法
+date: 2022-12-15 23:37:48
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - github添加ssh方法
+---
 ## Windows
 
 ### 生成一个新的SSH key

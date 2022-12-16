@@ -1,3 +1,11 @@
+---
+title: idea+maven+git 开发环境安装
+date: 2022-12-15 23:12:09
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - idea+maven+git 开发环境安装
+---
 #### 1. jdk安装
 
 网上下载jdk，运行安装程序

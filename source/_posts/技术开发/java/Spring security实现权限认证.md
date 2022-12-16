@@ -1,3 +1,11 @@
+---
+title: Spring security实现权限认证
+date: 2022-12-15 23:12:12
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Spring security实现权限认证
+---
 配置适配器 WebSecurityConfigurerAdapter
 
 ```java

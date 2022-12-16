@@ -1,3 +1,11 @@
+---
+title: go checklist
+date: 2022-12-15 23:13:57
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - go checklist
+---
 # go checklist
 
 ## 2. 介绍

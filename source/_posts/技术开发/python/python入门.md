@@ -1,3 +1,11 @@
+---
+title: python入门
+date: 2022-12-15 23:22:29
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - python入门
+---
 腾讯课堂地址<https://ke.qq.com/webcourse/404949/100482926#taid=3241897150000597&vid=5285890793484703736>
 
 ### python起源

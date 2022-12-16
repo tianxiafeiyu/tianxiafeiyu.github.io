@@ -1,3 +1,11 @@
+---
+title: TCP 协议灵魂 12 问 【转】
+date: 2022-12-15 23:41:00
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - TCP 协议灵魂 12 问 【转】
+---
 转载自 https://my.oschina.net/u/4192546/blog/4644900
 
 ### 01. 能不能说一说 TCP 和 UDP 的区别？

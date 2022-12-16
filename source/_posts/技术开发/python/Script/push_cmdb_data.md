@@ -1,3 +1,11 @@
+---
+title: push_cmdb_data
+date: 2022-12-15 23:22:29
+updated: 2022-12-16 21:37:31
+toc: true
+tags: 
+    - push_cmdb_data
+---
 ```python
 #!/usr/bin/python
 # -*- coding: utf-8 -*-

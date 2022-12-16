@@ -1,3 +1,11 @@
+---
+title: Spring boot读取配置文件问题
+date: 2022-12-15 23:12:12
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Spring boot读取配置文件问题
+---
 #### 1. 加载自定义文件
 
 > YAML files cannot be loaded by using the @PropertySource annotation. So, in the case that you need to load values that way, you need to use a properties file.

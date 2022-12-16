@@ -1,3 +1,11 @@
+---
+title: session，cookie，token学习【转】
+date: 2022-12-15 23:10:53
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - session，cookie，token学习【转】
+---
 转载自 https://segmentfault.com/a/1190000017831088
 
 ## session，cookie和token究竟是什么

@@ -1,3 +1,11 @@
+---
+title: spring boot + jasypt实现配置文件信息加密
+date: 2022-12-15 23:12:12
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - spring boot + jasypt实现配置文件信息加密
+---
 配置文件敏感信息的加密，对于生产环境来说还是很有必要的。之前自己实现了一个粗糙的配置文件加密方案，详见[spring boot中代码修改配置文件](https://note.youdao.com/ynoteshare1/index.html?id=0d316c739a394177dd492a8ff4710257&type=note)。后面有老师傅提出了有更成熟通过的方案，jasypt，本次就来使用它。
 
 1、添加Maven依赖

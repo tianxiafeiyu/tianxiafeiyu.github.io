@@ -1,3 +1,11 @@
+---
+title: Linux shell 各种符号的意义
+date: 2022-12-15 23:39:11
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Linux shell 各种符号的意义
+---
 # 一、小括号，圆括号（）
 ## 1、单小括号 ()
 

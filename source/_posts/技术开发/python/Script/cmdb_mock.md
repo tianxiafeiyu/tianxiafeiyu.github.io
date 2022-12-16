@@ -1,3 +1,11 @@
+---
+title: cmdb_mock
+date: 2022-12-15 23:22:29
+updated: 2022-12-16 21:37:31
+toc: true
+tags: 
+    - cmdb_mock
+---
 ```python
 #!/usr/bin/python
 # -*- coding: utf-8 -*-

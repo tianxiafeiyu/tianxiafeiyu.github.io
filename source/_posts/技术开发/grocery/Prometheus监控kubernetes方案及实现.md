@@ -1,5 +1,10 @@
 ---
 title: Prometheus监控kubernetes方案及实现
+date: 2022-12-16 00:43:25
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Prometheus监控kubernetes方案及实现
 ---
 
 # promtheus监控kubernetes

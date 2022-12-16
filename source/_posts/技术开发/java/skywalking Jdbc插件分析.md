@@ -1,3 +1,11 @@
+---
+title: skywalking Jdbc插件分析
+date: 2022-12-15 23:39:56
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - skywalking Jdbc插件分析
+---
 
 ## mysql-8.x-plugin
 <table>

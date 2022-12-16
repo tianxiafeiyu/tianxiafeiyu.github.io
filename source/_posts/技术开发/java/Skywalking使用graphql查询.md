@@ -1,3 +1,11 @@
+---
+title: Skywalking使用graphql查询
+date: 2022-12-15 23:12:12
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Skywalking使用graphql查询
+---
 #### 查询单个服务的数据信息
 
 ```java

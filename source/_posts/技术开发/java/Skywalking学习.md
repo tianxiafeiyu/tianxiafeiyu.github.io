@@ -1,3 +1,11 @@
+---
+title: Skywalking学习
+date: 2022-12-15 23:12:12
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Skywalking学习
+---
 SkyWalking 中非常重要的三个概念：
 
 - 服务(Service) ：表示对请求提供相同行为的一系列或一组工作负载。在使用 Agent 或 SDK 的时候，你可以定义服务的名字。如果不定义的话，SkyWalking 将会使用你在平台（例如说 Istio）上定义的名字。

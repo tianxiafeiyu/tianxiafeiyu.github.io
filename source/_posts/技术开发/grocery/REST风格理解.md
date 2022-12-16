@@ -1,3 +1,11 @@
+---
+title: REST风格理解
+date: 2022-12-15 23:10:53
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - REST风格理解
+---
 转载自 https://www.jianshu.com/p/6e8381c9b01d
 
 #### 一、什么是REST

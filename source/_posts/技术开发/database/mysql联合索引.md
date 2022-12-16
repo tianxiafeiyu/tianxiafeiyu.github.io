@@ -1,3 +1,11 @@
+---
+title: mysql联合索引
+date: 2022-12-15 23:39:27
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - mysql联合索引
+---
 sqlalchemy 创建联合索引，报索引超长问题:
 
 `DBError: (pymysql.err.InternalError) (1071, u'Specified key was too long; max key length is 3072 bytes')`

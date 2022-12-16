@@ -1,5 +1,10 @@
 ---
 title: python单例模式实现
+date: 2022-12-15 23:22:29
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - python单例模式实现
 ---
 ## 装饰器
 ```

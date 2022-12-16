@@ -1,3 +1,11 @@
+---
+title: Java保留小数点后几位
+date: 2022-12-15 23:38:00
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Java保留小数点后几位
+---
 #### 1. 使用 Math.round()
 ```java
 float totalPrice = 11.21212

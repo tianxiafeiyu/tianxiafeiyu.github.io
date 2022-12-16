@@ -1,3 +1,11 @@
+---
+title: Spring boot单元测试
+date: 2022-12-15 23:12:12
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Spring boot单元测试
+---
 公司职级认证有单元测试要求，花了一天时间把欠下的的补完了。。。
 
 #### spring boot引入单元测试

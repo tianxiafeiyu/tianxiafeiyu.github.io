@@ -1,3 +1,11 @@
+---
+title: Golang与Java
+date: 2022-12-15 23:19:25
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Golang与Java
+---
 转载自 https://blog.csdn.net/pbrlovejava/article/details/108920137
 
 ## 一、Golang概述

@@ -1,3 +1,11 @@
+---
+title: lombok
+date: 2022-12-15 23:12:12
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - lombok
+---
 ### lombok简介
 
 Lombok 是能自动接通编辑器和构建工具的一个Java库，对于简单的Java对象，通过注解的形式例如@Setter @Getter，可以替代代码中的getter和setter方法。Lombok中用到了注解，但是它并没有用到反射，而是在代码编译时期动态将注解替换为具体的代码。所以JVM实际运行的代码，和我们手动编写的包含了各种工具方法的类相同。

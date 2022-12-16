@@ -1,3 +1,11 @@
+---
+title: python知识点
+date: 2022-12-15 23:22:29
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - python知识点
+---
 实在是对python没有好感，但是还在吃这口饭，姑且还是要提升自己的。
 
 ### Python的优势

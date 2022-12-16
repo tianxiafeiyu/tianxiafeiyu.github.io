@@ -1,3 +1,11 @@
+---
+title: go gc
+date: 2022-12-15 23:16:40
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - go gc
+---
 https://www.cnblogs.com/HinaChan/p/14842521.html
 
 ## GoGC机制

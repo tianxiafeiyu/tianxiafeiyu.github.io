@@ -1,3 +1,11 @@
+---
+title: JVM与Java程序
+date: 2022-12-15 23:12:12
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - JVM与Java程序
+---
 当启动一个Java程序时，一个JVM实例也就产生。当该程序关闭退出，这个JVM实例也就随之消亡。
 
 JVM实例负责运行一个Java程序

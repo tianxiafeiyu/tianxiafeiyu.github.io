@@ -1,5 +1,10 @@
 ---
 title: Elasticsearch学习
+date: 2022-12-16 00:43:25
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - Elasticsearch学习
 ---
 
 最近在做skywalking相关的项目，skywalking使用了Elasticsearch对数据指标进行存取，要理解skywalking的工程项目，就需要对 Elasticsearch 有一定的了解。

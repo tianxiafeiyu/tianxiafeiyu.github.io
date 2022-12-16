@@ -1,3 +1,11 @@
+---
+title: 各种语言版本的 Helloworld
+date: 2022-12-15 23:10:53
+updated: 2022-12-16 21:36:16
+toc: true
+tags: 
+    - 各种语言版本的 Helloworld
+---
 接触过C、C++、Java、C#、Python、Go，自认为接触过的编程语言很多了，那么各种语言的经典程序 Hello World 都是什么样的呢？
 
 ### C

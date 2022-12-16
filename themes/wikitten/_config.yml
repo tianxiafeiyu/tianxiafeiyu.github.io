@@ -10,17 +10,17 @@ menu:
 # Customize
 customize:
     logo:
-        enabled: false
+        enabled: true
         width: 40
         height: 40
-        url: /logo.png
+        url: /static/lin.png
     profile:
         enabled: false # Whether to show profile bar
         avatar: # css/images/avatar.png
         gravatar:  # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
         author: tianxiafeiyu
-        author_title: Designer & Programmer
-        location: Chengdu, China
+        author_title:
+        location:
         follow: https://github.com/tianxiafeiyu/
     highlight: monokai
     sidebar: left # sidebar position, options: left, right

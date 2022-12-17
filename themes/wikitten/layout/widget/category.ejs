@@ -22,7 +22,7 @@
             if (!use_categories_as_default_index) {
               const isHomePage = page.path.split('/').length == 1;
               if (isHomePage) {
-                pageRootDir = theme.customize.default_index_file.split('/')[0];
+                //pageRootDir = theme.customize.default_index_file.split('/')[0];
               }
             }
             // console.log(page.path, pageRootDir, pageRootDir2)
@@ -49,11 +49,22 @@
           function layArticles(posts) {
               var classifiedArticles = {'_root': []};
               var sortPosts = [];
+              var sort_key = theme.category.sort_key;
+              var direct = theme.category.direct;
+
               posts.forEach(function(post,i){
                 sortPosts.push(post)
               })
               sortPosts.sort(function(a, b){
-                return a.date - b.date
+                  if (!sort_key) {
+                      sort_key = 'date';
+                  }
+                  var a_value = a[sort_key];
+                  var b_value = b[sort_key];
+                  if (direct == 'asc' ) {
+                      return a_value - b_value;
+                  }
+                  return b_value - a_value;
               });
               sortPosts.forEach(function(post){
                   var last_post_cat;

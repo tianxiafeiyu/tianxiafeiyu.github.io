@@ -288,7 +288,7 @@ OPTIONS /class/student
 
 如果参数里面带有\_method参数，那\_method参数将override掉HTTP协议头里面的动作，用于扩展某些难以支持HTTP头部修改的场景、某些关键字如DELETE无法附带正文内容的问题、某些类防火墙系统截拦PUT等关键字场景。
 
-## 命名规范
+## 2 命名规范
 
 ### 2.1 关于URL中的横线和下划线
 
@@ -344,7 +344,7 @@ POST json数据举例：{“userName”: "zhangsan", "\_enableAuth": 1, "\_cache
 
 /^\[\_a-z]\[\_0-9a-z]\*\$/
 
-## URI格式
+## 3 URI格式
 
 <https://host:port{/separatePath}/{product}/{version}/{resourceURI}>
 

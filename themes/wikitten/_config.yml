@@ -44,6 +44,11 @@ widgets: # default use category only
     # - tagcloud
     # - links
 
+# 目录栏定制
+category:
+  sort_key: date # 根据什么排序 date|title
+  direct: desc # 排序方向 asc | desc
+
 # Excerpt 
 ## Auto creat excerpt with not <!--more-->
 ## Enable will truncate auto_excerpt.lines rows in post head to replace excerpt.

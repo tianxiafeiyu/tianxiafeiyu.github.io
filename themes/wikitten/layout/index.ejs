@@ -1,9 +1,9 @@
-<% 
+<%
 var use_categories_as_default_index = theme.customize.use_categories_as_default_index;
 var random_index_file = theme.customize.random_index_file;
 if (use_categories_as_default_index) { %>
 <%- partial('categories') %>
-<% 
+<%
 } else {
     var indexArticle;
     if (random_index_file) {
@@ -28,7 +28,7 @@ if (use_categories_as_default_index) { %>
 <%- partial('common/article', { post: post, index: true }) %>
 <% });
 }
-        
+
     if (use_categories_as_default_index && page.total > 1) { %>
 <nav id="page-nav">
   <%- paginator({

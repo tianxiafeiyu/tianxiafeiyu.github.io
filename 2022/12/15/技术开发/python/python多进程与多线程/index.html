@@ -10,12 +10,12 @@
         <meta name="keywords" content="python多进程与多线程" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="https:&#x2F;&#x2F;blog.csdn.net&#x2F;Victor2code&#x2F;article&#x2F;details&#x2F;109005171 &amp;#x20;关于进程与线程知乎高赞回答 把进程比作一列火车，线程比作火车的一节车厢  线程在进程下行进（单纯的车厢无法运行） 一个进程可以包含多个线程（一辆火车可以有多个车厢） 不同进程间数据很难共享（一辆火车上的乘客很难换到另外一辆火车，比如站点换乘） 同一进程下不同线">
+    <meta name="description" content="关于进程与线程把进程比作一列火车，线程比作火车的一节车厢  线程在进程下行进（单纯的车厢无法运行） 一个进程可以包含多个线程（一辆火车可以有多个车厢） 不同进程间数据很难共享（一辆火车上的乘客很难换到另外一辆火车，比如站点换乘） 同一进程下不同线程间数据很易共享（A车厢换到B车厢很容易） 进程要比线程消耗更多的计算机资源（采用多列火车相比多个车厢更耗资源） 进程间不会相互影响，一个线程挂掉将导致整">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python多进程与多线程">
 <meta property="og:url" content="https://tianxiafeiyu.github.io/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Dalin blog">
-<meta property="og:description" content="https:&#x2F;&#x2F;blog.csdn.net&#x2F;Victor2code&#x2F;article&#x2F;details&#x2F;109005171 &amp;#x20;关于进程与线程知乎高赞回答 把进程比作一列火车，线程比作火车的一节车厢  线程在进程下行进（单纯的车厢无法运行） 一个进程可以包含多个线程（一辆火车可以有多个车厢） 不同进程间数据很难共享（一辆火车上的乘客很难换到另外一辆火车，比如站点换乘） 同一进程下不同线">
+<meta property="og:description" content="关于进程与线程把进程比作一列火车，线程比作火车的一节车厢  线程在进程下行进（单纯的车厢无法运行） 一个进程可以包含多个线程（一辆火车可以有多个车厢） 不同进程间数据很难共享（一辆火车上的乘客很难换到另外一辆火车，比如站点换乘） 同一进程下不同线程间数据很易共享（A车厢换到B车厢很容易） 进程要比线程消耗更多的计算机资源（采用多列火车相比多个车厢更耗资源） 进程间不会相互影响，一个线程挂掉将导致整">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-12-15T23:22:29.000Z">
 <meta property="article:modified_time" content="2022-12-16T21:36:16.000Z">
@@ -981,16 +981,16 @@
       
   <ul class="unstyled" id="tree" > 
     <li class="file">
-      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/cmdb_mock/">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/push_cmdb_data/">
         
-        cmdb_mock
+        push_cmdb_data
         
       </a>
     </li> 
     <li class="file">
-      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/push_cmdb_data/">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/cmdb_mock/">
         
-        push_cmdb_data
+        cmdb_mock
         
       </a>
     </li> 
@@ -1194,9 +1194,7 @@
       
         
         
-        <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Victor2code/article/details/109005171">https://blog.csdn.net/Victor2code/article/details/109005171</a></p>
-<h2 id="amp-x20-关于进程与线程"><a href="#amp-x20-关于进程与线程" class="headerlink" title="&amp;#x20;关于进程与线程"></a>&amp;#x20;关于进程与线程</h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/25532384/answer/411179772">知乎高赞回答</a></p>
-<p>把进程比作一列火车，线程比作火车的一节车厢</p>
+        <h2 id="关于进程与线程"><a href="#关于进程与线程" class="headerlink" title="关于进程与线程"></a>关于进程与线程</h2><p>把进程比作一列火车，线程比作火车的一节车厢</p>
 <ul>
 <li>线程在进程下行进（单纯的车厢无法运行）</li>
 <li>一个进程可以包含多个线程（一辆火车可以有多个车厢）</li>
@@ -1211,7 +1209,7 @@
 <p>这里有几个知识点要重点记录一下</p>
 <p>单个CPU在任一时刻只能执行单个线程，只有多核CPU才能真正做到多个线程同时运行 一个进程包含多个线程，这些线程可以分布在多个CPU上 多核CPU同时运行的线程可以属于单个进程或不同进程 所以，在大多数编程语言中因为切换消耗的资源更少，多线程比多进程效率更高</p>
 <p>坏消息，Python是个特例！</p>
-<h2 id="GIL锁-amp-x20"><a href="#GIL锁-amp-x20" class="headerlink" title="GIL锁&amp;#x20;"></a>GIL锁&amp;#x20;</h2><p>python始于1991年，创立初期对运算的要求不高，为了解决多线程共享内存的数据安全问题，引入了GIL锁，全称为Global Interpreter Lock，也就是全局解释器锁。</p>
+<h2 id="GIL锁"><a href="#GIL锁" class="headerlink" title="GIL锁"></a>GIL锁</h2><p>python始于1991年，创立初期对运算的要求不高，为了解决多线程共享内存的数据安全问题，引入了GIL锁，全称为Global Interpreter Lock，也就是全局解释器锁。</p>
 <p>GIL规定，在一个进程中每次只能有一个线程在运行。这个GIL锁相当于是线程运行的资格证，某个线程想要运行，首先要获得GIL锁，然后遇到IO或者超时的时候释放GIL锁，给其余的线程去竞争，竞争成功的线程获得GIL锁得到下一次运行的机会。</p>
 <p>正是因为有GIL的存在，python的多线程其实是假的，所以才有人说python的多线程非常鸡肋。但是虽然每个进程有一个GIL锁，进程和进程之前还是不受影响的。</p>
 <p>GIL是个历史遗留问题，过去的版本迭代都是以GIL为基础来的，想要去除GIL还真不是一件容易的事，所以我们要做好和GIL长期面对的准备。</p>
@@ -1223,91 +1221,36 @@
 <li>CPU密集型操作使用多进程比较合适，例如海量运算</li>
 <li>IO密集型操作使用多线程比较合适，例如爬虫，文件处理，批量ssh操作服务器等等&amp;#x20;</li>
 </ul>
-<h2 id="amp-x20-代码实现"><a href="#amp-x20-代码实现" class="headerlink" title="&amp;#x20;代码实现"></a>&amp;#x20;代码实现</h2><p>待执行函数</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>待执行函数</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>():</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;process &#123;&#125; starts&#x27;</span>.<span class="built_in">format</span>(os.getpid()))</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;process &#123;&#125; ends&#x27;</span>.<span class="built_in">format</span>(os.getpid()))</span><br></pre></td></tr></table></figure>
 
 <h3 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h3><p>做为对比，首先来看看顺序执行两遍函数的情况</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    print(&#x27;main process is &#123;&#125;&#x27;.format(os.getpid()))</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    ### single process</span><br><span class="line">    func()</span><br><span class="line">    func()</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    print(&#x27;total time is &#123;&#125;&#x27;.format(str(end_time - start_time)))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;main process is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(os.getpid()))</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    <span class="comment">### single process</span></span><br><span class="line">    func()</span><br><span class="line">    func()</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;total time is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(end_time - start_time)))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<pre><code># 打印结果如下
-main process is 24308
-process 24308 starts
-process 24308 ends
-process 24308 starts
-process 24308 ends
-total time is 4.001222372055054
-</code></pre>
+<p>打印结果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">main process is 24308</span><br><span class="line">process 24308 starts</span><br><span class="line">process 24308 ends</span><br><span class="line">process 24308 starts</span><br><span class="line">process 24308 ends</span><br><span class="line">total time is 4.001222372055054</span><br></pre></td></tr></table></figure>
 <p>可以看到，这里是<strong>单个进程</strong>先后顺序执行了两遍函数，共耗时约4秒。</p>
 <p>下面来看看<strong>多进程</strong>的情况</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    print(&#x27;main process is &#123;&#125;&#x27;.format(os.getpid()))</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    ### multiprocess</span><br><span class="line">    from multiprocessing import Process</span><br><span class="line">    p1 = Process(target=func)</span><br><span class="line">    p2 = Process(target=func)</span><br><span class="line">    p1.start()</span><br><span class="line">    p2.start()</span><br><span class="line">    p1.join()</span><br><span class="line">    p2.join()</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    print(&#x27;total time is &#123;&#125;&#x27;.format(str(end_time - start_time)))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;main process is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(os.getpid()))</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    <span class="comment">### multiprocess</span></span><br><span class="line">    <span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process</span><br><span class="line">    p1 = Process(target=func)</span><br><span class="line">    p2 = Process(target=func)</span><br><span class="line">    p1.start()</span><br><span class="line">    p2.start()</span><br><span class="line">    p1.join()</span><br><span class="line">    p2.join()</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;total time is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(end_time - start_time)))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>从主进程创建新的进程使用的是Process类，该类在实例化时通常接两个参数</p>
 <p>target - 新的进程执行的函数的函数名<br>args - 函数的参数，元组格式传入<br>这里因为func函数没有参数需要传递，所以args没有赋值。</p>
 <p>创建完Process对象以后通过start()方法来启动该进程，同时如果想让某个进程阻塞主进程，可以执行该进程的join()方法。正常情况下创建完子进程以后主进程会继续向下执行直到结束，如果有子进程阻塞了主进程则主进程会等待该子进程执行完以后才向下执行。这里主进程会等待p1和p2两个子进程都执行完毕才计算结束时间。</p>
 <p>打印结果如下</p>
-<pre><code>main process is 33536
-process 25764 starts
-process 11960 starts
-process 25764 ends
-process 11960 ends
-total time is 2.3870742321014404
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">main process is 33536</span><br><span class="line">process 25764 starts</span><br><span class="line">process 11960 starts</span><br><span class="line">process 25764 ends</span><br><span class="line">process 11960 ends</span><br><span class="line">total time is 2.3870742321014404</span><br></pre></td></tr></table></figure>
 <p>可以看到，创建的子进程和主进程的进程ID是不一样的，说明此时一共有三个进程在同时跑。最后的用时为2.387秒，几乎降到了顺序执行一半的程度，当然比单个函数执行的时间还是慢了点，说明进程的创建和停止还是需要耗时的。</p>
 <h3 id="进程池"><a href="#进程池" class="headerlink" title="进程池"></a>进程池</h3><p>从上面的例子可以看出，进程的创建和停止都是消耗资源的，所以进程绝不是越多越好。因为单个CPU核某时刻只能执行单个进程，所以最好的情况是将进程数量与CPU核数相等，这样可以最大化利用CPU。</p>
-<p>这时就有一个问题出现了，进程数少还好说，进程数多了的话如何自动去维持一个固定的进程数目呢，这时候就要用到进程池了。进程池就是规定一个可容纳最大进程数目的池子，当池子中进程数目不足时自动添加新进程，从而将同时运行的进程数目维持在一个上限之内。这里的上限就应该是CPU的核数。&amp;#x20;</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">	from multiprocessing import Process, cpu_count, Pool</span><br><span class="line">    print(&#x27;main process is &#123;&#125;&#x27;.format(os.getpid()))</span><br><span class="line">    print(&#x27;core number is &#123;&#125;&#x27;.format(cpu_count()))  # 8</span><br><span class="line">    start_time = time.time()</span><br><span class="line">	### multiprocess pool</span><br><span class="line">    p = Pool(8)</span><br><span class="line">    for i in range(14):</span><br><span class="line">        p.apply_async(func)</span><br><span class="line">    p.close()</span><br><span class="line">    p.join()</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    print(&#x27;total time is &#123;&#125;&#x27;.format(str(end_time - start_time)))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这时就有一个问题出现了，进程数少还好说，进程数多了的话如何自动去维持一个固定的进程数目呢，这时候就要用到进程池了。进程池就是规定一个可容纳最大进程数目的池子，当池子中进程数目不足时自动添加新进程，从而将同时运行的进程数目维持在一个上限之内。这里的上限就应该是CPU的核数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">	<span class="keyword">from</span> multiprocessing <span class="keyword">import</span> Process, cpu_count, Pool</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;main process is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(os.getpid()))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;core number is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(cpu_count()))  <span class="comment"># 8</span></span><br><span class="line">    start_time = time.time()</span><br><span class="line">	<span class="comment">### multiprocess pool</span></span><br><span class="line">    p = Pool(<span class="number">8</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">14</span>):</span><br><span class="line">        p.apply_async(func)</span><br><span class="line">    p.close()</span><br><span class="line">    p.join()</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;total time is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(end_time - start_time)))</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>这里我首先利用<code>cpu_count()</code>方法计算了一下我这台电脑的CPU核数，8核，所以进程池的最大进程数目设定为8。</p>
-<p>这里利用Pool类来创建进程池，传递一个参数是最大进程数。利用Pool对象的apply_async()方法往进程池中添加待执行的任务（注意不是进程，只是任务），这里也可以利用map_async(func,iterable)来添加，用来类似于内建的map()方法，不过需要待执行的函数带参数，类似下面这样&amp;#x20;</p>
-<pre><code>def func(n):
-    print(&#39;process &#123;&#125; starts&#39;.format(os.getpid()))
-    time.sleep(n)
-    print(&#39;process &#123;&#125; ends&#39;.format(os.getpid()))
-    
-### multiprocess pool
-    p = Pool(8)
-    # for i in range(14):
-    #     p.apply_async(func)
-    p.map_async(func,range(14))
-    p.close()
-    p.join()
-</code></pre>
+<p>这里利用Pool类来创建进程池，传递一个参数是最大进程数。利用Pool对象的apply_async()方法往进程池中添加待执行的任务（注意不是进程，只是任务），这里也可以利用map_async(func,iterable)来添加，用来类似于内建的map()方法，不过需要待执行的函数带参数，类似下面这样</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">func</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;process &#123;&#125; starts&#x27;</span>.<span class="built_in">format</span>(os.getpid()))</span><br><span class="line">    time.sleep(n)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;process &#123;&#125; ends&#x27;</span>.<span class="built_in">format</span>(os.getpid()))</span><br><span class="line">    </span><br><span class="line"><span class="comment">### multiprocess pool</span></span><br><span class="line">    p = Pool(<span class="number">8</span>)</span><br><span class="line">    <span class="comment"># for i in range(14):</span></span><br><span class="line">    <span class="comment">#     p.apply_async(func)</span></span><br><span class="line">    p.map_async(func,<span class="built_in">range</span>(<span class="number">14</span>))</span><br><span class="line">    p.close()</span><br><span class="line">    p.join()</span><br></pre></td></tr></table></figure>
 <p>然后是close()方法，进程池不再接受新的任务（注意不是进程），以及terminate()方法，关闭主进程，此时未开始的子进程都不会执行了。同样的，想要让进程池去阻塞主进程可以用join()方法。注意join()一定要在close()或者terminate()之后。</p>
-<p>上面的程序执行结果如下&amp;#x20;</p>
-<pre><code>main process is 12860
-core number is 8
-process 11956 starts
-process 34224 starts
-process 10596 starts
-process 20596 starts
-process 27668 starts
-process 15604 starts
-process 10820 starts
-process 16632 starts
-process 11956 ends
-process 11956 starts
-process 34224 ends
-process 34224 starts
-process 10596 ends
-process 10596 starts
-process 20596 ends
-process 20596 starts
-process 27668 ends
-process 27668 starts
-process 15604 ends
-process 15604 starts
-process 10820 ends
-process 16632 ends
-process 11956 ends
-process 34224 ends
-process 10596 ends
-process 20596 ends
-process 27668 ends
-process 15604 ends
-total time is 5.258298635482788
-</code></pre>
+<p>上面的程序执行结果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">main process is 12860</span><br><span class="line">core number is 8</span><br><span class="line">process 11956 starts</span><br><span class="line">process 34224 starts</span><br><span class="line">process 10596 starts</span><br><span class="line">process 20596 starts</span><br><span class="line">process 27668 starts</span><br><span class="line">process 15604 starts</span><br><span class="line">process 10820 starts</span><br><span class="line">process 16632 starts</span><br><span class="line">process 11956 ends</span><br><span class="line">process 11956 starts</span><br><span class="line">process 34224 ends</span><br><span class="line">process 34224 starts</span><br><span class="line">process 10596 ends</span><br><span class="line">process 10596 starts</span><br><span class="line">process 20596 ends</span><br><span class="line">process 20596 starts</span><br><span class="line">process 27668 ends</span><br><span class="line">process 27668 starts</span><br><span class="line">process 15604 ends</span><br><span class="line">process 15604 starts</span><br><span class="line">process 10820 ends</span><br><span class="line">process 16632 ends</span><br><span class="line">process 11956 ends</span><br><span class="line">process 34224 ends</span><br><span class="line">process 10596 ends</span><br><span class="line">process 20596 ends</span><br><span class="line">process 27668 ends</span><br><span class="line">process 15604 ends</span><br><span class="line">total time is 5.258298635482788</span><br></pre></td></tr></table></figure>
 <p>一共14个任务，在最大数目为8的进程池里面至少要执行两轮，同时加上进程启动和停止的消耗，最后用时5.258秒。</p>
-<h3 id="amp-x20-进程间通讯"><a href="#amp-x20-进程间通讯" class="headerlink" title="&amp;#x20;进程间通讯"></a>&amp;#x20;进程间通讯</h3><p>前面说到进程间是相互独立的，不共享内存空间，所以在一个进程中声明的变量在另一个进程中是看不到的(包括全局变量)。这时候就要借助一些工具来在两个进程间进行数据传输了，其中最常见的就是队列了。</p>
+<h3 id="进程间通讯"><a href="#进程间通讯" class="headerlink" title="进程间通讯"></a>进程间通讯</h3><p>前面说到进程间是相互独立的，不共享内存空间，所以在一个进程中声明的变量在另一个进程中是看不到的(包括全局变量)。这时候就要借助一些工具来在两个进程间进行数据传输了，其中最常见的就是队列了。</p>
 <p>队列（queue）在生产消费者模型中很常见，生产者进程在队列一端写入，消费者进程在队列另一端读取。</p>
 <p>首先创建两个函数，分别扮演生产者和消费者</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">write_to_queue</span>(<span class="params">queue</span>):</span><br><span class="line">    <span class="keyword">for</span> index <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;write &#123;&#125; to &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(index), queue))</span><br><span class="line">        queue.put(index)</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">read_from_queue</span>(<span class="params">queue</span>):</span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        result = queue.get(<span class="literal">True</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;get &#123;&#125; from &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(result), queue))</span><br></pre></td></tr></table></figure>
@@ -1317,176 +1260,48 @@ total time is 5.258298635482788
 
 <p>注意这里在创建子进程的时候就用元组的形式传递了参数，如果元组只有一个元素，记住添加逗号，否则会被认为是单个元素而不是元组。同时这里<strong>因为消费者是死循环，所以只是将生产者加入了阻塞</strong>，生产者进程执行完毕以后停止消费者进程。</p>
 <p>最后打印结果如下</p>
-<pre><code>main process is 28268
-core number is 8
-write 0 to &lt;multiprocessing.queues.Queue object at 0x0000023C6B25BF88&gt;
-get 0 from &lt;multiprocessing.queues.Queue object at 0x000002EF410B1C88&gt;
-write 1 to &lt;multiprocessing.queues.Queue object at 0x0000023C6B25BF88&gt;
-get 1 from &lt;multiprocessing.queues.Queue object at 0x000002EF410B1C88&gt;
-write 2 to &lt;multiprocessing.queues.Queue object at 0x0000023C6B25BF88&gt;
-get 2 from &lt;multiprocessing.queues.Queue object at 0x000002EF410B1C88&gt;
-write 3 to &lt;multiprocessing.queues.Queue object at 0x0000023C6B25BF88&gt;
-get 3 from &lt;multiprocessing.queues.Queue object at 0x000002EF410B1C88&gt;
-write 4 to &lt;multiprocessing.queues.Queue object at 0x0000023C6B25BF88&gt;
-get 4 from &lt;multiprocessing.queues.Queue object at 0x000002EF410B1C88&gt;
-total time is 5.603313446044922
-</code></pre>
-<h3 id="amp-x20-多线程"><a href="#amp-x20-多线程" class="headerlink" title="&amp;#x20;多线程"></a>&amp;#x20;多线程</h3><p>首先创建一个函数用于测试</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">main process is 28268</span><br><span class="line">core number is 8</span><br><span class="line">write 0 to &lt;multiprocessing.queues.Queue object at 0x0000023C6B25BF88&gt;</span><br><span class="line">get 0 from &lt;multiprocessing.queues.Queue object at 0x000002EF410B1C88&gt;</span><br><span class="line">write 1 to &lt;multiprocessing.queues.Queue object at 0x0000023C6B25BF88&gt;</span><br><span class="line">get 1 from &lt;multiprocessing.queues.Queue object at 0x000002EF410B1C88&gt;</span><br><span class="line">write 2 to &lt;multiprocessing.queues.Queue object at 0x0000023C6B25BF88&gt;</span><br><span class="line">get 2 from &lt;multiprocessing.queues.Queue object at 0x000002EF410B1C88&gt;</span><br><span class="line">write 3 to &lt;multiprocessing.queues.Queue object at 0x0000023C6B25BF88&gt;</span><br><span class="line">get 3 from &lt;multiprocessing.queues.Queue object at 0x000002EF410B1C88&gt;</span><br><span class="line">write 4 to &lt;multiprocessing.queues.Queue object at 0x0000023C6B25BF88&gt;</span><br><span class="line">get 4 from &lt;multiprocessing.queues.Queue object at 0x000002EF410B1C88&gt;</span><br><span class="line">total time is 5.603313446044922</span><br></pre></td></tr></table></figure>
+<h3 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h3><p>首先创建一个函数用于测试</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">func2</span>(<span class="params">n</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;thread &#123;&#125; starts&#x27;</span>.<span class="built_in">format</span>(threading.current_thread().name))</span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;thread &#123;&#125; ends&#x27;</span>.<span class="built_in">format</span>(threading.current_thread().name))</span><br><span class="line">    <span class="keyword">return</span> n</span><br></pre></td></tr></table></figure>
 
 <p>多线程使用的是<code>threading.Thread</code>类</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;main thread is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(threading.current_thread().name))</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    <span class="comment">### multithread</span></span><br><span class="line">    t1 = threading.Thread(target=func2, args=(<span class="number">1</span>,))</span><br><span class="line">    t2 = threading.Thread(target=func2, args=(<span class="number">2</span>,))</span><br><span class="line">    t1.start()</span><br><span class="line">    t2.start()</span><br><span class="line">    t1.join()</span><br><span class="line">    t2.join()</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;total time is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(end_time - start_time)))</span><br></pre></td></tr></table></figure>
 
-<p>基本用法和上面进程的<code>Process</code>差不多，打印的结果如下</p>
-<pre><code>main thread is MainThread
-thread Thread-1 starts
-thread Thread-2 starts
-thread Thread-1 ends
-thread Thread-2 ends
-total time is 2.002077341079712
-</code></pre>
-<p>对比前面多进程的2.38秒，这里还是快了不少的。</p>
-<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a><a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%BA%BF%E7%A8%8B%E6%B1%A0&spm=1001.2101.3001.7020">线程池</a></h3><p>和进程一样，通常是使用线程池来完成自动控制线程数量的目的。但是这里就没有一个推荐的上限数量了，毕竟因为GIL的存在不管怎么样每次都只有一个线程在跑。</p>
-<p>同时threading模块是不支持线程池的，python3.4以后官方推出了concurrent.futures模块来统一进程池和线程池的接口，这里关注一下线程池。&amp;#x20;</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor, wait, ALL_COMPLETED</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;main thread is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(threading.current_thread().name))</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    <span class="comment">### threadpool</span></span><br><span class="line">    executor = ThreadPoolExecutor(<span class="number">5</span>)</span><br><span class="line">    all_tasks = [executor.submit(func2, i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>)]</span><br><span class="line">    wait(all_tasks, return_when=ALL_COMPLETED)</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;total time is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(end_time - start_time)))</span><br></pre></td></tr></table></figure>
+<p>基本用法和上面进程的<code>Process</code>差不多，打印的结果如下<br>&#96;&#96;<br>main thread is MainThread<br>thread Thread-1 starts<br>thread Thread-2 starts<br>thread Thread-1 ends<br>thread Thread-2 ends<br>total time is 2.002077341079712</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">对比前面多进程的2.38秒，这里还是快了不少的。</span><br><span class="line"></span><br><span class="line">### [线程池](https://so.csdn.net/so/search?q=%E7%BA%BF%E7%A8%8B%E6%B1%A0\&amp;spm=1001.2101.3001.7020)</span><br><span class="line"></span><br><span class="line">和进程一样，通常是使用线程池来完成自动控制线程数量的目的。但是这里就没有一个推荐的上限数量了，毕竟因为GIL的存在不管怎么样每次都只有一个线程在跑。</span><br><span class="line"></span><br><span class="line">同时threading模块是不支持线程池的，python3.4以后官方推出了concurrent.futures模块来统一进程池和线程池的接口，这里关注一下线程池。</span><br><span class="line"></span><br><span class="line">```python</span><br><span class="line">from concurrent.futures import ThreadPoolExecutor, wait, ALL_COMPLETED</span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">	print(&#x27;main thread is &#123;&#125;&#x27;.format(threading.current_thread().name))</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    ### threadpool</span><br><span class="line">    executor = ThreadPoolExecutor(5)</span><br><span class="line">    all_tasks = [executor.submit(func2, i) for i in range(8)]</span><br><span class="line">    wait(all_tasks, return_when=ALL_COMPLETED)</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    print(&#x27;total time is &#123;&#125;&#x27;.format(str(end_time - start_time)))</span><br></pre></td></tr></table></figure>
 
 <p>这里利用ThreadPoolExecutor()创建一个线程池，最大上限为5，然后利用submit()方法往线程池中添加任务（注意是任务，不是线程），submit方法会返回一个future对象，注意这里我将创建的任务放进了一个列表中。</p>
 <p>如果要阻塞主线程，不能用join方法了，需要用到wait()方法，该方法接受三个参数，第一个参数是一个future对象的列表，第二个参数是超时时间，这里放空，第三个参数是在什么时候结束阻塞，默认是ALL_COMPLETED表示全部任务结束之后，也可以设定为FIRST_COMPLETED表示第一个任务结束以后。</p>
 <p>打印结果如下</p>
-<pre><code>main thread is MainThread
-thread ThreadPoolExecutor-0_0 starts
-thread ThreadPoolExecutor-0_1 starts
-thread ThreadPoolExecutor-0_2 starts
-thread ThreadPoolExecutor-0_3 starts
-thread ThreadPoolExecutor-0_4 starts
-thread ThreadPoolExecutor-0_0 ends
-thread ThreadPoolExecutor-0_0 starts
-thread ThreadPoolExecutor-0_2 ends
-thread ThreadPoolExecutor-0_2 starts
-thread ThreadPoolExecutor-0_1 ends
-thread ThreadPoolExecutor-0_1 starts
-thread ThreadPoolExecutor-0_3 ends
-thread ThreadPoolExecutor-0_4 ends
-thread ThreadPoolExecutor-0_0 ends
-thread ThreadPoolExecutor-0_2 endsthread ThreadPoolExecutor-0_1 ends
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">main thread is MainThread</span><br><span class="line">thread ThreadPoolExecutor-0_0 starts</span><br><span class="line">thread ThreadPoolExecutor-0_1 starts</span><br><span class="line">thread ThreadPoolExecutor-0_2 starts</span><br><span class="line">thread ThreadPoolExecutor-0_3 starts</span><br><span class="line">thread ThreadPoolExecutor-0_4 starts</span><br><span class="line">thread ThreadPoolExecutor-0_0 ends</span><br><span class="line">thread ThreadPoolExecutor-0_0 starts</span><br><span class="line">thread ThreadPoolExecutor-0_2 ends</span><br><span class="line">thread ThreadPoolExecutor-0_2 starts</span><br><span class="line">thread ThreadPoolExecutor-0_1 ends</span><br><span class="line">thread ThreadPoolExecutor-0_1 starts</span><br><span class="line">thread ThreadPoolExecutor-0_3 ends</span><br><span class="line">thread ThreadPoolExecutor-0_4 ends</span><br><span class="line">thread ThreadPoolExecutor-0_0 ends</span><br><span class="line">thread ThreadPoolExecutor-0_2 endsthread ThreadPoolExecutor-0_1 ends</span><br><span class="line"></span><br><span class="line">total time is 4.003619432449341</span><br></pre></td></tr></table></figure>
 
-total time is 4.003619432449341
-</code></pre>
 <p>最后的结果也是接近两倍的函数耗时4秒，比进程池快了不止一点点。</p>
-<h3 id="amp-x20-map"><a href="#amp-x20-map" class="headerlink" title="&amp;#x20;map"></a>&amp;#x20;map</h3><p>这里需要额外提一下多线程中的map方法。</p>
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><p>这里需要额外提一下多线程中的map方法。</p>
 <p>多进程中的<code>map_async()</code>方法和多线程中的<code>map()</code>方法除了将任务加入线程池，还会<strong>按添加的顺序</strong>返回每个线程的执行结果，这个执行结果也很特殊，是一个生成器</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor, wait, ALL_COMPLETED</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;main thread is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(threading.current_thread().name))</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    <span class="comment">### map</span></span><br><span class="line">    executor = ThreadPoolExecutor(<span class="number">5</span>)</span><br><span class="line">    all_results = executor.<span class="built_in">map</span>(func2, <span class="built_in">range</span>(<span class="number">8</span>))  <span class="comment"># map返回的是线程执行的结果的生成器对象</span></span><br><span class="line">    <span class="keyword">for</span> result <span class="keyword">in</span> all_results:</span><br><span class="line">        <span class="built_in">print</span>(result)</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;total time is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(end_time - start_time)))</span><br></pre></td></tr></table></figure>
 
 <p>这里的<code>all_results</code>是一个生成器，可以通过for循环来按顺序获取每个线程的返回结果。同时值得注意的是<strong>map方法并不会阻塞主线程，也没法使用wait方法</strong>，只能通过获取生成器的结果来阻塞主线程了。</p>
 <p>执行结果如下</p>
-<pre><code>main thread is MainThread
-thread ThreadPoolExecutor-0_0 starts
-thread ThreadPoolExecutor-0_1 starts
-thread ThreadPoolExecutor-0_2 starts
-thread ThreadPoolExecutor-0_3 starts
-thread ThreadPoolExecutor-0_4 starts
-thread ThreadPoolExecutor-0_0 ends
-thread ThreadPoolExecutor-0_0 starts
-0
-thread ThreadPoolExecutor-0_1 ends
-thread ThreadPoolExecutor-0_1 starts
-thread ThreadPoolExecutor-0_2 ends
-1
-thread ThreadPoolExecutor-0_2 starts
-2
-thread ThreadPoolExecutor-0_3 ends
-3
-thread ThreadPoolExecutor-0_4 ends
-4
-thread ThreadPoolExecutor-0_0 ends
-5
-thread ThreadPoolExecutor-0_1 ends
-6
-thread ThreadPoolExecutor-0_2 ends
-7
-total time is 4.004628419876099
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">main thread is MainThread</span><br><span class="line">thread ThreadPoolExecutor-0_0 starts</span><br><span class="line">thread ThreadPoolExecutor-0_1 starts</span><br><span class="line">thread ThreadPoolExecutor-0_2 starts</span><br><span class="line">thread ThreadPoolExecutor-0_3 starts</span><br><span class="line">thread ThreadPoolExecutor-0_4 starts</span><br><span class="line">thread ThreadPoolExecutor-0_0 ends</span><br><span class="line">thread ThreadPoolExecutor-0_0 starts</span><br><span class="line">0</span><br><span class="line">thread ThreadPoolExecutor-0_1 ends</span><br><span class="line">thread ThreadPoolExecutor-0_1 starts</span><br><span class="line">thread ThreadPoolExecutor-0_2 ends</span><br><span class="line">1</span><br><span class="line">thread ThreadPoolExecutor-0_2 starts</span><br><span class="line">2</span><br><span class="line">thread ThreadPoolExecutor-0_3 ends</span><br><span class="line">3</span><br><span class="line">thread ThreadPoolExecutor-0_4 ends</span><br><span class="line">4</span><br><span class="line">thread ThreadPoolExecutor-0_0 ends</span><br><span class="line">5</span><br><span class="line">thread ThreadPoolExecutor-0_1 ends</span><br><span class="line">6</span><br><span class="line">thread ThreadPoolExecutor-0_2 ends</span><br><span class="line">7</span><br><span class="line">total time is 4.004628419876099</span><br></pre></td></tr></table></figure>
 <h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3><p>想要不用map方法又要异步获取线程的返回值，还可以用<code>as_completed()</code>方法</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> concurrent.futures <span class="keyword">import</span> ThreadPoolExecutor, wait, ALL_COMPLETED, as_completed</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">	<span class="built_in">print</span>(<span class="string">&#x27;main thread is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(threading.current_thread().name))</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    executor = ThreadPoolExecutor(<span class="number">5</span>)</span><br><span class="line">    all_tasks = [executor.submit(func2, i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>)]</span><br><span class="line">    <span class="keyword">for</span> future <span class="keyword">in</span> as_completed(all_tasks):</span><br><span class="line">        <span class="built_in">print</span>(future.result())</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;total time is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(end_time - start_time)))</span><br></pre></td></tr></table></figure>
-
-<pre><code>main thread is MainThread
-thread ThreadPoolExecutor-0_0 starts
-thread ThreadPoolExecutor-0_1 starts
-thread ThreadPoolExecutor-0_2 starts
-thread ThreadPoolExecutor-0_3 starts
-thread ThreadPoolExecutor-0_4 starts
-thread ThreadPoolExecutor-0_0 endsthread ThreadPoolExecutor-0_1 ends
-thread ThreadPoolExecutor-0_1 starts
-1
-thread ThreadPoolExecutor-0_2 ends
-thread ThreadPoolExecutor-0_2 starts
-2
-
-thread ThreadPoolExecutor-0_0 starts
-thread ThreadPoolExecutor-0_3 ends
-thread ThreadPoolExecutor-0_4 ends
-0
-3
-4
-thread ThreadPoolExecutor-0_1 ends
-5
-thread ThreadPoolExecutor-0_0 ends
-7
-thread ThreadPoolExecutor-0_2 ends
-6
-total time is 4.003146648406982
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">main thread is MainThread</span><br><span class="line">thread ThreadPoolExecutor-0_0 starts</span><br><span class="line">thread ThreadPoolExecutor-0_1 starts</span><br><span class="line">thread ThreadPoolExecutor-0_2 starts</span><br><span class="line">thread ThreadPoolExecutor-0_3 starts</span><br><span class="line">thread ThreadPoolExecutor-0_4 starts</span><br><span class="line">thread ThreadPoolExecutor-0_0 endsthread ThreadPoolExecutor-0_1 ends</span><br><span class="line">thread ThreadPoolExecutor-0_1 starts</span><br><span class="line">1</span><br><span class="line">thread ThreadPoolExecutor-0_2 ends</span><br><span class="line">thread ThreadPoolExecutor-0_2 starts</span><br><span class="line">2</span><br><span class="line"></span><br><span class="line">thread ThreadPoolExecutor-0_0 starts</span><br><span class="line">thread ThreadPoolExecutor-0_3 ends</span><br><span class="line">thread ThreadPoolExecutor-0_4 ends</span><br><span class="line">0</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">thread ThreadPoolExecutor-0_1 ends</span><br><span class="line">5</span><br><span class="line">thread ThreadPoolExecutor-0_0 ends</span><br><span class="line">7</span><br><span class="line">thread ThreadPoolExecutor-0_2 ends</span><br><span class="line">6</span><br><span class="line">total time is 4.003146648406982</span><br></pre></td></tr></table></figure>
 <p>这里的线程结果就不是按照就不是按照添加任务的顺序，而是按照返回的先后顺序打印的。</p>
 <p>所以，想要获取多线程的返回结果，按照添加顺序就用map方法，按照返回的先后顺序就用as_completed方法。</p>
 <p>想要更深入了解python中的futures模块，可以参考下面的文章学习下源码分析</p>
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/b9b3d66aa0be">https://www.jianshu.com/p/b9b3d66aa0be</a></p>
 <p>同时python中还有专门做异步编程的asyncio模块，以后有时间再专门写文章说明。</p>
 <h3 id="线程间通讯"><a href="#线程间通讯" class="headerlink" title="线程间通讯"></a>线程间通讯</h3><p>与多进程的内存独立不同，多线程间可以共享内存，所以同一个变量是可以被多个线程共享的，不需要额外的插件。想要让多个线程能同时操作某变量，要么将该变量作为参数传递到线程中（必须是可变变量，例如list和dict），要么作为全局变量在线程中用global关键字进行声明。</p>
-<p>因为有GIL的存在，每次只能有一个线程在对变量进行操作，有人就认为python不需要互斥锁了。但是实际情况却和我们想的相差很远，先看下面这个例子&amp;#x20;</p>
-<pre><code>def increase(var):
-    global total_increase_times
-    for i in range(1000000):
-        var[0] += 1
-        total_increase_times += 1
-
-
-def decrease(var):
-    global total_decrease_times
-    for i in range(1000000):
-        var[0] -= 1
-        total_decrease_times += 1
-        
-        
-if __name__ == &#39;__main__&#39;:
-    print(&#39;main thread is &#123;&#125;&#39;.format(threading.current_thread().name))
-    start_time = time.time()
-    var = [5]
-    total_increase_times = 0
-    total_decrease_times = 0
-    t1 = threading.Thread(target=increase, args=(var,))
-    t2 = threading.Thread(target=decrease, args=(var,))
-    t1.start()
-    t2.start()
-    t1.join()
-    t2.join()
-    print(var)
-    print(&#39;total increase times: &#123;&#125;&#39;.format(str(total_increase_times)))
-    print(&#39;total decrease times: &#123;&#125;&#39;.format(str(total_decrease_times)))
-    end_time = time.time()
-    print(&#39;total time is &#123;&#125;&#39;.format(str(end_time - start_time)))
-</code></pre>
+<p>因为有GIL的存在，每次只能有一个线程在对变量进行操作，有人就认为python不需要互斥锁了。但是实际情况却和我们想的相差很远，先看下面这个例子:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">increase</span>(<span class="params">var</span>):</span><br><span class="line">    <span class="keyword">global</span> total_increase_times</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000000</span>):</span><br><span class="line">        var[<span class="number">0</span>] += <span class="number">1</span></span><br><span class="line">        total_increase_times += <span class="number">1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">decrease</span>(<span class="params">var</span>):</span><br><span class="line">    <span class="keyword">global</span> total_decrease_times</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1000000</span>):</span><br><span class="line">        var[<span class="number">0</span>] -= <span class="number">1</span></span><br><span class="line">        total_decrease_times += <span class="number">1</span></span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;main thread is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(threading.current_thread().name))</span><br><span class="line">    start_time = time.time()</span><br><span class="line">    var = [<span class="number">5</span>]</span><br><span class="line">    total_increase_times = <span class="number">0</span></span><br><span class="line">    total_decrease_times = <span class="number">0</span></span><br><span class="line">    t1 = threading.Thread(target=increase, args=(var,))</span><br><span class="line">    t2 = threading.Thread(target=decrease, args=(var,))</span><br><span class="line">    t1.start()</span><br><span class="line">    t2.start()</span><br><span class="line">    t1.join()</span><br><span class="line">    t2.join()</span><br><span class="line">    <span class="built_in">print</span>(var)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;total increase times: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(total_increase_times)))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;total decrease times: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(total_decrease_times)))</span><br><span class="line">    end_time = time.time()</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;total time is &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">str</span>(end_time - start_time)))</span><br></pre></td></tr></table></figure>
 <p>这里首先定义了两个函数，分别对传进来的list的第一个元素进行加一和减一操作，重复多遍。这里之所以使用list因为要满足可变变量的要求，对于python中变量和传参不熟悉的朋友可以参考另一篇博客《python3中各类变量的内存堆栈分配和函数传参区别实例详解》。</p>
 <p>然后在主线程中创建两个子线程分别运行，同时创建两个全局变量total_increase_times和total_decrease_times分别来统计对变量进行加值和减值的次数，为了防止可能由于操作次数不一致导致的错误。</p>
-<p>打印结果如下&amp;#x20;</p>
-<pre><code>main thread is MainThread
-[281970]
-total increase times: 1000000
-total decrease times: 1000000
-total time is 0.7370336055755615
-</code></pre>
+<p>打印结果如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">main thread is MainThread</span><br><span class="line">[281970]</span><br><span class="line">total increase times: 1000000</span><br><span class="line">total decrease times: 1000000</span><br><span class="line">total time is 0.7370336055755615</span><br></pre></td></tr></table></figure>
+
 <p>很奇怪，对变量值增加和减少同样的次数，最后的结果却和原先的值不一致。而且如果将该程序重复运行多次，每次得到的最终值都不同，有正有负。</p>
 <p>这是为什么呢？</p>
-<p>这是因为某些在我们看来是原子操作的，例如+或者-，在python看来不是的。例如执行a+&#x3D;1操作，在python看来其实是三步：获取a的值，将值加1，将新的值赋给a。在这三步中的任意位置，该线程都有可能被暂停，然后让别的线程先运行。这时候就有可能出现如下的局面&amp;#x20;</p>
+<p>这是因为某些在我们看来是原子操作的，例如+或者-，在python看来不是的。例如执行a+&#x3D;1操作，在python看来其实是三步：获取a的值，将值加1，将新的值赋给a。在这三步中的任意位置，该线程都有可能被暂停，然后让别的线程先运行。这时候就有可能出现如下的局面:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">线程<span class="number">1</span>获取了a的值为<span class="number">10</span>，被暂停</span><br><span class="line">线程<span class="number">2</span>获取了a的值为<span class="number">10</span></span><br><span class="line">线程<span class="number">2</span>将a的值赋值为<span class="number">9</span>，被暂停</span><br><span class="line">线程<span class="number">1</span>将a的值赋值为<span class="number">11</span>，被暂停</span><br><span class="line">线程<span class="number">2</span>获取了a的值为<span class="number">11</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <p>这样线程1就将线程2的操作全部覆盖了，这也就是为什么最后的结果有正有负。</p>
@@ -1507,33 +1322,32 @@ total time is 2.1161584854125977
 <p>最终的结果不管执行多少次都没有问题，但是因为前面说的等待锁的过程会造成大量时间的浪费，这里耗时2.116秒比前面的0.737秒要慢了3倍。</p>
 <p>这里不能像进程中那样用terminate方法停止一个线程，需要用<code>setDaemon</code>方法。</p>
 <p>打印结果如下</p>
-<pre><code>main thread is MainThread
-write 0 to &lt;queue.Queue object at 0x000001E3DACD21C8&gt;
-get 0 from &lt;queue.Queue object at 0x000001E3DACD21C8&gt;
-write 1 to &lt;queue.Queue object at 0x000001E3DACD21C8&gt;
-get 1 from &lt;queue.Queue object at 0x000001E3DACD21C8&gt;
-write 2 to &lt;queue.Queue object at 0x000001E3DACD21C8&gt;
-get 2 from &lt;queue.Queue object at 0x000001E3DACD21C8&gt;
-write 3 to &lt;queue.Queue object at 0x000001E3DACD21C8&gt;
-get 3 from &lt;queue.Queue object at 0x000001E3DACD21C8&gt;
-write 4 to &lt;queue.Queue object at 0x000001E3DACD21C8&gt;
-get 4 from &lt;queue.Queue object at 0x000001E3DACD21C8&gt;
-total time is 5.00357986831665
-</code></pre>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">main thread is MainThread</span><br><span class="line">write 0 to &lt;queue.Queue object at 0x000001E3DACD21C8&gt;</span><br><span class="line">get 0 from &lt;queue.Queue object at 0x000001E3DACD21C8&gt;</span><br><span class="line">write 1 to &lt;queue.Queue object at 0x000001E3DACD21C8&gt;</span><br><span class="line">get 1 from &lt;queue.Queue object at 0x000001E3DACD21C8&gt;</span><br><span class="line">write 2 to &lt;queue.Queue object at 0x000001E3DACD21C8&gt;</span><br><span class="line">get 2 from &lt;queue.Queue object at 0x000001E3DACD21C8&gt;</span><br><span class="line">write 3 to &lt;queue.Queue object at 0x000001E3DACD21C8&gt;</span><br><span class="line">get 3 from &lt;queue.Queue object at 0x000001E3DACD21C8&gt;</span><br><span class="line">write 4 to &lt;queue.Queue object at 0x000001E3DACD21C8&gt;</span><br><span class="line">get 4 from &lt;queue.Queue object at 0x000001E3DACD21C8&gt;</span><br><span class="line">total time is 5.00357986831665</span><br></pre></td></tr></table></figure>
 <h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>多进程间的变量共享也可以用类似多线程那样传递变量或者全局变量的方式，限于篇幅这里没有展开说，感兴趣的朋友可以参考知乎上一篇不错的文章https:&#x2F;&#x2F;zhuanlan.zhihu.com&#x2F;p&#x2F;68828849</p>
-<h3 id="amp-x20-multiprocessing中的共享变量"><a href="#amp-x20-multiprocessing中的共享变量" class="headerlink" title="&amp;#x20;multiprocessing中的共享变量"></a>&amp;#x20;multiprocessing中的共享变量</h3><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结下文章中涉及的知识点</p>
-<p>CPU密集型使用多进程，IO密集型使用多线程</p>
-<p>查看进程ID和线程ID的命令分别是os.getpid()和threading.current_thread()</p>
-<p>多进程使用multiprocessing就可以了，通常使用进程池来完成操作，阻塞主进程使用join方法</p>
-<p>多线程使用threading模块，线程池使用concurrent.futures模块，同时主线程的阻塞方法有多种</p>
-<p>不管多进程还是多线程，生产消费模型都可以用队列来完成，如果要用多线程操作同一变量记得加锁</p>
+<h3 id="multiprocessing中的共享变量"><a href="#multiprocessing中的共享变量" class="headerlink" title="multiprocessing中的共享变量"></a>multiprocessing中的共享变量</h3><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总结下文章中涉及的知识点</p>
+<ul>
+<li><p>CPU密集型使用多进程，IO密集型使用多线程</p>
+</li>
+<li><p>查看进程ID和线程ID的命令分别是os.getpid()和threading.current_thread()</p>
+</li>
+<li><p>多进程使用multiprocessing就可以了，通常使用进程池来完成操作，阻塞主进程使用join方法</p>
+</li>
+<li><p>多线程使用threading模块，线程池使用concurrent.futures模块，同时主线程的阻塞方法有多种</p>
+</li>
+<li><p>不管多进程还是多线程，生产消费模型都可以用队列来完成，如果要用多线程操作同一变量记得加锁</p>
+</li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/Victor2code/article/details/109005171">https://blog.csdn.net/Victor2code/article/details/109005171</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/25532384/answer/411179772">https://www.zhihu.com/question/25532384/answer/411179772</a></li>
+</ul>
 
     </div>
     
   </div>
 </article>
 <div id="toc" class="toc-article">
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#amp-x20-%E5%85%B3%E4%BA%8E%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B"><span class="toc-text">&amp;#x20;关于进程与线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GIL%E9%94%81-amp-x20"><span class="toc-text">GIL锁&amp;#x20;</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B-vs-%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">多进程 vs 多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#amp-x20-%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">&amp;#x20;代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="toc-text">多进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%B1%A0"><span class="toc-text">进程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#amp-x20-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF"><span class="toc-text">&amp;#x20;进程间通讯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#amp-x20-%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">&amp;#x20;多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E6%B1%A0"><span class="toc-text">线程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#amp-x20-map"><span class="toc-text">&amp;#x20;map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5"><span class="toc-text">异步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF"><span class="toc-text">线程间通讯</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95"><span class="toc-text">扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#amp-x20-multiprocessing%E4%B8%AD%E7%9A%84%E5%85%B1%E4%BA%AB%E5%8F%98%E9%87%8F"><span class="toc-text">&amp;#x20;multiprocessing中的共享变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E8%BF%9B%E7%A8%8B%E4%B8%8E%E7%BA%BF%E7%A8%8B"><span class="toc-text">关于进程与线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GIL%E9%94%81"><span class="toc-text">GIL锁</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B-vs-%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">多进程 vs 多线程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E8%BF%9B%E7%A8%8B"><span class="toc-text">多进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%B1%A0"><span class="toc-text">进程池</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF"><span class="toc-text">进程间通讯</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="toc-text">多线程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#map"><span class="toc-text">map</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5"><span class="toc-text">异步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E9%97%B4%E9%80%9A%E8%AE%AF"><span class="toc-text">线程间通讯</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95"><span class="toc-text">扩展</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#multiprocessing%E4%B8%AD%E7%9A%84%E5%85%B1%E4%BA%AB%E5%8F%98%E9%87%8F"><span class="toc-text">multiprocessing中的共享变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">参考资料</span></a></li></ol>
 </div></section>
         </div>
         <!-- <footer id="footer">

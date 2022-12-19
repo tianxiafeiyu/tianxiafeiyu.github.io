@@ -1,20 +1,14 @@
 ---
-title: session，cookie，token学习【转】
+title: session，cookie，token学习
 date: 2022-12-15 23:10:53
 updated: 2022-12-16 21:36:16
 toc: true
 tags: 
-    - session，cookie，token学习【转】
+    - session，cookie，token学习
 ---
-转载自 https://segmentfault.com/a/1190000017831088
 
-## session，cookie和token究竟是什么
-
-#### 1. http是一个无状态协议
-什么是无状态呢？就是说这一次请求和上一次请求是没有任何关系的，互不认识的，没有关联的。这种无状态的的好处是快速。坏处是假如我们想要把 www.zhihu.com/login.html 和 www.zhihu.com/index.html 关联起来，必须使用某些手段和工具
-
-#### 2. cookie和session
-2.1 http请求过程
+## http
+http是一个无状态协议, 也就是说这一次请求和上一次请求是没有任何关系的，互不认识的，没有关联的。这种无状态的的好处是快速。坏处是假如我们想要把 www.zhihu.com/login.html 和 www.zhihu.com/index.html 关联起来，必须使用某些手段和工具。
 
 由于http的无状态性，为了使某个域名下的所有网页能够共享某些数据，session和cookie出现了。客户端访问服务器的流程如下
 - 首先，客户端会发送一个http请求到服务器端。
@@ -25,66 +19,7 @@ Set-Cookie: value[; expires=date][; domain=domain][; path=path][; secure]
 
 ![请求过程](https://note.youdao.com/yws/api/personal/file/567D6B03A5704ABCA184CCB2CFA9D8E7?method=download&shareKey=712516258a5c4b9bcc0375ff5e046231)
 
-2.2 注意
-
-- cookie只是实现session的其中一种方案。虽然是最常用的，但并不是唯一的方法。禁用cookie后还有其他方法存储，比如放在url中
-- 现在大多都是Session + Cookie的方式，但是只用session不用cookie，或是只用cookie不用session，在理论上都可以保持会话状态。可是实际中因为多种原因，一般不会单独使用
-- 用session只需要在客户端保存一个id，实际上大量数据都是保存在服务端。如果全部用cookie，数据量大的时候客户端是没有那么多空间的。
-- 如果只用cookie不用session，那么账户信息全部保存在客户端，一旦被劫持，全部信息都会泄露。并且客户端数据量变大，网络传输的数据量也会变大
-
-2.3 小结
-
-简而言之, session 有如用户信息档案表, 里面包含了用户的认证信息和登录状态等信息. 而 cookie 就是用户通行
-
-#### 3. token
-3.1 概念
-
-token 也称作令牌，由uid+time+sign[+固定参数]
-token 的认证方式类似于临时的证书签名, 并且是一种服务端无状态的认证方式, 非常适合于 REST API 的场景. 所谓无状态就是服务端并不会保存身份认证相关的数据。
-
-3.2 组成
-
-- uid: 用户唯一身份标识
-- time: 当前时间的时间戳
-- sign: 签名, 使用 hash/encrypt 压缩成定长的十六进制字符串，以防止第三方恶意拼接
-- 固定参数(可选): 将一些常用的固定参数加入到 token 中是为了避免重复查库
-
-token在客户端一般存放于localStorage，cookie，或sessionStorage中。在服务器一般存于数据库中
-
-3.3 token认证流程
-
-token 的认证流程与cookie很相似
-- 用户登录，成功后服务器返回Token给客户端。
-- 客户端收到数据后保存在客户端
-- 客户端再次访问服务器，将token放入headers中
-- 服务器端采用filter过滤器校验。校验成功则返回请求数据，校验失败则返回错误码
-
-#### 4. token可以抵抗csrf，cookie+session不行
-假如用户正在登录银行网页，登录了攻击者的网页，并且银行网页未对csrf攻击进行防护。攻击者就可以在网页放一个表单，该表单提交src为http://www.bank.com/api/transfer，body为count=1000&to=Tom。倘若是session+cookie，用户打开网页的时候就已经转给Tom1000元了.因为form 发起的 POST 请求并不受到浏览器同源策略的限制，因此可以任意地使用其他域的 Cookie 向其他域发送 POST 请求，形成 CSRF 攻击。在post请求的瞬间，cookie会被浏览器自动添加到请求头中。但token不同，token是开发者为了防范csrf而特别设计的令牌，浏览器不会自动添加到headers里，攻击者也无法访问用户的token，所以提交的表单无法通过服务器过滤，也就无法形成攻击。
-
-#### 5. 分布式情况下的session和token
-我们已经知道session时有状态的，一般存于服务器内存或硬盘中，当服务器采用分布式或集群时，session就会面对负载均衡问题。
-
-token是无状态的，token字符串里就保存了所有的用户信息。
-
-客户端登陆传递信息给服务端，服务端收到后把用户信息加密（token）传给客户端，客户端将token存放于localStroage等容器中。客户端每次访问都传递token，服务端解密token，就知道这个用户是谁了。通过cpu加解密，服务端就不需要存储session占用存储空间，就很好的解决负载均衡多服务器的问题了。这个方法叫做JWT(Json Web Token)
-
-#### 6. 总结
-- session存储于服务器，可以理解为一个状态列表，拥有一个唯一识别符号sessionId，通常存放于cookie中。服务器收到cookie后解析出sessionId，再去session列表中查找，才能找到相应session。依赖cookie
-- cookie类似一个令牌，装有sessionId，存储在客户端，浏览器通常会自动添加。
-- token也类似一个令牌，无状态，用户信息都被加密到token中，服务器收到token后解密就可知道是哪个用户。需要开发者手动添加。
-- jwt只是一个跨域认证的方案
-
-
-
-## Cookie与Session的区别
-
-转载自 https://segmentfault.com/a/1190000015419746
-
-## 前言
-本文分别对Cookie与Session做一个介绍和总结，并分别对两个知识点进行对比分析，让大家对Cookie和Session有一个更深入的了解，并对自己的开发工作中灵活运用带来启示。
-
-## cookie机制
+## cookie
 
 Cookies是服务器在本地机器上存储的小段文本并随每一个请求发送至同一个服务器。IETF RFC 2965 HTTP State Management Mechanism 是通用cookie规范。网络服务器用HTTP头向客户端发送cookies，在客户终端，浏览器解析这些cookies并将它们保存为一个本地文件，它会自动将同一服务器的任何请求缚上这些cookies 。
 
@@ -100,7 +35,7 @@ session是针对每一个用户的，变量的值保存在服务器上，用一�
 
 就安全性来说：当你访问一个使用session 的站点，同时在自己机子上建立一个cookie，建议在服务器端的session机制更安全些，因为它不会任意读取客户存储的信息。
 
-## session机制
+## session
 
 session机制是一种服务器端的机制，服务器使用一种类似于散列表的结构（也可能就是使用散列表）来保存信息。
 
@@ -110,8 +45,41 @@ session机制是一种服务器端的机制，服务器使用一种类似于散�
 
 经常被使用的一种技术叫做URL重写，就是把session id直接附加在URL路径的后面。还有一种技术叫做表单隐藏字段。就是服务器会自动修改表单，添加一个隐藏字段，以便在表单提交时能够把session id传递回服务器。
 
-## cookie与session区别
 
+简而言之, session 类似用户信息档案表, 里面包含了用户的认证信息和登录状态等信息. 而 cookie 就是用户通行
+证。
+
+## token
+#### 概念
+
+token 也称作令牌，由uid+time+sign[+固定参数]
+token 的认证方式类似于临时的证书签名, 并且是一种服务端无状态的认证方式, 非常适合于 REST API 的场景. 所谓无状态就是服务端并不会保存身份认证相关的数据。
+
+#### 组成
+
+- uid: 用户唯一身份标识
+- time: 当前时间的时间戳
+- sign: 签名, 使用 hash/encrypt 压缩成定长的十六进制字符串，以防止第三方恶意拼接
+- 固定参数(可选): 将一些常用的固定参数加入到 token 中是为了避免重复查库
+
+token在客户端一般存放于localStorage，cookie，或sessionStorage中。在服务器一般存于数据库中
+
+#### token认证流程
+
+token 的认证流程与cookie很相似
+- 用户登录，成功后服务器返回Token给客户端。
+- 客户端收到数据后保存在客户端
+- 客户端再次访问服务器，将token放入headers中
+- 服务器端采用filter过滤器校验。校验成功则返回请求数据，校验失败则返回错误码
+
+#### JWT
+我们已经知道session时有状态的，一般存于服务器内存或硬盘中，当服务器采用分布式或集群时，session就会面对负载均衡问题。
+
+token是无状态的，token字符串里就保存了所有的用户信息。
+
+客户端登陆传递信息给服务端，服务端收到后把用户信息加密（token）传给客户端，客户端将token存放于localStroage等容器中。客户端每次访问都传递token，服务端解密token，就知道这个用户是谁了。通过cpu加解密，服务端就不需要存储session占用存储空间，就很好的解决负载均衡多服务器的问题了。这个方法叫做JWT(Json Web Token)
+
+## 区别与联系
 Cookie与Session都能够进行会话跟踪，但是完成的原理不太一样。普通状况下二者均能够满足需求，但有时分不能够运用Cookie，有时分不能够运用Session。下面经过比较阐明二者的特性以及适用的场所。
 
 #### 1. 存取方式的不同
@@ -145,3 +113,24 @@ Cookie是需要客户端浏览器支持的。假如客户端禁用了Cookie，�
 Cookie支持跨域名访问，例如将domain属性设置为“.biaodianfu.com”，则以“.biaodianfu.com”为后缀的一切域名均能够访问该Cookie。跨域名Cookie如今被普遍用在网络中，例如Google、Baidu、Sina等。而Session则不会支持跨域名访问。Session仅在他所在的域名内有效。
 
 仅运用Cookie或者仅运用Session可能完成不了理想的效果。这时应该尝试一下同时运用Cookie与Session。Cookie与Session的搭配运用在实践项目中会完成很多意想不到的效果。
+
+#### 6. token可以抵抗csrf，cookie+session不行
+假如用户正在登录银行网页，登录了攻击者的网页，并且银行网页未对csrf攻击进行防护。攻击者就可以在网页放一个表单，该表单提交src为http://www.bank.com/api/transfer，body为count=1000&to=Tom。倘若是session+cookie，用户打开网页的时候就已经转给Tom1000元了.因为form 发起的 POST 请求并不受到浏览器同源策略的限制，因此可以任意地使用其他域的 Cookie 向其他域发送 POST 请求，形成 CSRF 攻击。在post请求的瞬间，cookie会被浏览器自动添加到请求头中。但token不同，token是开发者为了防范csrf而特别设计的令牌，浏览器不会自动添加到headers里，攻击者也无法访问用户的token，所以提交的表单无法通过服务器过滤，也就无法形成攻击。
+
+
+- cookie只是实现session的其中一种方案。虽然是最常用的，但并不是唯一的方法。禁用cookie后还有其他方法存储，比如放在url中
+- 现在大多都是Session + Cookie的方式，但是只用session不用cookie，或是只用cookie不用session，在理论上都可以保持会话状态。可是实际中因为多种原因，一般不会单独使用
+- 用session只需要在客户端保存一个id，实际上大量数据都是保存在服务端。如果全部用cookie，数据量大的时候客户端是没有那么多空间的。
+- 如果只用cookie不用session，那么账户信息全部保存在客户端，一旦被劫持，全部信息都会泄露。并且客户端数据量变大，网络传输的数据量也会变大
+
+
+## 总结
+- session存储于服务器，可以理解为一个状态列表，拥有一个唯一识别符号sessionId，通常存放于cookie中。服务器收到cookie后解析出sessionId，再去session列表中查找，才能找到相应session。依赖cookie
+- cookie类似一个令牌，装有sessionId，存储在客户端，浏览器通常会自动添加。
+- token也类似一个令牌，无状态，用户信息都被加密到token中，服务器收到token后解密就可知道是哪个用户。需要开发者手动添加。
+- jwt只是一个跨域认证的方案
+
+
+## 参考资料
+- https://segmentfault.com/a/1190000017831088
+- https://segmentfault.com/a/1190000015419746

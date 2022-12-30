@@ -4,23 +4,23 @@
     <meta name="referrer" content="never">
     <meta charset="utf-8">
     
-    <title>Python高级编程技巧（转） | Dalin blog</title>
+    <title>Python高级编程技巧 | Dalin blog</title>
     
     
-        <meta name="keywords" content="Python高级编程技巧（转）" />
+        <meta name="keywords" content="Python高级编程技巧" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="转载自 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;ajianbeyourself&#x2F;p&#x2F;3970508.html">
+    <meta name="description" content="推导式(Comprehensions)列表推导(list comprehensions)123456num &#x3D; [1, 4, -5, 10, -7, 2, 3, -1]filtered_and_squared &#x3D; [ x**2 for x in num if x &gt; 0]# 等效于 filtered_and_squared &#x3D; map(lambda x: x ** 2, filter(lam">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python高级编程技巧（转）">
-<meta property="og:url" content="https://tianxiafeiyu.github.io/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Python%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7%EF%BC%88%E8%BD%AC%EF%BC%89/index.html">
+<meta property="og:title" content="Python高级编程技巧">
+<meta property="og:url" content="https://tianxiafeiyu.github.io/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Python%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/index.html">
 <meta property="og:site_name" content="Dalin blog">
-<meta property="og:description" content="转载自 https:&#x2F;&#x2F;www.cnblogs.com&#x2F;ajianbeyourself&#x2F;p&#x2F;3970508.html">
+<meta property="og:description" content="推导式(Comprehensions)列表推导(list comprehensions)123456num &#x3D; [1, 4, -5, 10, -7, 2, 3, -1]filtered_and_squared &#x3D; [ x**2 for x in num if x &gt; 0]# 等效于 filtered_and_squared &#x3D; map(lambda x: x ** 2, filter(lam">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-12-15T23:22:29.000Z">
 <meta property="article:modified_time" content="2022-12-16T21:36:16.000Z">
 <meta property="article:author" content="Dalin">
-<meta property="article:tag" content="Python高级编程技巧（转）">
+<meta property="article:tag" content="Python高级编程技巧">
 <meta name="twitter:card" content="summary">
     
 
@@ -354,6 +354,13 @@
       </a>
       
   <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/30/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/cpu%E5%8A%A0%E5%8E%8B%E8%84%9A%E6%9C%AC/">
+        
+        cpu加压脚本
+        
+      </a>
+    </li> 
     <li class="file">
       <a href="/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Chrome%E5%B9%B4%E5%BA%A6%E7%83%AD%E9%97%A8%20%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/">
         
@@ -1005,9 +1012,9 @@
       </a>
     </li> 
     <li class="file active">
-      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Python%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7%EF%BC%88%E8%BD%AC%EF%BC%89/">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Python%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">
         
-        Python高级编程技巧（转）
+        Python高级编程技巧
         
       </a>
     </li> 
@@ -1082,7 +1089,7 @@
       
   <ul class="unstyled" id="tree" > 
     <li class="file">
-      <a href="/2022/12/28/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/%E6%88%91%E7%9A%84%E6%96%B0%E5%86%A0%E7%BB%8F%E5%8E%86/">
+      <a href="/2022/12/30/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/%E6%88%91%E7%9A%84%E6%96%B0%E5%86%A0%E7%BB%8F%E5%8E%86/">
         
         我的新冠经历
         
@@ -1181,7 +1188,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-技术开发/python/Python高级编程技巧（转）" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-技术开发/python/Python高级编程技巧" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <header class="article-header">
@@ -1190,7 +1197,7 @@
       
     
         <h1 class="article-title" itemprop="name">
-            Python高级编程技巧（转）
+            Python高级编程技巧
         </h1>
     
 
@@ -1201,14 +1208,46 @@
       
         
         
-        <p>转载自 <a target="_blank" rel="noopener" href="https://www.cnblogs.com/ajianbeyourself/p/3970508.html">https://www.cnblogs.com/ajianbeyourself/p/3970508.html</a></p>
+        <h2 id="推导式-Comprehensions"><a href="#推导式-Comprehensions" class="headerlink" title="推导式(Comprehensions)"></a>推导式(Comprehensions)</h2><h3 id="列表推导-list-comprehensions"><a href="#列表推导-list-comprehensions" class="headerlink" title="列表推导(list comprehensions)"></a>列表推导(list comprehensions)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">num = [<span class="number">1</span>, <span class="number">4</span>, -<span class="number">5</span>, <span class="number">10</span>, -<span class="number">7</span>, <span class="number">2</span>, <span class="number">3</span>, -<span class="number">1</span>]</span><br><span class="line">filtered_and_squared = [ x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> num <span class="keyword">if</span> x &gt; <span class="number">0</span>]</span><br><span class="line"><span class="comment"># 等效于 filtered_and_squared = map(lambda x: x ** 2, filter(lambda x: x &gt; 0, num))</span></span><br><span class="line"><span class="built_in">print</span> filtered_and_squared</span><br><span class="line"> </span><br><span class="line"><span class="comment"># [1, 16, 100, 4, 9]</span></span><br></pre></td></tr></table></figure>
+<p>整个列表必须一次性加载于内存之中</p>
+<h3 id="生成器推导-Generatorst-comprehensions"><a href="#生成器推导-Generatorst-comprehensions" class="headerlink" title="生成器推导(Generatorst comprehensions)"></a>生成器推导(Generatorst comprehensions)</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">num = [<span class="number">1</span>, <span class="number">4</span>, -<span class="number">5</span>, <span class="number">10</span>, -<span class="number">7</span>, <span class="number">2</span>, <span class="number">3</span>, -<span class="number">1</span>]</span><br><span class="line">filtered_and_squared = ( x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> num <span class="keyword">if</span> x &gt; <span class="number">0</span> )</span><br><span class="line"><span class="built_in">print</span> filtered_and_squared</span><br><span class="line"> </span><br><span class="line"><span class="comment"># &lt;generator object &lt;genexpr&gt; at 0x00583E18&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> filtered_and_squared:</span><br><span class="line">    <span class="built_in">print</span> item</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 1, 16, 100 4,9</span></span><br></pre></td></tr></table></figure>
+<p>每次遍历加载一个列表元素</p>
+<h2 id="装饰器-Decorators"><a href="#装饰器-Decorators" class="headerlink" title="装饰器(Decorators)"></a>装饰器(Decorators)</h2><p>装饰器是一个包装了另一个函数的特殊函数：主函数被调用，并且其返回值将会被传给装饰器，接下来装饰器将返回一个包装了主函数的替代函数，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 统计运行时间装饰器</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">print_runtime</span>(<span class="params">func</span>):</span><br><span class="line"><span class="meta">    @wraps(<span class="params">func</span>)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">wrap</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">        t1 = time.time()</span><br><span class="line">        func(*args, **kwargs)</span><br><span class="line">        t2 = time.time()</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;%s方法运行时间：%s s&#x27;</span> % (func.__name__, t2 - t1)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> wrap</span><br></pre></td></tr></table></figure>
+
+<h2 id="类成员变量初始化"><a href="#类成员变量初始化" class="headerlink" title="类成员变量初始化"></a>类成员变量初始化</h2><p>建议所有变量初始化在__init()__方法下进行，且可变类型的变量不可以设置默认函数参数，否则也会导致共享变量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Node</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    parents = [] <span class="comment"># 危险操作1：init方法外定义可变类型变量</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, children=[]</span>): <span class="comment"># 危险操作2：init方法内定义但设置了函数默认参数</span></span><br><span class="line">        self.children = children</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    n1 = Node()</span><br><span class="line">    n2 = Node()</span><br><span class="line">    n1.parents.append(<span class="string">&#x27;parent for n1&#x27;</span>)</span><br><span class="line">    n1.children.append(<span class="string">&#x27;child for n1&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;n1 parents: id: &#123;&#125;, value: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">id</span>(n1.parents), n1.parents)</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;n2 parents: id: &#123;&#125;, value: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">id</span>(n2.parents), n2.parents)</span><br><span class="line">    <span class="built_in">print</span> </span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;n1 children: id: &#123;&#125;, value: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">id</span>(n1.children), n1.children)</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;n2 children: id: &#123;&#125;, value: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(<span class="built_in">id</span>(n2.children), n2.children)</span><br><span class="line"></span><br><span class="line"><span class="comment"># n1 parents: id: 40216072, value: [&#x27;parent for n1&#x27;]</span></span><br><span class="line"><span class="comment"># n2 parents: id: 40216072, value: [&#x27;parent for n1&#x27;]</span></span><br><span class="line"><span class="comment"># </span></span><br><span class="line"><span class="comment"># n1 children: id: 40159112, value: [&#x27;child for n1&#x27;]</span></span><br><span class="line"><span class="comment"># n2 children: id: 40159112, value: [&#x27;child for n1&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><h4 id="Lambda"><a href="#Lambda" class="headerlink" title="Lambda"></a>Lambda</h4><p>我们可以在 Python 中使用 lambda 关键字来定义此类函数。示例如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mult = <span class="keyword">lambda</span> x, y: x * y</span><br><span class="line">mult(<span class="number">1</span>, <span class="number">2</span>) <span class="comment">#returns 2</span></span><br></pre></td></tr></table></figure>
+<p>该 mult 函数的行为与使用传统 def 关键字定义函数的行为相同。</p>
+<p>注意：lambda 函数必须为单行，且不能包含程序员写的返回语句。</p>
+<p>事实上，它们通常具备隐式的返回语句（在上面的示例中，函数想表达 return x * y，不过我们省略了 lambda 函数中的显式返回语句）。</p>
+<p>lambda 函数更加强大和精准，因为我们还可以构建匿名函数（即没有名称的函数）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">lambda</span> x, y: x * y)(<span class="number">9</span>, <span class="number">10</span>) <span class="comment">#returns 90</span></span><br></pre></td></tr></table></figure>
+<p>当我们只需要一次性使用某函数时，这种方法非常方便。例如，当我们想填充字典时：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> collections</span><br><span class="line">pre_fill = collections.defaultdict(<span class="keyword">lambda</span>: (<span class="number">0</span>, <span class="number">0</span>))</span><br><span class="line"><span class="comment">#all dictionary keys and values are set to 0</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h4><p>map 函数基于指定过程（函数）将输入集转换为另一个集合。这类似于上文提到的 iterate_custom 函数。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">multiply_by_four</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> x * <span class="number">4</span></span><br><span class="line">scores = [<span class="number">3</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>]</span><br><span class="line">modified_scores = <span class="built_in">list</span>(<span class="built_in">map</span>(multiply_by_four, scores))</span><br><span class="line"><span class="comment">#modified scores is now [12, 24, 32, 12, 20, 28]</span></span><br></pre></td></tr></table></figure>
+<p>在 Python 3 中，map 函数返回的 map 对象可被类型转换为 list，以方便使用。现在，我们无需显式地定义 multiply_by_four 函数，而是定义 lambda 表达式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modified_scores = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="keyword">lambda</span> x: <span class="number">4</span> * x, scores))</span><br></pre></td></tr></table></figure>
+<p>当我们想对集合内的所有值执行某项操作时，map 函数很有用。</p>
+<h4 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a>Filter</h4><p>就像名称所显示的那样，filter 函数可以帮助筛除不想要的项。例如，我们想要去除 scores 中的奇数，那么我们可以使用 filter：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">even_scores = <span class="built_in">list</span>(<span class="built_in">filter</span>(<span class="keyword">lambda</span> x: <span class="literal">True</span> <span class="keyword">if</span> (x % <span class="number">2</span> == <span class="number">0</span>) <span class="keyword">else</span> <span class="literal">False</span>, scores))</span><br><span class="line"><span class="comment">#even_scores = [6, 8]</span></span><br></pre></td></tr></table></figure>
+
+<p>由于提供给 filter 的函数是逐个决定是否接受每一个项的，因此该函数必须返回 bool 值，且该函数必须是一元函数（即只使用一个输入参数）。</p>
+<h4 id="Reduce"><a href="#Reduce" class="headerlink" title="Reduce"></a>Reduce</h4><p>reduce 函数用于「总结」或「概述」数据集。例如，如果我们想要计算所有分数的总和，就可以使用 reduce：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sum_scores = reduce((<span class="keyword">lambda</span> x, y: x + y), scores)</span><br><span class="line"><span class="comment">#sum_scores = 32</span></span><br></pre></td></tr></table></figure>
+<p>这要比写循环语句简单多了。注意：提供给 reduce 的函数需要两个参数：一个表示正在接受检查的项，另一个表示所用运算的累积结果。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ajianbeyourself/p/3970508.html">https://www.cnblogs.com/ajianbeyourself/p/3970508.html</a></p>
 
     </div>
     
   </div>
 </article>
 <div id="toc" class="toc-article">
-  
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E5%AF%BC%E5%BC%8F-Comprehensions"><span class="toc-text">推导式(Comprehensions)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E6%8E%A8%E5%AF%BC-list-comprehensions"><span class="toc-text">列表推导(list comprehensions)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%99%A8%E6%8E%A8%E5%AF%BC-Generatorst-comprehensions"><span class="toc-text">生成器推导(Generatorst comprehensions)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E5%99%A8-Decorators"><span class="toc-text">装饰器(Decorators)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">类成员变量初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B"><span class="toc-text">函数式编程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">参考资料</span></a></li></ol></li></ol>
 </div></section>
         </div>
         <!-- <footer id="footer">

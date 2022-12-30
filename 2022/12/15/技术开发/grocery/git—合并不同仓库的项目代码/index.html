@@ -604,9 +604,9 @@
       
   <ul class="unstyled" id="tree" > 
     <li class="file">
-      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/html/css%E8%B0%83%E6%95%B4%E5%85%83%E7%B4%A0%E4%BD%8D%E7%BD%AE/">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/html/css%E7%9F%A5%E8%AF%86%E7%82%B9/">
         
-        css调整元素位置
+        css知识点
         
       </a>
     </li> 
@@ -1212,10 +1212,10 @@
 <h3 id="git合并两个不同的仓库"><a href="#git合并两个不同的仓库" class="headerlink" title="git合并两个不同的仓库"></a>git合并两个不同的仓库</h3><p>目前开发是2个仓库，线上仓库online_a（对应的branch分支为online）,测试环境online_b（对应的branch分支为demo），测试环境需要时刻保持onine_a上的最新稳定稳定代码同步过来。如何合并呢？特此记录下：<br>在测试仓库onine_b 上执行：</p>
 <ol>
 <li><p>测试仓库添加远程生产仓库(切换到自己的测试仓库下执行以下命令，比如我的当期测试online_b.git)</p>
-<p>git remote add online_a <a href="mailto:&#103;&#105;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;">&#103;&#105;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;</a>:fantasy&#x2F;online_a.git &#x2F;&#x2F;将online_a作为远程仓库，添加到online_b中，设置别名为online_a(自定义，这里我是为了方便区分仓库名)</p>
+<p>git remote add online_a <a href="mailto:&#x67;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#111;&#109;">&#x67;&#105;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#111;&#109;</a>:fantasy&#x2F;online_a.git &#x2F;&#x2F;将online_a作为远程仓库，添加到online_b中，设置别名为online_a(自定义，这里我是为了方便区分仓库名)</p>
 </li>
 <li><p>从远程仓库下载，这时我们弄个新的</p>
-<p>$ git fetch online-a<br>remote: Counting objects: 21744, done.<br>remote: Compressing objects: 100% (7380&#x2F;7380), done.<br>remote: Total 21744 (delta 15332), reused 20415 (delta 14323)<br>Receiving objects: 100% (21744&#x2F;21744), 2.44 MiB | 214.00 KiB&#x2F;s, done.<br>Resolving deltas: 100% (15332&#x2F;15332), completed with 201 local objects.<br>From <a href="mailto:&#103;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#99;&#111;&#x6d;">&#103;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#117;&#98;&#x2e;&#99;&#111;&#x6d;</a>:fantasy&#x2F;online_a.git* [new branch]          demo              -&gt; online-backend&#x2F;demo</p>
+<p>$ git fetch online-a<br>remote: Counting objects: 21744, done.<br>remote: Compressing objects: 100% (7380&#x2F;7380), done.<br>remote: Total 21744 (delta 15332), reused 20415 (delta 14323)<br>Receiving objects: 100% (21744&#x2F;21744), 2.44 MiB | 214.00 KiB&#x2F;s, done.<br>Resolving deltas: 100% (15332&#x2F;15332), completed with 201 local objects.<br>From <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#111;&#x6d;">&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#99;&#111;&#x6d;</a>:fantasy&#x2F;online_a.git* [new branch]          demo              -&gt; online-backend&#x2F;demo</p>
 <ul>
 <li>[new branch]          online            -&gt; online-backend&#x2F;online</li>
 <li>[new tag]             demo-last-bad     -&gt; demo-last-bad</li>

@@ -752,3 +752,39 @@ Java基于JVM完成了垃圾收集的功能，其体系很庞大，包括了垃�
 2. 从root开始找到所有可达对象，标记为灰色，放入待处理队列
 3. 遍历灰色对象队列，将其引用对象标记为灰色放入待处理队列，自身标记为黑色
 4. 处理完灰色对象队列，执行清扫工作
+
+## 八、通用写法
+### 8.1 定时器
+来段源码
+```golang
+if dl, ok := ctx.Deadline(); ok {
+	// If we have a deadline then we interpret it as a request to gracefully shutdown. We wait
+	// until either all the connections have landed back in the pool (and have been closed) or
+	// until the timer is done.
+	ticker := time.NewTicker(1 * time.Second)
+	defer ticker.Stop()
+	timer := time.NewTimer(time.Now().Sub(dl))
+	defer timer.Stop()
+	for {
+		select {
+		case <-timer.C:
+		case <-ctx.Done():
+		case <-ticker.C: // Can we replace this with an actual signal channel? We will know when p.inflight hits zero from the close method.
+			p.Lock()
+			if len(p.opened) > 0 {
+				p.Unlock()
+				continue
+			}
+			p.Unlock()
+		}
+		break
+	}
+}
+```
+上面代码中，创建了循环定时器ticker、单次定时器timer，使用select监听3个管道， 
+
+实现的效果：阻塞当前流程，定时查询当前未关闭资源；当满足下列条件之一时，执行后续流程：  
+1. 不存在未关闭资源   
+2. 阻塞时间超过预定时间  
+3. 上下文ctx cancel触发  
+

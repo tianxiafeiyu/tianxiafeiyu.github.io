@@ -6,7 +6,7 @@
   <link href="https://tianxiafeiyu.github.io/atom.xml" rel="self"/>
   
   <link href="https://tianxiafeiyu.github.io/"/>
-  <updated>2023-02-14T02:55:29.017Z</updated>
+  <updated>2023-02-16T09:24:37.492Z</updated>
   <id>https://tianxiafeiyu.github.io/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title>我的新冠经历</title>
-    <link href="https://tianxiafeiyu.github.io/2023/02/14/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/%E6%88%91%E7%9A%84%E6%96%B0%E5%86%A0%E7%BB%8F%E5%8E%86/"/>
-    <id>https://tianxiafeiyu.github.io/2023/02/14/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/%E6%88%91%E7%9A%84%E6%96%B0%E5%86%A0%E7%BB%8F%E5%8E%86/</id>
-    <published>2023-02-14T02:55:29.017Z</published>
-    <updated>2023-02-14T02:55:29.017Z</updated>
+    <link href="https://tianxiafeiyu.github.io/2023/02/16/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/%E6%88%91%E7%9A%84%E6%96%B0%E5%86%A0%E7%BB%8F%E5%8E%86/"/>
+    <id>https://tianxiafeiyu.github.io/2023/02/16/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/%E6%88%91%E7%9A%84%E6%96%B0%E5%86%A0%E7%BB%8F%E5%8E%86/</id>
+    <published>2023-02-16T09:24:37.492Z</published>
+    <updated>2023-02-16T09:24:37.492Z</updated>
     
     <content type="html"><![CDATA[<p>从彻底放开两周以后，身边的同事陆陆续续都有了症状，工位上的人一个个消失。。。</p><p>12.21 日，早上起来我便感觉有一点点不舒服，头有点晕，嗓子也有点不舒服，不过症状很小，我还安慰是自己吓自己，再加上认为新冠也就那样，所以不是很在意。<br>这一天正常上班，一整天下来，确实有点无力的感觉，喉咙的异物感越来越重，我便知道这次是真的来了。这天晚上很难入睡，翻来覆去睡不着。</p><p>22号早上醒来，我便感觉头昏脑胀，喉咙已经哑了，我赶紧跟领导请了假，拿出温度计量体温，不到37度，还没有开始烧。不过我整个人已经像火炉一样了，冒着热气。这一天整个人是无精打采的，<br>很明显的感冒症状，但是有感觉哪里不同。</p><p>23号开始高烧了，一度烧到39度多，一整夜没睡，躺床上仿佛过了一个世纪，但是一看表，才凌晨两点钟，夜还长着，一夜无眠。临近早上，才昏昏沉沉睡过去，醒来时已经快11点了。<br>这期间身体发烧，但是身体又发冷，又热又冷，冰火两重天。喉咙倒是没有进一步恶化，不是熟悉的扁桃体炎。</p><p>周末这两天，我几乎都是躺在床上，发烧还没退，身体冻得直哆嗦。不过，烧页渐渐的退了下来，趋于平缓，我开始洗热水澡。</p><p>26号周一，烧退的差不多了，开始远程上班，但是整个人都没有精神，工作不下去。</p><p>27号依然如此，咳嗽还一直再，有浓痰，身体完全虚了，多运动几下就喘得不行，也许是我呆久了吧。</p><p>今天28号，已经过去一周了，现在烧已经完全退了下来，我倒是不再担心复烧了，只是还是很没有精神，感觉哪里出了问题。</p><p>这个新冠没有想的那么简单，确实有一定的严重性，不同于普通的感冒发烧。很难想象，之前刚爆发时，是怎么过来的。虽然我全程没有吃药，全靠身体免疫力撑了过来，但是感觉已经元气大伤，不知道要过好久才能恢复呢。</p>]]></content>
     
@@ -35,6 +35,30 @@
     
     
     <category term="生活点滴" scheme="https://tianxiafeiyu.github.io/categories/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="https://tianxiafeiyu.github.io/2023/02/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E4%B8%AD%E7%9A%84NULL%E5%80%BC%E8%A7%A3%E6%9E%90/"/>
+    <id>https://tianxiafeiyu.github.io/2023/02/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E4%B8%AD%E7%9A%84NULL%E5%80%BC%E8%A7%A3%E6%9E%90/</id>
+    <published>2023-02-16T09:24:37.484Z</published>
+    <updated>2023-02-16T09:24:37.484Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="mysql中的NULL"><a href="#mysql中的NULL" class="headerlink" title="mysql中的NULL"></a>mysql中的NULL</h3><p>NULL在MySQL中是一个非常特殊的值，官方表述为“一个未知的值”，NULL不与任何值相等（包括其本身）。</p><h3 id="NULL的长度"><a href="#NULL的长度" class="headerlink" title="NULL的长度"></a>NULL的长度</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select length(NULL), length(&#x27;&#x27;), length(0), length(FALSE);</span><br><span class="line">+--------------+------------+-----------+---------------+</span><br><span class="line">| length(NULL) | length(&#x27;&#x27;) | length(0) | length(FALSE) |</span><br><span class="line">+--------------+------------+-----------+---------------+</span><br><span class="line">|         NULL |          0 |         1 |             1 |</span><br><span class="line">+--------------+------------+-----------+---------------+</span><br></pre></td></tr></table></figure><p>可以看出空值’’的长度是0，是不占用空间的；而的NULL长度是NULL，是需要占用额外空间的，所以在一些开发规范中，建议将数据库字段设置为Not NULL,并且设置默认值’’或0。</p><p>NULL值占用字节空间，具体是多少呢，好像找不到权威的相关资料，部分资料说InnoDB中是1字节</p><h3 id="NULL对查询的影响"><a href="#NULL对查询的影响" class="headerlink" title="NULL对查询的影响"></a>NULL对查询的影响</h3><p>NULL对数学比较运算符（&gt;, &#x3D;, &lt;&#x3D;, &lt;&gt;）运算出的结果都是FALSE</p><p>NULL只支持IS NULL、IS NOT NULL、IFNULL()操作</p><p>MIN()、SUM()、COUNT()在运算时会忽略NULL值，但是COUNT(*)不会忽略；</p><p>DISTINCT、GROUP BY、ORDER BY中认为所有的NULL值都是相等的；ORDER BY认为NULL是最小的值</p><h3 id="NULL对索引的影响"><a href="#NULL对索引的影响" class="headerlink" title="NULL对索引的影响"></a>NULL对索引的影响</h3><p>MySQL中某一列数据含有NULL，并不一定会造成索引失效。</p><p>MySQL可以在含有NULL的列上使用索引</p><p>在有NULL值得字段上使用常用的索引，如普通索引、复合索引、全文索引等不会使索引失效。但是在使用空间索引的情况下，该列就必须为 NOT NULL。</p><h3 id="NULL对数据的影响"><a href="#NULL对数据的影响" class="headerlink" title="NULL对数据的影响"></a>NULL对数据的影响</h3><p>TIMESTAMP类型的字段被插入NULL时，实际写入到表中的是当前时间；</p><p>AUTO_INCREMENT属性的字段被插入NULL时，实际写入到表中的是顺序的下一个自增值</p><p>想要禁止某个字段被设置为NULL，则对此字段设置NOT NULL属性；</p><p>与oracle不同，mysql的唯一索引中允许有NULL字段，但是可能会出现意料之外的数据<br>比如，uniq_index(a, b, c), insert(1, 2, NULL)；insert(1, 2, NULL)都会成功</p><p>因为对于联合索引 a-b-c，1-2-NULL和1-2-NULL的比较结果总会返回false</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;mysql中的NULL&quot;&gt;&lt;a href=&quot;#mysql中的NULL&quot; class=&quot;headerlink&quot; title=&quot;mysql中的NULL&quot;&gt;&lt;/a&gt;mysql中的NULL&lt;/h3&gt;&lt;p&gt;NULL在MySQL中是一个非常特殊的值，官方表述为“一个未知的值”</summary>
+      
+    
+    
+    
+    <category term="技术开发" scheme="https://tianxiafeiyu.github.io/categories/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="database" scheme="https://tianxiafeiyu.github.io/categories/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/"/>
     
     
   </entry>
@@ -70,7 +94,7 @@
     <link href="https://tianxiafeiyu.github.io/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Chrome%E5%B9%B4%E5%BA%A6%E7%83%AD%E9%97%A8%20%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/"/>
     <id>https://tianxiafeiyu.github.io/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Chrome%E5%B9%B4%E5%BA%A6%E7%83%AD%E9%97%A8%20%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/</id>
     <published>2022-12-16T15:18:00.000Z</published>
-    <updated>2023-02-14T02:55:29.009Z</updated>
+    <updated>2023-02-16T09:24:37.488Z</updated>
     
     <content type="html"><![CDATA[<p>Google 官方统计的年度榜单，多看涨姿势~~</p><p>2022：<a href="https://www.oschina.net/news/221758/chrome-extension-favorite-2022">https://www.oschina.net/news/221758/chrome-extension-favorite-2022</a></p><p>2021：<a href="https://www.oschina.net/news/172732/chrome-extension-favorite-2021">https://www.oschina.net/news/172732/chrome-extension-favorite-2021</a></p>]]></content>
     
@@ -519,32 +543,6 @@
     
     
     <category term="maven使用本地依赖" scheme="https://tianxiafeiyu.github.io/tags/maven%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E4%BE%9D%E8%B5%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring 注解</title>
-    <link href="https://tianxiafeiyu.github.io/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20%E6%B3%A8%E8%A7%A3/"/>
-    <id>https://tianxiafeiyu.github.io/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20%E6%B3%A8%E8%A7%A3/</id>
-    <published>2022-12-15T23:39:58.000Z</published>
-    <updated>2022-12-16T21:36:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="什么是注解？"><a href="#什么是注解？" class="headerlink" title="什么是注解？"></a>什么是注解？</h4><p>注解是JDK1.5版本开始引入的一个特性，用于对代码进行说明，可以对包、类、接口、字段、方法参数、局部变量等进行注解。</p><h4 id="注解与什么用？"><a href="#注解与什么用？" class="headerlink" title="注解与什么用？"></a>注解与什么用？</h4><ol><li><p>生成文档，通过代码里标识的元数据生成javadoc文档。</p></li><li><p>编译检查，通过代码里标识的元数据让编译器在编译期间进行检查验证。</p></li><li><p>编译时动态处理，编译时通过代码里标识的元数据动态处理，例如动态生成代码。</p></li><li><p>运行时动态处理，运行时通过代码里标识的元数据动态处理，例如使用反射注入实例</p></li></ol><p>注解和XML的区别：</p><ul><li>注解：是一种分散式的元数据，与源代码紧绑定。</li><li>xml：是一种集中式的元数据，与源代码无绑定</li></ul><h4 id="怎么实现注解？"><a href="#怎么实现注解？" class="headerlink" title="怎么实现注解？"></a>怎么实现注解？</h4><p>1、使用 @interface 定义注解。</p><p>2、通过继承以下注解，实现功能：</p><p> 元注解@Target,@Retention,@Documented,@Inherited </p><p>元注解：</p><ol><li><p>@Target 表示该注解用于什么地方，可能的 ElemenetType 参数包括：</p><ul><li>ElemenetType.CONSTRUCTOR 构造器声明 </li><li>ElemenetType.FIELD 域声明（包括 enum 实例） </li><li>ElemenetType.LOCAL_VARIABLE 局部变量声明 </li><li>ElemenetType.METHOD 方法声明 </li><li>ElemenetType.PACKAGE 包声明 </li><li>ElemenetType.PARAMETER 参数声明 </li><li>ElemenetType.TYPE 类，接口（包括注解类型）或enum声明</li></ul></li><li><p>@Retention 表示在什么级别保存该注解信息。可选的 RetentionPolicy 参数包括：</p><ul><li>RetentionPolicy.SOURCE 注解将被编译器丢弃 </li><li>RetentionPolicy.CLASS 注解在class文件中可用，但会被VM丢弃 </li><li>RetentionPolicy.RUNTIME VM将在运行期也保留注释，因此可以通过反射机制读取注解的信息。</li></ul></li><li><p>@Documented 将此注解包含在 javadoc 中 </p></li><li><p>@Inherited 允许子类继承父类中的注解</p></li></ol><h4 id="注解工作过程"><a href="#注解工作过程" class="headerlink" title="注解工作过程"></a>注解工作过程</h4><p>以 spring 的 @controller 来当做示例:</p><p>@Controller继承@Component注解的方法，将其以单例的形式放入spring容器，然后spring会通过配置文件中的<a href="context:component-scan">context:component-scan</a>的配置，进行如下操作：</p><ol><li><p>使用asm技术扫描.class文件，并将包含@Component及元注解为@Component的注解@Controller、@Service、@Repository或者其他自定义的的bean注册到beanFactory中，</p></li><li><p>然后spring注册注解处理器。注解处理器是一个在javac编译期处理注解的工具，你可以创建注解处理器并注册，在编译期你创建的处理器以Java代码作为输入，生成文件.java文件作为输出。 </p></li><li><p>实例化处理器，然后将其放到beanPostFactory中，然后我们就可以在类中进行使用了。</p></li><li><p>创建bean时，会自动调用相应的处理器进行处理。</p></li></ol><p>spring @Controller源码：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.springframework.stereotype;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Documented;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.ElementType;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Retention;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.RetentionPolicy;</span><br><span class="line"><span class="keyword">import</span> java.lang.annotation.Target;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.annotation.AliasFor;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Controller &#123;</span><br><span class="line">    <span class="meta">@AliasFor(</span></span><br><span class="line"><span class="meta">        annotation = Component.class</span></span><br><span class="line"><span class="meta">    )</span></span><br><span class="line">    String <span class="title function_">value</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>@AliasFor 表示别名，它可以注解到自定义注解的两个属性上，表示这两个互为别名，也就是说这两个属性其实同一个含义</p><p>@Component</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package org.springframework.stereotype;</span><br><span class="line"></span><br><span class="line">import java.lang.annotation.Documented;</span><br><span class="line">import java.lang.annotation.ElementType;</span><br><span class="line">import java.lang.annotation.Retention;</span><br><span class="line">import java.lang.annotation.RetentionPolicy;</span><br><span class="line">import java.lang.annotation.Target;</span><br><span class="line"></span><br><span class="line">@Target(&#123;ElementType.TYPE&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">@Indexed</span><br><span class="line">public @interface Component &#123;</span><br><span class="line">    String value() default &quot;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>每个注解里面都有一个默认的value()方法，为当前的注解声明一个名字，一般默认为类名</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;什么是注解？&quot;&gt;&lt;a href=&quot;#什么是注解？&quot; class=&quot;headerlink&quot; title=&quot;什么是注解？&quot;&gt;&lt;/a&gt;什么是注解？&lt;/h4&gt;&lt;p&gt;注解是JDK1.5版本开始引入的一个特性，用于对代码进行说明，可以对包、类、接口、字段、方法参数、局部变量等</summary>
-      
-    
-    
-    
-    <category term="技术开发" scheme="https://tianxiafeiyu.github.io/categories/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/"/>
-    
-    <category term="java" scheme="https://tianxiafeiyu.github.io/categories/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/"/>
-    
-    
-    <category term="Spring 注解" scheme="https://tianxiafeiyu.github.io/tags/Spring-%E6%B3%A8%E8%A7%A3/"/>
     
   </entry>
   

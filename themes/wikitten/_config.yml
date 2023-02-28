@@ -22,7 +22,7 @@ customize:
         author_title:
         location:
         follow: https://github.com/tianxiafeiyu/
-    highlight: monokai
+    highlight: github
     sidebar: left # sidebar position, options: left, right
     category_perExpand: false # enable article categories list per expanding
     thumbnail: true # enable posts thumbnail, options: true, false
@@ -55,6 +55,11 @@ category:
 auto_excerpt:
     enable: true
     lines: 5
+
+# 文章摘要目录层级
+toc:
+    max_depth: 3
+    min_depth: 1
 
 # Search
 search:

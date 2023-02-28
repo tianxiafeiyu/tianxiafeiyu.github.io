@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta name="referrer" content="never">
+    <meta charset="utf-8">
+    
+    <title>Golang与Java | Dalin blog</title>
+    
+    
+        <meta name="keywords" content="Golang与Java" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="转载自 https:&#x2F;&#x2F;blog.csdn.net&#x2F;pbrlovejava&#x2F;article&#x2F;details&#x2F;108920137 一、Golang概述1.1 Golang基本介绍Go语言（或 Golang）起源于 2007 年，并在 2009 年正式对外发布。Go 是非常年轻的一门语言，它的主要目标是“兼具 Python 等动态语言的开发速度和 C&#x2F;C++ 等编译型语言的性能与安全性”。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Golang与Java">
+<meta property="og:url" content="https://tianxiafeiyu.github.io/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/Golang%E4%B8%8EJava/index.html">
+<meta property="og:site_name" content="Dalin blog">
+<meta property="og:description" content="转载自 https:&#x2F;&#x2F;blog.csdn.net&#x2F;pbrlovejava&#x2F;article&#x2F;details&#x2F;108920137 一、Golang概述1.1 Golang基本介绍Go语言（或 Golang）起源于 2007 年，并在 2009 年正式对外发布。Go 是非常年轻的一门语言，它的主要目标是“兼具 Python 等动态语言的开发速度和 C&#x2F;C++ 等编译型语言的性能与安全性”。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-15T23:19:25.000Z">
+<meta property="article:modified_time" content="2022-12-16T21:36:16.000Z">
+<meta property="article:author" content="Dalin">
+<meta property="article:tag" content="Golang与Java">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/static/lin.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Dalin blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header" style="z-index:999">
+  <div id="header-main" class="header-inner">
+    <div class="header-outer">
+      <a href="/" id="logo">
+        <i class="logo"></i>
+        <span class="site-title">Dalin blog</span>
+      </a>
+      <nav id="main-nav">
+        
+        <a class="main-nav-link " href="/archives">归档</a>
+        
+        <a class="main-nav-link " href="/categories">分类</a>
+        
+        <a class="main-nav-link " href="/tags">标签</a>
+        
+        <a class="main-nav-link " href="/about">关于</a>
+        
+      </nav>
+      
+      <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+      <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+<script>
+  (function(window) {
+    var INSIGHT_CONFIG = {
+      TRANSLATION: {
+        POSTS: '文章',
+        PAGES: '页面',
+        CATEGORIES: '分类',
+        TAGS: '标签',
+        UNTITLED: '(未命名)',
+      },
+      ROOT_URL: '/',
+      CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+  })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+        <td><a class="main-nav-link" href="/archives">归档</a></td>
+        
+        <td><a class="main-nav-link" href="/categories">分类</a></td>
+        
+        <td><a class="main-nav-link" href="/tags">标签</a></td>
+        
+        <td><a class="main-nav-link" href="/about">关于</a></td>
+        
+        <td>
+          
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+<div class="widget-wrap" id='categories'>
+  <h3 class="widget-title">
+    <span></span>
+    <a id='allExpand' href="#">
+      <i class="fa fa-angle-double-down fa-2x"></i>
+    </a>
+  </h3>
+
+  
+  
+  
+  <ul class="unstyled" id="tree" > 
+    <li class="directory open">
+      <a href="#" data-role="directory">
+        技术开发
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-down" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        database
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        es
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%E5%AD%A6%E4%B9%A0/">
+        
+        Elasticsearch学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%20Java%20Rest%20Client/">
+        
+        Elasticsearch Java Rest Client
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7/">
+        
+        Elasticsearch版本特性
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2023/02/28/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E4%B8%AD%E7%9A%84NULL%E5%80%BC%E8%A7%A3%E6%9E%90/">
+        
+        mysql中的NULL值解析
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/">
+        
+        mysql常用函数汇总
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95/">
+        
+        mysql联合索引
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E8%84%8F%E8%AF%BB%E3%80%81%E5%B9%BB%E8%AF%BB%E3%80%81%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB/">
+        
+        数据库之脏读、幻读、不可重复读
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E3%80%81redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/">
+        
+        mysql、redis开启远程访问
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory open">
+      <a href="#" data-role="directory">
+        golang
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-down" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file active">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/Golang%E4%B8%8EJava/">
+        
+        Golang与Java
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/golang%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/">
+        
+        golang学习大纲
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">
+        
+        go流程控制
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%E9%A1%B9%E7%9B%AE%E6%A0%87%E5%87%86%E5%B8%83%E5%B1%80/">
+        
+        go项目标准布局
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/http%20client%E6%9C%80%E4%BC%98%E9%85%8D%E7%BD%AE/">
+        
+        http client最优配置
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/%E4%BC%98%E7%A7%80golang%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">
+        
+        优秀golang开源项目
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20ast/">
+        
+        go ast
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20csp%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B/">
+        
+        go csp并发模型
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20gc/">
+        
+        go gc
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/xorm%E4%BD%BF%E7%94%A8/">
+        
+        xorm使用
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20checklist/">
+        
+        go checklist
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/">
+        
+        为什么bk-cmdb不用go mod管理
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        grocery
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/30/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/cpu%E5%8A%A0%E5%8E%8B%E8%84%9A%E6%9C%AC/">
+        
+        cpu加压脚本
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Chrome%E5%B9%B4%E5%BA%A6%E7%83%AD%E9%97%A8%20%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/">
+        
+        Chrome年度热门扩展程序
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Prometheus%E7%9B%91%E6%8E%A7kubernetes%E6%96%B9%E6%A1%88%E5%8F%8A%E5%AE%9E%E7%8E%B0/">
+        
+        Prometheus监控kubernetes方案及实现
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/websocket%E5%AD%A6%E4%B9%A0/">
+        
+        websocket学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AB%AF%E5%8F%A3%E6%A0%87%E8%AF%86%E5%90%AB%E4%B9%89/">
+        
+        交换机端口标识含义
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%9F%BA%E4%BA%8Eetcd%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">
+        
+        基于etcd实现的分布式锁
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E5%87%8F%E6%B2%BB%E3%80%81%E5%88%86%E6%B2%BB%E3%80%81%E9%80%92%E5%BD%92%E3%80%81%E8%BF%AD%E4%BB%A3%E3%80%81%E5%9B%9E%E6%BA%AF%E3%80%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E3%80%81%E8%B4%AA%E5%BF%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        数据结构与算法---常见算法减治、分治、递归、迭代、回溯、动态规划、贪心的基本思想
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E7%81%AB%E7%84%B0%E5%9B%BE%E6%80%8E%E4%B9%88%E7%9C%8B/">
+        
+        火焰图怎么看
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/NaN%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D/">
+        
+        NaN代表什么意思
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/jsonpath%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">
+        
+        jsonpath使用心得
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/k8s%E5%9B%BD%E9%99%85%E5%8C%96%E5%AE%9E%E7%8E%B0/">
+        
+        k8s国际化实现
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/RESTful%20API%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/">
+        
+        RESTful API格式规范
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/AI%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/">
+        
+        AI视频处理软件
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/FTP%E3%80%81FTPS%E5%92%8CSFTP%E9%83%BD%E6%98%AF%E5%95%A5/">
+        
+        FTP、FTPS和SFTP都是啥
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/github%E6%B7%BB%E5%8A%A0ssh%E6%96%B9%E6%B3%95/">
+        
+        github添加ssh方法
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%E2%80%94%E5%90%88%E5%B9%B6%E4%B8%8D%E5%90%8C%E4%BB%93%E5%BA%93%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/">
+        
+        git—合并不同仓库的项目代码
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%E4%BB%93%E5%BA%93%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%90%E4%BA%A4%E6%97%B6%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
+        
+        git仓库第一次提交时失败问题记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1apisix%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/">
+        
+        一次apisix问题排查过程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1python%E4%BB%A3%E7%A0%81%E6%B7%B7%E6%B7%86%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/">
+        
+        一次python代码混淆问题排查
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E7%A7%8D%E5%B0%86%E6%96%87%E6%9C%AC%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%9B%BE%E8%A1%A8%E7%9A%84%E7%8E%B0%E4%BB%A3%E5%9B%BE%E8%A1%A8%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/">
+        
+        一种将文本转换为图表的现代图表脚本语言
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A5%BD%E7%9A%84%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%A4%9A%E6%98%AF%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84%E5%B1%82/">
+        
+        为什么好的开源软件多是基础架构层
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%BB%B6%E6%97%B6%E3%80%81%E4%B8%A2%E5%8C%85%E3%80%81%E6%8A%96%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%AF%E8%AF%AD%E8%A7%A3%E9%87%8A/">
+        
+        延时、丢包、抖动——术语解释
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%20%E7%AC%94%E8%AE%B0/">
+        
+        git 笔记
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Apdex%20%E5%BA%94%E7%94%A8%E6%80%A7%E8%83%BD%E6%8C%87%E6%95%B0/">
+        
+        Apdex 应用性能指数
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/GraphQL%20%E5%85%A5%E9%97%A8/">
+        
+        GraphQL 入门
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/">
+        
+        REST风格理解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/dalin%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/">
+        
+        dalin的服务器配置记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">
+        
+        k8s配置文件详解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/session%EF%BC%8Ccookie%EF%BC%8Ctoken%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        session，cookie，token学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84HTTP%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        一次完整的HTTP请求过程【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%90%84%E7%A7%8D%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC%E7%9A%84%20Helloworld/">
+        
+        各种语言版本的 Helloworld
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E6%9C%8D%E5%8A%A1%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0/">
+        
+        服务缓存数据更新
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%BD%BF%E7%94%A8github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+        
+        使用github搭建个人博客
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/">
+        
+        进程间通信技术
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        html
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/html/css%E7%9F%A5%E8%AF%86%E7%82%B9/">
+        
+        css知识点
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        java
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/PriorityQueue-%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97/">
+        
+        PriorityQueue-优先级队列
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E5%AE%9E%E4%BD%93%E7%B1%BB%E4%B8%AD%E7%94%A8%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E8%BF%98%E6%98%AF%E5%8C%85%E8%A3%85%E7%B1%BB/">
+        
+        实体类中用基本类型还是包装类
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E6%B7%B7%E4%B9%B1%E7%9A%84Java%E7%89%88%E6%9C%AC%E5%91%BD%E5%90%8D/">
+        
+        混乱的Java版本命名
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E8%A7%A3%E8%AF%BB%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%20Java%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">
+        
+        解读阿里巴巴 Java 代码规范
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/maven%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E4%BE%9D%E8%B5%96/">
+        
+        maven使用本地依赖
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20%E6%B3%A8%E8%A7%A3/">
+        
+        Spring 注解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/SkyWalking%E2%80%94Java%E6%8E%A2%E9%92%88%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/">
+        
+        SkyWalking—Java探针插件开发
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E4%BB%B6%E5%88%86%E6%9E%90%EF%BC%88%E5%BA%9F%E7%A8%BF%EF%BC%89/">
+        
+        Skywalking数据库插件分析（废稿）
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+        
+        Spring的单例模式与线程安全
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/skywalking%20Jdbc%E6%8F%92%E4%BB%B6%E5%88%86%E6%9E%90/">
+        
+        skywalking Jdbc插件分析
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%B8%AD%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E5%9D%91/">
+        
+        Java中无处不在的坑
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%BC%98%E9%9B%85%E7%9A%84%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%E8%B5%84%E6%BA%90/">
+        
+        Java优雅的关闭连接资源
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E5%87%A0%E4%BD%8D/">
+        
+        Java保留小数点后几位
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%AF%B9%E8%B1%A1%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E8%A7%A3%E6%B3%95/">
+        
+        Java对象循环引用解法
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Jpa%E8%BF%98%E6%98%AFMybatis%EF%BC%9F/">
+        
+        Jpa还是Mybatis？
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E6%A2%B3%E7%90%86%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        java多线程核心技术梳理
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/JTW%E8%AF%A6%E8%A7%A3/">
+        
+        JTW详解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/JVM%E4%B8%8EJava%E7%A8%8B%E5%BA%8F/">
+        
+        JVM与Java程序
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F/">
+        
+        Java创建线程的4种方式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+        
+        Java序列化与反序列化
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%8E%9F%E5%88%99/">
+        
+        Java异常处理原则
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%BB%86%E8%8A%82/">
+        
+        Java构造函数细节
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        
+        Java正则表达式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7%E7%B1%BB/">
+        
+        Java获取时间工具类
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Jenkins%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+        
+        Jenkins遇到的坑
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E4%BD%BF%E7%94%A8graphql%E6%9F%A5%E8%AF%A2/">
+        
+        Skywalking使用graphql查询
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E5%AD%A6%E4%B9%A0/">
+        
+        Skywalking学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20boot%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+        
+        Spring boot单元测试
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20boot%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/">
+        
+        Spring boot读取配置文件问题
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20security%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/">
+        
+        Spring security实现权限认证
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/lombok/">
+        
+        lombok
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/null==obj%20or%20obj==null%20%EF%BC%9F/">
+        
+        null==obj or obj==null ？
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%20+%20jasypt%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF%E5%8A%A0%E5%AF%86/">
+        
+        spring boot + jasypt实现配置文件信息加密
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%B8%AD%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+        
+        spring boot中代码修改配置文件
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%97%9B/">
+        
+        spring boot使用单例模式的痛
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+        
+        spring boot使用多线程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20security%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        spring security学习【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+        
+        关于线程安全
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/2020%20%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%EF%BC%88%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF%EF%BC%89/">
+        
+        2020 学习计划（成长之路）
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%20%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        Java 归并排序【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/acmp%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">
+        
+        acmp开发记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/idea+maven+git%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">
+        
+        idea+maven+git 开发环境安装
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/idea%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">
+        
+        idea使用心得
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E3%80%8AOn%20Java%208%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+        
+        《On Java 8》读书笔记
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java8%E6%96%B0%E7%89%B9%E6%80%A7/">
+        
+        Java8新特性
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        os
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/TCP%20%E5%8D%8F%E8%AE%AE%E7%81%B5%E9%AD%82%2012%20%E9%97%AE%20%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        TCP 协议灵魂 12 问 【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/Linux%20shell%20%E5%90%84%E7%A7%8D%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%84%8F%E4%B9%89/">
+        
+        Linux shell 各种符号的意义
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+        
+        Linux常用命令
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        python
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        Script
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/cmdb_mock/">
+        
+        cmdb_mock
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/push_cmdb_data/">
+        
+        push_cmdb_data
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/tops/">
+        
+        tops
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Python%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">
+        
+        Python高级编程技巧
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%20list()%E5%92%8C%5B%5D,dict()%E5%92%8C%7B%7D/">
+        
+        python list()和[],dict()和{}
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%85%A5%E9%97%A8/">
+        
+        python入门
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0/">
+        
+        python单例模式实现
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+        
+        python多进程与多线程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E7%9F%A5%E8%AF%86%E7%82%B9/">
+        
+        python知识点
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">
+        
+        python编程技巧
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E8%84%9A%E6%9C%AC%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/">
+        
+        python脚本接收参数的几种实现方式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/%E5%8F%98%E9%87%8F%E5%8F%8A%E6%96%B9%E6%B3%95%E5%89%8D%E5%90%8E%E4%B8%8B%E5%88%92%E7%BA%BF%E7%9A%84%E5%90%AB%E4%B9%89/">
+        
+        变量及方法前后下划线的含义
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2023/02/28/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+        
+        深入浅出设计模式
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        生活点滴
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2023/02/28/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/%E6%88%91%E7%9A%84%E6%96%B0%E5%86%A0%E7%BB%8F%E5%8E%86/">
+        
+        我的新冠经历
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/keep/">
+        
+        keep
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+  </ul> 
+</div>
+<script>
+  $(document).ready(function() {
+    var iconFolderOpenClass = 'fa-angle-down';
+    var iconFolderCloseClass = 'fa-angle-right';
+    var iconAllExpandClass = 'fa-angle-double-down';
+    var iconAllPackClass = 'fa-angle-double-up';
+    // Handle directory-tree expansion:
+    // 左键单独展开目录
+    $(document).on('click', '#categories a[data-role="directory"]', function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconFolderOpenClass);
+      var subtree = $(this).siblings('ul');
+      icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+      if (expanded) {
+        if (typeof subtree != 'undefined') {
+          subtree.slideUp({
+            duration: 100
+          });
+        }
+        icon.addClass(iconFolderCloseClass);
+      } else {
+        if (typeof subtree != 'undefined') {
+          subtree.slideDown({
+            duration: 100
+          });
+        }
+        icon.addClass(iconFolderOpenClass);
+      }
+    });
+    // 右键展开下属所有目录
+    $('#categories a[data-role="directory"]').bind("contextmenu", function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconFolderOpenClass);
+      var listNode = $(this).siblings('ul');
+      var subtrees = $.merge(listNode.find('li ul'), listNode);
+      var icons = $.merge(listNode.find('.fa'), icon);
+      icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+      if (expanded) {
+        subtrees.slideUp({
+          duration: 100
+        });
+        icons.addClass(iconFolderCloseClass);
+      } else {
+        subtrees.slideDown({
+          duration: 100
+        });
+        icons.addClass(iconFolderOpenClass);
+      }
+    })
+    // 展开关闭所有目录按钮
+    $(document).on('click', '#allExpand', function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconAllExpandClass);
+      icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+      if (expanded) {
+        $('#sidebar .fa.fa-angle-right').removeClass('fa-angle-right').addClass('fa-angle-down')
+        $('#categories li ul').slideDown({
+          duration: 100
+        });
+        icon.addClass(iconAllPackClass);
+      } else {
+        $('#sidebar .fa.fa-angle-down').removeClass('fa-angle-down').addClass('fa-angle-right')
+        $('#categories li ul').slideUp({
+          duration: 100
+        });
+        icon.addClass(iconAllExpandClass);
+      }
+    });
+  });
+</script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-技术开发/golang/Golang与Java" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+      
+      
+    
+        <h1 class="article-title" itemprop="name">
+            Golang与Java
+        </h1>
+    
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+        
+        <p>转载自 <a target="_blank" rel="noopener" href="https://blog.csdn.net/pbrlovejava/article/details/108920137">https://blog.csdn.net/pbrlovejava/article/details/108920137</a></p>
+<h2 id="一、Golang概述"><a href="#一、Golang概述" class="headerlink" title="一、Golang概述"></a>一、Golang概述</h2><h3 id="1-1-Golang基本介绍"><a href="#1-1-Golang基本介绍" class="headerlink" title="1.1 Golang基本介绍"></a>1.1 Golang基本介绍</h3><p>Go语言（或 Golang）起源于 2007 年，并在 2009 年正式对外发布。Go 是非常年轻的一门语言，它的主要目标是“兼具 Python 等动态语言的开发速度和 C&#x2F;C++ 等编译型语言的性能与安全性”。</p>
+<p>Go语言的推出，旨在不损失应用程序性能的情况下降低代码的复杂性，具有“部署简单、并发性好、语言设计良好、执行性能好”等优势，目前国内诸多 IT 公司均已采用Go语言开发项目。</p>
+<p>Go语言有时候被描述为“C 类似语言”，或者是“21 世纪的C语言”。Go 从C语言继承了相似的表达式语法、控制流结构、基础数据类型、调用参数传值、指针等很多思想，还有C语言一直所看中的编译后机器码的运行效率以及和现有操作系统的无缝适配。</p>
+<p>因为Go语言没有类和继承的概念，所以它和 Java 或 C++ 看起来并不相同。但是它通过接口（interface）的概念来实现多态性。Go语言有一个清晰易懂的轻量级类型系统，在类型之间也没有层级之说。因此可以说Go语言是一门混合型的语言。</p>
+<p>此外，很多重要的开源项目都是使用Go语言开发的，其中包括 Docker、Go-Ethereum、Thrraform 和 Kubernetes。</p>
+<h3 id="1-2-Golang使用场景"><a href="#1-2-Golang使用场景" class="headerlink" title="1.2 Golang使用场景"></a>1.2 Golang使用场景</h3><ul>
+<li>服务端开发（配合gin、gorm等库就能够完成高性能的后端服务）</li>
+<li>容器开发（譬如Docker、K8s都是基于Golang开发的）</li>
+<li>脚本开发（由于Golang自身部署简单，并且与操作系统API交互方便，所以还可替代Python作为脚本开发）</li>
+<li>底层工具的开发（可代替C或者C++开发操作系统底层工具）</li>
+</ul>
+<h2 id="二、基本语法"><a href="#二、基本语法" class="headerlink" title="二、基本语法"></a>二、基本语法</h2><h3 id="2-1-编码规约"><a href="#2-1-编码规约" class="headerlink" title="2.1 编码规约"></a>2.1 编码规约</h3><h4 id="1-左右花括号需要符合上下换行风格"><a href="#1-左右花括号需要符合上下换行风格" class="headerlink" title="1. 左右花括号需要符合上下换行风格"></a>1. 左右花括号需要符合上下换行风格</h4><p>Golang是一门严格的工程语言，主要体现在编码风格及可见域规则上。在Java中，允许多种编码风格共存，譬如以下两种方法声明，对于Java来说都是允许的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public String getString(Integer num) &#123;</span><br><span class="line">    return num.toString();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public String getString(Integer num) </span><br><span class="line">&#123;</span><br><span class="line">    return num.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在Golang中，只允许出现一种换行风格，否则会报错，无法通过编译。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func getString(num int) string &#123;</span><br><span class="line">	return strconv.Itoa(num)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-变量声明后必须使用，不使用需要使用“-“来代替"><a href="#2-变量声明后必须使用，不使用需要使用“-“来代替" class="headerlink" title="2. 变量声明后必须使用，不使用需要使用“_“来代替"></a>2. 变量声明后必须使用，不使用需要使用“_“来代替</h4><p>在Java中，变量可以声明了却不使用，而Golang中声明的变量必须被使用，否则需要使用_来替代掉变量名，表明该变量不会比使用到：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">func getString(num int) string &#123;</span><br><span class="line">	temp := num // 没有使用者，无法编译</span><br><span class="line">	_ := num	// 正常编译</span><br><span class="line">	return strconv.Itoa(num)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3-可见域规则"><a href="#3-可见域规则" class="headerlink" title="3. 可见域规则"></a>3. 可见域规则</h4><p>Java对方法、变量及类的可见域规则是通过private、protected、public关键字来控制的，而Golang中控制可见域的方式只有一个，当字段首字母开头是大写时说明其是对外可见的、小写时只对包内成员可见。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package entity</span><br><span class="line"></span><br><span class="line">type Person struct &#123;</span><br><span class="line">	Name string</span><br><span class="line">	Age int</span><br><span class="line">	id string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type student struct &#123;</span><br><span class="line">	detail Person</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func test() &#123;</span><br><span class="line">	// 本包内可见</span><br><span class="line">	person := &amp;student&#123;detail: Person&#123;</span><br><span class="line">		Name: &quot;ARong&quot;,</span><br><span class="line">		Age:  21,</span><br><span class="line">		id:   &quot;211&quot;,</span><br><span class="line">	&#125;&#125;</span><br><span class="line">	fmt.Println(person)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">	entity &quot;others/scope&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	// id字段不可见</span><br><span class="line">	person := &amp;entity.Person&#123;</span><br><span class="line">		Name: &quot;ARong&quot;,</span><br><span class="line">		Age:  21,</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Println(person)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-变量声明及初始化"><a href="#2-2-变量声明及初始化" class="headerlink" title="2.2 变量声明及初始化"></a>2.2 变量声明及初始化</h3><h4 id="1-变量声明及初始化的文法"><a href="#1-变量声明及初始化的文法" class="headerlink" title="1. 变量声明及初始化的文法"></a>1. 变量声明及初始化的文法</h4><p>在Java中，通常声明变量及初始化的文法为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Object:要声明的类型、v:变量名称、new Object()变量初始化</span></span><br><span class="line"><span class="type">Object</span> <span class="variable">v</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Object</span>();</span><br></pre></td></tr></table></figure>
+<p>而Golang使用var关键字来声明变量：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// var：变量定义、v1:变量名称、int:变量类型</span><br><span class="line">var v1 int</span><br><span class="line">var v2 string</span><br><span class="line">var v3 [10]int  // 数组</span><br><span class="line">var v4 []int // 数组切片</span><br><span class="line">var v5 struct &#123;</span><br><span class="line">	f int</span><br><span class="line">&#125;</span><br><span class="line">var v6 *int // 指针</span><br><span class="line">var v7 map[string]int  // map，key为string类型，value为int类型</span><br><span class="line">var v8 func(a int) int</span><br><span class="line">var v9,v10 int //v9和v10都声明为int型</span><br></pre></td></tr></table></figure>
+<p>也可以采用“:&#x3D;”自动推测变量类型:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var v1 int = 10 // 正确的使用方式1</span><br><span class="line">var v2 = 10  // 正确的使用方式2，编译器可以自动推导出v2的类型</span><br><span class="line">v3 := 10  // 正确的使用方式3，编译器可以自动推导出v3的类型</span><br></pre></td></tr></table></figure>
+<h4 id="2-对于基本类型-声明即初始化；对于引用类型，声明则初始化为nil"><a href="#2-对于基本类型-声明即初始化；对于引用类型，声明则初始化为nil" class="headerlink" title="2. 对于基本类型,声明即初始化；对于引用类型，声明则初始化为nil"></a>2. 对于基本类型,声明即初始化；对于引用类型，声明则初始化为nil</h4><p>在Java中，如果在方法内部声明一个变量但不初始化，在使用时会出现编译错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public void solve() &#123;</span><br><span class="line">    int num;</span><br><span class="line">    Object object;</span><br><span class="line">    System.out.println(num); // 编译错误</span><br><span class="line">    System.out.println(object); // 编译错误</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>而在Golang中，对于基本类型来讲，声明即初始化;对于引用类型，声明则初始化为nil。这样可以极大地避免NPE的发生。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">	var num int</span><br><span class="line">	var hashMap *map[string]int</span><br><span class="line">	fmt.Println(num) // num = 0</span><br><span class="line">	fmt.Println(hashMap) //  &amp;hashMap== nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-3-值类型及引用类型"><a href="#2-3-值类型及引用类型" class="headerlink" title="2.3 值类型及引用类型"></a>2.3 值类型及引用类型</h3><p>Golang的类型系统与Java相差不大，但是需要注意的是Java中的数组是属于引用类型，而Golang中的数组属于值类型，当向方法中传递数组时，Java可以直接通过该传入的数组修改原数组内部值（浅拷贝），但Golang则会完全复制出一份副本来进行修改（深拷贝）：</p>
+<ul>
+<li>Java<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    int[] array = &#123;1, 2, 3&#125;;</span><br><span class="line">    change(array);</span><br><span class="line">    System.out.println(Arrays.toString(array)); // -1,2,3</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">private static void change(int[] array) &#123;</span><br><span class="line">    array[0] = -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>Golang<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">	array := [...]int&#123;1, 2, 3&#125;</span><br><span class="line">	change(array)</span><br><span class="line">	fmt.Println(array) // 1,2,3</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func change(array [3]int) &#123;</span><br><span class="line">	array[0] = -1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+并且值得注意的是，在Golang中，只有同长度、同类型的数组才可视为“同一类型”，譬如 [2]int 和 [3]int 则会被视为不同的类型，这在参数传递的时候会造成编译错误。</li>
+</ul>
+<p>所以在Golang中数组很少被直接使用，更多的是使用切片（基于数组指针）来代替数组。</p>
+<p>在Golang中，只有切片、指针、channel、map及func属于引用类型，也就是在传递参数的时候，实质上复制的都是他们的指针，内部的修改会直接影响到外部：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">	slice := []int&#123;1, 2, 3&#125;</span><br><span class="line">	changeSlice(slice)</span><br><span class="line">	fmt.Println(slice) // -1,2,3</span><br><span class="line"></span><br><span class="line">	mapper := map[string]int &#123;</span><br><span class="line">		&quot;num&quot;: 0,</span><br><span class="line">	&#125;</span><br><span class="line">	changeMap(mapper)</span><br><span class="line">	fmt.Println(mapper) // num = -1</span><br><span class="line"></span><br><span class="line">	array := [...]int&#123;1, 2, 3&#125;</span><br><span class="line">	changePointer(&amp;array)</span><br><span class="line">	fmt.Println(array) // -1,2,3</span><br><span class="line"></span><br><span class="line">	intChan := make(chan int, 1)</span><br><span class="line">	intChan &lt;- 1</span><br><span class="line">	changeChannel(intChan)</span><br><span class="line">	fmt.Println(&lt;- intChan) // -1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func changeChannel(intChan chan int) &#123;</span><br><span class="line">	&lt;- intChan</span><br><span class="line">	intChan &lt;- -1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func changePointer(array *[3]int) &#123;</span><br><span class="line">	array[0] = -1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func changeMap(mapper map[string]int) &#123;</span><br><span class="line">	mapper[&quot;num&quot;] = -1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func changeSlice(array []int) &#123;</span><br><span class="line">	array[0] = -1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="三、结构体、函数及指针"><a href="#三、结构体、函数及指针" class="headerlink" title="三、结构体、函数及指针"></a>三、结构体、函数及指针</h2><h3 id="3-1-结构体声明及使用"><a href="#3-1-结构体声明及使用" class="headerlink" title="3.1 结构体声明及使用"></a>3.1 结构体声明及使用</h3><p>在Golang中区别与Java最显著的一点是，Golang不存在“类”这个概念，组织数据实体的结构在Golang中被称为结构体。函数可以脱离“类”而存在，函数可以依赖于结构体来调用或者依赖于包名调用。</p>
+<p>Golang中的结构体放弃了继承、实现等多态概念，结构体之间可使用组合来达到复用方法或者字段的效果。</p>
+<p>要声明一个结构体只需使用 type + struct 关键字即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type Person struct &#123;</span><br><span class="line">	Name string</span><br><span class="line">	Age  int</span><br><span class="line">	id   string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要使用一个结构体也很简单，一般有以下几种方式去创建结构体：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">personPoint := new(entity.Person) // 通过new方法创建结构体指针</span><br><span class="line">person1 := entity.Person&#123;&#125; // 通过Person&#123;&#125;创建默认字段的结构体</span><br><span class="line">person2 := entity.Person&#123; // 通过Person&#123;Name:x,Age:x&#125;创建结构体并初始化特定字段</span><br><span class="line">	Name: &quot;ARong&quot;,</span><br><span class="line">	Age:  21,</span><br><span class="line">&#125;</span><br><span class="line">fmt.Println(personPoint) // &amp;&#123; 0 &#125;</span><br><span class="line">fmt.Println(person1)     // &#123; 0 &#125;</span><br><span class="line">fmt.Println(person2)	 // &#123;ARong 21 &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-2-函数和方法的区别"><a href="#3-2-函数和方法的区别" class="headerlink" title="3.2 函数和方法的区别"></a>3.2 函数和方法的区别</h3><p>使用Java的朋友应该很少使用“函数”这个词，因为对于Java来说，所有的“函数”都是基于“类”这个概念构建的，也就是只有在“类”中才会包含所谓的“函数”，这里的“函数”被称为“方法”。</p>
+<p>而“函数”这个词源于面向过程的语言，所以在Golang中，“函数”和“方法”的最基本区别是：</p>
+<p><strong>函数不基于结构体而是基于包名调用，方法基于结构体调用</strong>。</p>
+<p>下面是一个例子，可以直观地看出方法和函数的区别：</p>
+<ul>
+<li>entity<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package entity</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">type Person struct &#123;</span><br><span class="line">	Name string</span><br><span class="line">	Age  int</span><br><span class="line">	id   string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Person结构体/指针可调用的&quot;方法&quot;，属于Person结构体</span><br><span class="line">func (p *Person) Solve() &#123;</span><br><span class="line">	fmt.Println(p)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 任何地方都可调用的&quot;函数&quot;，不属于任何结构体，可通过entity.Solve调用</span><br><span class="line">func Solve(p *Person) &#123;</span><br><span class="line">	fmt.Println(p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>main<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">	personPoint := new(entity.Person) // 通过new方法创建结构体指针</span><br><span class="line"></span><br><span class="line">	entity.Solve(personPoint) // 函数调用</span><br><span class="line">	</span><br><span class="line">	personPoint.Solve() 	  // 方法调用</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-3-指针的使用"><a href="#3-3-指针的使用" class="headerlink" title="3.3 指针的使用"></a>3.3 指针的使用</h3><p>在Java中不存在显式的指针操作，而Golang中存在显式的指针操作，但是Golang的指针不像C那么复杂，不能进行指针运算。</p>
+<p>下面从一个例子来看Java的隐式指针转化和Golang的显式指针转换：Java和Golang方法传参时传递的都是值类型，在Java中如果传递了引用类型（对象、数组等）会复制其指针进行传递， 而在Golang中必须要显式传递Person的指针，不然只是传递了该对象的一个副本。</p>
+<p><strong>Golang使用 * 来定义和声明指针，通过&amp;来取得对象的指针</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">	p1 := entity.Person&#123;</span><br><span class="line">		Name: &quot;ARong1&quot;,</span><br><span class="line">		Age:  21,</span><br><span class="line">	&#125;</span><br><span class="line">	changePerson(p1)</span><br><span class="line">	fmt.Println(p1.Name) // ARong1</span><br><span class="line">	changePersonByPointer(&amp;p1)</span><br><span class="line">	fmt.Println(p1.Name) // ARong2</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func changePersonByPointer(person *entity.Person) &#123;</span><br><span class="line">	person.Name = &quot;ARong2&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func changePerson(person entity.Person) &#123;</span><br><span class="line">	person.Name = &quot;ARong2&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，如果结构体中需要组合其他结构体，那么建议采用指针的方式去声明，否则会出现更新丢失问题。</p>
+<p>以下是Golang方法的一个隐式指针转换，结构体调用方法时，如果传递的是对象，那么会被自动转化为指针调用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">type Person struct &#123;</span><br><span class="line">	Name string</span><br><span class="line">	Age  int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Person结构体/指针可调用的&quot;方法&quot;，属于Person结构体</span><br><span class="line">func (p *Person) Solve() &#123;</span><br><span class="line">	fmt.Println(p)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	p := entity.Person&#123;</span><br><span class="line">		Name: &quot;ARong&quot;,</span><br><span class="line">		Age:  21,</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	pp := &amp;p</span><br><span class="line">	pp.Solve() // 显式</span><br><span class="line">	</span><br><span class="line">	p.Solve    // 隐式，自动将p转化为&amp;p</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、面向对象"><a href="#四、面向对象" class="headerlink" title="四、面向对象"></a>四、面向对象</h2><h3 id="4-1-与Java面向对象的区别"><a href="#4-1-与Java面向对象的区别" class="headerlink" title="4.1 与Java面向对象的区别"></a>4.1 与Java面向对象的区别</h3><p>Golang是一门具备面向对象编程风格的语言，但是却不具备Java等传统面向对象语言中“继承（extends）、实现（implements）”的关键字。</p>
+<p>在Golang中，通过接口或结构体的组合来实现非严格的“继承”，通过非侵入式的接口来实现非严格的“多态”，通过结构体及包和函数实现了代码细节的“封装”，有了封装、继承与多态，就可以很好地通过OO思维实现与现实需求所对应的程序了。</p>
+<h3 id="4-2-结构体组合"><a href="#4-2-结构体组合" class="headerlink" title="4.2 结构体组合"></a>4.2 结构体组合</h3><p>假设有这么一个场景：动物（Animal）具备名字（Name）、年龄（Age）的基本特性，现在需要实现一个Dog类型，且Dog类型需要具备Animal所需的所有特性，并且自身具备犬吠（bark()）的方法，使用Java和Golang来实现该场景会有什么区别呢？</p>
+<p>首先来看看最熟悉的Java要如何写，很简单，使用抽象类描述Animal作为所有动物的超类，Dog extends Animal：</p>
+<ul>
+<li><p>Java</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Animal &#123;</span><br><span class="line">    protected String name;</span><br><span class="line">    protected int age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Dog extends Animal &#123;</span><br><span class="line">    public void bark() &#123;</span><br><span class="line">        System.out.println(age + &quot;岁的&quot; + name + &quot;在汪汪汪...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Test &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Dog dog = new Dog();</span><br><span class="line">        dog.name = &quot;tom&quot;;</span><br><span class="line">        dog.age = 2;</span><br><span class="line">        dog.bark(); // 2岁的tom在汪汪汪...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在Golang中，可以这样通过结构体的组合来实现继承：</p>
+</li>
+<li><p>Golang</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">package oom</span><br><span class="line"></span><br><span class="line">type Animal struct &#123;</span><br><span class="line">	Name string</span><br><span class="line">	Age int</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type Dog struct &#123;</span><br><span class="line">	*Animal</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (d *Dog) Bark() &#123;</span><br><span class="line">	fmt.Printf(&quot;%d岁的%s在汪汪汪...&quot;, d.Age, d.Name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// ----------</span><br><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	dog := &amp;oom.Dog&#123;&amp;oom.Animal&#123;</span><br><span class="line">		Name: &quot;tom&quot;,</span><br><span class="line">		Age:  2,</span><br><span class="line">	&#125;&#125;</span><br><span class="line">	dog.Bark() // 2岁的tom在汪汪汪...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是这种方式实现的继承是有缺陷的，也就是不具备多态的性质，Dog属于Animal，但是Dog并不是Animal，在方法中定义了Animal参数，Dog是无法作为该参数传入的。</p>
+</li>
+</ul>
+<p><strong>Golang使用了非侵入式接口来实现“多态”</strong>。</p>
+<h3 id="4-3-非侵入式接口"><a href="#4-3-非侵入式接口" class="headerlink" title="4.3 非侵入式接口"></a>4.3 非侵入式接口</h3><p>Go语言的接口并不是其他语言（C++、Java、C#等）中所提供的接口概念。<br>在Go语言出现之前，接口主要作为不同组件之间的契约存在。对契约的实现是强制的，你必须声明你的确实现了该接口。为了实现一个接口，你需要从该接口继承：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">interface IFoo &#123;</span><br><span class="line">    void Bar();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Foo implements IFoo &#123; // Java文法</span><br><span class="line">// ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Foo : public IFoo &#123; // C++文法</span><br><span class="line">// ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">IFoo foo = new Foo;</span><br></pre></td></tr></table></figure>
+<p>这类接口我们称为侵入式接口。“侵入式”的主要表现在于实现类需要明确声明自己实现了某个接口。这种强制性的接口继承是面向对象编程思想发展过程中一个遭受相当多置疑的特性。</p>
+<p><strong>Golang的非侵入式接口不需要通过任何关键字声明类型与接口之间的实现关系，只要一个类型实现了接口的所有方法，那么这个类型就是这个接口的实现类型</strong>。</p>
+<p>假设现在有一个Factory接口，该接口中定义了Produce()方法及Consume()方法，CafeFactory结构体作为其实现类型，那么可以通过以下代码实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">package oom</span><br><span class="line"></span><br><span class="line">type Factory interface &#123;</span><br><span class="line">	Produce() bool</span><br><span class="line">	Consume() bool</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type CafeFactory struct &#123;</span><br><span class="line">	ProductName string</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (c *CafeFactory) Produce() bool &#123;</span><br><span class="line">	fmt.Printf(&quot;CafeFactory生产%s成功&quot;, c.ProductName)</span><br><span class="line">	return true</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (c *CafeFactory) Consume() bool &#123;</span><br><span class="line">	fmt.Printf(&quot;CafeFactory消费%s成功&quot;, c.ProductName)</span><br><span class="line">	return true</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// --------------</span><br><span class="line">package main</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	factory := &amp;oom.CafeFactory&#123;&quot;Cafe&quot;&#125;</span><br><span class="line">	doProduce(factory)</span><br><span class="line">	doConsume(factory)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">func doProduce(factory oom.Factory) bool &#123;</span><br><span class="line">	return factory.Produce()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func doConsume(factory oom.Factory) bool &#123;</span><br><span class="line">	return factory.Consume()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，只要CafeFactory实现了所有的Factory方法，那么它就是一个Factory了，而不需要使用implements关键字去显式声明它们之间的实现关系。</p>
+<p>Golang的非侵入式接口有许多好处：</p>
+<p>1.在Go中，类型的继承树并无意义，我们只需要知道这个类型实现了哪些方法，每个方法是啥含义就足够了</p>
+<p>2.实现类型的时候，只需要关心自己应该提供哪些方法，不用再纠结接口需要拆得多细才合理。接口由使用方按需定义，而不用事前规划</p>
+<p>3.不用为了实现一个接口而导入一个包，因为多引用一个外部的包，就意味着更多的耦合。接口由使用方按自身需求来定义，使用方无需关心是否有其他模块定义过类似的接口</p>
+<p>一句话总结非侵入式接口的好处就是简单、高效、按需实现。</p>
+<h3 id="4-4-interface-空接口"><a href="#4-4-interface-空接口" class="headerlink" title="4.4 interface{} 空接口"></a>4.4 interface{} 空接口</h3><p>interface{} 空接口是任意类型的接口，所有的类型都是空接口的实现类型。因为Golang对于实现类型的要求是实现了接口的所有方法，而空接口不存在方法，所以任意类型都可以充当空接口。有点类似Java的Object。</p>
+<p>以下是一个使用空接口充当参数的类型判断例子：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func getType(key interface&#123;&#125;) string &#123;</span><br><span class="line">	switch key.(type) &#123;</span><br><span class="line">		case int:</span><br><span class="line">			return &quot;this is a integer&quot;</span><br><span class="line">		case string:</span><br><span class="line">			return &quot;this is a string&quot;</span><br><span class="line">		default:</span><br><span class="line">			return &quot;unknown&quot;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、异常处理"><a href="#五、异常处理" class="headerlink" title="五、异常处理"></a>五、异常处理</h2><h3 id="5-1-与Java异常处理的区别"><a href="#5-1-与Java异常处理的区别" class="headerlink" title="5.1 与Java异常处理的区别"></a>5.1 与Java异常处理的区别</h3><p>在Java中通过<code>try..catch..finally</code>的方式进行异常处理，有可能出现异常的代码会被<code>try</code>块给包裹起来，在<code>catch</code>中捕获相关的异常并进行处理，最后通过<code>finally</code>块来统一执行最后的结束操作（释放资源、释放锁）。</p>
+<p>而Golang中的异常处理（更贴切地说是错误处理）方式比Java的简单太多，所有可能出现异常的方法或者代码直接把错误当作第二个响应值进行返回，程序中对返回值进行判断，非空则进行处理并且立即中断程序的执行，避免错误的传播。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">value, err := func(param)</span><br><span class="line"></span><br><span class="line">if err != nil &#123;</span><br><span class="line">    // 返回了异常，进行处理</span><br><span class="line">    fmt.Printf(&quot;Error %s in pack1.Func1 with parameter %v&quot;, err.Error(), param1)</span><br><span class="line">    return err</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// func执行正确，继续执行后续代码</span><br><span class="line">Process(value)</span><br></pre></td></tr></table></figure>
+<p>Golang引入了一个关于错误处理的标准模式，即error接口，该接口的定义如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type error interface &#123;</span><br><span class="line">	Error() string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于大多数函数，如果要返回错误，大致上都可以定义为如下模式，将 error 作为多种返回值中的最后一个，但这并非是强制要求：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">unc main() &#123;</span><br><span class="line">	if res, err := compute(1, 2, &quot;x&quot;); err != nil &#123;</span><br><span class="line">		panic(err)</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		fmt.Println(res)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func compute(a, b int, c string)(res int, err error) &#123;</span><br><span class="line">	switch c &#123;</span><br><span class="line">	case &quot;+&quot; :</span><br><span class="line">		return a + b, nil</span><br><span class="line">	case &quot;-&quot;:</span><br><span class="line">		return a - b, nil</span><br><span class="line">	case &quot;*&quot;:</span><br><span class="line">		return a * b, nil</span><br><span class="line">	case &quot;/&quot;:</span><br><span class="line">		return a / b, nil</span><br><span class="line">	default:</span><br><span class="line">		return -1, fmt.Errorf(&quot;操作符不合法&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然了，Golang中也可以像Java一样灵活地自定义错误类型，定义PathError结构体，并且实现Error接口后，该结构体就是一个错误类型了：</p>
+<ul>
+<li>PathError<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">type PathError struct &#123;</span><br><span class="line">	Op string</span><br><span class="line">	Path string</span><br><span class="line">	Err error</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (e *PathError) Error() string &#123;</span><br><span class="line">	return e.Op + &quot; &quot; + e.Path + &quot;: &quot; + e.Err.Error()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>main<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func GetStat(name string) (fi FileInfo, err error) &#123;</span><br><span class="line">    var stat syscall.Stat_t</span><br><span class="line">    err = syscall.Stat(name, &amp;stat)</span><br><span class="line">    if err != nil &#123;</span><br><span class="line">        // 返回PathError错误类型</span><br><span class="line">        return nil, &amp;PathError &#123;&quot;stat&quot;, name, err&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // 程序正常，返回nil</span><br><span class="line">    return fileInfoFromStat(&amp;stat, name), nil</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+这种异常处理方式是Golang的一大特色，外界对这种异常处理方式有褒有贬：</li>
+</ul>
+<p>优点：代码清晰，所有的异常都需要被考虑到，出现异常后马上就需要处理</p>
+<p>缺点：代码冗余，所有的异常都需要通过if err !&#x3D; nil {}去做判断和处理，不能够做到统一捕捉和处理</p>
+<h3 id="5-2-逗号-ok-模式"><a href="#5-2-逗号-ok-模式" class="headerlink" title="5.2 逗号 ok 模式"></a>5.2 逗号 ok 模式</h3><p>在使用Golang编写代码的过程中，许多方法经常在一个表达式返回2个参数时使用这种模式：,ok，第一个参数是一个值或者nil，第二个参数是true&#x2F;false或者一个错误error。在一个需要赋值的if条件语句中，使用这种模式去检测第二个参数值会让代码显得优雅简洁。这种模式在Golang编码规范中非常重要。这也是Golang自身的函数多返回值特性的体现。</p>
+<h3 id="5-3-defer、panic及recover"><a href="#5-3-defer、panic及recover" class="headerlink" title="5.3 defer、panic及recover"></a>5.3 defer、panic及recover</h3><p>defer、pannic及recover是Golang错误处理中常用的关键字，它们各自的用途为:</p>
+<h4 id="1-defer"><a href="#1-defer" class="headerlink" title="1. defer"></a>1. defer</h4><p>defer的作用是延迟执行某段代码，一般用于关闭资源或者执行必须执行的收尾操作，无论是否出现错误defer代码段都会执行，类似于Java中的finally代码块的作用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> func CopyFile(dst, src string) (w int64, err error) &#123;</span><br><span class="line">    srcFile, err := os.Open(src)</span><br><span class="line">    if err != nil &#123;</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    // 延迟关闭srcFile</span><br><span class="line">    defer srcFile.Close()</span><br><span class="line">    dstFile, err := os.Create(dstName)</span><br><span class="line">    if err != nil &#123;</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line">    // 延迟关闭dstFile</span><br><span class="line">    defer dstFile.Close()</span><br><span class="line">    return io.Copy(dstFile, srcFile)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>defer也可以执行函数或者是匿名函数:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">defer func() &#123;</span><br><span class="line">	// 清理工作</span><br><span class="line">&#125; ()</span><br><span class="line"></span><br><span class="line">// 这是传递参数给匿名函数时的写法</span><br><span class="line">var i := 1</span><br><span class="line">defer func(i int) &#123;</span><br><span class="line">	// 做你复杂的清理工作</span><br><span class="line">&#125; (i)</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，defer使用一个栈来维护需要执行的代码，所以defer函数所执行的顺序是和defer声明的顺序相反的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">defer fmt.Println(1)</span><br><span class="line">defer fmt.Println(2)</span><br><span class="line">defer fmt.Println(3)</span><br><span class="line">// 执行结果</span><br><span class="line">// 3</span><br><span class="line">// 2</span><br><span class="line">// 1</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-panic"><a href="#2-panic" class="headerlink" title="2. panic"></a>2. panic</h4><p>panic的作用是抛出错误，制造系统运行时恐慌，当在一个函数执行过程中调用panic()函数时，正常的函数执行流程将立即终止，但函数中之前使用defer关键字延迟执行的语句将正常展开执行，之后该函数将返回到调用函数，并导致逐层向上执行 panic流程，直至所属的goroutine中所有正在执行的函数被终止。</p>
+<p>panic和Java中的throw关键字类似，用于抛出错误，阻止程序执行。</p>
+<p>以下是基本使用方法:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">panic(404)</span><br><span class="line">panic(&quot;network broken&quot;)</span><br><span class="line">panic(Error(&quot;file not exists&quot;))</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-recover"><a href="#3-recover" class="headerlink" title="3. recover"></a>3. recover</h4><p>recover的作用是捕捉panic抛出的错误并进行处理，需要联合defer来使用，类似于Java中的catch代码块：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">func main() &#123;</span><br><span class="line">      fmt.Println(&quot;main begin&quot;)</span><br><span class="line">      // 必须要先声明defer，否则不能捕获到panic异常</span><br><span class="line">      defer func() &#123; </span><br><span class="line">        fmt.Println(&quot;defer begin&quot;)</span><br><span class="line">        if err := recover(); err != nil &#123;</span><br><span class="line">            // 这里的err其实就是panic传入的内容</span><br><span class="line">            fmt.Println(err) </span><br><span class="line">        &#125;</span><br><span class="line">         fmt.Println(&quot;defer end&quot;)</span><br><span class="line">      &#125;()</span><br><span class="line">      f()</span><br><span class="line">      // f中出现错误，这里开始下面代码不会再执行</span><br><span class="line">      fmt.Println(&quot;main end&quot;) </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func f() &#123;</span><br><span class="line">   fmt.Println(&quot;f begin&quot;)</span><br><span class="line">   panic(&quot;error&quot;)</span><br><span class="line">   //这里开始下面代码不会再执行</span><br><span class="line">   fmt.Println(&quot;f end&quot;) </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后的执行结果为:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">main begin</span><br><span class="line">f begin</span><br><span class="line">defer begin</span><br><span class="line">error</span><br><span class="line">defer end</span><br></pre></td></tr></table></figure>
+<p><strong>利用recover处理panic指令，defer必须在panic之前声明，否则当panic时，recover无法捕获到panic。</strong></p>
+<h2 id="六、并发编程"><a href="#六、并发编程" class="headerlink" title="六、并发编程"></a>六、并发编程</h2><h3 id="6-1-CSP（MPG）并发模型介绍及对比"><a href="#6-1-CSP（MPG）并发模型介绍及对比" class="headerlink" title="6.1 CSP（MPG）并发模型介绍及对比"></a>6.1 CSP（MPG）并发模型介绍及对比</h3><p>在Java中，通常借助于共享内存（全局变量）作为线程间通信的媒介，但在Golang中使用的是通道（channel）作为协程间通信的媒介，这也是Golang中强调的:</p>
+<p><strong>不要通过共享内存通信，而通过通信来共享内存</strong></p>
+<p>在Java中，使用共享内存来进行通信常会遇到线程不安全问题，所以我们经常需要进行大量的额外处理，方式包括加锁（同步化）、使用原子类、使用volatile提升可见性等等。</p>
+<p>CSP是Communicating Sequential Processes 的缩写，中文为顺序通信进程。CSP的核心思想是多个线程之间通过Channel来通信（对应到golang中的chan结构），这里的Channel可以理解为操作系统中的管道或者是消息中间件(不同之处在于这个MQ是为不同协程间服务的，而不是进程)</p>
+<p>说到了CSP就得提一下Golang自身的并发模型MPG，MPG中M指的是内核线程、P指的是上下文环境、G指的是协程，其中M与P一起构成了G可运行的环境，M和P是一一对应关系，通过P来动态地对不同的G做映射和控制，所以Golang中的协程是建立在某个线程之上的用户态线程。</p>
+<h3 id="6-2-Goroutine及Channel的使用"><a href="#6-2-Goroutine及Channel的使用" class="headerlink" title="6.2 Goroutine及Channel的使用"></a>6.2 Goroutine及Channel的使用</h3><p>在Java中开启一个线程需要创建Thread实现类或Runnable实现类、重写run方法、通过t.start()开启线程执行特定任务，但在Golang中要开启一个Goroutine十分简单，只需使用go这个关键字即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 开启协程执行一段代码</span><br><span class="line">go fmt.Println(&quot;go&quot;)</span><br><span class="line"></span><br><span class="line">// 开启协程执行函数</span><br><span class="line">go SomeMethod(1, 1)</span><br><span class="line"></span><br><span class="line">// 开启协程执行匿名函数</span><br><span class="line">go func() &#123;</span><br><span class="line">    go fmt.Println(&quot;go&quot;)</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<p>关于协程，有一些注意点:</p>
+<ol>
+<li>main函数运行的协程为主协程，其他协程为主协程的守护协程，当主协程死亡其它协程也会死亡</li>
+<li>协程在执行完所需执行的方法及代码后会死亡，遇到panic导致程序结束时也会死亡</li>
+</ol>
+<p>channel是Golang在语言级别提供的goroutine间的通信方式。我们可以使用channel在两个或多个goroutine之间传递消息,因此通过channel传递对象的过程和调用函数时的参数传递行为比较一致，比如也可以传递指针等。</p>
+<p>channel是类型相关的。也就是说，一个channel只能传递一种类型的值，这个类型需要在声明channel时指定。</p>
+<p>一般channel的声明形式为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var chanName chan ElementType</span><br></pre></td></tr></table></figure>
+<p>与一般的变量声明不同的地方仅仅是在类型之前加了chan关键字。 ElementType 指定这个channel所能传递的元素类型。举个例子，我们声明一个传递类型为 int channel：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var ch chan int</span><br></pre></td></tr></table></figure>
+<p>或者，我们声明一个 map ，元素是 bool 型的channel:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var m map[string] chan bool</span><br></pre></td></tr></table></figure>
+<p>初始化一个channel也很简单，直接使用内置的函数 make() 即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ch := make(chan int)</span><br></pre></td></tr></table></figure>
+<p>在channel的用法中，最常见的包括写入和读出。将一个数据写入（发送）至channel的语法很直观，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ch &lt;- value</span><br></pre></td></tr></table></figure>
+<p>向channel写入数据通常会导致程序阻塞，直到有其他goroutine从这个channel中读取数据。从channel中读取数据的语法是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">value := &lt;-ch</span><br></pre></td></tr></table></figure>
+<p>如果channel之前没有写入数据，那么从channel中读取数据也会导致程序阻塞，直到channel中被写入数据为止。我们之后还会提到如何控制channel只接受写或者只允许读取，即单向channel。</p>
+<p>channel有如下特性：</p>
+<ol>
+<li>读取、写入操作为原子操作，无需担心并发时的数据安全问题，channel内数据的写入对所有协程可见</li>
+<li>channel中阻塞的协程是FIFO的，严格按照入队顺序读写数据</li>
+<li>对于非缓冲channel的读取和写入是同步发生的，写入会阻塞直到有读者，读取会阻塞直到有写者，类似于Java中的synchronousqueue；对于缓冲channel的读取和写入是异步的，写入时若队列已满则阻塞，直到有读者，读取时若队列为空则阻塞，直到有写者，类似于Java中的linkedblockingqueue</li>
+<li>对于为nil的channel的写入和读取都会永久阻塞</li>
+</ol>
+<h2 id="七、垃圾回收"><a href="#七、垃圾回收" class="headerlink" title="七、垃圾回收"></a>七、垃圾回收</h2><h3 id="7-1-Java的垃圾回收体系"><a href="#7-1-Java的垃圾回收体系" class="headerlink" title="7.1 Java的垃圾回收体系"></a>7.1 Java的垃圾回收体系</h3><p>Java基于JVM完成了垃圾收集的功能，其体系很庞大，包括了垃圾回收器（G1、CMS、Serial、ParNew等）、垃圾回收算法(标记-清除、标记-整理、复制、分代收集)、可达性算法(可达性分析、引用计数法)、引用类型、JVM内存模型等内容。</p>
+<h3 id="7-2-Golang三色标记法"><a href="#7-2-Golang三色标记法" class="headerlink" title="7.2 Golang三色标记法"></a>7.2 Golang三色标记法</h3><p>三色标记法，主要流程如下：</p>
+<ol>
+<li>所有对象最开始都是白色</li>
+<li>从root开始找到所有可达对象，标记为灰色，放入待处理队列</li>
+<li>遍历灰色对象队列，将其引用对象标记为灰色放入待处理队列，自身标记为黑色</li>
+<li>处理完灰色对象队列，执行清扫工作</li>
+</ol>
+<h2 id="八、通用写法"><a href="#八、通用写法" class="headerlink" title="八、通用写法"></a>八、通用写法</h2><h3 id="8-1-定时器"><a href="#8-1-定时器" class="headerlink" title="8.1 定时器"></a>8.1 定时器</h3><p>来段源码</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> dl, ok := ctx.Deadline(); ok &#123;</span><br><span class="line">	<span class="comment">// If we have a deadline then we interpret it as a request to gracefully shutdown. We wait</span></span><br><span class="line">	<span class="comment">// until either all the connections have landed back in the pool (and have been closed) or</span></span><br><span class="line">	<span class="comment">// until the timer is done.</span></span><br><span class="line">	ticker := time.NewTicker(<span class="number">1</span> * time.Second)</span><br><span class="line">	<span class="keyword">defer</span> ticker.Stop()</span><br><span class="line">	timer := time.NewTimer(time.Now().Sub(dl))</span><br><span class="line">	<span class="keyword">defer</span> timer.Stop()</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> &lt;-timer.C:</span><br><span class="line">		<span class="keyword">case</span> &lt;-ctx.Done():</span><br><span class="line">		<span class="keyword">case</span> &lt;-ticker.C: <span class="comment">// Can we replace this with an actual signal channel? We will know when p.inflight hits zero from the close method.</span></span><br><span class="line">			p.Lock()</span><br><span class="line">			<span class="keyword">if</span> <span class="built_in">len</span>(p.opened) &gt; <span class="number">0</span> &#123;</span><br><span class="line">				p.Unlock()</span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line">			&#125;</span><br><span class="line">			p.Unlock()</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">break</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，创建了循环定时器ticker、单次定时器timer，使用select监听3个管道， </p>
+<p>实现的效果：阻塞当前流程，定时查询当前未关闭资源；当满足下列条件之一时，执行后续流程：  </p>
+<ol>
+<li>不存在未关闭资源   </li>
+<li>阻塞时间超过预定时间  </li>
+<li>上下文ctx cancel触发</li>
+</ol>
+
+    </div>
+    
+  </div>
+</article>
+<div id="toc" class="toc-article">
+  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%B7%A6%E5%8F%B3%E8%8A%B1%E6%8B%AC%E5%8F%B7%E9%9C%80%E8%A6%81%E7%AC%A6%E5%90%88%E4%B8%8A%E4%B8%8B%E6%8D%A2%E8%A1%8C%E9%A3%8E%E6%A0%BC"><span class="toc-text">1. 左右花括号需要符合上下换行风格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E5%90%8E%E5%BF%85%E9%A1%BB%E4%BD%BF%E7%94%A8%EF%BC%8C%E4%B8%8D%E4%BD%BF%E7%94%A8%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E2%80%9C-%E2%80%9C%E6%9D%A5%E4%BB%A3%E6%9B%BF"><span class="toc-text">2. 变量声明后必须使用，不使用需要使用“_“来代替</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%8F%AF%E8%A7%81%E5%9F%9F%E8%A7%84%E5%88%99"><span class="toc-text">3. 可见域规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E5%8F%8A%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E6%96%87%E6%B3%95"><span class="toc-text">1. 变量声明及初始化的文法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%AF%B9%E4%BA%8E%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B-%E5%A3%B0%E6%98%8E%E5%8D%B3%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%9B%E5%AF%B9%E4%BA%8E%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%EF%BC%8C%E5%A3%B0%E6%98%8E%E5%88%99%E5%88%9D%E5%A7%8B%E5%8C%96%E4%B8%BAnil"><span class="toc-text">2. 对于基本类型,声明即初始化；对于引用类型，声明则初始化为nil</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-defer"><span class="toc-text">1. defer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-panic"><span class="toc-text">2. panic</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-recover"><span class="toc-text">3. recover</span></a></li></ol>
+</div></section>
+        </div>
+        <!-- <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Dalin &copy; 2023 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+        </div>
+    </div>
+</footer> -->
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

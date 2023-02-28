@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta name="referrer" content="never">
+    <meta charset="utf-8">
+    
+    <title>acmp开发记录 | Dalin blog</title>
+    
+    
+        <meta name="keywords" content="acmp开发记录" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1. 数据库存储创建日期是Instant格式，后台需要根据今天日期查找今天创建的记录。主要是需要得到Instant格式的今天的最小日期，用于比对。123LocalDate localDate &#x3D; LocalDate.now();LocalDateTime minTime &#x3D; localDate.atTime(LocalTime.MIN);Instant today &#x3D; minTime.toInst">
+<meta property="og:type" content="article">
+<meta property="og:title" content="acmp开发记录">
+<meta property="og:url" content="https://tianxiafeiyu.github.io/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/acmp%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:site_name" content="Dalin blog">
+<meta property="og:description" content="1. 数据库存储创建日期是Instant格式，后台需要根据今天日期查找今天创建的记录。主要是需要得到Instant格式的今天的最小日期，用于比对。123LocalDate localDate &#x3D; LocalDate.now();LocalDateTime minTime &#x3D; localDate.atTime(LocalTime.MIN);Instant today &#x3D; minTime.toInst">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-15T23:12:09.000Z">
+<meta property="article:modified_time" content="2022-12-16T21:36:16.000Z">
+<meta property="article:author" content="Dalin">
+<meta property="article:tag" content="acmp开发记录">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/static/lin.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Dalin blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header" style="z-index:999">
+  <div id="header-main" class="header-inner">
+    <div class="header-outer">
+      <a href="/" id="logo">
+        <i class="logo"></i>
+        <span class="site-title">Dalin blog</span>
+      </a>
+      <nav id="main-nav">
+        
+        <a class="main-nav-link " href="/archives">归档</a>
+        
+        <a class="main-nav-link " href="/categories">分类</a>
+        
+        <a class="main-nav-link " href="/tags">标签</a>
+        
+        <a class="main-nav-link " href="/about">关于</a>
+        
+      </nav>
+      
+      <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+      <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+<script>
+  (function(window) {
+    var INSIGHT_CONFIG = {
+      TRANSLATION: {
+        POSTS: '文章',
+        PAGES: '页面',
+        CATEGORIES: '分类',
+        TAGS: '标签',
+        UNTITLED: '(未命名)',
+      },
+      ROOT_URL: '/',
+      CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+  })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+        <td><a class="main-nav-link" href="/archives">归档</a></td>
+        
+        <td><a class="main-nav-link" href="/categories">分类</a></td>
+        
+        <td><a class="main-nav-link" href="/tags">标签</a></td>
+        
+        <td><a class="main-nav-link" href="/about">关于</a></td>
+        
+        <td>
+          
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+<div class="widget-wrap" id='categories'>
+  <h3 class="widget-title">
+    <span></span>
+    <a id='allExpand' href="#">
+      <i class="fa fa-angle-double-down fa-2x"></i>
+    </a>
+  </h3>
+
+  
+  
+  
+  <ul class="unstyled" id="tree" > 
+    <li class="directory open">
+      <a href="#" data-role="directory">
+        技术开发
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-down" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        database
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        es
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%E5%AD%A6%E4%B9%A0/">
+        
+        Elasticsearch学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%20Java%20Rest%20Client/">
+        
+        Elasticsearch Java Rest Client
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7/">
+        
+        Elasticsearch版本特性
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2023/02/28/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E4%B8%AD%E7%9A%84NULL%E5%80%BC%E8%A7%A3%E6%9E%90/">
+        
+        mysql中的NULL值解析
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/">
+        
+        mysql常用函数汇总
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95/">
+        
+        mysql联合索引
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E8%84%8F%E8%AF%BB%E3%80%81%E5%B9%BB%E8%AF%BB%E3%80%81%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB/">
+        
+        数据库之脏读、幻读、不可重复读
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E3%80%81redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/">
+        
+        mysql、redis开启远程访问
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        golang
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/Golang%E4%B8%8EJava/">
+        
+        Golang与Java
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/golang%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/">
+        
+        golang学习大纲
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">
+        
+        go流程控制
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%E9%A1%B9%E7%9B%AE%E6%A0%87%E5%87%86%E5%B8%83%E5%B1%80/">
+        
+        go项目标准布局
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/http%20client%E6%9C%80%E4%BC%98%E9%85%8D%E7%BD%AE/">
+        
+        http client最优配置
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/%E4%BC%98%E7%A7%80golang%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">
+        
+        优秀golang开源项目
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20ast/">
+        
+        go ast
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20csp%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B/">
+        
+        go csp并发模型
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20gc/">
+        
+        go gc
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/xorm%E4%BD%BF%E7%94%A8/">
+        
+        xorm使用
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20checklist/">
+        
+        go checklist
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/">
+        
+        为什么bk-cmdb不用go mod管理
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        grocery
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/30/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/cpu%E5%8A%A0%E5%8E%8B%E8%84%9A%E6%9C%AC/">
+        
+        cpu加压脚本
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Chrome%E5%B9%B4%E5%BA%A6%E7%83%AD%E9%97%A8%20%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/">
+        
+        Chrome年度热门扩展程序
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Prometheus%E7%9B%91%E6%8E%A7kubernetes%E6%96%B9%E6%A1%88%E5%8F%8A%E5%AE%9E%E7%8E%B0/">
+        
+        Prometheus监控kubernetes方案及实现
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/websocket%E5%AD%A6%E4%B9%A0/">
+        
+        websocket学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AB%AF%E5%8F%A3%E6%A0%87%E8%AF%86%E5%90%AB%E4%B9%89/">
+        
+        交换机端口标识含义
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%9F%BA%E4%BA%8Eetcd%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">
+        
+        基于etcd实现的分布式锁
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E5%87%8F%E6%B2%BB%E3%80%81%E5%88%86%E6%B2%BB%E3%80%81%E9%80%92%E5%BD%92%E3%80%81%E8%BF%AD%E4%BB%A3%E3%80%81%E5%9B%9E%E6%BA%AF%E3%80%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E3%80%81%E8%B4%AA%E5%BF%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        数据结构与算法---常见算法减治、分治、递归、迭代、回溯、动态规划、贪心的基本思想
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E7%81%AB%E7%84%B0%E5%9B%BE%E6%80%8E%E4%B9%88%E7%9C%8B/">
+        
+        火焰图怎么看
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/NaN%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D/">
+        
+        NaN代表什么意思
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/jsonpath%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">
+        
+        jsonpath使用心得
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/k8s%E5%9B%BD%E9%99%85%E5%8C%96%E5%AE%9E%E7%8E%B0/">
+        
+        k8s国际化实现
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/RESTful%20API%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/">
+        
+        RESTful API格式规范
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/AI%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/">
+        
+        AI视频处理软件
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/FTP%E3%80%81FTPS%E5%92%8CSFTP%E9%83%BD%E6%98%AF%E5%95%A5/">
+        
+        FTP、FTPS和SFTP都是啥
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/github%E6%B7%BB%E5%8A%A0ssh%E6%96%B9%E6%B3%95/">
+        
+        github添加ssh方法
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%E2%80%94%E5%90%88%E5%B9%B6%E4%B8%8D%E5%90%8C%E4%BB%93%E5%BA%93%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/">
+        
+        git—合并不同仓库的项目代码
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%E4%BB%93%E5%BA%93%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%90%E4%BA%A4%E6%97%B6%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
+        
+        git仓库第一次提交时失败问题记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1apisix%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/">
+        
+        一次apisix问题排查过程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1python%E4%BB%A3%E7%A0%81%E6%B7%B7%E6%B7%86%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/">
+        
+        一次python代码混淆问题排查
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E7%A7%8D%E5%B0%86%E6%96%87%E6%9C%AC%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%9B%BE%E8%A1%A8%E7%9A%84%E7%8E%B0%E4%BB%A3%E5%9B%BE%E8%A1%A8%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/">
+        
+        一种将文本转换为图表的现代图表脚本语言
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A5%BD%E7%9A%84%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%A4%9A%E6%98%AF%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84%E5%B1%82/">
+        
+        为什么好的开源软件多是基础架构层
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%BB%B6%E6%97%B6%E3%80%81%E4%B8%A2%E5%8C%85%E3%80%81%E6%8A%96%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%AF%E8%AF%AD%E8%A7%A3%E9%87%8A/">
+        
+        延时、丢包、抖动——术语解释
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%20%E7%AC%94%E8%AE%B0/">
+        
+        git 笔记
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Apdex%20%E5%BA%94%E7%94%A8%E6%80%A7%E8%83%BD%E6%8C%87%E6%95%B0/">
+        
+        Apdex 应用性能指数
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/GraphQL%20%E5%85%A5%E9%97%A8/">
+        
+        GraphQL 入门
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/">
+        
+        REST风格理解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/dalin%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/">
+        
+        dalin的服务器配置记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">
+        
+        k8s配置文件详解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/session%EF%BC%8Ccookie%EF%BC%8Ctoken%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        session，cookie，token学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84HTTP%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        一次完整的HTTP请求过程【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%90%84%E7%A7%8D%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC%E7%9A%84%20Helloworld/">
+        
+        各种语言版本的 Helloworld
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E6%9C%8D%E5%8A%A1%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0/">
+        
+        服务缓存数据更新
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%BD%BF%E7%94%A8github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+        
+        使用github搭建个人博客
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/">
+        
+        进程间通信技术
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        html
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/html/css%E7%9F%A5%E8%AF%86%E7%82%B9/">
+        
+        css知识点
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory open">
+      <a href="#" data-role="directory">
+        java
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-down" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/PriorityQueue-%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97/">
+        
+        PriorityQueue-优先级队列
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E5%AE%9E%E4%BD%93%E7%B1%BB%E4%B8%AD%E7%94%A8%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E8%BF%98%E6%98%AF%E5%8C%85%E8%A3%85%E7%B1%BB/">
+        
+        实体类中用基本类型还是包装类
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E6%B7%B7%E4%B9%B1%E7%9A%84Java%E7%89%88%E6%9C%AC%E5%91%BD%E5%90%8D/">
+        
+        混乱的Java版本命名
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E8%A7%A3%E8%AF%BB%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%20Java%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">
+        
+        解读阿里巴巴 Java 代码规范
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/maven%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E4%BE%9D%E8%B5%96/">
+        
+        maven使用本地依赖
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20%E6%B3%A8%E8%A7%A3/">
+        
+        Spring 注解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/SkyWalking%E2%80%94Java%E6%8E%A2%E9%92%88%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/">
+        
+        SkyWalking—Java探针插件开发
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E4%BB%B6%E5%88%86%E6%9E%90%EF%BC%88%E5%BA%9F%E7%A8%BF%EF%BC%89/">
+        
+        Skywalking数据库插件分析（废稿）
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+        
+        Spring的单例模式与线程安全
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/skywalking%20Jdbc%E6%8F%92%E4%BB%B6%E5%88%86%E6%9E%90/">
+        
+        skywalking Jdbc插件分析
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%B8%AD%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E5%9D%91/">
+        
+        Java中无处不在的坑
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%BC%98%E9%9B%85%E7%9A%84%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%E8%B5%84%E6%BA%90/">
+        
+        Java优雅的关闭连接资源
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E5%87%A0%E4%BD%8D/">
+        
+        Java保留小数点后几位
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%AF%B9%E8%B1%A1%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E8%A7%A3%E6%B3%95/">
+        
+        Java对象循环引用解法
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Jpa%E8%BF%98%E6%98%AFMybatis%EF%BC%9F/">
+        
+        Jpa还是Mybatis？
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E6%A2%B3%E7%90%86%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        java多线程核心技术梳理
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/JTW%E8%AF%A6%E8%A7%A3/">
+        
+        JTW详解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/JVM%E4%B8%8EJava%E7%A8%8B%E5%BA%8F/">
+        
+        JVM与Java程序
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F/">
+        
+        Java创建线程的4种方式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+        
+        Java序列化与反序列化
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%8E%9F%E5%88%99/">
+        
+        Java异常处理原则
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%BB%86%E8%8A%82/">
+        
+        Java构造函数细节
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        
+        Java正则表达式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7%E7%B1%BB/">
+        
+        Java获取时间工具类
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Jenkins%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+        
+        Jenkins遇到的坑
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E4%BD%BF%E7%94%A8graphql%E6%9F%A5%E8%AF%A2/">
+        
+        Skywalking使用graphql查询
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E5%AD%A6%E4%B9%A0/">
+        
+        Skywalking学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20boot%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+        
+        Spring boot单元测试
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20boot%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/">
+        
+        Spring boot读取配置文件问题
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20security%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/">
+        
+        Spring security实现权限认证
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/lombok/">
+        
+        lombok
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/null==obj%20or%20obj==null%20%EF%BC%9F/">
+        
+        null==obj or obj==null ？
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%20+%20jasypt%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF%E5%8A%A0%E5%AF%86/">
+        
+        spring boot + jasypt实现配置文件信息加密
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%B8%AD%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+        
+        spring boot中代码修改配置文件
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%97%9B/">
+        
+        spring boot使用单例模式的痛
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+        
+        spring boot使用多线程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20security%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        spring security学习【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+        
+        关于线程安全
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/2020%20%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%EF%BC%88%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF%EF%BC%89/">
+        
+        2020 学习计划（成长之路）
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%20%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        Java 归并排序【转】
+        
+      </a>
+    </li> 
+    <li class="file active">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/acmp%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">
+        
+        acmp开发记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/idea+maven+git%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">
+        
+        idea+maven+git 开发环境安装
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/idea%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">
+        
+        idea使用心得
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E3%80%8AOn%20Java%208%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+        
+        《On Java 8》读书笔记
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java8%E6%96%B0%E7%89%B9%E6%80%A7/">
+        
+        Java8新特性
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        os
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/TCP%20%E5%8D%8F%E8%AE%AE%E7%81%B5%E9%AD%82%2012%20%E9%97%AE%20%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        TCP 协议灵魂 12 问 【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/Linux%20shell%20%E5%90%84%E7%A7%8D%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%84%8F%E4%B9%89/">
+        
+        Linux shell 各种符号的意义
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+        
+        Linux常用命令
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        python
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        Script
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/cmdb_mock/">
+        
+        cmdb_mock
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/push_cmdb_data/">
+        
+        push_cmdb_data
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/tops/">
+        
+        tops
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Python%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">
+        
+        Python高级编程技巧
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%20list()%E5%92%8C%5B%5D,dict()%E5%92%8C%7B%7D/">
+        
+        python list()和[],dict()和{}
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%85%A5%E9%97%A8/">
+        
+        python入门
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0/">
+        
+        python单例模式实现
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+        
+        python多进程与多线程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E7%9F%A5%E8%AF%86%E7%82%B9/">
+        
+        python知识点
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">
+        
+        python编程技巧
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E8%84%9A%E6%9C%AC%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/">
+        
+        python脚本接收参数的几种实现方式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/%E5%8F%98%E9%87%8F%E5%8F%8A%E6%96%B9%E6%B3%95%E5%89%8D%E5%90%8E%E4%B8%8B%E5%88%92%E7%BA%BF%E7%9A%84%E5%90%AB%E4%B9%89/">
+        
+        变量及方法前后下划线的含义
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2023/02/28/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+        
+        深入浅出设计模式
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        生活点滴
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2023/02/28/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/%E6%88%91%E7%9A%84%E6%96%B0%E5%86%A0%E7%BB%8F%E5%8E%86/">
+        
+        我的新冠经历
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/keep/">
+        
+        keep
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+  </ul> 
+</div>
+<script>
+  $(document).ready(function() {
+    var iconFolderOpenClass = 'fa-angle-down';
+    var iconFolderCloseClass = 'fa-angle-right';
+    var iconAllExpandClass = 'fa-angle-double-down';
+    var iconAllPackClass = 'fa-angle-double-up';
+    // Handle directory-tree expansion:
+    // 左键单独展开目录
+    $(document).on('click', '#categories a[data-role="directory"]', function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconFolderOpenClass);
+      var subtree = $(this).siblings('ul');
+      icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+      if (expanded) {
+        if (typeof subtree != 'undefined') {
+          subtree.slideUp({
+            duration: 100
+          });
+        }
+        icon.addClass(iconFolderCloseClass);
+      } else {
+        if (typeof subtree != 'undefined') {
+          subtree.slideDown({
+            duration: 100
+          });
+        }
+        icon.addClass(iconFolderOpenClass);
+      }
+    });
+    // 右键展开下属所有目录
+    $('#categories a[data-role="directory"]').bind("contextmenu", function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconFolderOpenClass);
+      var listNode = $(this).siblings('ul');
+      var subtrees = $.merge(listNode.find('li ul'), listNode);
+      var icons = $.merge(listNode.find('.fa'), icon);
+      icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+      if (expanded) {
+        subtrees.slideUp({
+          duration: 100
+        });
+        icons.addClass(iconFolderCloseClass);
+      } else {
+        subtrees.slideDown({
+          duration: 100
+        });
+        icons.addClass(iconFolderOpenClass);
+      }
+    })
+    // 展开关闭所有目录按钮
+    $(document).on('click', '#allExpand', function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconAllExpandClass);
+      icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+      if (expanded) {
+        $('#sidebar .fa.fa-angle-right').removeClass('fa-angle-right').addClass('fa-angle-down')
+        $('#categories li ul').slideDown({
+          duration: 100
+        });
+        icon.addClass(iconAllPackClass);
+      } else {
+        $('#sidebar .fa.fa-angle-down').removeClass('fa-angle-down').addClass('fa-angle-right')
+        $('#categories li ul').slideUp({
+          duration: 100
+        });
+        icon.addClass(iconAllExpandClass);
+      }
+    });
+  });
+</script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-技术开发/java/acmp开发记录" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+      
+      
+    
+        <h1 class="article-title" itemprop="name">
+            acmp开发记录
+        </h1>
+    
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+        
+        <h4 id="1-数据库存储创建日期是Instant格式，后台需要根据今天日期查找今天创建的记录。主要是需要得到Instant格式的今天的最小日期，用于比对。"><a href="#1-数据库存储创建日期是Instant格式，后台需要根据今天日期查找今天创建的记录。主要是需要得到Instant格式的今天的最小日期，用于比对。" class="headerlink" title="1. 数据库存储创建日期是Instant格式，后台需要根据今天日期查找今天创建的记录。主要是需要得到Instant格式的今天的最小日期，用于比对。"></a>1. 数据库存储创建日期是Instant格式，后台需要根据今天日期查找今天创建的记录。主要是需要得到Instant格式的今天的最小日期，用于比对。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">LocalDate</span> <span class="variable">localDate</span> <span class="operator">=</span> LocalDate.now();</span><br><span class="line"><span class="type">LocalDateTime</span> <span class="variable">minTime</span> <span class="operator">=</span> localDate.atTime(LocalTime.MIN);</span><br><span class="line"><span class="type">Instant</span> <span class="variable">today</span> <span class="operator">=</span> minTime.toInstant(ZoneOffset.of(<span class="string">&quot;+0&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-物理分页查询（数据库分页）"><a href="#2-物理分页查询（数据库分页）" class="headerlink" title="2. 物理分页查询（数据库分页）"></a>2. 物理分页查询（数据库分页）</h4><p>业务场景：查询数据库表联系人分页，筛选条件pid、status、name；按创建时间降序排序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Specification&lt;AlarmContact&gt; specification = (Specification&lt;AlarmContact&gt;) (root, query, criteriaBuilder) -&gt; &#123;</span><br><span class="line">            List&lt;Predicate&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            list.add(criteriaBuilder.equal(root.get(<span class="string">&quot;projectId&quot;</span>), projectId));</span><br><span class="line">            list.add(criteriaBuilder.equal(root.get(<span class="string">&quot;status&quot;</span>), ResourceStatus.ENABLE));</span><br><span class="line">            <span class="keyword">if</span> (name.length() != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 此处为查询含有name的数据</span></span><br><span class="line">                list.add(criteriaBuilder.like(root.get(<span class="string">&quot;name&quot;</span>),<span class="string">&quot;%&quot;</span>+ name +<span class="string">&quot;%&quot;</span> ));</span><br><span class="line">            &#125;</span><br><span class="line">            Predicate[] p = <span class="keyword">new</span> <span class="title class_">Predicate</span>[list.size()];</span><br><span class="line">            <span class="keyword">return</span> criteriaBuilder.and(list.toArray(p));</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="type">Pageable</span> <span class="variable">pageable</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PageRequest</span>(page, limit, Sort.Direction.DESC, <span class="string">&quot;createdDate&quot;</span>);</span><br><span class="line">Page&lt;AlarmContact&gt; alarmContact，Page = alarmContactRepository.findAll(specification, pageable);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-集合分页"><a href="#3-集合分页" class="headerlink" title="3. 集合分页"></a>3. 集合分页</h4><p>业务场景：拥有用户的集合，需要将这个集合进行分页返回给前端。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">List&lt;User&gt; userList;<span class="comment">//默认已经有List数据</span></span><br><span class="line"><span class="comment">//根据传进来的用户名字进行模糊筛选</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="number">0</span> != name.length())&#123;</span><br><span class="line">            List&lt;User&gt; temList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">            temList.addAll(userList);</span><br><span class="line">            <span class="keyword">for</span>(User user : temList)&#123;</span><br><span class="line">                <span class="keyword">if</span>(!user.getUsername().contains(name))&#123;</span><br><span class="line">                    userList.remove(user);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//集合转Page</span></span><br><span class="line"><span class="type">Pageable</span> <span class="variable">pageable</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PageRequest</span>(page, limit, Sort.Direction.ASC, <span class="string">&quot;id&quot;</span>);</span><br><span class="line"><span class="comment">// 当前页第一条数据在List中的位置</span></span><br><span class="line"><span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> (<span class="type">int</span>)pageable.getOffset();</span><br><span class="line"><span class="comment">// 当前页最后一条数据在List中的位置</span></span><br><span class="line"><span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> (start + pageable.getPageSize()) &gt; userList.size() ? userList.size() : ( start + pageable.getPageSize());</span><br><span class="line"><span class="comment">// 配置分页数据</span></span><br><span class="line">Page&lt;User&gt; userPagePage = <span class="keyword">new</span> <span class="title class_">PageImpl</span>&lt;&gt;(userList.subList(start, end), pageable, userList.size());</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-树的相关操作"><a href="#4-树的相关操作" class="headerlink" title="4. 树的相关操作"></a>4. 树的相关操作</h4><p>业务场景：在做权限控制的时候，权限是树的形式，根据前端需求需要提供不同的数据格式。</p>
+<ol>
+<li>求出当前用户的所有具体权限（叶子节点）</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Set&lt;Permission&gt; <span class="title function_">getEXactPermission</span><span class="params">()</span> &#123;</span><br><span class="line">    Set&lt;Role&gt; roles = userRoleRepository.findByUserId(userCache.getId()).stream().map(userRole -&gt; userRole.getRole()).collect(Collectors.toSet());</span><br><span class="line">    Set&lt;Permission&gt; permissions = roles.stream().flatMap(role -&gt; role.getPermissions().stream()).collect(Collectors.toSet());</span><br><span class="line">    Set&lt;Permission&gt; exactPermissions = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span>(Permission permission : permissions)&#123;</span><br><span class="line">    Set&lt;Permission&gt; permissions1 = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">    findTreeleafs(permission, permissions1);</span><br><span class="line">    exactPermissions.addAll(permissions1);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> exactPermissions;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//递归遍历树的叶子节点，如果只有一个节点，它也是叶子</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">findTreeleafs</span><span class="params">(Permission permission, Set&lt;Permission&gt; permissionSet)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(permission.getChildren().size() == <span class="number">0</span>)&#123;</span><br><span class="line">        permissionSet.add(permission);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(Permission permission1 : permission.getChildren())&#123;</span><br><span class="line">        <span class="keyword">if</span> (permission.getChildren().size() == <span class="number">0</span>) &#123;</span><br><span class="line">            permissionSet.addAll(permission.getChildren());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            findTreeleafs(permission1, permissionSet);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>获取权限子树。就是用户拥有权限的完整路径</li>
+</ol>
+<p>思路：获取用户的具体权限集合（叶子节点），删除完整树中没有达到集合中的路径。</p>
+<h4 id="5-spring-boot-JPA多条件查询"><a href="#5-spring-boot-JPA多条件查询" class="headerlink" title="5. spring boot JPA多条件查询"></a>5. spring boot JPA多条件查询</h4><p>1）Repository需要继承JpaRepository和JpaSpecificationExecutor</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">projectRepository</span> <span class="keyword">extends</span> <span class="title class_">JpaRepository</span>&lt;Project, Long&gt;, JpaSpecificationExecutor&lt;Project&gt; &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2）构建筛选器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 分页查询获取分页列表</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> companyId</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="keyword">public</span> Page&lt;Project&gt; <span class="title function_">getListByCompanyPage</span><span class="params">(PageFilter pageFilter,String companyId,Date beginDate,Date endDate,String projectName)</span> &#123;</span><br><span class="line">       Page&lt;Project&gt; l=projectRepository.findAll(<span class="keyword">new</span> <span class="title class_">Specification</span>&lt;Project&gt;() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="keyword">public</span> Predicate <span class="title function_">toPredicate</span><span class="params">(Root&lt;Project&gt; root, CriteriaQuery&lt;?&gt; criteriaQuery, CriteriaBuilder cBuilder)</span> &#123;</span><br><span class="line">               <span class="comment">//开始，定义一个Predicate</span></span><br><span class="line">               Predicat  <span class="type">e</span> <span class="variable">p</span> <span class="operator">=</span> cBuilder.conjunction();</span><br><span class="line">               <span class="comment">/**精确查询**/</span></span><br><span class="line">               p = cBuilder.and(p, cBuilder.equal(root.get(<span class="string">&quot;companyId&quot;</span>), companyId));</span><br><span class="line">               <span class="comment">/**模糊查询**/</span></span><br><span class="line">               p = cBuilder.and(p, cBuilder.like(root.get(<span class="string">&quot;projectName&quot;</span>), <span class="string">&quot;%&quot;</span>+projectName+<span class="string">&quot;%&quot;</span>));</span><br><span class="line">               <span class="comment">/**时间段查询**/</span></span><br><span class="line">               <span class="comment">//大于等于开始时间</span></span><br><span class="line">               p = cBuilder.and(p, cBuilder.greaterThanOrEqualTo(root.get(<span class="string">&quot;createTime&quot;</span>), beginDate));</span><br><span class="line">               <span class="comment">//小于等于结束时间</span></span><br><span class="line">               p = cBuilder.and(p, cBuilder.lessThanOrEqualTo(root.get(<span class="string">&quot;createTime&quot;</span>), endDate));</span><br><span class="line">               <span class="keyword">return</span> p;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;, pageFilter.getPageRequest());</span><br><span class="line">       <span class="keyword">return</span> l;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="6-jpa-delete无法删除"><a href="#6-jpa-delete无法删除" class="headerlink" title="6. jpa delete无法删除"></a>6. jpa delete无法删除</h4><p>问题描述：两张表表1和表2通过一张中间表表3关联，都是一对多关系。表1的一条记录 a 已经和表2的记录 b 关联起来了。逻辑删除 a 记录，现在需要删除 b 记录，表3的关联记录还存在，要先根据 b 记录删掉表3的关联记录，但是此时用 JPA 的 deleteAllBy… 不生效，非常疑惑，自定义 sql 删除生效。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Modifying</span></span><br><span class="line"><span class="meta">@Query(&quot;delete from UserRole where role.id = ?1&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<p>解答：看到网上有说法说是 JPA 的 entity 对象生命周期问题，由于表 1 还存在记录的引用，之后会更新回来。。。</p>
+<h4 id="7-分页查询结果集中某个属性等于某个值的元素排在前面"><a href="#7-分页查询结果集中某个属性等于某个值的元素排在前面" class="headerlink" title="7. 分页查询结果集中某个属性等于某个值的元素排在前面"></a>7. 分页查询结果集中某个属性等于某个值的元素排在前面</h4><p>业务场景：分页查询数据库，状态为 ON 的值排在前面，且根据最后修改时间排序。</p>
+<p>分析讨论：Java分页查询的排序并不是很难，特别是使用Pagable时排序非常方便，但是一般的排序都市按照升序或者降序排序，根据某个属性的特定值排序很少看见，头疼。</p>
+<p>问题解决：</p>
+<p>1）偷懒办法，如果只有两种状态，仍然可以用升序降序进行排序，这时候比较的就是两种不同值的相对大小（数值、字符串类型等）；</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Sort</span> <span class="variable">sort</span> <span class="operator">=</span><span class="keyword">new</span> <span class="title class_">Sort</span>(Sort.Direction.DESC, <span class="string">&quot;status&quot;</span>).and(<span class="keyword">new</span> <span class="title class_">Sort</span>(Sort.Direction.DESC, <span class="string">&quot;lastModifiedDate&quot;</span>));</span><br><span class="line"><span class="type">Pageable</span> <span class="variable">pageable</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PageRequest</span>(page, limit, sort);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>2）有多种不同状态时，可以使用 sql 语句进行查询 </p>
+<p>3）查询出元素集合列表，进行排序，然后对集合进行分页。</p>
+<h4 id="8-读取-jar-包中MANIFEST-MF文件信息"><a href="#8-读取-jar-包中MANIFEST-MF文件信息" class="headerlink" title="8. 读取 jar 包中MANIFEST.MF文件信息"></a>8. 读取 jar 包中MANIFEST.MF文件信息</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过JarFile的getJarEntry方法读取META-INF/MANIFEST.MF</span></span><br><span class="line">jarFile = <span class="keyword">new</span> <span class="title class_">JarFile</span>(jarFilePath);</span><br><span class="line"><span class="type">JarEntry</span> <span class="variable">entry</span> <span class="operator">=</span> jarFile.getJarEntry(<span class="string">&quot;META-INF/MANIFEST.MF&quot;</span>);</span><br><span class="line"><span class="comment">// 如果读取到MANIFEST.   F文件内容，则转换为string</span></span><br><span class="line"><span class="keyword">if</span> (entry != <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="type">InputStream</span> <span class="variable">in</span> <span class="operator">=</span>  jarFile.getInputStream(entry);</span><br><span class="line">    <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">    <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(in));</span><br><span class="line">    <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    <span class="keyword">while</span> ((line = br.readLine()) != <span class="literal">null</span>) &#123;</span><br><span class="line">        sb.append(line+<span class="string">&quot;&lt;br&gt;&quot;</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="9-编写泛型方法"><a href="#9-编写泛型方法" class="headerlink" title="9. 编写泛型方法"></a>9. 编写泛型方法</h4><p>错误示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Page&lt;T&gt; <span class="title function_">getPage</span><span class="params">(<span class="type">int</span> page, <span class="type">int</span> limit, List&lt;T&gt; data)</span>&#123;    <span class="comment">// ... &#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>实际使用时候会报类型无法匹配的错误。</p>
+<p>正确写法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T <span class="keyword">extends</span> <span class="title class_">Object</span>&gt; Page&lt;T&gt; <span class="title function_">getPage</span><span class="params">(<span class="type">int</span> page, <span class="type">int</span> limit, List&lt;T&gt; data)</span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="10-Java中父类能不能强转为子类？"><a href="#10-Java中父类能不能强转为子类？" class="headerlink" title="10. Java中父类能不能强转为子类？"></a>10. Java中父类能不能强转为子类？</h4><p>一般来说父类是不能强转为子类对象的，因为子类中可能包含父类没有的属性或方法，父类强转子类会存在不确定性。</p>
+<blockquote>
+<p>《java面向对象程序设计（第2版）》，一个父类类型的对象如果是用子类new出来的时候, 就不能称之为父类对象，而是一个子类的上转型对象。这两者是有区别的，区别的其中一点就是父类对象不可强制转换为子类对象，而子类的上转型对象可以强制转换回子类对象</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Father</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_">Father</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">        <span class="type">Father</span> <span class="variable">father1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Father</span>();</span><br><span class="line">       <span class="type">Father</span> <span class="variable">father2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son</span>();</span><br><span class="line">       <span class="type">Son</span> <span class="variable">son1</span> <span class="operator">=</span> (Son) father1;<span class="comment">//报错</span></span><br><span class="line">       <span class="type">Son</span> <span class="variable">son2</span> <span class="operator">=</span> (Son) father2;<span class="comment">//不报错</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>网上看到很搞笑的一段描述：孙子可能会装大爷，大爷永远不会装孙子。</p>
+<p>哈哈，非常贴切生动了。</p>
+
+    </div>
+    
+  </div>
+</article>
+<div id="toc" class="toc-article">
+  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%98%E5%82%A8%E5%88%9B%E5%BB%BA%E6%97%A5%E6%9C%9F%E6%98%AFInstant%E6%A0%BC%E5%BC%8F%EF%BC%8C%E5%90%8E%E5%8F%B0%E9%9C%80%E8%A6%81%E6%A0%B9%E6%8D%AE%E4%BB%8A%E5%A4%A9%E6%97%A5%E6%9C%9F%E6%9F%A5%E6%89%BE%E4%BB%8A%E5%A4%A9%E5%88%9B%E5%BB%BA%E7%9A%84%E8%AE%B0%E5%BD%95%E3%80%82%E4%B8%BB%E8%A6%81%E6%98%AF%E9%9C%80%E8%A6%81%E5%BE%97%E5%88%B0Instant%E6%A0%BC%E5%BC%8F%E7%9A%84%E4%BB%8A%E5%A4%A9%E7%9A%84%E6%9C%80%E5%B0%8F%E6%97%A5%E6%9C%9F%EF%BC%8C%E7%94%A8%E4%BA%8E%E6%AF%94%E5%AF%B9%E3%80%82"><span class="toc-text">1. 数据库存储创建日期是Instant格式，后台需要根据今天日期查找今天创建的记录。主要是需要得到Instant格式的今天的最小日期，用于比对。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%89%A9%E7%90%86%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%EF%BC%88%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E9%A1%B5%EF%BC%89"><span class="toc-text">2. 物理分页查询（数据库分页）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%9B%86%E5%90%88%E5%88%86%E9%A1%B5"><span class="toc-text">3. 集合分页</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%A0%91%E7%9A%84%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C"><span class="toc-text">4. 树的相关操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-spring-boot-JPA%E5%A4%9A%E6%9D%A1%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="toc-text">5. spring boot JPA多条件查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-jpa-delete%E6%97%A0%E6%B3%95%E5%88%A0%E9%99%A4"><span class="toc-text">6. jpa delete无法删除</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2%E7%BB%93%E6%9E%9C%E9%9B%86%E4%B8%AD%E6%9F%90%E4%B8%AA%E5%B1%9E%E6%80%A7%E7%AD%89%E4%BA%8E%E6%9F%90%E4%B8%AA%E5%80%BC%E7%9A%84%E5%85%83%E7%B4%A0%E6%8E%92%E5%9C%A8%E5%89%8D%E9%9D%A2"><span class="toc-text">7. 分页查询结果集中某个属性等于某个值的元素排在前面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E8%AF%BB%E5%8F%96-jar-%E5%8C%85%E4%B8%ADMANIFEST-MF%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF"><span class="toc-text">8. 读取 jar 包中MANIFEST.MF文件信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E7%BC%96%E5%86%99%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="toc-text">9. 编写泛型方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-Java%E4%B8%AD%E7%88%B6%E7%B1%BB%E8%83%BD%E4%B8%8D%E8%83%BD%E5%BC%BA%E8%BD%AC%E4%B8%BA%E5%AD%90%E7%B1%BB%EF%BC%9F"><span class="toc-text">10. Java中父类能不能强转为子类？</span></a></li></ol>
+</div></section>
+        </div>
+        <!-- <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Dalin &copy; 2023 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+        </div>
+    </div>
+</footer> -->
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

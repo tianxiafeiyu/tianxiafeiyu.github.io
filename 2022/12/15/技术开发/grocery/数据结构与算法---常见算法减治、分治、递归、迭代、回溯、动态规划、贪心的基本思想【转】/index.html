@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta name="referrer" content="never">
+    <meta charset="utf-8">
+    
+    <title>数据结构与算法---常见算法减治、分治、递归、迭代、回溯、动态规划、贪心的基本思想 | Dalin blog</title>
+    
+    
+        <meta name="keywords" content="数据结构与算法---常见算法减治、分治、递归、迭代、回溯、动态规划、贪心的基本思想【转】" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="转载自 https:&#x2F;&#x2F;blog.csdn.net&#x2F;cqfdcw&#x2F;article&#x2F;details&#x2F;100063987 一、减而治之减而治之与分而治之都是递归中常用的算法策略。其中减而治之是将一个大规模的问题，将其划分为两个子问题，其一是平凡问题，另一个规模缩减。递归每深入一层，待求解问题的规模都缩减一个常数，直至最终蜕化为平凡问题。 应用举例1：求解数组元素的和 123int sum(int A[">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构与算法---常见算法减治、分治、递归、迭代、回溯、动态规划、贪心的基本思想">
+<meta property="og:url" content="https://tianxiafeiyu.github.io/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E5%87%8F%E6%B2%BB%E3%80%81%E5%88%86%E6%B2%BB%E3%80%81%E9%80%92%E5%BD%92%E3%80%81%E8%BF%AD%E4%BB%A3%E3%80%81%E5%9B%9E%E6%BA%AF%E3%80%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E3%80%81%E8%B4%AA%E5%BF%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3%E3%80%90%E8%BD%AC%E3%80%91/index.html">
+<meta property="og:site_name" content="Dalin blog">
+<meta property="og:description" content="转载自 https:&#x2F;&#x2F;blog.csdn.net&#x2F;cqfdcw&#x2F;article&#x2F;details&#x2F;100063987 一、减而治之减而治之与分而治之都是递归中常用的算法策略。其中减而治之是将一个大规模的问题，将其划分为两个子问题，其一是平凡问题，另一个规模缩减。递归每深入一层，待求解问题的规模都缩减一个常数，直至最终蜕化为平凡问题。 应用举例1：求解数组元素的和 123int sum(int A[">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-15T23:41:44.000Z">
+<meta property="article:modified_time" content="2022-12-16T21:36:16.000Z">
+<meta property="article:author" content="Dalin">
+<meta property="article:tag" content="数据结构与算法---常见算法减治、分治、递归、迭代、回溯、动态规划、贪心的基本思想【转】">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/static/lin.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Dalin blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header" style="z-index:999">
+  <div id="header-main" class="header-inner">
+    <div class="header-outer">
+      <a href="/" id="logo">
+        <i class="logo"></i>
+        <span class="site-title">Dalin blog</span>
+      </a>
+      <nav id="main-nav">
+        
+        <a class="main-nav-link " href="/archives">归档</a>
+        
+        <a class="main-nav-link " href="/categories">分类</a>
+        
+        <a class="main-nav-link " href="/tags">标签</a>
+        
+        <a class="main-nav-link " href="/about">关于</a>
+        
+      </nav>
+      
+      <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+      <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+<script>
+  (function(window) {
+    var INSIGHT_CONFIG = {
+      TRANSLATION: {
+        POSTS: '文章',
+        PAGES: '页面',
+        CATEGORIES: '分类',
+        TAGS: '标签',
+        UNTITLED: '(未命名)',
+      },
+      ROOT_URL: '/',
+      CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+  })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+        <td><a class="main-nav-link" href="/archives">归档</a></td>
+        
+        <td><a class="main-nav-link" href="/categories">分类</a></td>
+        
+        <td><a class="main-nav-link" href="/tags">标签</a></td>
+        
+        <td><a class="main-nav-link" href="/about">关于</a></td>
+        
+        <td>
+          
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+<div class="widget-wrap" id='categories'>
+  <h3 class="widget-title">
+    <span></span>
+    <a id='allExpand' href="#">
+      <i class="fa fa-angle-double-down fa-2x"></i>
+    </a>
+  </h3>
+
+  
+  
+  
+  <ul class="unstyled" id="tree" > 
+    <li class="directory open">
+      <a href="#" data-role="directory">
+        技术开发
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-down" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        database
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        es
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%E5%AD%A6%E4%B9%A0/">
+        
+        Elasticsearch学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%20Java%20Rest%20Client/">
+        
+        Elasticsearch Java Rest Client
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7/">
+        
+        Elasticsearch版本特性
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2023/02/28/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E4%B8%AD%E7%9A%84NULL%E5%80%BC%E8%A7%A3%E6%9E%90/">
+        
+        mysql中的NULL值解析
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/">
+        
+        mysql常用函数汇总
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95/">
+        
+        mysql联合索引
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E8%84%8F%E8%AF%BB%E3%80%81%E5%B9%BB%E8%AF%BB%E3%80%81%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB/">
+        
+        数据库之脏读、幻读、不可重复读
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E3%80%81redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/">
+        
+        mysql、redis开启远程访问
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        golang
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/Golang%E4%B8%8EJava/">
+        
+        Golang与Java
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/golang%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/">
+        
+        golang学习大纲
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">
+        
+        go流程控制
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%E9%A1%B9%E7%9B%AE%E6%A0%87%E5%87%86%E5%B8%83%E5%B1%80/">
+        
+        go项目标准布局
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/http%20client%E6%9C%80%E4%BC%98%E9%85%8D%E7%BD%AE/">
+        
+        http client最优配置
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/%E4%BC%98%E7%A7%80golang%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">
+        
+        优秀golang开源项目
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20ast/">
+        
+        go ast
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20csp%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B/">
+        
+        go csp并发模型
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20gc/">
+        
+        go gc
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/xorm%E4%BD%BF%E7%94%A8/">
+        
+        xorm使用
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20checklist/">
+        
+        go checklist
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/">
+        
+        为什么bk-cmdb不用go mod管理
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory open">
+      <a href="#" data-role="directory">
+        grocery
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-down" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/30/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/cpu%E5%8A%A0%E5%8E%8B%E8%84%9A%E6%9C%AC/">
+        
+        cpu加压脚本
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Chrome%E5%B9%B4%E5%BA%A6%E7%83%AD%E9%97%A8%20%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/">
+        
+        Chrome年度热门扩展程序
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Prometheus%E7%9B%91%E6%8E%A7kubernetes%E6%96%B9%E6%A1%88%E5%8F%8A%E5%AE%9E%E7%8E%B0/">
+        
+        Prometheus监控kubernetes方案及实现
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/websocket%E5%AD%A6%E4%B9%A0/">
+        
+        websocket学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AB%AF%E5%8F%A3%E6%A0%87%E8%AF%86%E5%90%AB%E4%B9%89/">
+        
+        交换机端口标识含义
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%9F%BA%E4%BA%8Eetcd%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">
+        
+        基于etcd实现的分布式锁
+        
+      </a>
+    </li> 
+    <li class="file active">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E5%87%8F%E6%B2%BB%E3%80%81%E5%88%86%E6%B2%BB%E3%80%81%E9%80%92%E5%BD%92%E3%80%81%E8%BF%AD%E4%BB%A3%E3%80%81%E5%9B%9E%E6%BA%AF%E3%80%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E3%80%81%E8%B4%AA%E5%BF%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        数据结构与算法---常见算法减治、分治、递归、迭代、回溯、动态规划、贪心的基本思想
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E7%81%AB%E7%84%B0%E5%9B%BE%E6%80%8E%E4%B9%88%E7%9C%8B/">
+        
+        火焰图怎么看
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/NaN%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D/">
+        
+        NaN代表什么意思
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/jsonpath%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">
+        
+        jsonpath使用心得
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/k8s%E5%9B%BD%E9%99%85%E5%8C%96%E5%AE%9E%E7%8E%B0/">
+        
+        k8s国际化实现
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/RESTful%20API%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/">
+        
+        RESTful API格式规范
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/AI%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/">
+        
+        AI视频处理软件
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/FTP%E3%80%81FTPS%E5%92%8CSFTP%E9%83%BD%E6%98%AF%E5%95%A5/">
+        
+        FTP、FTPS和SFTP都是啥
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/github%E6%B7%BB%E5%8A%A0ssh%E6%96%B9%E6%B3%95/">
+        
+        github添加ssh方法
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%E2%80%94%E5%90%88%E5%B9%B6%E4%B8%8D%E5%90%8C%E4%BB%93%E5%BA%93%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/">
+        
+        git—合并不同仓库的项目代码
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%E4%BB%93%E5%BA%93%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%90%E4%BA%A4%E6%97%B6%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
+        
+        git仓库第一次提交时失败问题记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1apisix%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/">
+        
+        一次apisix问题排查过程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1python%E4%BB%A3%E7%A0%81%E6%B7%B7%E6%B7%86%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/">
+        
+        一次python代码混淆问题排查
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E7%A7%8D%E5%B0%86%E6%96%87%E6%9C%AC%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%9B%BE%E8%A1%A8%E7%9A%84%E7%8E%B0%E4%BB%A3%E5%9B%BE%E8%A1%A8%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/">
+        
+        一种将文本转换为图表的现代图表脚本语言
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A5%BD%E7%9A%84%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%A4%9A%E6%98%AF%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84%E5%B1%82/">
+        
+        为什么好的开源软件多是基础架构层
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%BB%B6%E6%97%B6%E3%80%81%E4%B8%A2%E5%8C%85%E3%80%81%E6%8A%96%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%AF%E8%AF%AD%E8%A7%A3%E9%87%8A/">
+        
+        延时、丢包、抖动——术语解释
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%20%E7%AC%94%E8%AE%B0/">
+        
+        git 笔记
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Apdex%20%E5%BA%94%E7%94%A8%E6%80%A7%E8%83%BD%E6%8C%87%E6%95%B0/">
+        
+        Apdex 应用性能指数
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/GraphQL%20%E5%85%A5%E9%97%A8/">
+        
+        GraphQL 入门
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/">
+        
+        REST风格理解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/dalin%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/">
+        
+        dalin的服务器配置记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">
+        
+        k8s配置文件详解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/session%EF%BC%8Ccookie%EF%BC%8Ctoken%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        session，cookie，token学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84HTTP%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        一次完整的HTTP请求过程【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%90%84%E7%A7%8D%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC%E7%9A%84%20Helloworld/">
+        
+        各种语言版本的 Helloworld
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E6%9C%8D%E5%8A%A1%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0/">
+        
+        服务缓存数据更新
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%BD%BF%E7%94%A8github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+        
+        使用github搭建个人博客
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/">
+        
+        进程间通信技术
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        html
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/html/css%E7%9F%A5%E8%AF%86%E7%82%B9/">
+        
+        css知识点
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        java
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/PriorityQueue-%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97/">
+        
+        PriorityQueue-优先级队列
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E5%AE%9E%E4%BD%93%E7%B1%BB%E4%B8%AD%E7%94%A8%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E8%BF%98%E6%98%AF%E5%8C%85%E8%A3%85%E7%B1%BB/">
+        
+        实体类中用基本类型还是包装类
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E6%B7%B7%E4%B9%B1%E7%9A%84Java%E7%89%88%E6%9C%AC%E5%91%BD%E5%90%8D/">
+        
+        混乱的Java版本命名
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E8%A7%A3%E8%AF%BB%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%20Java%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">
+        
+        解读阿里巴巴 Java 代码规范
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/maven%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E4%BE%9D%E8%B5%96/">
+        
+        maven使用本地依赖
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20%E6%B3%A8%E8%A7%A3/">
+        
+        Spring 注解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/SkyWalking%E2%80%94Java%E6%8E%A2%E9%92%88%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/">
+        
+        SkyWalking—Java探针插件开发
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E4%BB%B6%E5%88%86%E6%9E%90%EF%BC%88%E5%BA%9F%E7%A8%BF%EF%BC%89/">
+        
+        Skywalking数据库插件分析（废稿）
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+        
+        Spring的单例模式与线程安全
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/skywalking%20Jdbc%E6%8F%92%E4%BB%B6%E5%88%86%E6%9E%90/">
+        
+        skywalking Jdbc插件分析
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%B8%AD%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E5%9D%91/">
+        
+        Java中无处不在的坑
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%BC%98%E9%9B%85%E7%9A%84%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%E8%B5%84%E6%BA%90/">
+        
+        Java优雅的关闭连接资源
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E5%87%A0%E4%BD%8D/">
+        
+        Java保留小数点后几位
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%AF%B9%E8%B1%A1%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E8%A7%A3%E6%B3%95/">
+        
+        Java对象循环引用解法
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Jpa%E8%BF%98%E6%98%AFMybatis%EF%BC%9F/">
+        
+        Jpa还是Mybatis？
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E6%A2%B3%E7%90%86%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        java多线程核心技术梳理
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/JTW%E8%AF%A6%E8%A7%A3/">
+        
+        JTW详解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/JVM%E4%B8%8EJava%E7%A8%8B%E5%BA%8F/">
+        
+        JVM与Java程序
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F/">
+        
+        Java创建线程的4种方式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+        
+        Java序列化与反序列化
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%8E%9F%E5%88%99/">
+        
+        Java异常处理原则
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%BB%86%E8%8A%82/">
+        
+        Java构造函数细节
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        
+        Java正则表达式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7%E7%B1%BB/">
+        
+        Java获取时间工具类
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Jenkins%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+        
+        Jenkins遇到的坑
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E4%BD%BF%E7%94%A8graphql%E6%9F%A5%E8%AF%A2/">
+        
+        Skywalking使用graphql查询
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E5%AD%A6%E4%B9%A0/">
+        
+        Skywalking学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20boot%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+        
+        Spring boot单元测试
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20boot%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/">
+        
+        Spring boot读取配置文件问题
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20security%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/">
+        
+        Spring security实现权限认证
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/lombok/">
+        
+        lombok
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/null==obj%20or%20obj==null%20%EF%BC%9F/">
+        
+        null==obj or obj==null ？
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%20+%20jasypt%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF%E5%8A%A0%E5%AF%86/">
+        
+        spring boot + jasypt实现配置文件信息加密
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%B8%AD%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+        
+        spring boot中代码修改配置文件
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%97%9B/">
+        
+        spring boot使用单例模式的痛
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+        
+        spring boot使用多线程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20security%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        spring security学习【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+        
+        关于线程安全
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/2020%20%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%EF%BC%88%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF%EF%BC%89/">
+        
+        2020 学习计划（成长之路）
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%20%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        Java 归并排序【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/acmp%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">
+        
+        acmp开发记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/idea+maven+git%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">
+        
+        idea+maven+git 开发环境安装
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/idea%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">
+        
+        idea使用心得
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E3%80%8AOn%20Java%208%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+        
+        《On Java 8》读书笔记
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java8%E6%96%B0%E7%89%B9%E6%80%A7/">
+        
+        Java8新特性
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        os
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/TCP%20%E5%8D%8F%E8%AE%AE%E7%81%B5%E9%AD%82%2012%20%E9%97%AE%20%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        TCP 协议灵魂 12 问 【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/Linux%20shell%20%E5%90%84%E7%A7%8D%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%84%8F%E4%B9%89/">
+        
+        Linux shell 各种符号的意义
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+        
+        Linux常用命令
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        python
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        Script
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/cmdb_mock/">
+        
+        cmdb_mock
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/push_cmdb_data/">
+        
+        push_cmdb_data
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/tops/">
+        
+        tops
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Python%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">
+        
+        Python高级编程技巧
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%20list()%E5%92%8C%5B%5D,dict()%E5%92%8C%7B%7D/">
+        
+        python list()和[],dict()和{}
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%85%A5%E9%97%A8/">
+        
+        python入门
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0/">
+        
+        python单例模式实现
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+        
+        python多进程与多线程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E7%9F%A5%E8%AF%86%E7%82%B9/">
+        
+        python知识点
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">
+        
+        python编程技巧
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E8%84%9A%E6%9C%AC%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/">
+        
+        python脚本接收参数的几种实现方式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/%E5%8F%98%E9%87%8F%E5%8F%8A%E6%96%B9%E6%B3%95%E5%89%8D%E5%90%8E%E4%B8%8B%E5%88%92%E7%BA%BF%E7%9A%84%E5%90%AB%E4%B9%89/">
+        
+        变量及方法前后下划线的含义
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2023/02/28/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+        
+        深入浅出设计模式
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        生活点滴
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2023/02/28/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/%E6%88%91%E7%9A%84%E6%96%B0%E5%86%A0%E7%BB%8F%E5%8E%86/">
+        
+        我的新冠经历
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/keep/">
+        
+        keep
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+  </ul> 
+</div>
+<script>
+  $(document).ready(function() {
+    var iconFolderOpenClass = 'fa-angle-down';
+    var iconFolderCloseClass = 'fa-angle-right';
+    var iconAllExpandClass = 'fa-angle-double-down';
+    var iconAllPackClass = 'fa-angle-double-up';
+    // Handle directory-tree expansion:
+    // 左键单独展开目录
+    $(document).on('click', '#categories a[data-role="directory"]', function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconFolderOpenClass);
+      var subtree = $(this).siblings('ul');
+      icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+      if (expanded) {
+        if (typeof subtree != 'undefined') {
+          subtree.slideUp({
+            duration: 100
+          });
+        }
+        icon.addClass(iconFolderCloseClass);
+      } else {
+        if (typeof subtree != 'undefined') {
+          subtree.slideDown({
+            duration: 100
+          });
+        }
+        icon.addClass(iconFolderOpenClass);
+      }
+    });
+    // 右键展开下属所有目录
+    $('#categories a[data-role="directory"]').bind("contextmenu", function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconFolderOpenClass);
+      var listNode = $(this).siblings('ul');
+      var subtrees = $.merge(listNode.find('li ul'), listNode);
+      var icons = $.merge(listNode.find('.fa'), icon);
+      icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+      if (expanded) {
+        subtrees.slideUp({
+          duration: 100
+        });
+        icons.addClass(iconFolderCloseClass);
+      } else {
+        subtrees.slideDown({
+          duration: 100
+        });
+        icons.addClass(iconFolderOpenClass);
+      }
+    })
+    // 展开关闭所有目录按钮
+    $(document).on('click', '#allExpand', function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconAllExpandClass);
+      icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+      if (expanded) {
+        $('#sidebar .fa.fa-angle-right').removeClass('fa-angle-right').addClass('fa-angle-down')
+        $('#categories li ul').slideDown({
+          duration: 100
+        });
+        icon.addClass(iconAllPackClass);
+      } else {
+        $('#sidebar .fa.fa-angle-down').removeClass('fa-angle-down').addClass('fa-angle-right')
+        $('#categories li ul').slideUp({
+          duration: 100
+        });
+        icon.addClass(iconAllExpandClass);
+      }
+    });
+  });
+</script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-技术开发/grocery/数据结构与算法---常见算法减治、分治、递归、迭代、回溯、动态规划、贪心的基本思想【转】" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+      
+      
+    
+        <h1 class="article-title" itemprop="name">
+            数据结构与算法---常见算法减治、分治、递归、迭代、回溯、动态规划、贪心的基本思想
+        </h1>
+    
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+        
+        <p>转载自 <a target="_blank" rel="noopener" href="https://blog.csdn.net/cqfdcw/article/details/100063987">https://blog.csdn.net/cqfdcw/article/details/100063987</a></p>
+<h4 id="一、减而治之"><a href="#一、减而治之" class="headerlink" title="一、减而治之"></a>一、减而治之</h4><p>减而治之与分而治之都是递归中常用的算法策略。其中减而治之是将一个大规模的问题，将其划分为两个子问题，其一是平凡问题，另一个规模缩减。递归每深入一层，待求解问题的规模都缩减一个常数，直至最终蜕化为平凡问题。</p>
+<p>应用举例1：求解数组元素的和</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> n)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (n&lt;<span class="number">1</span>)?<span class="number">0</span>:sum(A,n-<span class="number">1</span>)+A[n-<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>应用举例2：数组中元素倒置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//为得到整个数组的倒置，可以先对换其首、末元素，然后递归地倒置除这两个元素以外的部分。</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">reverse</span><span class="params">(<span class="type">int</span> *A, <span class="type">int</span> lo, <span class="type">int</span> hi)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span>(lo &lt; hi) &#123;</span><br><span class="line">        swap(A[lo],A[hi]);</span><br><span class="line">        reverse(A, lo + <span class="number">1</span>, hi - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="二、分而治之"><a href="#二、分而治之" class="headerlink" title="二、分而治之"></a>二、分而治之</h4><p>可以将其划分为多个（通常情况下为两个）子问题，两个问题的规模大体相同。由子问题的解，通过递归得到原问题的解。</p>
+<p>应用举例1：求解数组元素的和</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">sum</span><span class="params">(<span class="type">int</span> A[], <span class="type">int</span> low, <span class="type">int</span> high)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (low == high) ? A[low] : sum(A, low, (low + high) &gt;&gt; <span class="number">1</span>) + sum(A, ((low + high) &gt;&gt; <span class="number">1</span>) + <span class="number">1</span>, high);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>应用举例2：归并排序</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">template&lt;typename T&gt;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">merge</span><span class="params">(vector&lt;T&gt; &amp;arr, <span class="type">int</span> L, <span class="type">int</span> mid, <span class="type">int</span> R)</span> &#123;  <span class="comment">//有序向量的逐层归并</span></span><br><span class="line">	vector&lt;<span class="type">int</span>&gt; temp;   <span class="comment">//临时变量用来存放本次合并后的数组</span></span><br><span class="line">	<span class="type">int</span> <span class="variable">p1</span> <span class="operator">=</span> L;</span><br><span class="line">	<span class="type">int</span> <span class="variable">p2</span> <span class="operator">=</span> mid + <span class="number">1</span>;</span><br><span class="line">	<span class="comment">// 比较左右两部分的元素，哪个小，把那个元素填入temp中</span></span><br><span class="line">	<span class="keyword">while</span> (p1 &lt;= mid &amp;&amp; p2 &lt;= R) &#123;</span><br><span class="line">		temp.push_back(arr[p1] &lt; arr[p2] ? arr[p1++] : arr[p2++]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 上面的循环退出后，把剩余的元素依次填入到temp中，只有一个while会执行</span></span><br><span class="line">	<span class="keyword">while</span> (p1 &lt;= mid) &#123;</span><br><span class="line">		temp.push_back(arr[p1++]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">while</span> (p2 &lt;= R) &#123;</span><br><span class="line">		temp.push_back(arr[p2++]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 把最终的排序的结果复制给原数组</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; temp.size(); i++) &#123;</span><br><span class="line">		arr[L + i] = temp[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">template&lt;typename T&gt;</span><br><span class="line"><span class="keyword">void</span> <span class="title function_">mergeSort</span><span class="params">(vector&lt;T&gt; &amp;arr , <span class="type">int</span> L, <span class="type">int</span> R)</span> &#123; <span class="comment">//无序向量的逐层分解</span></span><br><span class="line">	<span class="keyword">if</span> (L == R) &#123;  <span class="comment">//只有一个元素的时候返回</span></span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> L + ((R - L) &gt;&gt; <span class="number">1</span>);</span><br><span class="line">	mergeSort(arr, L, mid);  </span><br><span class="line">	mergeSort(arr, mid + <span class="number">1</span>, R);</span><br><span class="line">	merge(arr, L, mid, R);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="三、递归与迭代"><a href="#三、递归与迭代" class="headerlink" title="三、递归与迭代"></a>三、递归与迭代</h4><h5 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h5><p>重复调用函数自身实现循环，A函数调用A函数。简而言之，通过不断地深层调用函数，直到函数有返回才会逐层的返回，把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解(子问题须与原始问题为同样的事，且更为简单)；递归是用栈机制实现的，每深入一层，都要占去一块栈数据区域。</p>
+<p>应用举例1：二叉树的先序遍历</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">preorder</span><span class="params">(Node node)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(node == <span class="literal">null</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    sytem.out.println(node.val);</span><br><span class="line">    preorder(node.left);</span><br><span class="line">    preorder(node.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>应用举例2：递归求阶乘</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">factorial</span><span class="params">(<span class="type">int</span> num)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num &lt; <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> num * factorial(num-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h5><p>利用变量的原值推出新值称为迭代，或着说迭代是函数内某段代码实现循环，A函数调用B函数；每一次对过程的重复称为一次“迭代”，而每一次迭代得到的结果会作为下一次迭代的初始值。重复执行一系列运算步骤，从前面的量依次求出后面的量的过程。</p>
+<p>应用举例1：迭代法求阶乘</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//迭代   阶乘</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">factorial</span><span class="params">(<span class="type">int</span> num)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (num &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> num; i &gt;= <span class="number">1</span>; i--)&#123;</span><br><span class="line">        result *= i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="递归与迭代比较"><a href="#递归与迭代比较" class="headerlink" title="递归与迭代比较"></a>递归与迭代比较</h4><p>递归满足条件后，逐层返回，每层都计算完后才返回结果；迭代满足条件后，通过计数器结束循环，直接返回计算结果。 递归与迭代相比较，递归的效率较低。</p>
+<ul>
+<li>| 定义 | 优点 | 缺点<br>—|— | —|—<br>递归 |重复调用函数自身实现循环|a.用有限的循环语句实现无限集合；b.代码易读；c.大问题转化成小问题，减少了代码量。|a.递归不断调用函数，浪费空间；b.容易造成堆栈溢出<br>迭代 |利用变量的原值推出新值；函数内某段代码实现循环。|a.效率高，运行时间只随循环的增加而增加；b.无额外开销。|a.代码难理解；b.代码不如递归代码简洁；c.编写复杂问题时，代码逻辑不易想出<br>关系|a.递归中一定有迭代，但是迭代中不一定有递归；大部分可以相互转换。b.相对来说，能用迭代不用递归（因为递归不断调用函数，浪费空间，容易造成堆栈溢出）||</li>
+</ul>
+<h4 id="四、回溯"><a href="#四、回溯" class="headerlink" title="四、回溯"></a>四、回溯</h4><p>又称为试探法，可以理解为尝试不同岔路口，遇到错误原路返回到岔路口走另外一条路，当解决问题的每一步都有多种选择时候，在某一步选择了其中一个选项时，则进入此选项，然后继续新的选择。若选择符合题目要求则此选择是正确的；若此选择不符合题目要求则此选择是不正确的，此时就需要(递归)返回上一步，重新进行选择。</p>
+<p>回溯法说白了就是穷举法。回溯法一般用递归来解决。</p>
+<p>回溯法通常要确定三个要素：</p>
+<ol>
+<li><p>选择<br> 对于每个特定的解，肯定是由一步步构建而来的，而每一步怎么构建，肯定都是有限个选择，要怎么选择，这个要知道；同时，在编程时候要定下，优先或合法的每一步选择的顺序，一般是通过多个if或者for循环来排列</p>
+</li>
+<li><p>条件<br> 对于每个特定的解的某一步，他必然要符合某个解要求符合的条件，如果不符合条件，就要回溯，其实回溯也就是递归调用的返回。</p>
+</li>
+<li><p>结束<br> 当到达一个特定结束条件时候，就认为这个一步步构建的解是符合要求的解了。把解存下来或者打印出来。对于这一步来说，有时候也可以另外写一个issolution函数来进行判断。注意，当到达第三步后，有时候还需要构建一个数据结构，把符合要求的解存起来，便于当得到所有解后，把解空间输出来。这个数据结构必须是全局的，作为参数之一传递给递归函数。</p>
+</li>
+</ol>
+<p>回溯法中，递归函数的设计需要遵循以下四个原则：</p>
+<ol>
+<li><p>必须要有一个临时变量(可以就直接传递一个字面量或者常量进去)传递不完整的解，因为每一步选择后，暂时还没构成完整的解，这个时候这个选择的不完整解，也要想办法传递给递归函数。也就是，把每次递归的不同情况传递给递归调用的函数。</p>
+</li>
+<li><p>可以有一个全局变量，用来存储完整的每个解，一般是个集合容器（也不一定要有这样一个变量，因为每次符合结束条件，不完整解就是完整解了，直接打印即可）。</p>
+</li>
+<li><p>最重要的一点，一定要在参数设计中，可以得到结束条件。一个选择是可以传递一个量n，也许是数组的长度，也许是数量，等等。</p>
+</li>
+<li><p>要保证递归函数返回后，状态可以恢复到递归前，以此达到真正回溯。</p>
+</li>
+</ol>
+<h4 id="例题分析"><a href="#例题分析" class="headerlink" title="例题分析"></a>例题分析</h4><h5 id="题目1：给出n对括号，打印出所有可能的括号排列序列。"><a href="#题目1：给出n对括号，打印出所有可能的括号排列序列。" class="headerlink" title="题目1：给出n对括号，打印出所有可能的括号排列序列。"></a>题目1：给出n对括号，打印出所有可能的括号排列序列。</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BackTracking</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">	<span class="type">int</span> n=<span class="number">3</span>;</span><br><span class="line">	<span class="type">int</span> leftnum=n,rightnum=n;<span class="comment">//左括号和右括号都各有n个</span></span><br><span class="line">	ArrayList&lt;String&gt; results=<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();<span class="comment">//用于存放解空间</span></span><br><span class="line">	parentheses(<span class="string">&quot;&quot;</span>, results, leftnum, rightnum);</span><br><span class="line">	<span class="keyword">for</span>(String s:results)</span><br><span class="line">		System.out.println(s);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">parentheses</span><span class="params">(String sublist, ArrayList&lt;String&gt; results, <span class="type">int</span> leftnum, <span class="type">int</span> rightnum)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(leftnum==<span class="number">0</span>&amp;&amp;rightnum==<span class="number">0</span>)<span class="comment">//结束</span></span><br><span class="line">			results.add(sublist);</span><br><span class="line">		<span class="keyword">if</span>(rightnum&gt;leftnum)<span class="comment">//选择和条件。对于不同的if顺序，输出的结果顺序是不一样的，但是构成一样的解空间</span></span><br><span class="line">			parentheses(sublist+<span class="string">&quot;)&quot;</span>, results, leftnum, rightnum-<span class="number">1</span>);</span><br><span class="line">		<span class="keyword">if</span>(leftnum&gt;<span class="number">0</span>)</span><br><span class="line">			parentheses(sublist+<span class="string">&quot;(&quot;</span>, results, leftnum-<span class="number">1</span>, rightnum);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对应回溯法三要素：</p>
+<ol>
+<li>选择。在这个例子中，解就是一个合法的括号组合形式，而选择无非是放入左括号，还是放入右括号。</li>
+<li>条件。在这个例子中，选择是放入左括号，还是放入右括号，是有条件约束的，不是随便放的。而这个约束就是括号的数量。只有剩下的右括号比左括号多，才能放右括号。只有左括号数量大于0才能放入左括号。这里if的顺序会影响输出的顺序，但是不影响最终解。</li>
+<li>结束。这里的结束条件很显然就是，左右括号都放完了。</li>
+</ol>
+<p>对应回溯法递归函数参数设计：</p>
+<ol>
+<li>用了一个空字符串来作为临时变量存储不完整解。</li>
+<li>用了一个ArrayList<String> results来存放符合要求的解。在后面可以看到，不一定要这样做，也可以直接打印结果。</li>
+<li>把leftnum和rightnum传入给递归函数，这样可以用于判断结束条件。</li>
+<li>这个例子不明显。但是事实上也符合这个条件。可以仔细观察代码，可以发现由于使用了两个if，所以当一次递归退出后，例如从第一个if退出，第二个递归直接递归的是leftnum-1和rightnum，这其实是已经恢复状态了（如果没有恢复状态，那就是leftnum, rightnum-1）。因此不需要人为让他恢复状态。但是恢复状态这点是很重要的，因为回溯法，顾名思义要回溯，不恢复状态，怎么回溯呢。</li>
+</ol>
+<h5 id="题目2：给出包含一个不重复且大于0数字的数组和一个目标，求数组中数的和等于-该目标的组合（数字不同组合顺序当做一个解）。"><a href="#题目2：给出包含一个不重复且大于0数字的数组和一个目标，求数组中数的和等于-该目标的组合（数字不同组合顺序当做一个解）。" class="headerlink" title="题目2：给出包含一个不重复且大于0数字的数组和一个目标，求数组中数的和等于 该目标的组合（数字不同组合顺序当做一个解）。"></a>题目2：给出包含一个不重复且大于0数字的数组和一个目标，求数组中数的和等于 该目标的组合（数字不同组合顺序当做一个解）。</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BackTracking</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">		<span class="type">int</span>[] num=<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">7</span>,<span class="number">6</span>&#125;;</span><br><span class="line">		<span class="type">int</span> target=<span class="number">9</span>;</span><br><span class="line">		find(num, target, <span class="string">&quot;&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">find</span><span class="params">(<span class="type">int</span>[] num, <span class="type">int</span> target, String temp)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(issolution(temp,target))&#123;</span><br><span class="line">			System.out.println(temp);</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;num.length;i++)&#123;</span><br><span class="line">			<span class="keyword">if</span>(num[i]!=-<span class="number">1</span>)&#123;<span class="comment">//如果取过这个数字了，就置为-1</span></span><br><span class="line">				<span class="type">int</span> k=num[i];</span><br><span class="line">				num[i]=-<span class="number">1</span>;</span><br><span class="line">				find(num, target, temp+k);</span><br><span class="line">				num[i]=k;   <span class="comment">//在递归后，必须把数组恢复。这也是参数的特征的第四点所说的内容</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">issolution</span><span class="params">(String temp, <span class="type">int</span> target)</span>&#123;</span><br><span class="line">		<span class="type">boolean</span> result=<span class="literal">false</span>;</span><br><span class="line">		<span class="type">int</span> count=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;temp.length();i++)&#123;</span><br><span class="line">			count=count+Integer.valueOf(temp.charAt(i)+<span class="string">&quot;&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(count==target)</span><br><span class="line">			result=<span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="题目3：给一个字符串-字符不重复，给出他的所有排列"><a href="#题目3：给一个字符串-字符不重复，给出他的所有排列" class="headerlink" title="题目3：给一个字符串,字符不重复，给出他的所有排列"></a>题目3：给一个字符串,字符不重复，给出他的所有排列</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class BackTracking &#123;</span><br><span class="line">	public static void main(String[] args)&#123;</span><br><span class="line">		String s=&quot;abc&quot;;</span><br><span class="line">		pailie(s,&quot;&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	public static void pailie(String s, String temp)&#123;//参数设计地尽量地简洁</span><br><span class="line">		if(s.length()==0)&#123;</span><br><span class="line">			System.out.println(temp);</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		for(int i=0;i&lt;s.length();i++)&#123;</span><br><span class="line">			String news=s.substring(0, i)+s.substring(i+1,s.length());//去掉String中的某个字母</span><br><span class="line">			pailie(news, temp+s.charAt(i));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="题目4："><a href="#题目4：" class="headerlink" title="题目4："></a>题目4：</h5><h4 id="五、贪心算法"><a href="#五、贪心算法" class="headerlink" title="五、贪心算法"></a>五、贪心算法</h4><p>在对问题进行求解时，总是做出当前看来是最好的选择的一种方法，从而希望能够导致结果是最好或者最优的算法(可能是局部最优解也可能是全局最优解)。是动态规划的一种特例，能用贪心解决的问题，也可以用动态规划解决。</p>
+<h4 id="六、动态规划"><a href="#六、动态规划" class="headerlink" title="六、动态规划"></a>六、动态规划</h4><p>动态规划的实质是分治思想和解决冗余，是一种将问题实例分解为更小的、相似的子问题，求解每个子问题仅一次，并将其结果保存在一个表中，以后用到时直接存取，避免计算重复的子问题，以解决最优化问题的算法策略。（可分为多个相关子问题，子问题的解被重复使用）。</p>
+<p>[]: <a target="_blank" rel="noopener" href="https://blog.csdn.net/cqfdcw/article/details/100063987">https://blog.csdn.net/cqfdcw/article/details/100063987</a></p>
+
+    </div>
+    
+  </div>
+</article>
+<div id="toc" class="toc-article">
+  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%87%8F%E8%80%8C%E6%B2%BB%E4%B9%8B"><span class="toc-text">一、减而治之</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%88%86%E8%80%8C%E6%B2%BB%E4%B9%8B"><span class="toc-text">二、分而治之</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%80%92%E5%BD%92%E4%B8%8E%E8%BF%AD%E4%BB%A3"><span class="toc-text">三、递归与迭代</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%92%E5%BD%92%E4%B8%8E%E8%BF%AD%E4%BB%A3%E6%AF%94%E8%BE%83"><span class="toc-text">递归与迭代比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%9B%9E%E6%BA%AF"><span class="toc-text">四、回溯</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98%E5%88%86%E6%9E%90"><span class="toc-text">例题分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="toc-text">五、贪心算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">六、动态规划</span></a></li></ol>
+</div></section>
+        </div>
+        <!-- <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Dalin &copy; 2023 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+        </div>
+    </div>
+</footer> -->
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta name="referrer" content="never">
+    <meta charset="utf-8">
+    
+    <title>RESTful API格式规范 | Dalin blog</title>
+    
+    
+        <meta name="keywords" content="RESTful API格式规范" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="1 RESTful风格RESTful是一种API的设计风格，他和GraphQL ，JSON-RPC，WebService类似，用于定义在CS、BS架构下暴露服务端接口。此次设计对接规范，将使用RESTful作为标准。 1.1 特征RESTful风格的特点是： 1）URI资源化即，URI代表的是资源，而不包含动作。比如，一个班级，有很多学生，我们可以这样表示：&#x2F;class&#x2F;stu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RESTful API格式规范">
+<meta property="og:url" content="https://tianxiafeiyu.github.io/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/RESTful%20API%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/index.html">
+<meta property="og:site_name" content="Dalin blog">
+<meta property="og:description" content="1 RESTful风格RESTful是一种API的设计风格，他和GraphQL ，JSON-RPC，WebService类似，用于定义在CS、BS架构下暴露服务端接口。此次设计对接规范，将使用RESTful作为标准。 1.1 特征RESTful风格的特点是： 1）URI资源化即，URI代表的是资源，而不包含动作。比如，一个班级，有很多学生，我们可以这样表示：&#x2F;class&#x2F;stu">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-12-15T23:39:41.000Z">
+<meta property="article:modified_time" content="2022-12-16T21:36:16.000Z">
+<meta property="article:author" content="Dalin">
+<meta property="article:tag" content="RESTful API格式规范">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/static/lin.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/open-sans/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    
+<script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    
+<script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="Dalin blog" type="application/atom+xml">
+</head>
+
+<body>
+    <div id="container">
+        <header id="header" style="z-index:999">
+  <div id="header-main" class="header-inner">
+    <div class="header-outer">
+      <a href="/" id="logo">
+        <i class="logo"></i>
+        <span class="site-title">Dalin blog</span>
+      </a>
+      <nav id="main-nav">
+        
+        <a class="main-nav-link " href="/archives">归档</a>
+        
+        <a class="main-nav-link " href="/categories">分类</a>
+        
+        <a class="main-nav-link " href="/tags">标签</a>
+        
+        <a class="main-nav-link " href="/about">关于</a>
+        
+      </nav>
+      
+      <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+      <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+<script>
+  (function(window) {
+    var INSIGHT_CONFIG = {
+      TRANSLATION: {
+        POSTS: '文章',
+        PAGES: '页面',
+        CATEGORIES: '分类',
+        TAGS: '标签',
+        UNTITLED: '(未命名)',
+      },
+      ROOT_URL: '/',
+      CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+  })(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+    </div>
+  </div>
+  <div id="main-nav-mobile" class="header-sub header-inner">
+    <table class="menu outer">
+      <tr>
+        
+        <td><a class="main-nav-link" href="/archives">归档</a></td>
+        
+        <td><a class="main-nav-link" href="/categories">分类</a></td>
+        
+        <td><a class="main-nav-link" href="/tags">标签</a></td>
+        
+        <td><a class="main-nav-link" href="/about">关于</a></td>
+        
+        <td>
+          
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+</header>
+        <div class="outer">
+            
+            
+                <aside id="sidebar">
+   
+        
+<div class="widget-wrap" id='categories'>
+  <h3 class="widget-title">
+    <span></span>
+    <a id='allExpand' href="#">
+      <i class="fa fa-angle-double-down fa-2x"></i>
+    </a>
+  </h3>
+
+  
+  
+  
+  <ul class="unstyled" id="tree" > 
+    <li class="directory open">
+      <a href="#" data-role="directory">
+        技术开发
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-down" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        database
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        es
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%E5%AD%A6%E4%B9%A0/">
+        
+        Elasticsearch学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%20Java%20Rest%20Client/">
+        
+        Elasticsearch Java Rest Client
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/es/Elasticsearch%E7%89%88%E6%9C%AC%E7%89%B9%E6%80%A7/">
+        
+        Elasticsearch版本特性
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2023/02/28/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E4%B8%AD%E7%9A%84NULL%E5%80%BC%E8%A7%A3%E6%9E%90/">
+        
+        mysql中的NULL值解析
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/">
+        
+        mysql常用函数汇总
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E8%81%94%E5%90%88%E7%B4%A2%E5%BC%95/">
+        
+        mysql联合索引
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B9%8B%E8%84%8F%E8%AF%BB%E3%80%81%E5%B9%BB%E8%AF%BB%E3%80%81%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB/">
+        
+        数据库之脏读、幻读、不可重复读
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/database/mysql%E3%80%81redis%E5%BC%80%E5%90%AF%E8%BF%9C%E7%A8%8B%E8%AE%BF%E9%97%AE/">
+        
+        mysql、redis开启远程访问
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        golang
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/Golang%E4%B8%8EJava/">
+        
+        Golang与Java
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/golang%E5%AD%A6%E4%B9%A0%E5%A4%A7%E7%BA%B2/">
+        
+        golang学习大纲
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/">
+        
+        go流程控制
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%E9%A1%B9%E7%9B%AE%E6%A0%87%E5%87%86%E5%B8%83%E5%B1%80/">
+        
+        go项目标准布局
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/http%20client%E6%9C%80%E4%BC%98%E9%85%8D%E7%BD%AE/">
+        
+        http client最优配置
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/%E4%BC%98%E7%A7%80golang%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/">
+        
+        优秀golang开源项目
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20ast/">
+        
+        go ast
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20csp%E5%B9%B6%E5%8F%91%E6%A8%A1%E5%9E%8B/">
+        
+        go csp并发模型
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20gc/">
+        
+        go gc
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/xorm%E4%BD%BF%E7%94%A8/">
+        
+        xorm使用
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/go%20checklist/">
+        
+        go checklist
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/golang/%E4%B8%BA%E4%BB%80%E4%B9%88bk-cmdb%E4%B8%8D%E7%94%A8go%20mod%E7%AE%A1%E7%90%86/">
+        
+        为什么bk-cmdb不用go mod管理
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory open">
+      <a href="#" data-role="directory">
+        grocery
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-down" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/30/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/cpu%E5%8A%A0%E5%8E%8B%E8%84%9A%E6%9C%AC/">
+        
+        cpu加压脚本
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Chrome%E5%B9%B4%E5%BA%A6%E7%83%AD%E9%97%A8%20%E6%89%A9%E5%B1%95%E7%A8%8B%E5%BA%8F/">
+        
+        Chrome年度热门扩展程序
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/16/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Prometheus%E7%9B%91%E6%8E%A7kubernetes%E6%96%B9%E6%A1%88%E5%8F%8A%E5%AE%9E%E7%8E%B0/">
+        
+        Prometheus监控kubernetes方案及实现
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/websocket%E5%AD%A6%E4%B9%A0/">
+        
+        websocket学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%AB%AF%E5%8F%A3%E6%A0%87%E8%AF%86%E5%90%AB%E4%B9%89/">
+        
+        交换机端口标识含义
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%9F%BA%E4%BA%8Eetcd%E5%AE%9E%E7%8E%B0%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">
+        
+        基于etcd实现的分布式锁
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95---%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95%E5%87%8F%E6%B2%BB%E3%80%81%E5%88%86%E6%B2%BB%E3%80%81%E9%80%92%E5%BD%92%E3%80%81%E8%BF%AD%E4%BB%A3%E3%80%81%E5%9B%9E%E6%BA%AF%E3%80%81%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E3%80%81%E8%B4%AA%E5%BF%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%80%9D%E6%83%B3%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        数据结构与算法---常见算法减治、分治、递归、迭代、回溯、动态规划、贪心的基本思想
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E7%81%AB%E7%84%B0%E5%9B%BE%E6%80%8E%E4%B9%88%E7%9C%8B/">
+        
+        火焰图怎么看
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/NaN%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D/">
+        
+        NaN代表什么意思
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/jsonpath%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">
+        
+        jsonpath使用心得
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/k8s%E5%9B%BD%E9%99%85%E5%8C%96%E5%AE%9E%E7%8E%B0/">
+        
+        k8s国际化实现
+        
+      </a>
+    </li> 
+    <li class="file active">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/RESTful%20API%E6%A0%BC%E5%BC%8F%E8%A7%84%E8%8C%83/">
+        
+        RESTful API格式规范
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/AI%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/">
+        
+        AI视频处理软件
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/FTP%E3%80%81FTPS%E5%92%8CSFTP%E9%83%BD%E6%98%AF%E5%95%A5/">
+        
+        FTP、FTPS和SFTP都是啥
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/github%E6%B7%BB%E5%8A%A0ssh%E6%96%B9%E6%B3%95/">
+        
+        github添加ssh方法
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%E2%80%94%E5%90%88%E5%B9%B6%E4%B8%8D%E5%90%8C%E4%BB%93%E5%BA%93%E7%9A%84%E9%A1%B9%E7%9B%AE%E4%BB%A3%E7%A0%81/">
+        
+        git—合并不同仓库的项目代码
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%E4%BB%93%E5%BA%93%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%8F%90%E4%BA%A4%E6%97%B6%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">
+        
+        git仓库第一次提交时失败问题记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1apisix%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5%E8%BF%87%E7%A8%8B/">
+        
+        一次apisix问题排查过程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1python%E4%BB%A3%E7%A0%81%E6%B7%B7%E6%B7%86%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/">
+        
+        一次python代码混淆问题排查
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E7%A7%8D%E5%B0%86%E6%96%87%E6%9C%AC%E8%BD%AC%E6%8D%A2%E4%B8%BA%E5%9B%BE%E8%A1%A8%E7%9A%84%E7%8E%B0%E4%BB%A3%E5%9B%BE%E8%A1%A8%E8%84%9A%E6%9C%AC%E8%AF%AD%E8%A8%80/">
+        
+        一种将文本转换为图表的现代图表脚本语言
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%A5%BD%E7%9A%84%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E5%A4%9A%E6%98%AF%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84%E5%B1%82/">
+        
+        为什么好的开源软件多是基础架构层
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%BB%B6%E6%97%B6%E3%80%81%E4%B8%A2%E5%8C%85%E3%80%81%E6%8A%96%E5%8A%A8%E2%80%94%E2%80%94%E6%9C%AF%E8%AF%AD%E8%A7%A3%E9%87%8A/">
+        
+        延时、丢包、抖动——术语解释
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/git%20%E7%AC%94%E8%AE%B0/">
+        
+        git 笔记
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/Apdex%20%E5%BA%94%E7%94%A8%E6%80%A7%E8%83%BD%E6%8C%87%E6%95%B0/">
+        
+        Apdex 应用性能指数
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/GraphQL%20%E5%85%A5%E9%97%A8/">
+        
+        GraphQL 入门
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/REST%E9%A3%8E%E6%A0%BC%E7%90%86%E8%A7%A3/">
+        
+        REST风格理解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/dalin%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%AE%B0%E5%BD%95/">
+        
+        dalin的服务器配置记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/k8s%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3/">
+        
+        k8s配置文件详解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/session%EF%BC%8Ccookie%EF%BC%8Ctoken%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        session，cookie，token学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%B8%80%E6%AC%A1%E5%AE%8C%E6%95%B4%E7%9A%84HTTP%E8%AF%B7%E6%B1%82%E8%BF%87%E7%A8%8B%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        一次完整的HTTP请求过程【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E5%90%84%E7%A7%8D%E8%AF%AD%E8%A8%80%E7%89%88%E6%9C%AC%E7%9A%84%20Helloworld/">
+        
+        各种语言版本的 Helloworld
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E6%9C%8D%E5%8A%A1%E7%BC%93%E5%AD%98%E6%95%B0%E6%8D%AE%E6%9B%B4%E6%96%B0/">
+        
+        服务缓存数据更新
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E4%BD%BF%E7%94%A8github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
+        
+        使用github搭建个人博客
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/grocery/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E6%8A%80%E6%9C%AF/">
+        
+        进程间通信技术
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        html
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/html/css%E7%9F%A5%E8%AF%86%E7%82%B9/">
+        
+        css知识点
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        java
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/PriorityQueue-%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97/">
+        
+        PriorityQueue-优先级队列
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E5%AE%9E%E4%BD%93%E7%B1%BB%E4%B8%AD%E7%94%A8%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E8%BF%98%E6%98%AF%E5%8C%85%E8%A3%85%E7%B1%BB/">
+        
+        实体类中用基本类型还是包装类
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E6%B7%B7%E4%B9%B1%E7%9A%84Java%E7%89%88%E6%9C%AC%E5%91%BD%E5%90%8D/">
+        
+        混乱的Java版本命名
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E8%A7%A3%E8%AF%BB%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%20Java%20%E4%BB%A3%E7%A0%81%E8%A7%84%E8%8C%83/">
+        
+        解读阿里巴巴 Java 代码规范
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/maven%E4%BD%BF%E7%94%A8%E6%9C%AC%E5%9C%B0%E4%BE%9D%E8%B5%96/">
+        
+        maven使用本地依赖
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20%E6%B3%A8%E8%A7%A3/">
+        
+        Spring 注解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/SkyWalking%E2%80%94Java%E6%8E%A2%E9%92%88%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91/">
+        
+        SkyWalking—Java探针插件开发
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E6%95%B0%E6%8D%AE%E5%BA%93%E6%8F%92%E4%BB%B6%E5%88%86%E6%9E%90%EF%BC%88%E5%BA%9F%E7%A8%BF%EF%BC%89/">
+        
+        Skywalking数据库插件分析（废稿）
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+        
+        Spring的单例模式与线程安全
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/skywalking%20Jdbc%E6%8F%92%E4%BB%B6%E5%88%86%E6%9E%90/">
+        
+        skywalking Jdbc插件分析
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%B8%AD%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E5%9D%91/">
+        
+        Java中无处不在的坑
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%BC%98%E9%9B%85%E7%9A%84%E5%85%B3%E9%97%AD%E8%BF%9E%E6%8E%A5%E8%B5%84%E6%BA%90/">
+        
+        Java优雅的关闭连接资源
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E4%BF%9D%E7%95%99%E5%B0%8F%E6%95%B0%E7%82%B9%E5%90%8E%E5%87%A0%E4%BD%8D/">
+        
+        Java保留小数点后几位
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%AF%B9%E8%B1%A1%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E8%A7%A3%E6%B3%95/">
+        
+        Java对象循环引用解法
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Jpa%E8%BF%98%E6%98%AFMybatis%EF%BC%9F/">
+        
+        Jpa还是Mybatis？
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E6%A2%B3%E7%90%86%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        java多线程核心技术梳理
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/JTW%E8%AF%A6%E8%A7%A3/">
+        
+        JTW详解
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/JVM%E4%B8%8EJava%E7%A8%8B%E5%BA%8F/">
+        
+        JVM与Java程序
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%88%9B%E5%BB%BA%E7%BA%BF%E7%A8%8B%E7%9A%844%E7%A7%8D%E6%96%B9%E5%BC%8F/">
+        
+        Java创建线程的4种方式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+        
+        Java序列化与反序列化
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E5%8E%9F%E5%88%99/">
+        
+        Java异常处理原则
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%BB%86%E8%8A%82/">
+        
+        Java构造函数细节
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+        
+        Java正则表达式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4%E5%B7%A5%E5%85%B7%E7%B1%BB/">
+        
+        Java获取时间工具类
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Jenkins%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">
+        
+        Jenkins遇到的坑
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E4%BD%BF%E7%94%A8graphql%E6%9F%A5%E8%AF%A2/">
+        
+        Skywalking使用graphql查询
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Skywalking%E5%AD%A6%E4%B9%A0/">
+        
+        Skywalking学习
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20boot%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+        
+        Spring boot单元测试
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20boot%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E9%97%AE%E9%A2%98/">
+        
+        Spring boot读取配置文件问题
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Spring%20security%E5%AE%9E%E7%8E%B0%E6%9D%83%E9%99%90%E8%AE%A4%E8%AF%81/">
+        
+        Spring security实现权限认证
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/lombok/">
+        
+        lombok
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/null==obj%20or%20obj==null%20%EF%BC%9F/">
+        
+        null==obj or obj==null ？
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%20+%20jasypt%E5%AE%9E%E7%8E%B0%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF%E5%8A%A0%E5%AF%86/">
+        
+        spring boot + jasypt实现配置文件信息加密
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%B8%AD%E4%BB%A3%E7%A0%81%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">
+        
+        spring boot中代码修改配置文件
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E7%9A%84%E7%97%9B/">
+        
+        spring boot使用单例模式的痛
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20boot%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+        
+        spring boot使用多线程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/spring%20security%E5%AD%A6%E4%B9%A0%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        spring security学习【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E5%85%B3%E4%BA%8E%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/">
+        
+        关于线程安全
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/2020%20%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%EF%BC%88%E6%88%90%E9%95%BF%E4%B9%8B%E8%B7%AF%EF%BC%89/">
+        
+        2020 学习计划（成长之路）
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java%20%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        Java 归并排序【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/acmp%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">
+        
+        acmp开发记录
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/idea+maven+git%20%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/">
+        
+        idea+maven+git 开发环境安装
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/idea%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">
+        
+        idea使用心得
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/%E3%80%8AOn%20Java%208%E3%80%8B%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">
+        
+        《On Java 8》读书笔记
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/java/Java8%E6%96%B0%E7%89%B9%E6%80%A7/">
+        
+        Java8新特性
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        os
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/TCP%20%E5%8D%8F%E8%AE%AE%E7%81%B5%E9%AD%82%2012%20%E9%97%AE%20%E3%80%90%E8%BD%AC%E3%80%91/">
+        
+        TCP 协议灵魂 12 问 【转】
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/Linux%20shell%20%E5%90%84%E7%A7%8D%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%84%8F%E4%B9%89/">
+        
+        Linux shell 各种符号的意义
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/os/Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+        
+        Linux常用命令
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        python
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="directory">
+      <a href="#" data-role="directory">
+        Script
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/cmdb_mock/">
+        
+        cmdb_mock
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Script/push_cmdb_data/">
+        
+        push_cmdb_data
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/tops/">
+        
+        tops
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/Python%E9%AB%98%E7%BA%A7%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">
+        
+        Python高级编程技巧
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%20list()%E5%92%8C%5B%5D,dict()%E5%92%8C%7B%7D/">
+        
+        python list()和[],dict()和{}
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%85%A5%E9%97%A8/">
+        
+        python入门
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0/">
+        
+        python单例模式实现
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E4%B8%8E%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+        
+        python多进程与多线程
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E7%9F%A5%E8%AF%86%E7%82%B9/">
+        
+        python知识点
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/">
+        
+        python编程技巧
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/python%E8%84%9A%E6%9C%AC%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F/">
+        
+        python脚本接收参数的几种实现方式
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/python/%E5%8F%98%E9%87%8F%E5%8F%8A%E6%96%B9%E6%B3%95%E5%89%8D%E5%90%8E%E4%B8%8B%E5%88%92%E7%BA%BF%E7%9A%84%E5%90%AB%E4%B9%89/">
+        
+        变量及方法前后下划线的含义
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="file">
+      <a href="/2023/02/28/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+        
+        深入浅出设计模式
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+    <li class="directory">
+      <a href="#" data-role="directory">
+        生活点滴
+        &nbsp;
+        <i class="fa fa-pull-right fa-angle-right" style="margin-top:4px;margin-right:12px"></i>
+      </a>
+      
+  <ul class="unstyled" id="tree" > 
+    <li class="file">
+      <a href="/2023/02/28/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/%E6%88%91%E7%9A%84%E6%96%B0%E5%86%A0%E7%BB%8F%E5%8E%86/">
+        
+        我的新冠经历
+        
+      </a>
+    </li> 
+    <li class="file">
+      <a href="/2022/12/13/%E7%94%9F%E6%B4%BB%E7%82%B9%E6%BB%B4/keep/">
+        
+        keep
+        
+      </a>
+    </li> 
+  </ul> 
+    </li>
+    
+  </ul> 
+</div>
+<script>
+  $(document).ready(function() {
+    var iconFolderOpenClass = 'fa-angle-down';
+    var iconFolderCloseClass = 'fa-angle-right';
+    var iconAllExpandClass = 'fa-angle-double-down';
+    var iconAllPackClass = 'fa-angle-double-up';
+    // Handle directory-tree expansion:
+    // 左键单独展开目录
+    $(document).on('click', '#categories a[data-role="directory"]', function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconFolderOpenClass);
+      var subtree = $(this).siblings('ul');
+      icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+      if (expanded) {
+        if (typeof subtree != 'undefined') {
+          subtree.slideUp({
+            duration: 100
+          });
+        }
+        icon.addClass(iconFolderCloseClass);
+      } else {
+        if (typeof subtree != 'undefined') {
+          subtree.slideDown({
+            duration: 100
+          });
+        }
+        icon.addClass(iconFolderOpenClass);
+      }
+    });
+    // 右键展开下属所有目录
+    $('#categories a[data-role="directory"]').bind("contextmenu", function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconFolderOpenClass);
+      var listNode = $(this).siblings('ul');
+      var subtrees = $.merge(listNode.find('li ul'), listNode);
+      var icons = $.merge(listNode.find('.fa'), icon);
+      icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+      if (expanded) {
+        subtrees.slideUp({
+          duration: 100
+        });
+        icons.addClass(iconFolderCloseClass);
+      } else {
+        subtrees.slideDown({
+          duration: 100
+        });
+        icons.addClass(iconFolderOpenClass);
+      }
+    })
+    // 展开关闭所有目录按钮
+    $(document).on('click', '#allExpand', function(event) {
+      event.preventDefault();
+
+      var icon = $(this).children('.fa');
+      var expanded = icon.hasClass(iconAllExpandClass);
+      icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+      if (expanded) {
+        $('#sidebar .fa.fa-angle-right').removeClass('fa-angle-right').addClass('fa-angle-down')
+        $('#categories li ul').slideDown({
+          duration: 100
+        });
+        icon.addClass(iconAllPackClass);
+      } else {
+        $('#sidebar .fa.fa-angle-down').removeClass('fa-angle-down').addClass('fa-angle-right')
+        $('#categories li ul').slideUp({
+          duration: 100
+        });
+        icon.addClass(iconAllExpandClass);
+      }
+    });
+  });
+</script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="post-技术开发/grocery/RESTful API格式规范" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+      
+      
+    
+        <h1 class="article-title" itemprop="name">
+            RESTful API格式规范
+        </h1>
+    
+
+    </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+        
+        
+        <h2 id="1-RESTful风格"><a href="#1-RESTful风格" class="headerlink" title="1 RESTful风格"></a>1 RESTful风格</h2><p>RESTful是一种API的设计风格，他和GraphQL ，JSON-RPC，WebService类似，用于定义在CS、BS架构下暴露服务端接口。此次设计对接规范，将使用RESTful作为标准。</p>
+<h3 id="1-1-特征"><a href="#1-1-特征" class="headerlink" title="1.1 特征"></a>1.1 特征</h3><p>RESTful风格的特点是：</p>
+<h4 id="1）URI资源化"><a href="#1）URI资源化" class="headerlink" title="1）URI资源化"></a>1）URI资源化</h4><p>即，URI代表的是资源，而不包含动作。比如，一个班级，有很多学生，我们可以这样表示：&#x2F;class&#x2F;students</p>
+<h4 id="2）动作由HTTP头里的方法决定。"><a href="#2）动作由HTTP头里的方法决定。" class="headerlink" title="2）动作由HTTP头里的方法决定。"></a>2）动作由HTTP头里的方法决定。</h4><p>比如，我们想新增一个学生，我们可以用POST方法：</p>
+<p>POST &#x2F;class&#x2F;students<br>{<br>“name”: “Jake”,<br>“age” : 18<br>}<br>我们想查看当前有哪些学生，可以用GET方法：</p>
+<p>GET &#x2F;class&#x2F;students</p>
+<p>我们想查看某学生的具体信息，可以用路径指定到某一个ID：</p>
+<p>GET &#x2F;class&#x2F;students&#x2F;1</p>
+<p>我们想要开除id为1的学生，可以用DELETE方法：</p>
+<p>DELETE &#x2F;class&#x2F;students&#x2F;1</p>
+<p>HTTP头里面的方法决定了动作后，后端实现也应该严格根据动作来，比如，GET请求不应该对数据造成任何更改，如此，我们对权限控制便非常方便，例如，如果是访客，我们可以只开放GET方法，而对于ADMIN，我们可以开放GET,POST,DELETE等方法。</p>
+<p>大多数就是做CRUD，用HTTP头部动作，可以很好满足。</p>
+<h4 id="3）资源的表现由Content-Type决定"><a href="#3）资源的表现由Content-Type决定" class="headerlink" title="3）资源的表现由Content-Type决定"></a>3）资源的表现由Content-Type决定</h4><p>HTTP请求的头信息中Accept和Content-Type字段，是对资源的表现描述。例如，指定是JSON格式，还是HTML格式。</p>
+<h4 id="4）无状态"><a href="#4）无状态" class="headerlink" title="4）无状态"></a>4）无状态</h4><p>无状态是指客户端无状态，例如，你不应该在客户端使用类似的逻辑：</p>
+<p>if (hasStudent(“Jake”)) {<br>getStudentInfo(“Jake”);<br>}<br>因为，hasStudent和getStudentInfo调用之间，可能别人已经将Jake删除了，你的状态维护不一定准确。 你可以直接getStudentInfo(“Jake”)，没有则返回失败即可。 服务端可以维护一些状态，但最好不要维护太多，例如，HTTP登录状态，是应该维护的，但是，记录并强制要求用户A是否请求过某个URL再请求另一个URL，这种设计就不应该了。</p>
+<h4 id="5）数据安全"><a href="#5）数据安全" class="headerlink" title="5）数据安全"></a>5）数据安全</h4><p>使用HTTPS协议，加密数据。</p>
+<p>我们对接统一采用RESTful方式的HTTPS（为了加密）请求，内容为JSON格式，其中，安全、幂等性、无状态之类的约束，请产品线严格按照Restful规定设计。</p>
+<h3 id="1-2-优点"><a href="#1-2-优点" class="headerlink" title="1.2 优点"></a>1.2 优点</h3><h4 id="1）减少沟通成本。"><a href="#1）减少沟通成本。" class="headerlink" title="1）减少沟通成本。"></a>1）减少沟通成本。</h4><p>API是开放给别人使用的，由于有既有的约定，会让沟通成本大大减少，这是API提供者最应该考虑的。</p>
+<h4 id="2）能够接纳多种客户端-适用于大多数CS-BS架构程序"><a href="#2）能够接纳多种客户端-适用于大多数CS-BS架构程序" class="headerlink" title="2）能够接纳多种客户端(适用于大多数CS BS架构程序)"></a>2）能够接纳多种客户端(适用于大多数CS BS架构程序)</h4><p>不止是web程序，基本上的CS架构程序，都可以使用RESTful提供API，这样，不论是WEB Client还是Windows APP还是，Mobile APP，都可以轻松使用服务端的API。</p>
+<p>由Facebook开放的GraphQL 等也可能在今后流行，不过当前主流的还是RESTful。</p>
+<h4 id="3）思维方式转换为以资源为中心"><a href="#3）思维方式转换为以资源为中心" class="headerlink" title="3）思维方式转换为以资源为中心"></a>3）思维方式转换为以资源为中心</h4><p>传统的方式是以操作为中心，例如create_user, query_students。</p>
+<p>类似于面向对象以对象为中心，RESTful推崇以资源为中心，说不上绝对好，但的确会引导大家考虑资源本身，关注内聚性，关注权限，关注资源间关联。</p>
+<h4 id="4）扩展方便"><a href="#4）扩展方便" class="headerlink" title="4）扩展方便"></a>4）扩展方便</h4><p>无状态设计对横向扩展非常方便，因为API之间解耦比较好，资源解耦也比较好。 还有一个叫 hypertext-driven 的东西，类似于自描述，但是用起来也不方便，在CodeReview工具提供的API便是这种方式，优点是服务端可以随意更换URL，缺点是请求前要去查询一下该请求什么路径。例如github的参考<a target="_blank" rel="noopener" href="https://api.github.com/">https://api.github.com/</a></p>
+<h4 id="5）建立在HTTP协议基础之上"><a href="#5）建立在HTTP协议基础之上" class="headerlink" title="5）建立在HTTP协议基础之上"></a>5）建立在HTTP协议基础之上</h4><p>HTTP协议里面规定的东西很多，例如，缓存，压缩，代理，加密，穿透，等等，都已经让HTTP帮忙完成了，给很多实现减负。</p>
+<h3 id="1-3-动作"><a href="#1-3-动作" class="headerlink" title="1.3 动作"></a>1.3 动作</h3><h4 id="GET"><a href="#GET" class="headerlink" title="GET"></a>GET</h4><p>获取资源</p>
+<p>幂等</p>
+<p>举例：获取学生Jake的信息。</p>
+<p>GET &#x2F;class&#x2F;students?name&#x3D;”Jake”</p>
+<h4 id="POST"><a href="#POST" class="headerlink" title="POST"></a>POST</h4><p>创建资源，不会指定资源ID，但创建完成后，通常会返回资源的ID，这样后续可以通过资源ID操作此资源。</p>
+<p>非幂等</p>
+<p>举例：创建学生。<br>POST &#x2F;class&#x2F;students<br>{“name”: “Jake”, “age” : 18, “score”: 0}</p>
+<h4 id="PUT"><a href="#PUT" class="headerlink" title="PUT"></a>PUT</h4><p>整体(Entire Resource)替换。为了定位资源，要求路径上有资源的唯一ID。</p>
+<p>幂等</p>
+<p>举例：替换ID为2的学生的信息为如下新信息。</p>
+<p>PUT &#x2F;class&#x2F;students&#x2F;2<br>{“name”: “Jim”,”age”: 19}</p>
+<p>此操作将原本ID为2的学生的所有属性冲掉了，替换后，ID为2的学生整体内部数据结构变为：</p>
+<p>{“id”: 2, “name”: “Jim”,”age”: 19}</p>
+<p>异常：</p>
+<p>1.如果Playload为空，返回失败。</p>
+<p>2.如果Playload为{}，是正确的，表示清空（重置），例如上述示例内部数据结构将变为：{“id”: 2}</p>
+<h4 id="PATCH"><a href="#PATCH" class="headerlink" title="PATCH"></a>PATCH</h4><p>部分(Part Resource)替换。</p>
+<p>幂等</p>
+<p>为了定位资源，要求路径上有资源的唯一ID。</p>
+<p>举例：更新ID为2的学生的年龄从之前的18岁更新为20岁。<br>PATCH &#x2F;class&#x2F;students&#x2F;2<br>{“age”: 20}</p>
+<p>这里，ID为2的学生的其他属性保留，整体内部数据结构变成：</p>
+<p>{“id”: 2, “name”: “Jake”, “age” : 20, “score”: 0}</p>
+<p>异常：</p>
+<p>1.如果Playload为空或{}，返回失败。</p>
+<p>2.对于嵌套的结构，如果是正常书写，表示整体替换；如果是点分结构，表示部分更新。比如：</p>
+<p>{“id”: 2, “name”: “Jake”, “age” : 20, “score”: {“English”: 86, “Chinese”:88, “math”:99}}</p>
+<p>2.1子结构替换：</p>
+<p>PATCH &#x2F;class&#x2F;students&#x2F;2</p>
+<p>{“score”: {“math”:100}}</p>
+<p>替换后为：</p>
+<p>{“id”: 2, “name”: “Jake”, “age” : 20, “score”: {“math”:100}}</p>
+<p>2.2 子结构更新：</p>
+<p>PATCH &#x2F;class&#x2F;students&#x2F;2</p>
+<p>{“score.math”: 100}</p>
+<p>替换后为：</p>
+<p>{“id”: 2, “name”: “Jake”, “age” : 20, “score”: {“English”: 86, “Chinese”:88, “math”:100}}</p>
+<p>3.对于数组，标准用法是表示整体替换，而不能增删。比如：</p>
+<p>{“id”: 2, “name”:”Jake”, “friends”: [“Jim”, “Marry”, “Jake”]}</p>
+<p>3.1 执行整体替换：</p>
+<pre><code>PATCH /class/students/2
+
+&#123;&quot;friends&quot;: [&quot;Bob&quot;]&#125;
+
+替换后为：
+
+&#123;&quot;id&quot;: 2, &quot;name&quot;:&quot;Jake&quot;, &quot;friends&quot;: [&quot;Bob&quot;]&#125;
+</code></pre>
+<p>3.2 扩展语法，为了支持增加和删除功能，参考rfc6902（我们修改一下使得一致性更好），我们在URL参数上，附带_arrayop&#x3D;[add,remove]，用于表示增删数组，例如：</p>
+<pre><code>PATCH /class/students/2?_arrayop=add
+
+&#123;&quot;friends&quot;: [&quot;Bob&quot;]&#125;
+
+增加后为：
+
+&#123;&quot;id&quot;: 2, &quot;name&quot;:&quot;Jake&quot;, &quot;friends&quot;: [&quot;Jim&quot;, &quot;Marry&quot;, &quot;Jake&quot;, &quot;Bob&quot;]&#125;
+
+PATCH /class/students/2?_arrayop=remove
+
+&#123;&quot;friends&quot;: [&quot;Jim&quot;]&#125;
+
+删除后为：
+
+&#123;&quot;id&quot;: 2, &quot;name&quot;:&quot;Jake&quot;, &quot;friends&quot;: [&quot;Marry&quot;, &quot;Jake&quot;]&#125;
+
+这种做法的缺陷是，一个_arrayop控制了整个Playload的array动作，所以，同一Playload如果需要多种动作的情况，请拆分为多次请求。
+</code></pre>
+<h4 id="DELETE"><a href="#DELETE" class="headerlink" title="DELETE"></a>DELETE</h4><p>删除资源。</p>
+<p>幂等</p>
+<p>DELETE里面能不能带payload，这个RFC 7231 “Hypertext Transfer Protocol (HTTP&#x2F;1.1): Semantics and Content”是这么规定的：</p>
+<p>A payload within a DELETE request message has no defined semantics; sending a payload body on a DELETE request might cause some existing implementations to reject the request.</p>
+<p>所以，并没有禁止，是否支持依赖于服务端实现，比如某些版本的Tomcat或 Jetty就会忽略payload。</p>
+<p>而OpenAPI3.0定义里面描述为：</p>
+<p>The request body applicable for this operation. The requestBody is only supported in HTTP methods where the HTTP 1.1 specification RFC7231 has explicitly defined semantics for request bodies. In other cases where the HTTP spec is vague, requestBody SHALL be ignored by consumers.</p>
+<p>说明，对OpenAPI规范而言，这种模棱两可的描述，是明确要ignored的。</p>
+<p>经过我们的实践，发现DELETE带payload需求很多，所以，我们明确一下，支持DELETE带payload的行为，假如遇到实现不支持时，请使用DELETE Over POST实现。</p>
+<p>举例：</p>
+<p>删除ID为2的学生。<br>DELETE &#x2F;class&#x2F;students&#x2F;2</p>
+<p>删除有Jim这个朋友的所有学生。</p>
+<p>DELETE &#x2F;class&#x2F;students</p>
+<p>{“friends”: [“Jim”]}</p>
+<p>或表达为DELETE Over POST：</p>
+<p>POST &#x2F;class&#x2F;students?_method&#x3D;DELETE</p>
+<p>{“friends”: [“Jim”]}</p>
+<h4 id="HEAD"><a href="#HEAD" class="headerlink" title="HEAD"></a>HEAD</h4><p>获取资源元信息。只有HTTP头，不包含数据。</p>
+<p>幂等</p>
+<p>举例：查看学生Jake是否存在。</p>
+<p>HEAD &#x2F;class&#x2F;students?name&#x3D;”Jake”</p>
+<h4 id="OPTIONS"><a href="#OPTIONS" class="headerlink" title="OPTIONS"></a>OPTIONS</h4><p>获取资源选项。例如获取服务端支持的方法子集，HTTP版本等。</p>
+<p>幂等</p>
+<p>举例：获取当前学生API是否支持POST方法。</p>
+<p>OPTIONS &#x2F;class&#x2F;student</p>
+<p>返回值中有Allow字段，标明支持的方法，Responses to this method are not cacheable.</p>
+<h4 id="TRACE"><a href="#TRACE" class="headerlink" title="TRACE"></a>TRACE</h4><p>服务器端loop back消息。</p>
+<p>幂等</p>
+<p>对RESTful来说基本没用。</p>
+<h4 id="CONNECT"><a href="#CONNECT" class="headerlink" title="CONNECT"></a>CONNECT</h4><p>代理时使用</p>
+<p>幂等</p>
+<p>对RESTful来说基本没用。</p>
+<p>在实际资源操作中，总会有一些不符合 CRUD（Create-Read-Update-Delete） 的情况，处理方法为使用POST加上endpoint, 比如 POST &#x2F;mail&#x2F;:id&#x2F;resend表示重发邮件，建议在资源的基础上加入动作endpoint。</p>
+<p>如果参数里面带有_method参数，那_method参数将override掉HTTP协议头里面的动作，用于扩展某些难以支持HTTP头部修改的场景、某些关键字如DELETE无法附带正文内容的问题、某些类防火墙系统截拦PUT等关键字场景。</p>
+<h2 id="2-命名规范"><a href="#2-命名规范" class="headerlink" title="2 命名规范"></a>2 命名规范</h2><h3 id="2-1-关于URL中的横线和下划线"><a href="#2-1-关于URL中的横线和下划线" class="headerlink" title="2.1 关于URL中的横线和下划线"></a>2.1 关于URL中的横线和下划线</h3><p>先说结论：URL中使用横线“-”或下划线“_”各有利弊，本规范中即不使用横线也不使用下划线。</p>
+<p>关于横线和下划线的讨论，如有兴趣可参见：关于URL里面使用下划线还是横线的理由.doc</p>
+<h3 id="2-2-URL命名规范"><a href="#2-2-URL命名规范" class="headerlink" title="2.2 URL命名规范"></a>2.2 URL命名规范</h3><p>规范：全部使用小写字母，如果有多个单词，那么单词之间不需要使用任何分隔符（即不使用下划线，也不使用横线），直接将所有单词拼接在一起即可。</p>
+<p>例如，即不使用user-name，也不使用user_name，而是直接使用username。</p>
+<p>URL命名规则可用正则描述：&#x2F;^[0-9a-z]+$&#x2F;</p>
+<p>举例子：&#x2F;api&#x2F;v1&#x2F;mailsetting&#x2F;testemail</p>
+<p>讨论：有人提出疑问“很多时候单词长度查不多时，不分隔一下估计都很难知道是那两个单词”，这个需要再收集一下大家的意见，看是否需要把规划放宽松一些。</p>
+<h3 id="2-3-变量命名规范——驼峰法（camel-case）"><a href="#2-3-变量命名规范——驼峰法（camel-case）" class="headerlink" title="2.3 变量命名规范——驼峰法（camel case）"></a>2.3 变量命名规范——驼峰法（camel case）</h3><p>变量是指URL查询参数（Query String）和请求体中json字段的名字。</p>
+<p>规范：强制新代码使用驼峰法命名，大小写敏感。例如userName。不允许使用下划线或横线来连接单词。</p>
+<p>目的：减少了下划线带来的字符长度增加，减少了纠结是使用下划线还是横线的情况，是很多种语言的默认风格（JAVA,C#,GO,SWIFT等新派语言代表）。</p>
+<p>特殊场景：允许在变量开头加上一个下划线，用于防止和产品线的关键字冲突，例如：_queryMethod 和 _cache</p>
+<p>变量命名规则可用正则描述：&#x2F;^_?[a-z][0-9A-Za-z]*$&#x2F;</p>
+<p>举例子：&#x2F;api&#x2F;v1&#x2F;mailsetting&#x2F;testemail?userName&#x3D;zhangsan&amp;_enableAuth&#x3D;1&amp;_cache&#x3D;false</p>
+<p>POST json数据举例：{“userName”: “zhangsan”, “_enableAuth”: 1, “_cache”: false}</p>
+<p>最关键的设计约定是：所有命名尽可能使用单一名称涵盖你要表达的意义，不到万不得已，不要用多个词连接。</p>
+<h3 id="2-4-历史版本可选命名规则-蛇形法（snake-case）"><a href="#2-4-历史版本可选命名规则-蛇形法（snake-case）" class="headerlink" title="2.4 历史版本可选命名规则-蛇形法（snake case）"></a>2.4 历史版本可选命名规则-蛇形法（snake case）</h3><p>由于有的产品线，例如AD，内部一致使用下划线方式，对转换为驼峰法抗议较多，这里新增一种命名规则，适应这些产品线。</p>
+<p>目前发现，使用下划线风格的部门，很难融入整体的驼峰风格，有的规范定义后，显得格格不入，总体规范不会为某个部门单独开一套风格的API。</p>
+<p>对接无法保证对端是什么语言，比如是PYTHON、PHP、PERL、JAVASCRIPT，JAVA，GO，不要因为自己的语言习惯下划线而选择下滑线风格。大家不是历史原因万不得已，不要选择这种风格。</p>
+<p>所有涉及的参数名称、JSON名称等，都遵循如下命名规范：</p>
+<p>1）URL，大小写无感知，user name 使用横线连在一起，写成user-name。</p>
+<p>&#x2F;^[0-9a-z][0-9-a-z]*[0-9a-z]$&#x2F;</p>
+<p>2）变量，只能出现小写，user name写成user_name。</p>
+<p>&#x2F;^[_a-z][_0-9a-z]*$&#x2F;</p>
+<h2 id="3-URI格式"><a href="#3-URI格式" class="headerlink" title="3 URI格式"></a>3 URI格式</h2><p><a href="https://host:port{/separatePath}/{product}/{version}/{resourceURI}">https://host:port{/separatePath}/{product}/{version}/{resourceURI}</a></p>
+<p>例如：</p>
+<p><a target="_blank" rel="noopener" href="https://200.200.88.88/open/api/sip/v1/log/security">https://200.200.88.88:443/open/api/sip/v1/log/security</a></p>
+<p><a target="_blank" rel="noopener" href="https://200.200.88.88/doc/acloud/v3/keystone">https://200.200.88.88:443/doc/acloud/v3/keystone</a></p>
+<p><a target="_blank" rel="noopener" href="https://200.200.88.88/api/sangforinter/v1/">https://200.200.88.88:443/api/sangforinter/v1/</a></p>
+<h4 id="1）separatePath隔离路径"><a href="#1）separatePath隔离路径" class="headerlink" title="1）separatePath隔离路径"></a>1）separatePath隔离路径</h4><p>因为我们的产品，基本上没有域名，只提供IP访问，导致没办法做子域名，所以，一般的URI隔离，就用路径表示，我们将隔离路径表示为separatePath，其功能类似于子域名，上例中open&#x2F;api就是separatePath。</p>
+<p>对于支持域名的产品线（例如云脑），可以将separatePath和product移到子域名。</p>
+<h4 id="2）product产品"><a href="#2）product产品" class="headerlink" title="2）product产品"></a>2）product产品</h4><p>每个部门，有自己不同的产品，例如vt的acloud，本规范主要是用于全公司产品之间互通，product名称叫sangforinter，此处也可以当成模块名称，比如appstore表示app应用商店模块。</p>
+<h4 id="3）version版本号"><a href="#3）version版本号" class="headerlink" title="3）version版本号"></a>3）version版本号</h4><p>每个产品可能会定义不同版本的规范，所有这里有版本号。</p>
+<p>我们的sangforinter产品，当前版本号为v1。</p>
+<p>关于版本号的位置，虽然HTTP头部的Accept: version&#x3D;1.1里面可以指定version，但是，不太方便操作，不少设计是指定在路径上，例如 &#x2F;v2&#x2F;class&#x2F;students。</p>
+<h4 id="4）resourceURI"><a href="#4）resourceURI" class="headerlink" title="4）resourceURI"></a>4）resourceURI</h4><p>resourceURI为具体的资源URI，这里可以有resource的嵌套。</p>
+<p>例如，用WordPress写文章，就会出现Posts和Comments的关系：</p>
+<p>有人认为，Comments应该独立于Posts存在，类似：</p>
+<p>GET &#x2F;api&#x2F;comments?postId&#x3D;XXXX</p>
+<p>GET &#x2F;api&#x2F;comments&#x2F;:commentsId</p>
+<p>POST &#x2F;api&#x2F;comments</p>
+<p>也有人认为，Comments是依赖于Posts的，类似：</p>
+<p>GET&#x2F;POST &#x2F;api&#x2F;posts&#x2F;:postId&#x2F;comments</p>
+<p>如果是后者，则出现了posts和comments两种资源的嵌套。</p>
+<h2 id="4-GET请求"><a href="#4-GET请求" class="headerlink" title="4 GET请求"></a>4 GET请求</h2><p>GET相关文档请参考<a target="_blank" rel="noopener" href="https://www.w3.org/2001/tag/doc/get7">https://www.w3.org/2001/tag/doc/get7</a></p>
+<h4 id="4-1-GET-OVER-POST"><a href="#4-1-GET-OVER-POST" class="headerlink" title="4.1 GET OVER POST"></a>4.1 GET OVER POST</h4><p>由于有的部门，GET请求参数过于复杂，或者GET请求要发送很长的URL列表，所以，我们建议，对于比较长（超过几百字符）或比较复杂（有嵌套OBJECT或ARRAY）的情况，使用GET OVER POST方式，即上面讲的，使用POST 发送请求，但是参数里面_method&#x3D;GET的方式。</p>
+<h4 id="4-2-GET语义转变"><a href="#4-2-GET语义转变" class="headerlink" title="4.2 GET语义转变"></a>4.2 GET语义转变</h4><p>从语义上，将GET请求资源的概念转换为POST新增一个请求资源的task，也是比较适合的一种转换方式，不需要GET OVER POST。</p>
+<p>例如，获取几百条URL的风险状态，可以转换为，新增一个获取几百条URL的风险状态任务，异步情况下，服务器会返回一个任务ID，供下次查询，同步情况下，服务器直接返回数据TASK执行结果也是可以的。其示例如下。</p>
+<p>原本：</p>
+<p>GET &#x2F;status&#x2F;url?list&#x3D;url1,url2,url3</p>
+<p>语义转变后：</p>
+<p>POST &#x2F;status&#x2F;url&#x2F;task?_method&#x3D;GET</p>
+<p>{</p>
+<pre><code>[
+
+    &quot;url1&quot;,
+
+    &quot;url2&quot;,
+
+    &quot;url3&quot;
+
+]
+</code></pre>
+<p>}</p>
+<h4 id="4-3-GET传统方式"><a href="#4-3-GET传统方式" class="headerlink" title="4.3 GET传统方式"></a>4.3 GET传统方式</h4><p>如果不是上面说的，GET请求参数特别复杂的情况，建议使用传统方式。</p>
+<p>1）请求参数的最大长度。</p>
+<p>GET请求参数放在了URL里面，有最长限制，RFC7230也并没有强制规定，只是建议：</p>
+<p>at a minimum, request-line lengths of 8000 octets.</p>
+<p>目前看，2000字节以内才是安全长度，参考“What is the maximum length of a URL in different browsers?”</p>
+<p>参考<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers">What is the maximum length of a URL in different browsers?</a></p>
+<p>如果请求参数过长，服务器必须返回414 (Request-URI Too Long) HTTP状态码。</p>
+<p>2）请求参数的风格</p>
+<p>a) 多参数风格：</p>
+<p>建议使用 &#x2F;cars&#x2F;?color&#x3D;blue&amp;type&#x3D;sedan&amp;doors&#x3D;4。</p>
+<p>不推荐使用&#x2F;cars&#x2F;color:blue&#x2F;type:sedan&#x2F;doors:4。</p>
+<p>b) 数组表示风格：</p>
+<p>建议使用&#x2F;appointments?users&#x3D;[id1,id2]。</p>
+<p>不推荐使用&#x2F;appointments?users&#x3D;id1,id2。虽然这种方式各位简洁，但是下面我们还要表示对象，需统一风格。</p>
+<p>c) 对象表示风格：</p>
+<p>建议使用&#x2F;appointments?params&#x3D;{users:[id1,id2], age:18}。</p>
+<p>3）URL编码。</p>
+<p>URL参数为key&#x3D;value形式，key规定为驼峰命名的纯英文+数组+下划线组合，不能出现中文或其他特殊符号，正则规则为：&#x2F;[_A-Za-z][0-9A-Za-z]*&#x2F;</p>
+<p>value部分，由于不同的浏览器和html编码设置差异比较大，参见《关于URL编码》为了统一，我们以rfc3986 为标准（主要是中文必须是UTF-8编码而非其他编码）对value做encode。</p>
+<p>JS里面对value做encode&#x2F;decode的函数为：encodeURIComponent()&#x2F;decodeURIComponent()</p>
+<p>PHP里面对value做encode&#x2F;decode的函数为（必须关闭magic_quotes_gpc）：rawurlencode()&#x2F;rawurldecode()</p>
+<h2 id="5-批量处理接口"><a href="#5-批量处理接口" class="headerlink" title="5 批量处理接口"></a>5 批量处理接口</h2><p>1）URI相同的操作，RESTFUL本身就支持BATCH操作，只需要将参数改为数组即可。</p>
+<p>比如添加学生，添加一个学生为：</p>
+<pre><code>POST /class/students
+</code></pre>
+<p>{“data”:{“name”:”Jake”, “age”:18}}</p>
+<p>添加多个学生（批）为：</p>
+<pre><code>POST /class/students
+</code></pre>
+<p>{“data”:[{“name”:”Jake”, “age”:18},{“name”:”Jakson”, “age”:19}]}</p>
+<p>2）URI不同，可以写一个READ ONLY的BATCH接口，不涉及任何WRITE。</p>
+<pre><code>某些产品线有这种需求，例如首页有很多URL GET请求，可以合并。
+</code></pre>
+<p>再例如，我们想要同时获取之前三个接口提供的统计信息，可以这样写：</p>
+<p>POST &#x2F;status&#x2F;batch?_method&#x3D;GET<br>{<br>“items”:<br>[<br>{<br>“path”:”status&#x2F;cpu”,<br>“param” :<br>{<br>“max” : 90<br>}<br>},<br>{<br>“path”:”status&#x2F;memory”<br>},<br>{<br>“path”:”status&#x2F;disk”<br>}<br>]<br>}</p>
+<p>3）URI不同，不支持BATCH WRITE操作。</p>
+<p>某些产品线有这类需求，但是不建议大家这么设计，原因是很难做到原子操作，会残留中间状态，而且错误处理比较麻烦，幂等性之类的RESTFUL标准也无法满足。</p>
+<h3 id="5-1-返回结果"><a href="#5-1-返回结果" class="headerlink" title="5.1 返回结果"></a>5.1 返回结果</h3><p>子项的格式请参考“回复消息格式”小节。</p>
+<p>批量处理，返回结果有三种方式，建议支持第三种返回结果。</p>
+<p>1）返回整体错误描述。例如：</p>
+<p>{<br>“code”: 0,<br>“message”: “success”<br>}<br>2）返回具体的每项错误描述（返回错误数组的顺序和发送时的数组顺序必须一一对应）。例如：</p>
+<p>[{<br>“code” : 0,<br>“message” : “success”,<br>“data” : {<br>“id” : 1<br>}<br>}, {<br>“code” : 22,<br>“message” : “invalid param”<br>}<br>]<br>3） 返回整体错误描述加具体的每项错误描述（返回错误数组的顺序和发送时的数组顺序必须一一对应），全部成功返回0，部分失败或者全部失败返回错误码57（57本来是EBADSLT(Invalid slot)的意思，取其有的slot有错误的含义，用来表示部分或全部失败）。</p>
+<p>{<br>“code” : 57,<br>“message” : “Part failed”,<br>“items” : [{<br>“code” : 0,<br>“message” : “success”,<br>“data” : {<br>“id” : 1<br>}<br>}, {<br>“code” : 22,<br>“message” : “invalid param”<br>}<br>]<br>}</p>
+<p>关于HTTP状态码在Restful API里应该如何结合使用，网上争论激烈，到底应该用状态码来表示错误，还是应该在JSON里面填写errorCode。比如这里：</p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/942951/rest-api-error-return-good-practices/34324179#34324179">https://stackoverflow.com/questions/942951/rest-api-error-return-good-practices/34324179#34324179</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/2380554/rest-mapping-application-errors-to-http-status-codes?noredirect=1&amp;lq=1">https://stackoverflow.com/questions/2380554/rest-mapping-application-errors-to-http-status-codes?noredirect=1&amp;lq=1</a></p>
+<p>我们可以看到，不少厂商，其实结合了两者同时使用，比如IBM的API规范定义如下：</p>
+<p>上面，他不仅支持Http Response Code，还将Http Response Code放到JSON块里面返回，目的是为了方便获取Http Response Code，不过有些多此一举，他的错误码，会有一个映射关系，比如404下，有code 1002, 1003分别代表什么含义。这种方式并没有什么问题，而且主流的API管理工具，也支持Http Response Code含义区分。常见的错误码含义：</p>
+<p>类型	错误码<br>GET返回值<br>200 - 请求成功。</p>
+<p>206 - 请求成功，但只返回了部分（分页场景）。</p>
+<p>POST返回值<br>201 - 同步创建成功。</p>
+<p>202 - 接收成功，将进行异步处理。</p>
+<p>PUT返回值<br>200 - 同步更新成功（原资源已存在）。</p>
+<p>201 - 同步创建成功（原资源不存在，和POST类似）。</p>
+<p>202 - 接收成功，将进行异步处理。</p>
+<p>PATCH返回值<br>200 - 同步更新成功（原资源存在）。</p>
+<p>202 - 接收成功，将进行异步处理。</p>
+<p>DELETE返回值<br>200 - 同步删除成功。</p>
+<p>202 - 接收成功，将进行异步处理。</p>
+<p>HEAD返回值	404 - 表示不存在。</p>
+<p>通过多方考察和分析，包括Google和Facebook的使用来看，我们得出一个结论，将Http Response Code当成HTTP层的错误码，而errorCode当成应用层的错误码，这样一个划分逻辑更清晰。</p>
+<p>所以，只要是到应用层处理逻辑获取到了请求数据，并且不需要状态码协同配合的情况，都应该使用状态码200，然后内部再返回code错误。</p>
+<p>举例1，状态码使用场景。</p>
+<p>我们收到一个请求&#x2F;users?token&#x3D;xxxx，如果是&#x2F;users这个资源在Apache里面配置为没不具备访问权限，则此时应该由Apache直接返回，此时就是HTTP层错误，返回HTTP Response Code 401。</p>
+<p>举例2，错误码使用场景。</p>
+<p>我们收到一个请求&#x2F;users?token&#x3D;xxxx，如果是&#x2F;users这个资源具备访问权限，并且进入到了PHP框架代码，框架代码校验token不通过，此时应该返回HTTP Response Code为200，同时附带错误消息：</p>
+<p>{<br>“code” : 13,<br>“message” : “Token校验失败！”<br>}<br>所以，基本上，我们做API的时候，基本不需要考虑状态码的情况，因为我们全在应用层，如此设计，旨在简化我们的逻辑，对于有的场景，确实需要联动HTTP Response Code的，可以联动，比如上述，也可以返回HTTP Response Code为401，并附带errorCode错误码13。</p>
+<p>状态码的具体含义参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.codetinkerer.com/2015/12/04/choosing-an-http-status-code.html">https://www.codetinkerer.com/2015/12/04/choosing-an-http-status-code.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html</a></p>
+<p>状态码的RFC参考：</p>
+<p><a target="_blank" rel="noopener" href="https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml">https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml</a></p>
+<h2 id="7-错误码"><a href="#7-错误码" class="headerlink" title="7 错误码"></a>7 错误码</h2><p>应用层错误码，其意义在于精确定位错误类型，例如5和3表示不同含义，调用端可以根据不同错误码，做更进一步处理，假设只有message（message变动可能性大，而且国际化导致更改），程序很难对错误做进一步处理，一般只能做错误传递。</p>
+<p>错误码为数字的原因：</p>
+<p>1）数字是所有语言的内置类型，存储不需要额外开辟对象或者堆空间；错误码通过函数参数等方式传递的时候，也不需要考虑类似谁分配谁释放的问题。</p>
+<p>2）数字的比较是非常简单的操作(比如有的语言switch case不支持字符串，但是支持数字，字符串需要if else if else方式去比较)，不消耗多少CPU。</p>
+<p>3）数字也可以做一些有具体含义的编码，例如HTTP RESPONSE CODE，用4xx和2xx表示不同含义。</p>
+<p>4）数字还可以做范围比较，例如 1000 &lt; errno &lt; 10005 这一段表示某一类型错误。</p>
+<p>5）数字的errno如果是连续的，用errno对应“错误描述”时可以不使用hash表，而用array即可做translate。例如 en[1] &#x3D; “param invalid”; zh[1] &#x3D; “参数错误”;</p>
+<p>6）数字可以兼容C语言系列的API errno直接转换。</p>
+<p>为了提高可读写，建议产品线根据语言将errno定义成类似的宏或者常量（不使用原始的数字），例如，如果要写:</p>
+<pre><code>printf(&quot;&#123;\&quot;code\&quot;: %d&#125;&quot;, 1);
+</code></pre>
+<p>这样一个回复，在c语言里面应该是写为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">printf(&quot;&#123;\&quot;code\&quot;: %d&#125;&quot;, EPERM);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="9-编码模式"><a href="#9-编码模式" class="headerlink" title="9 编码模式"></a>9 编码模式</h2><p>REST API支持多种Encoding schemes，用的比较多的是JSON和XML，其次还有CSV，ROW格式等，为了对接不同类型的客户端，特别是在联动外部客户设备的时候，编码模式就会显示出他的价值。</p>
+<p>理论上，数据构造层是不需要考虑编码模式的，应由专门的编码模式转换层来根据client的请求转换编码模式。</p>
+<p>比如，请求为JSON：Content-Type: application&#x2F;json</p>
+<p>{<br>“id”: 0,<br>“userName”: “string”,<br>“email”: “string”<br>}<br>请求为XML：Content-Type: application&#x2F;xml</p>
+<p>&lt;?xml version&#x3D;”1.0” encoding&#x3D;”UTF-8”?&gt;</p>
+<p>&lt;User&gt;<br>  &lt;id&gt;0&lt;&#x2F;id&gt;<br>  &lt;userName&gt;string&lt;&#x2F;userName&gt;<br>  &lt;email&gt;string&lt;&#x2F;email&gt;<br>&lt;&#x2F;User&gt;<br>之所以要说明编码模式，是今后在设计API底层框架的时候，应该要支持encoding schemes之间的转换。</p>
+<h2 id="10-缓存设计"><a href="#10-缓存设计" class="headerlink" title="10 缓存设计"></a>10 缓存设计</h2><p>很多耗时操作，后端会提前做好缓存，请求时直接返回cache。</p>
+<p>如果用户不想获取缓存数据（获取实时数据），可以禁用cache。我们统一定义这类需求，只需要在GET参数里面带_cache&#x3D;0即表示cache disable； _cache&#x3D;1表示cache enable，其他的取值，暂时保留，产品线不能自行定义使用意义（如果有需求，请组织讨论）。</p>
+<h2 id="11-异步原则"><a href="#11-异步原则" class="headerlink" title="11 异步原则"></a>11 异步原则</h2><p>有人提出单独说一下异步消息的处理，这个其实没什么特别的，通用设计是先PUT、POST、DELETE一个异步任务，在返回值里带上后端异步任务的ID，前端间隙GET此异步任务ID，来获取最终的进度。</p>
+<p>例如，我们准被创建一个虚拟机，异步请求定义为：</p>
+<p>POST &#x2F;api&#x2F;vm<br>{<br>“name”: “MySQL Server”,<br>“cpu” : 2,<br>“memory” : 1024<br>}<br>返回值为：</p>
+<p>HTTP &#x2F; 1.1 200 OK<br>{<br>“code”:0,<br>“message” : “VM is creating!”,<br>“data” :<br>{<br>“id”: string,    &#x2F;&#x2F; 例如返回id&#x3D;”2018031420080001”<br>“timeout”: int,  &#x2F;&#x2F; 例如180，表示最多检查180s<br>}<br>}<br>客户端再根据返回的id，再次查询进度：</p>
+<p>GET &#x2F;api&#x2F;vm&#x2F;:id</p>
+<p>返回当前更新进度值：</p>
+<p>HTTP &#x2F; 1.1 200 OK<br>{<br>“code”:0,               &#x2F;&#x2F;如果找不到此任务id，code为2，ENOENT<br>“message” : “step 2: copy images!”,<br>“data” :<br>{<br>“percent”: int,    &#x2F;&#x2F;完成度，取值范围为[0, 100]，例如90表示完成90%<br>}<br>}</p>
+<h2 id="12-国际化"><a href="#12-国际化" class="headerlink" title="12 国际化"></a>12 国际化</h2><p>所有字符串，全部采用UTF-8编码，禁止采用任何其他编码，对于ANSI表里面可显示字符[0x20,0x80)之外的字符，全部采用Unicode code point，即\uxxx方式编码：</p>
+<p>&#x2F;[\u0009\u000A\u000D\u0020-\uFFFF]&#x2F;</p>
+<p>转换Unicode code point的时候注意，对于超过0xFFFF的部分，以UTF-16的编码代理方式(surrogate pair)表示，即将Unicode code point以两个code unit表示。</p>
+<p>UNICODE参考：<a target="_blank" rel="noopener" href="http://unicode.org/standard/standard.html">http://unicode.org/standard/standard.html</a></p>
+<p>同时，所有API请求，必须在头部附带如下固定Content-Type：</p>
+<p>Content-Type:application&#x2F;json;charset&#x3D;UTF-8</p>
+<p>其中charset如果不指定，默认表示UTF-8。</p>
+<p>转换示例代码：</p>
+<p>CMP &gt; RESTful API格式规范v2.4（公司规范） &gt; image2020-7-28_9-21-27.png</p>
+<p>请处理好字符串截断，不能包含截断后的UTF8字符！给一段截断示例代码：</p>
+<p>int Utf8CharLength(const char* start, int length)<br>{<br>if (NULL &#x3D;&#x3D; start || length &lt;&#x3D; 0)<br>{&#x2F;&#x2F;invalid param<br>return -1;<br>}</p>
+<pre><code>int firstChar = (unsigned char)(*start);
+//这是单字节情况：0xxxxxxx -&gt; [0b00000000(0x00), 0b10000000(0x80))
+if (firstChar &lt; 0x80)
+&#123;
+    return 1; //1字节
+&#125;
+
+//这是follow字节：10xxxxxx -&gt; [0b10000000(0x80), 0b11000000(0xC0))
+if (firstChar &lt; 0xC0)//
+&#123;
+    return 0; //0表示follow字节
+&#125;
+
+// 0000 0080 - 0000 07FF | 110xxxxx 10xxxxxx
+// 这是双字节：110xxxxx -&gt; [0b11000000(0xC0), 0b11100000(0xE0))
+if (firstChar &lt; 0xE0)
+&#123;
+    return (length &gt;= 2) ? 2 : -2;
+&#125;
+
+// 0000 0800 - 0000 FFFF | 1110xxxx 10xxxxxx 10xxxxxx
+// 这是三字节：1110xxxx -&gt; [0b11100000(0xE0), 0b11110000(0xF0))
+if (firstChar &lt; 0xF0)
+&#123;
+    return (length &gt;= 3) ? 3 : -3;
+&#125;
+
+// 0001 0000 - 0010 FFFF | 11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+// 这是四字节：11110xxx -&gt; [0b11110000(0xF0), 0b11111000(0xF8))
+if (firstChar &lt; 0xF8)
+&#123;//四字节的时候，我们还应该判断是否Codepoint &lt; 0x10FFFF，这里省略了。
+    return (length &gt;= 4) ? 4 : -4;
+&#125;
+
+// invalid char
+return -1;
+</code></pre>
+<p>}</p>
+<p>int Utf8RoundCut(char* str, int* plength)<br>{<br>if (NULL &#x3D;&#x3D; str || NULL &#x3D;&#x3D; plength || *plength &lt; 0)<br>{<br>return -1;<br>}</p>
+<pre><code>int length = *plength;
+if (0 == length)
+&#123;
+    return 0;
+&#125;
+
+int offset = (length &lt;= 4) ? 0 : (length - 4), chMaxLen, chLen;
+
+while (offset &lt; length)
+&#123;
+    chMaxLen = length - offset;
+    chLen = Utf8CharLength(&amp;str[offset], chMaxLen);
+    if (chLen &lt; 0)
+    &#123;
+        str[offset] = &#39;\0&#39;;
+        *plength = offset;
+        return chMaxLen;
+    &#125;
+    else
+    &#123;// == 0 || &gt; 0
+        offset += ((0 == chLen)?1:chLen); //check next
+    &#125;
+&#125;
+return 0;
+</code></pre>
+<p>}</p>
+<h3 id="12-2-Language定义"><a href="#12-2-Language定义" class="headerlink" title="12.2 Language定义"></a>12.2 Language定义</h3><p>复用HTTP协议头部信息定义，国际化所需语言，直接在HTTP头部定义，例如：</p>
+<p>Accept-Language:zh-CN</p>
+<p>请求英文，头部定义为：</p>
+<p>Accept-Language:en-US</p>
+<p>如果参数里面定义了lang，则参数里面的lang会override掉Accept-Language动作，用于扩展支持某些场景，无法修改HTTP头部的情况。同时，在一些具备让用户下拉选择国际化的设计中，用lang参数可能会比Accept-Language来得方便一些。</p>
+<h3 id="12-3-时间格式"><a href="#12-3-时间格式" class="headerlink" title="12.3 时间格式"></a>12.3 时间格式</h3><p>建议尽量传 UTC seconds，就是c语言中的time(NULL)返回的秒数。</p>
+<p>time() returns the time since the Epoch (00:00:00 UTC, January 1, 1970), measured in seconds.</p>
+<p>如果觉得可视方面不便，可以采用ISO 8601标准：”yyyy-MM-dd’T’HH:mm:ss.SSS’Z’”，例如，将本地时间”Thu Sep 27 2012 11:00:00 GMT+0800” 转换为 “2012-09-27T03:00:00Z”，对于有毫秒的情况，在Z前添加毫秒，如：”2012-09-27T03:00:00.300Z”，不到万不得已不要用这种方案。</p>
+
+    </div>
+    
+  </div>
+</article>
+<div id="toc" class="toc-article">
+  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89URI%E8%B5%84%E6%BA%90%E5%8C%96"><span class="toc-text">1）URI资源化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%89%E5%8A%A8%E4%BD%9C%E7%94%B1HTTP%E5%A4%B4%E9%87%8C%E7%9A%84%E6%96%B9%E6%B3%95%E5%86%B3%E5%AE%9A%E3%80%82"><span class="toc-text">2）动作由HTTP头里的方法决定。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%89%E8%B5%84%E6%BA%90%E7%9A%84%E8%A1%A8%E7%8E%B0%E7%94%B1Content-Type%E5%86%B3%E5%AE%9A"><span class="toc-text">3）资源的表现由Content-Type决定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%EF%BC%89%E6%97%A0%E7%8A%B6%E6%80%81"><span class="toc-text">4）无状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%EF%BC%89%E6%95%B0%E6%8D%AE%E5%AE%89%E5%85%A8"><span class="toc-text">5）数据安全</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89%E5%87%8F%E5%B0%91%E6%B2%9F%E9%80%9A%E6%88%90%E6%9C%AC%E3%80%82"><span class="toc-text">1）减少沟通成本。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%89%E8%83%BD%E5%A4%9F%E6%8E%A5%E7%BA%B3%E5%A4%9A%E7%A7%8D%E5%AE%A2%E6%88%B7%E7%AB%AF-%E9%80%82%E7%94%A8%E4%BA%8E%E5%A4%A7%E5%A4%9A%E6%95%B0CS-BS%E6%9E%B6%E6%9E%84%E7%A8%8B%E5%BA%8F"><span class="toc-text">2）能够接纳多种客户端(适用于大多数CS BS架构程序)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%89%E6%80%9D%E7%BB%B4%E6%96%B9%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BB%A5%E8%B5%84%E6%BA%90%E4%B8%BA%E4%B8%AD%E5%BF%83"><span class="toc-text">3）思维方式转换为以资源为中心</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%EF%BC%89%E6%89%A9%E5%B1%95%E6%96%B9%E4%BE%BF"><span class="toc-text">4）扩展方便</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%EF%BC%89%E5%BB%BA%E7%AB%8B%E5%9C%A8HTTP%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80%E4%B9%8B%E4%B8%8A"><span class="toc-text">5）建立在HTTP协议基础之上</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GET"><span class="toc-text">GET</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#POST"><span class="toc-text">POST</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PUT"><span class="toc-text">PUT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PATCH"><span class="toc-text">PATCH</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DELETE"><span class="toc-text">DELETE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HEAD"><span class="toc-text">HEAD</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#OPTIONS"><span class="toc-text">OPTIONS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#TRACE"><span class="toc-text">TRACE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CONNECT"><span class="toc-text">CONNECT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1%EF%BC%89separatePath%E9%9A%94%E7%A6%BB%E8%B7%AF%E5%BE%84"><span class="toc-text">1）separatePath隔离路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%EF%BC%89product%E4%BA%A7%E5%93%81"><span class="toc-text">2）product产品</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%EF%BC%89version%E7%89%88%E6%9C%AC%E5%8F%B7"><span class="toc-text">3）version版本号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%EF%BC%89resourceURI"><span class="toc-text">4）resourceURI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-GET-OVER-POST"><span class="toc-text">4.1 GET OVER POST</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-GET%E8%AF%AD%E4%B9%89%E8%BD%AC%E5%8F%98"><span class="toc-text">4.2 GET语义转变</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-GET%E4%BC%A0%E7%BB%9F%E6%96%B9%E5%BC%8F"><span class="toc-text">4.3 GET传统方式</span></a></li></ol>
+</div></section>
+        </div>
+        <!-- <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Dalin &copy; 2023 
+            <a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png" /></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme - <a target="_blank" rel="noopener" href="https://github.com/zthxxx/hexo-theme-Wikitten">wikitten</a>
+            
+        </div>
+    </div>
+</footer> -->
+        
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+</body>
+</html>

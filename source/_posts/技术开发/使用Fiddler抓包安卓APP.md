@@ -11,20 +11,43 @@ Fiddler是一个http协议调试代理工具，它能够记录并检查所有你
 
 ## windows 端 fiddler 配置
 1. 允许https和远程连接
+
+Tools -> Options -> Https
+
+如下勾选上
+
+<img src="/static/images/使用Fiddler抓包安卓APP/img.png" width="100%"></img>
+
 2. 设置代理端口
+
+Tools -> Options -> Https
+
+<img src="/static/images/使用Fiddler抓包安卓APP/img_1.png" width="100%"></img>
+
+
 3. 获取本机ip地址
+
+CMD -> ifconfig
 
 ## 手机端 设置
 1. wifi设置代理服务器，填写上面获取到的ip和设置的端口
+   
 2. 浏览器访问 http://ip:port
+   
 3. 下载证书
-4. 设置里安装证书
+   
+4. 在设置里安装证书
 
 到此，fiddler 就可以抓手机上的请求了
 
 ## fiddler 使用
 1. 请求过滤
+   
+<img src="/static/images/使用Fiddler抓包安卓APP/img_2.png" width="100%"></img>
+
 2. 格式化请求
+   
+
 3. 获取响应体
 
 

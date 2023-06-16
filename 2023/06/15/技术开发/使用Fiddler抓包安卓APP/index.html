@@ -10,18 +10,22 @@
         <meta name="keywords" content="使用Fillder抓包安卓APP" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="fiddler 简介Fiddler是一个http协议调试代理工具，它能够记录并检查所有你的电脑和互联网之间的http通讯，设置断点，查看所有的“进出”Fiddler的数据（指cookie,html,js,css等文件）。 Fiddler 要比其他的网络调试器要更加简单，因为它不仅仅暴露http通讯还提供了一个用户友好的格式。 windows 端 fiddler 配置 允许https和远程连接 设置">
+    <meta name="description" content="fiddler 简介Fiddler是一个http协议调试代理工具，它能够记录并检查所有你的电脑和互联网之间的http通讯，设置断点，查看所有的“进出”Fiddler的数据（指cookie,html,js,css等文件）。 Fiddler 要比其他的网络调试器要更加简单，因为它不仅仅暴露http通讯还提供了一个用户友好的格式。 windows 端 fiddler 配置 允许https和远程连接  T">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Fillder抓包安卓APP">
 <meta property="og:url" content="https://tianxiafeiyu.github.io/2023/06/15/%E6%8A%80%E6%9C%AF%E5%BC%80%E5%8F%91/%E4%BD%BF%E7%94%A8Fiddler%E6%8A%93%E5%8C%85%E5%AE%89%E5%8D%93APP/index.html">
 <meta property="og:site_name" content="Dalin blog">
-<meta property="og:description" content="fiddler 简介Fiddler是一个http协议调试代理工具，它能够记录并检查所有你的电脑和互联网之间的http通讯，设置断点，查看所有的“进出”Fiddler的数据（指cookie,html,js,css等文件）。 Fiddler 要比其他的网络调试器要更加简单，因为它不仅仅暴露http通讯还提供了一个用户友好的格式。 windows 端 fiddler 配置 允许https和远程连接 设置">
+<meta property="og:description" content="fiddler 简介Fiddler是一个http协议调试代理工具，它能够记录并检查所有你的电脑和互联网之间的http通讯，设置断点，查看所有的“进出”Fiddler的数据（指cookie,html,js,css等文件）。 Fiddler 要比其他的网络调试器要更加简单，因为它不仅仅暴露http通讯还提供了一个用户友好的格式。 windows 端 fiddler 配置 允许https和远程连接  T">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tianxiafeiyu.github.io/static/images/使用Fiddler抓包安卓APP/img.png">
+<meta property="og:image" content="https://tianxiafeiyu.github.io/static/images/使用Fiddler抓包安卓APP/img_1.png">
+<meta property="og:image" content="https://tianxiafeiyu.github.io/static/images/使用Fiddler抓包安卓APP/img_2.png">
 <meta property="article:published_time" content="2023-06-15T12:00:00.000Z">
 <meta property="article:modified_time" content="2023-06-15T12:00:00.000Z">
 <meta property="article:author" content="Dalin">
 <meta property="article:tag" content="使用Fillder抓包安卓APP">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tianxiafeiyu.github.io/static/images/使用Fiddler抓包安卓APP/img.png">
     
 
     
@@ -1239,20 +1243,39 @@
         <h2 id="fiddler-简介"><a href="#fiddler-简介" class="headerlink" title="fiddler 简介"></a>fiddler 简介</h2><p>Fiddler是一个http协议调试代理工具，它能够记录并检查所有你的电脑和互联网之间的http通讯，设置断点，查看所有的“进出”Fiddler的数据（指cookie,html,js,css等文件）。 Fiddler 要比其他的网络调试器要更加简单，因为它不仅仅暴露http通讯还提供了一个用户友好的格式。</p>
 <h2 id="windows-端-fiddler-配置"><a href="#windows-端-fiddler-配置" class="headerlink" title="windows 端 fiddler 配置"></a>windows 端 fiddler 配置</h2><ol>
 <li>允许https和远程连接</li>
+</ol>
+<p>Tools -&gt; Options -&gt; Https</p>
+<p>如下勾选上</p>
+<p><img src="/static/images/使用Fiddler抓包安卓APP/img.png" width="100%"></img></p>
+<ol start="2">
 <li>设置代理端口</li>
+</ol>
+<p>Tools -&gt; Options -&gt; Https</p>
+<p><img src="/static/images/使用Fiddler抓包安卓APP/img_1.png" width="100%"></img></p>
+<ol start="3">
 <li>获取本机ip地址</li>
 </ol>
+<p>CMD -&gt; ifconfig</p>
 <h2 id="手机端-设置"><a href="#手机端-设置" class="headerlink" title="手机端 设置"></a>手机端 设置</h2><ol>
-<li>wifi设置代理服务器，填写上面获取到的ip和设置的端口</li>
-<li>浏览器访问 <a href="http://ip:port">http://ip:port</a></li>
-<li>下载证书</li>
-<li>设置里安装证书</li>
+<li><p>wifi设置代理服务器，填写上面获取到的ip和设置的端口</p>
+</li>
+<li><p>浏览器访问 <a href="http://ip:port">http://ip:port</a></p>
+</li>
+<li><p>下载证书</p>
+</li>
+<li><p>在设置里安装证书</p>
+</li>
 </ol>
 <p>到此，fiddler 就可以抓手机上的请求了</p>
 <h2 id="fiddler-使用"><a href="#fiddler-使用" class="headerlink" title="fiddler 使用"></a>fiddler 使用</h2><ol>
 <li>请求过滤</li>
-<li>格式化请求</li>
-<li>获取响应体</li>
+</ol>
+<p><img src="/static/images/使用Fiddler抓包安卓APP/img_2.png" width="100%"></img></p>
+<ol start="2">
+<li><p>格式化请求</p>
+</li>
+<li><p>获取响应体</p>
+</li>
 </ol>
 <h2 id="实战，jump游戏资讯抓包"><a href="#实战，jump游戏资讯抓包" class="headerlink" title="实战，jump游戏资讯抓包"></a>实战，jump游戏资讯抓包</h2>
     </div>

@@ -1658,7 +1658,7 @@ div .article-more-link {
   -webkit-align-items: flex-start;
   align-items: flex-start;
   font-size: 12px;
-  margin: 40px 0px;
+  margin: 0px 0px;
   overflow-y: auto;
   overflow-x: hidden;
   max-width: 200px;

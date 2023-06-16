@@ -1765,6 +1765,9 @@ div .article-more-link {
 #comments a {
   color: #4569d4;
 }
+.empty-line {
+  margin-bottom: 20px;
+}
 .archives:before,
 .archives:after {
   content: "";
